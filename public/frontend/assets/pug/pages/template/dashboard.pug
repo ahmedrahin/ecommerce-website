@@ -1,0 +1,1961 @@
+//- - var countdown            = true; 
+//- - var  dashboard_left      = true;
+doctype html
+html(lang='en')
+  include ../../components/header-files
+  body
+    include ../../components/tap_top
+    include ../../components/cursor
+    //------ Header -------//
+    header 
+        .top_header 
+            p Free Coupe Code: Summer Sale On Selected items Use:
+                span NEW 26
+                a(href="collection-left-sidebar.html")  SHOP NOW
+        .custom-container.container.header-1
+            .row 
+                .col-12.p-0 
+                    .mobile-fix-option
+                        ul
+                            li 
+                                a(href="index.html")
+                                    i.iconsax(data-icon="home-1")
+                                    | Home
+                            li
+                                a(href="search.html")
+                                    i.iconsax(data-icon="search-normal-2")
+                                    | Search
+
+                            li.shopping-cart  
+                                a(href="cart.html")
+                                    i.iconsax(data-icon="shopping-cart")
+                                    | Cart
+                            li
+                                a(href="wishlist.html")
+                                    i.iconsax(data-icon="heart")
+                                    | My Wish
+                            li 
+                                a(href="dashboard.html")
+                                    i.iconsax(data-icon="user-2")
+                                    | Account
+
+                    #staticBackdrop.offcanvas.offcanvas-start(data-bs-backdrop='static' tabindex='-1' aria-labelledby='staticBackdropLabel')
+                        .offcanvas-header
+                            h3#staticBackdropLabel.offcanvas-title Offcanvas
+                            button.btn-close(type='button' data-bs-dismiss='offcanvas' aria-label='Close')
+                        .offcanvas-body
+                            div
+                            | I will not close if you click outside of me.
+                .col-12
+                    .main-menu 
+                        a.brand-logo(href="index.html") 
+                            img.img-fluid.for-light(src="../assets/images/logo/logo.png", alt="logo")
+                            img.img-fluid.for-dark(src="../assets/images/logo/logo-white-1.png", alt="logo")
+                        nav#main-nav
+                            ul#sm-horizontal.nav-menu.sm-horizontal.theme-scrollbar
+                                li#mobile-back.mobile-back
+                                    | Back
+                                    i.fa-solid.fa-angle-right.ps-2(aria-hidden='true')
+                                li 
+                                    a.nav-link(href="#") Home 
+                                        span 
+                                            i.fa-solid.fa-angle-down
+                                    .mega-menu
+                                        .row.gy-3 
+                                            .col-xl-3
+                                                a(href="index.html" target="_blank").layout-images
+                                                    .layout-box.img-1 
+                                                    h5 Layout 1
+                                            .col-xl-3 
+                                                a(href="layout-2.html" target="_blank").layout-images
+                                                    .layout-box.img-2
+                                                    h5 Layout 2
+                                            .col-xl-3
+                                                a(href="layout-3.html" target="_blank").layout-images
+                                                    .layout-box.img-3
+                                                    h5 Layout 3
+                                            .col-xl-3  
+                                                a(href="layout-4.html" target="_blank").layout-images
+                                                    .layout-box.img-4
+                                                    h5 Layout 4
+                                li 
+                                    a.nav-link(href="#") Shop
+                                        span 
+                                            i.fa-solid.fa-angle-down
+                                    ul.nav-submenu
+                                        li 
+                                            a(href="collection-left-sidebar.html") Collection Left Sidebar
+                                        li 
+                                            a(href="collection-right-sidebar.html") Collection Right Sidebar
+                                        li 
+                                            a(href="collection-no-sidebar.html") Collection No Sidebar
+                                        li 
+                                            a(href="collection-3-grid.html") Collection 3 Grid
+                                        li 
+                                            a(href="collection-4-grid.html") Collection 4 Grid
+                                        li 
+                                            a(href="collection-list-view.html") Collection List View 
+                                                span.badge-sm.theme-default new
+                                        li 
+                                            a(href="collection-slider.html") Collection Slider
+                                        li 
+                                            a(href="offcanvas-filter.html") Offcanvas Filter 
+                                        li 
+                                            a(href="load-more.html") Load More
+                                                span.badge-sm.danger-color.animated Hot
+                                li 
+                                    a.nav-link(href="#") Product 
+                                        span 
+                                            i.fa-solid.fa-angle-down
+                                    .mega-menu.p-0.overflow-hidden
+                                        .row
+                                            .col-xl-4
+                                                ul.p-2 
+                                                    li 
+                                                        a(href="product.html") Product
+                                                    li 
+                                                        a(href="product-sticky.html") Product Sticky
+                                                    li 
+                                                        a(href="product-four-image.html") Product image
+                                                    li 
+                                                        a(href="product-bottom.html") Product Bottom
+                                                    li 
+                                                        a(href="product-video.html") Product Video
+                                                            span.badge-sm.theme-default new
+                                                    li 
+                                                        a(href="product-accordion.html") Product Accordion
+                                                    li 
+                                                        a(href="product-sold-out.html") Product Sold Out 
+                                                            span.badge-sm.danger-color.animated Hot
+                                                    li 
+                                                        a(href="without-thumbnail.html") Without Thumbnail 
+                                            .col-xl-4
+                                                ul.p-2
+                                                    li 
+                                                        a(href="product-bundle.html") Bundle (Cross Sale) 
+                                                            span.badge-sm.danger-color.animated Hot
+                                                    li 
+                                                        a(href="variant-rectangle.html") Variant Rectangle  
+                                                    li 
+                                                        a(href="variant-images.html")  Variant Image Swatch 
+                                                            span.badge-sm.theme-default new
+                                                    li 
+                                                        a(href="variant-color.html") Variant Color
+                                                    li 
+                                                        a(href="variant-radio.html") Variant Radio
+                                                    li 
+                                                        a(href="variant-dropdown.html") Variant Dropdown 
+                                                    li 
+                                                        a(href="inner-zoom.html") Inner Zoom Images 
+                                                            span.badge-sm.danger-color.animated Hot
+                                            .col-xl-4.d-none.d-xl-block.px-0
+                                                .menu-banner    
+                                                    img.w-100.img-fluid(src="../assets/images/mega-menu/banner.png", alt="")
+                                li 
+                                    a.nav-link(href="#") FashiOffers 
+                                        span 
+                                            i.fa-solid.fa-angle-down
+                                        p.lable-nav Hot
+                                    .mega-menu.p-0.overflow-hidden
+                                        .row.gy-4.align-items-center
+                                            .col-xl-5
+                                                .mega-img
+                                                    .img-1
+                                                        img.img-fluid(src="../assets/images/mega-menu/5.jpg", alt="")  
+                                                    .img-1
+                                                        img.img-fluid(src="../assets/images/mega-menu/6.jpg", alt="")
+                                            .col-xl-2.px-0
+                                                ul
+                                                    li 
+                                                        a(href="../email-template/welcome.html") Welcome Template
+                                                            span.badge-sm.danger-color.animated Hot
+                                                    li 
+                                                        a(href="../email-template/order-success.html") Order Success
+                                                    li 
+                                                        a(href="../email-template/reset-password.html") Reset Password
+                                                    li 
+                                                        a(href="../invoice/invoice-1.html") Invoice 1
+                                                    li 
+                                                        a(href="../invoice/invoice-2.html") Invoice 2
+                                                    li 
+                                                        a(href="../invoice/invoice-3.html") Invoice 3
+                                            .col-xl-5
+                                                img.img-fluid(src="../assets/images/mega-menu/1.png", alt="")
+                                li 
+                                    a.nav-link(href="#") Page  
+                                        span 
+                                            i.fa-solid.fa-angle-down
+                                    ul.nav-submenu
+                                        
+                                        li 
+                                            a(href="search.html") Search
+                                        li 
+                                            a(href="wishlist.html") Wishlist
+                                        li 
+                                            a(href="faq.html") Faq
+                                        li 
+                                            a(href="dashboard.html") My Dashboard 
+                                                span.badge-sm.theme-default new
+                                        li 
+                                            a(href="order-success.html") Order Success
+                                        li 
+                                            a(href="order-tracking.html") Order Tracking
+                                        li 
+                                            a(href="maintenance.html") Maintenance
+                                                span.badge-sm.danger-color.animated Hot
+                                        li 
+                                            a(href="check-out.html") Check Out
+                                        li 
+                                            a(href="compare.html") Compare
+                                        li 
+                                            a(href="about-us.html") About Us
+                                        li 
+                                            a(href="look-book.html") Look Book 
+                                                span.badge-sm.theme-default new
+                                        li 
+                                            a(href="404.html") 404 
+                                        li 
+                                            a(href="cart.html") cart 
+                                        li 
+                                            a(href="login.html")  Login 
+                                                span.badge-sm.danger-color.animated Hot 
+                                        li 
+                                            a(href="forget-password.html")  Forgot Password 
+                                        li 
+                                            a(href="otp.html")  otp 
+                                        li 
+                                            a(href="sign-up.html")  Sign Up 
+                                li 
+                                    a.nav-link(href="#") Blog
+                                        span 
+                                            i.fa-solid.fa-angle-down
+                                    ul.nav-submenu
+                                        li 
+                                            a(href="blog-left-sidebar.html") Blog Left Sidebar 
+                                        li 
+                                            a(href="blog-right-sidebar.html") Blog Right Sidebar 
+                                        li 
+                                            a(href="blog-list.html") Blog List
+                                        li 
+                                            a(href="blog-details.html") Blog Details
+                                        li 
+                                            a(href="blog-no-sidebar.html") Blog No Sidebar
+                                li 
+                                    a.nav-link(href="contact.html") Contact 
+                        .sub_header
+                            #toggle-nav.toggle-nav
+                                i.fa-solid.fa-bars-staggered.sidebar-bar
+                            ul.justify-content-end
+                                li 
+                                    button(href="#" data-bs-toggle='offcanvas' data-bs-target='#offcanvasTop' aria-controls='offcanvasTop')
+                                        i.iconsax(data-icon="search-normal-2")
+    
+                                li 
+                                    a(href="wishlist.html")
+                                        i.iconsax(data-icon="heart")
+                                        span.cart_qty_cls 2
+                                li.onhover-div
+                                    a(href="#")
+                                        i.iconsax(data-icon="user-2")
+                                    .onhover-show-div.user  
+                                        ul 
+                                            li 
+                                                a(href="login.html") Login 
+                                            li 
+                                                a(href="sign-up.html") Register
+                                li.onhover-div.shopping-cart  
+                                    a.p-0(href="#" data-bs-toggle='offcanvas' data-bs-target='#offcanvasRight' aria-controls='offcanvasRight')
+                                        .shoping-prize
+                                            i.iconsax.pe-2(data-icon="basket-2") 
+                                            | 0 items
+    
+    //------- Header Breadcrumb -------//
+    section.section-b-space.pt-0 
+        .heading-banner
+            .custom-container.container
+                .row.align-items-center
+                    .col-sm-6
+                        h4 Dashboard
+                    .col-sm-6
+                        ul.breadcrumb.float-end
+                            li.breadcrumb-item 
+                                a(href="index.html") Home 
+                            li.breadcrumb-item.active 
+                                a(href="#") Dashboard
+    //-------- Main Section ---------//
+    section.section-b-space.pt-0 
+        .custom-container.container.user-dashboard-section 
+            .row
+                .col-xl-3.col-lg-4
+                    .left-dashboard-show
+                       button.btn.btn_black.sm.rounded.bg-primary Show Menu
+                    .dashboard-left-sidebar.sticky
+                        .profile-box 
+                            .profile-bg-img
+                            .dashboard-left-sidebar-close
+                                i.fa-solid.fa-xmark
+                            .profile-contain
+                                .profile-image 
+                                    img.img-fluid(src="../assets/images/user/12.jpg", alt="")
+                                .profile-name 
+                                    h4 John Doe
+                                    h6 john.customer@example.com
+                                    span(data-bs-toggle='modal' data-bs-target='#edit-box' title='Quick View' tabindex='0') Edit Profile
+                        ul#v-pills-tab.nav.flex-column.nav-pills.dashboard-tab(role='tablist' aria-orientation='vertical')
+                            li
+                                button#dashboard-tab.nav-link.active(data-bs-toggle='pill' data-bs-target='#dashboard' role='tab' aria-controls='dashboard' aria-selected='true')
+                                    i.iconsax(data-icon="home-1")
+                                    |  Dashboard
+                            li
+                                button#notifications-tab.nav-link(data-bs-toggle='pill' data-bs-target='#notifications' role='tab' aria-controls='notifications' aria-selected='false')
+                                    i.iconsax(data-icon="lamp-2")
+                                    | Notifications 
+                            li
+                                button#order-tab.nav-link(data-bs-toggle='pill' data-bs-target='#order' role='tab' aria-controls='order' aria-selected='false')
+                                    i.iconsax(data-icon="receipt-square")
+                                    |  Order
+                            li
+                                button#wishlist-tab.nav-link(data-bs-toggle='pill' data-bs-target='#wishlist' role='tab' aria-controls='wishlist' aria-selected='false') 
+                                    i.iconsax(data-icon="heart")
+                                    | Wishlist 
+                            li
+                                button#saved-card-tab.nav-link(data-bs-toggle='pill' data-bs-target='#saved-card' role='tab' aria-controls='saved-card' aria-selected='false') 
+                                    i.iconsax(data-icon="bank-card")
+                                    | Saved Card
+                            li
+                                button#address-tab.nav-link(data-bs-toggle='pill' data-bs-target='#address' role='tab' aria-controls='address' aria-selected='false')
+                                    i.iconsax(data-icon="cue-cards")
+                                    | Address
+                            li
+                                button#privacy-tab.nav-link(data-bs-toggle='pill' data-bs-target='#privacy' role='tab' aria-controls='privacy' aria-selected='false') 
+                                    i.iconsax(data-icon="security-user")
+                                    | Privacy
+                        .logout-button 
+                            a.btn.btn_black.sm(data-bs-toggle='modal' data-bs-target='#Confirmation-modal' title='Quick View' tabindex='0')
+                                i.iconsax.me-1(data-icon="logout-1")
+                                |  Logout 
+                .col-xl-9.col-lg-8
+                    #v-pills-tabContent.tab-content
+                        #dashboard.tab-pane.fade.show.active(role='tabpanel' aria-labelledby='dashboard-tab')
+                            .dashboard-right-box
+                                .my-dashboard-tab
+                                    .dashboard-items 
+                                    .sidebar-title
+                                        .loader-line
+                                        h4 My Dashboard
+                                    .dashboard-user-name 
+                                        h6 Hello,  
+                                            b John Doe
+                                        p My dashboard provides a comprehensive overview of key metrics and data relevant to your operations. It offers real-time insights into performance, including sales figures, website traffic, customer engagement, and more. With customizable widgets and intuitive visualizations, it facilitates quick decision-making and allows you to track progress towards your goals effectively.
+                                    .total-box 
+                                        .row.gy-4 
+                                            .col-xl-4  
+                                                .totle-contain
+                                                    .wallet-point
+                                                        img(src="../assets/images/svg-icon/wallet.svg", alt="")
+                                                        img.img-1(src="../assets/images/svg-icon/wallet.svg", alt="")
+                                                    .totle-detail 
+                                                        h6 Balance
+                                                        h4 $ 84.40 
+                                            .col-xl-4  
+                                                .totle-contain
+                                                    .wallet-point
+                                                        img(src="../assets/images/svg-icon/coin.svg", alt="")
+                                                        img.img-1(src="../assets/images/svg-icon/coin.svg", alt="")
+                                                    .totle-detail 
+                                                        h6 Total Points
+                                                        h4 500
+                                            .col-xl-4  
+                                                .totle-contain
+                                                    .wallet-point
+                                                        img(src="../assets/images/svg-icon/order.svg", alt="")
+                                                        img.img-1(src="../assets/images/svg-icon/order.svg", alt="")
+                                                    .totle-detail 
+                                                        h6 Total Orders
+                                                        h4 12
+                                    .profile-about 
+                                        .row 
+                                            .col-xl-7 
+                                                .sidebar-title
+                                                    .loader-line
+                                                    h5 Profile Information
+                                                ul.profile-information 
+                                                    li 
+                                                        h6 Name :
+                                                        p John Doe
+                                                    li 
+                                                        h6 Phone:
+                                                        p +1 5551855359
+                                                    li 
+                                                        h6 Address:
+                                                        p 26, Starts Hollow Colony Denver, Colorado, United States 80014
+                                                .sidebar-title
+                                                    .loader-line
+                                                    h5 Login Details
+                                                ul.profile-information.mb-0 
+                                                    li 
+                                                        h6 Email :
+                                                        p john.customer@example.com
+                                                            span(data-bs-toggle='modal' data-bs-target='#edit-email' title='Quick View' tabindex='0') Edit
+                                                    li 
+                                                        h6 Password :
+                                                        p ●●●●●●
+                                                            span(data-bs-toggle='modal' data-bs-target='#edit-password' title='Quick View' tabindex='0') Edit
+                                            .col-xl-5
+                                                .profile-image.d-none.d-xl-block 
+                                                    img.img-fluid(src="../assets/images/other-img/dashboard.png", alt="")
+                        #notifications.tab-pane.fade(role='tabpanel' aria-labelledby='notifications-tab') 
+                            .dashboard-right-box
+                                .notification-tab
+                                    .sidebar-title
+                                        .loader-line
+                                        h4 Notifications
+                                    ul.notification-body
+                                        li 
+                                            .user-img 
+                                                img(src="../assets/images/notification/1.jpg", alt="")
+                                            .user-contant 
+                                                    h6 Mint - is your budget ready for spring spending?
+                                                        span 2:14PM
+                                                    p A quick weekend trip, a staycation in your own town, or a weeklong vacay with the family—it’s your choice if it’s in the budget. No matter what you plan on doing during spring break, budget ahead for it.
+                                        li 
+                                            .user-img 
+                                                img(src="../assets/images/notification/2.jpg", alt="")
+                                            .user-contant 
+                                                    h6 Flipkart - Confirmed order
+                                                        span 2:14PM
+                                                    p Thanks for signing up for CodePen! We're happy you're here. Let's get your email address verified:
+                                        li 
+                                            .user-img 
+                                                img(src="../assets/images/notification/3.jpg", alt="")
+                                            .user-contant 
+                                                    h6 Figma - Move work forward
+                                                        span 2:14PM
+                                                    p Hello, Everyone understands why a new language would be advantageous: one could refuse to pay for high-priced translators.
+                                        li 
+                                            .user-img 
+                                                img(src="../assets/images/notification/4.jpg", alt="")
+                                            .user-contant 
+                                                    h6 Trip Reminder.
+                                                        span 2:14PM
+                                                    p I'm sorry, but I have to disagree with Mr. Zingier. We are all aware that the title is the most crucial component of any article. Your reader won't even make it to the first sentence without an engaging title.           
+                                        li 
+                                            .user-img 
+                                                img(src="../assets/images/notification/5.jpg", alt="")
+                                            .user-contant 
+                                                    h6 Flipkart - Confirmed order
+                                                        span 2:14PM
+                                                    p Thanks for signing up for CodePen! We're happy you're here. Let's get your email address verified:
+                                        li 
+                                            .user-img 
+                                                img(src="../assets/images/notification/6.jpg", alt="")
+                                            .user-contant 
+                                                    h6 Flipkart - Confirmed order
+                                                        span 2:14PM
+                                                    p Thanks for signing up for CodePen! We're happy you're here. Let's get your email address verified:
+                                        li 
+                                            .user-img 
+                                                img(src="../assets/images/notification/7.jpg", alt="")
+                                            .user-contant 
+                                                    h6 Figma - Move work forward
+                                                        span 2:14PM
+                                                    p Hello, Everyone understands why a new language would be advantageous: one could refuse to pay for high-priced translators.
+                                        li 
+                                            .user-img 
+                                                img(src="../assets/images/notification/8.jpg", alt="")
+                                            .user-contant 
+                                                    h6 Trip Reminder.
+                                                        span 2:14PM
+                                                    p I'm sorry, but I have to disagree with Mr. Zingier. We are all aware that the title is the most crucial component of any article. Your reader won't even make it to the first sentence without an engaging title.
+                                        li 
+                                            .user-img 
+                                                img(src="../assets/images/notification/9.jpg", alt="")
+                                            .user-contant 
+                                                    h6 Flipkart - Confirmed order
+                                                        span 2:14PM
+                                                    p Thanks for signing up for CodePen! We're happy you're here. Let's get your email address verified:
+                                        li 
+                                            .user-img 
+                                                img(src="../assets/images/notification/10.jpg", alt="")
+                                            .user-contant 
+                                                    h6 Flipkart - Confirmed order
+                                                        span 2:14PM
+                                                    p Thanks for signing up for CodePen! We're happy you're here. Let's get your email address verified:
+                                        li 
+                                            .user-img 
+                                                img(src="../assets/images/notification/11.jpg", alt="")
+                                            .user-contant 
+                                                    h6 Figma - Move work forward
+                                                        span 2:14PM
+                                                    p Hello, Everyone understands why a new language would be advantageous: one could refuse to pay for high-priced translators.
+                                        li 
+                                            .user-img 
+                                                img(src="../assets/images/notification/12.jpg", alt="")
+                                            .user-contant 
+                                                    h6 Trip Reminder.
+                                                        span 2:14PM
+                                                    p I'm sorry, but I have to disagree with Mr. Zingier. We are all aware that the title is the most crucial component of any article. Your reader won't even make it to the first sentence without an engaging title.          
+                        #wishlist.tab-pane.fade(role='tabpanel' aria-labelledby='wishlist-tab')
+                            .dashboard-right-box
+                                .wishlist-box.ratio1_3  
+                                    .sidebar-title
+                                        .loader-line
+                                        h4 Wishlist
+                                    .row-cols-md-3.row-cols-2.grid-section.view-option.row.gy-4.g-xl-4
+                                        .col 
+                                            .product-box-3.product-wishlist
+                                                .img-wrapper
+                                                    .label-block
+                                                        a.label-2.wishlist-icon.delete-button(href='javascript:void(0)' title='Add to Wishlist' tabindex='0')
+                                                            i.iconsax(data-icon="trash" aria-hidden='true')
+                                                    .product-image
+                                                        a.pro-first(href="#") 
+                                                            img.bg-img(src="../assets/images/product/product-3/1.jpg", alt="product")
+                                                        a.pro-sec(href="#") 
+                                                            img.bg-img(src="../assets/images/product/product-3/20.jpg", alt="product")
+                                                    .cart-info-icon 
+                                                        a(href='#' data-bs-toggle='modal' data-bs-target='#addtocart' title='Add to cart' tabindex='0')
+                                                            i.iconsax(data-icon="basket-2" aria-hidden='true') 
+                                                        a(href='compare.html' title='Compare' tabindex='0')
+                                                            i.iconsax(data-icon="arrow-up-down" aria-hidden='true')
+                                                        a(href='#' data-bs-toggle='modal' data-bs-target='#quick-view' title='Quick View' tabindex='0')
+                                                            i.iconsax(data-icon="eye" aria-hidden='true')
+                                                    .countdown
+                                                        ul.clockdiv1
+                                                            li 
+                                                                .timer
+                                                                    .days
+                                                                span.title Days
+                                                            li.dot 
+                                                                span :
+                                                            li 
+                                                                .timer
+                                                                    .hours
+                                                                span.title Hours
+                                                            li.dot 
+                                                                span :
+                                                            li 
+                                                                .timer
+                                                                    .minutes
+                                                                span.title Min
+                                                            li.dot 
+                                                                span :
+                                                            li 
+                                                                .timer
+                                                                    .seconds
+                                                                span.title Sec
+                                                .product-detail
+                                                    ul.rating       
+                                                        li
+                                                            i.fa-solid.fa-star
+                                                        li
+                                                            i.fa-solid.fa-star
+                                                        li
+                                                            i.fa-solid.fa-star
+                                                        li
+                                                            i.fa-solid.fa-star-half-stroke
+                                                        li
+                                                            i.fa-regular.fa-star
+                                                        li 4.3
+                                                    a(href="#") 
+                                                        h6 Greciilooks Women's Stylish Top
+                                                    p $100.00  
+                                                        del $140.00
+                                                        span -20%
+                                        .col 
+                                            .product-box-3.product-wishlist
+                                                .img-wrapper
+                                                    .label-block
+                                                        a.label-2.wishlist-icon.delete-button(href='javascript:void(0)' title='Add to Wishlist' tabindex='0')
+                                                            i.iconsax(data-icon="trash" aria-hidden='true')
+                                                    .product-image
+                                                        a.pro-first(href="product.html") 
+                                                            img.bg-img(src="../assets/images/product/product-3/2.jpg", alt="product")
+                                                        a.pro-sec(href="product.html") 
+                                                            img.bg-img(src="../assets/images/product/product-3/19.jpg", alt="product")
+                                                    .cart-info-icon 
+                                                        a(href='#' data-bs-toggle='modal' data-bs-target='#addtocart' title='Add to cart' tabindex='0')
+                                                            i.iconsax(data-icon="basket-2" aria-hidden='true') 
+                                                        a(href='compare.html' title='Compare' tabindex='0')
+                                                            i.iconsax(data-icon="arrow-up-down" aria-hidden='true')
+                                                        a(href='#' data-bs-toggle='modal' data-bs-target='#quick-view' title='Quick View' tabindex='0')
+                                                            i.iconsax(data-icon="eye" aria-hidden='true')
+                                                .product-detail
+                                                    ul.rating       
+                                                        li
+                                                            i.fa-solid.fa-star
+                                                        li
+                                                            i.fa-solid.fa-star
+                                                        li
+                                                            i.fa-solid.fa-star
+                                                        li
+                                                            i.fa-solid.fa-star
+                                                        li
+                                                            i.fa-regular.fa-star
+                                                        li 4.3
+                                                    a(href="product.html") 
+                                                        h6 Wide Linen-Blend Trousers
+                                                    p $100.00  
+                                                        del $18.00 
+                                        .col 
+                                            .product-box-3.product-wishlist
+                                                .img-wrapper
+                                                    .label-block
+                                                        a.label-2.wishlist-icon.delete-button(href='javascript:void(0)' title='Add to Wishlist' tabindex='0')
+                                                            i.iconsax(data-icon="trash" aria-hidden='true')
+                                                    .product-image
+                                                        a.pro-first(href="product.html") 
+                                                            img.bg-img(src="../assets/images/product/product-3/3.jpg", alt="product")
+                                                        a.pro-sec(href="product.html") 
+                                                            img.bg-img(src="../assets/images/product/product-3/18.jpg", alt="product")
+                                                    .cart-info-icon 
+                                                        a(href='#' data-bs-toggle='modal' data-bs-target='#addtocart' title='Add to cart' tabindex='0')
+                                                            i.iconsax(data-icon="basket-2" aria-hidden='true') 
+                                                        a(href='compare.html' title='Compare' tabindex='0')
+                                                            i.iconsax(data-icon="arrow-up-down" aria-hidden='true')
+                                                        a(href='#' data-bs-toggle='modal' data-bs-target='#quick-view' title='Quick View' tabindex='0')
+                                                            i.iconsax(data-icon="eye" aria-hidden='true')
+                                                .product-detail
+                                                    ul.rating       
+                                                        li
+                                                            i.fa-solid.fa-star
+                                                        li
+                                                            i.fa-solid.fa-star
+                                                        li
+                                                            i.fa-solid.fa-star
+                                                        li
+                                                            i.fa-solid.fa-star
+                                                        li
+                                                            i.fa-solid.fa-star
+                                                        li 4.3
+                                                    a(href="product.html") 
+                                                        h6 Long Sleeve Rounded T-Shirt
+                                                    p $120.30  
+                                                        del $140.00
+                                                        span -20%
+                                        .col 
+                                            .product-box-3.product-wishlist
+                                                .img-wrapper
+                                                    .label-block
+                                                        a.label-2.wishlist-icon.delete-button(href='javascript:void(0)' title='Add to Wishlist' tabindex='0')
+                                                            i.iconsax(data-icon="trash" aria-hidden='true')
+                                                    .product-image
+                                                        a.pro-first(href="product.html") 
+                                                            img.bg-img(src="../assets/images/product/product-3/4.jpg", alt="product")
+                                                        a.pro-sec(href="product.html") 
+                                                            img.bg-img(src="../assets/images/product/product-3/17.jpg", alt="product")
+                                                    .cart-info-icon 
+                                                        a(href='#' data-bs-toggle='modal' data-bs-target='#addtocart' title='Add to cart' tabindex='0')
+                                                            i.iconsax(data-icon="basket-2" aria-hidden='true') 
+                                                        a(href='compare.html' title='Compare' tabindex='0')
+                                                            i.iconsax(data-icon="arrow-up-down" aria-hidden='true')
+                                                        a(href='#' data-bs-toggle='modal' data-bs-target='#quick-view' title='Quick View' tabindex='0')
+                                                            i.iconsax(data-icon="eye" aria-hidden='true')
+                                                    .countdown
+                                                        ul.clockdiv2
+                                                            li 
+                                                                .timer
+                                                                    .days
+                                                                span.title Days
+                                                            li.dot 
+                                                                span :
+                                                            li 
+                                                                .timer
+                                                                    .hours
+                                                                span.title Hours
+                                                            li.dot 
+                                                                span :
+                                                            li 
+                                                                .timer
+                                                                    .minutes
+                                                                span.title Min
+                                                            li.dot 
+                                                                span :
+                                                            li 
+                                                                .timer
+                                                                    .seconds
+                                                                span.title Sec
+                                                .product-detail
+                                                    ul.rating       
+                                                        li
+                                                            i.fa-solid.fa-star
+                                                        li
+                                                            i.fa-solid.fa-star
+                                                        li
+                                                            i.fa-solid.fa-star
+                                                        li
+                                                            i.fa-solid.fa-star
+                                                        li
+                                                            i.fa-solid.fa-star-half-stroke
+                                                        li 4.3
+                                                    a(href="product.html") 
+                                                        h6 Blue lined White T-Shirt
+                                                    p $190.00  
+                                                        del $210.00
+                                        .col 
+                                            .product-box-3.product-wishlist
+                                                .img-wrapper
+                                                    .label-block
+                                                        a.label-2.wishlist-icon.delete-button(href='javascript:void(0)' title='Add to Wishlist' tabindex='0')
+                                                            i.iconsax(data-icon="trash" aria-hidden='true')
+                                                    .product-image
+                                                        a.pro-first(href="product.html") 
+                                                            img.bg-img(src="../assets/images/product/product-3/9.jpg", alt="product")
+                                                        a.pro-sec(href="product.html") 
+                                                            img.bg-img(src="../assets/images/product/product-3/16.jpg", alt="product")
+                                                    .cart-info-icon 
+                                                        a(href='#' data-bs-toggle='modal' data-bs-target='#addtocart' title='Add to cart' tabindex='0')
+                                                            i.iconsax(data-icon="basket-2" aria-hidden='true') 
+                                                        a(href='compare.html' title='Compare' tabindex='0')
+                                                            i.iconsax(data-icon="arrow-up-down" aria-hidden='true')
+                                                        a(href='#' data-bs-toggle='modal' data-bs-target='#quick-view' title='Quick View' tabindex='0')
+                                                            i.iconsax(data-icon="eye" aria-hidden='true')
+                                                    .countdown
+                                                        ul.clockdiv3
+                                                            li 
+                                                                .timer
+                                                                    .days
+                                                                span.title Days
+                                                            li.dot 
+                                                                span :
+                                                            li 
+                                                                .timer
+                                                                    .hours
+                                                                span.title Hours
+                                                            li.dot 
+                                                                span :
+                                                            li 
+                                                                .timer
+                                                                    .minutes
+                                                                span.title Min
+                                                            li.dot 
+                                                                span :
+                                                            li 
+                                                                .timer
+                                                                    .seconds
+                                                                span.title Sec
+                                                .product-detail
+                                                    ul.rating       
+                                                        li
+                                                            i.fa-solid.fa-star
+                                                        li
+                                                            i.fa-solid.fa-star
+                                                        li
+                                                            i.fa-solid.fa-star
+                                                        li
+                                                            i.fa-solid.fa-star-half-stroke
+                                                        li
+                                                            i.fa-regular.fa-star
+                                                        li 4.3
+                                                    a(href="product.html") 
+                                                        h6 Greciilooks Women's Stylish Top
+                                                    p $100.00  
+                                                        del $140.00
+                                                        span -20%
+                                        .col 
+                                            .product-box-3.product-wishlist
+                                                .img-wrapper
+                                                    .label-block
+                                                        a.label-2.wishlist-icon.delete-button(href='javascript:void(0)' title='Add to Wishlist' tabindex='0')
+                                                            i.iconsax(data-icon="trash" aria-hidden='true')
+                                                    .product-image
+                                                        a.pro-first(href="product.html") 
+                                                            img.bg-img(src="../assets/images/product/product-3/10.jpg", alt="product")
+                                                        a.pro-sec(href="product.html") 
+                                                            img.bg-img(src="../assets/images/product/product-3/15.jpg", alt="product")
+                                                    .cart-info-icon 
+                                                        a(href='#' data-bs-toggle='modal' data-bs-target='#addtocart' title='Add to cart' tabindex='0')
+                                                            i.iconsax(data-icon="basket-2" aria-hidden='true') 
+                                                        a(href='compare.html' title='Compare' tabindex='0')
+                                                            i.iconsax(data-icon="arrow-up-down" aria-hidden='true')
+                                                        a(href='#' data-bs-toggle='modal' data-bs-target='#quick-view' title='Quick View' tabindex='0')
+                                                            i.iconsax(data-icon="eye" aria-hidden='true')
+                                                .product-detail
+                                                    ul.rating       
+                                                        li
+                                                            i.fa-solid.fa-star
+                                                        li
+                                                            i.fa-solid.fa-star
+                                                        li
+                                                            i.fa-solid.fa-star
+                                                        li
+                                                            i.fa-solid.fa-star
+                                                        li
+                                                            i.fa-regular.fa-star
+                                                        li 4.3
+                                                    a(href="product.html") 
+                                                        h6 Wide Linen-Blend Trousers
+                                                    p $100.00  
+                                                        del $18.00 
+                                        .col 
+                                            .product-box-3.product-wishlist
+                                                .img-wrapper
+                                                    .label-block
+                                                        a.label-2.wishlist-icon.delete-button(href='javascript:void(0)' title='Add to Wishlist' tabindex='0')
+                                                            i.iconsax(data-icon="trash" aria-hidden='true')
+                                                    .product-image
+                                                        a.pro-first(href="product.html") 
+                                                            img.bg-img(src="../assets/images/product/product-3/11.jpg", alt="product")
+                                                        a.pro-sec(href="product.html") 
+                                                            img.bg-img(src="../assets/images/product/product-3/14.jpg", alt="product")
+                                                    .cart-info-icon 
+                                                        a(href='#' data-bs-toggle='modal' data-bs-target='#addtocart' title='Add to cart' tabindex='0')
+                                                            i.iconsax(data-icon="basket-2" aria-hidden='true') 
+                                                        a(href='compare.html' title='Compare' tabindex='0')
+                                                            i.iconsax(data-icon="arrow-up-down" aria-hidden='true')
+                                                        a(href='#' data-bs-toggle='modal' data-bs-target='#quick-view' title='Quick View' tabindex='0')
+                                                            i.iconsax(data-icon="eye" aria-hidden='true')
+                                                .product-detail
+                                                    ul.rating       
+                                                        li
+                                                            i.fa-solid.fa-star
+                                                        li
+                                                            i.fa-solid.fa-star
+                                                        li
+                                                            i.fa-solid.fa-star
+                                                        li
+                                                            i.fa-solid.fa-star
+                                                        li
+                                                            i.fa-solid.fa-star
+                                                        li 4.3
+                                                    a(href="product.html") 
+                                                        h6 Long Sleeve Rounded T-Shirt
+                                                    p $120.30  
+                                                        del $140.00
+                                                        span -20% 
+                                        .col 
+                                            .product-box-3.product-wishlist
+                                                .img-wrapper
+                                                    .label-block
+                                                        a.label-2.wishlist-icon.delete-button(href='javascript:void(0)' title='Add to Wishlist' tabindex='0')
+                                                            i.iconsax(data-icon="trash" aria-hidden='true')
+                                                    .product-image
+                                                        a.pro-first(href="product.html") 
+                                                            img.bg-img(src="../assets/images/product/product-3/12.jpg", alt="product")
+                                                        a.pro-sec(href="product.html") 
+                                                            img.bg-img(src="../assets/images/product/product-3/13.jpg", alt="product")
+                                                    .cart-info-icon 
+                                                        a(href='#' data-bs-toggle='modal' data-bs-target='#addtocart' title='Add to cart' tabindex='0')
+                                                            i.iconsax(data-icon="basket-2" aria-hidden='true') 
+                                                        a(href='compare.html' title='Compare' tabindex='0')
+                                                            i.iconsax(data-icon="arrow-up-down" aria-hidden='true')
+                                                        a(href='#' data-bs-toggle='modal' data-bs-target='#quick-view' title='Quick View' tabindex='0')
+                                                            i.iconsax(data-icon="eye" aria-hidden='true')
+                                                    .countdown
+                                                        ul.clockdiv4
+                                                            li 
+                                                                .timer
+                                                                    .days
+                                                                span.title Days
+                                                            li.dot 
+                                                                span :
+                                                            li 
+                                                                .timer
+                                                                    .hours
+                                                                span.title Hours
+                                                            li.dot 
+                                                                span :
+                                                            li 
+                                                                .timer
+                                                                    .minutes
+                                                                span.title Min
+                                                            li.dot 
+                                                                span :
+                                                            li 
+                                                                .timer
+                                                                    .seconds
+                                                                span.title Sec
+                                                .product-detail
+                                                    ul.rating       
+                                                        li
+                                                            i.fa-solid.fa-star
+                                                        li
+                                                            i.fa-solid.fa-star
+                                                        li
+                                                            i.fa-solid.fa-star
+                                                        li
+                                                            i.fa-solid.fa-star
+                                                        li
+                                                            i.fa-solid.fa-star-half-stroke
+                                                        li 4.3
+                                                    a(href="product.html") 
+                                                        h6 Blue lined White T-Shirt
+                                                    p $190.00  
+                                                        del $210.00
+                                    
+                        #order.tab-pane.fade(role='tabpanel' aria-labelledby='order-tab')
+                            .dashboard-right-box
+                                .order
+                                    .sidebar-title
+                                        .loader-line
+                                        h4 My Orders History
+                                    .row.gy-4 
+                                        .col-12
+                                            .order-box
+                                                .order-container 
+                                                    .order-icon
+                                                        i.iconsax(data-icon="box")
+                                                        .couplet
+                                                            i.fa-solid.fa-check
+                                                    .order-detail 
+                                                        h5 Delivered
+                                                        p on Fri, 1 Mar
+                                                .product-order-detail 
+                                                    .product-box 
+                                                        a(href="product.html") 
+                                                            img(src="../assets/images/notification/1.jpg", alt="")
+                                                        .order-wrap
+                                                            h5 Rustic Minidress with Halterneck
+                                                            p Versatile sporty slogans short sleeve quirky laid back orange lux hoodies vests pins badges.
+                                                            ul 
+                                                                li 
+                                                                    p Prize : 
+                                                                    span $20.00
+                                                                li 
+                                                                    p Size : 
+                                                                    span M
+                                                                li 
+                                                                    p Order Id :
+                                                                    span ghat56han50
+                                                .return-box
+                                                    .review-box
+                                                        ul.rating 
+                                                            li 
+                                                                i.fa-solid.fa-star 
+                                                                i.fa-solid.fa-star 
+                                                                i.fa-solid.fa-star 
+                                                                i.fa-solid.fa-star-half-stroke
+                                                                i.fa-regular.fa-star
+                                                        span(data-bs-toggle='modal' data-bs-target='#Reviews-modal' title='Quick View' tabindex='0') Write Review
+                                                    h6  
+                                                        span 
+                                                        | * Exchange/Return window closed on 20 mar
+                                        .col-12
+                                            .order-box
+                                                .order-container 
+                                                    .order-icon
+                                                        i.iconsax(data-icon="undo")
+                                                        .couplet
+                                                            i.fa-solid.fa-check
+                                                    .order-detail 
+                                                        h5 Refund Credited
+                                                        p 
+                                                            | Your Refund Of 
+                                                            b   $389.00 
+                                                            | For then return  has been processed Successfully on 4th Apr.
+                                                            a(href="#")  View Refund details
+                                                .product-order-detail 
+                                                    .product-box 
+                                                        a(href="product.html") 
+                                                            img(src="../assets/images/notification/9.jpg", alt="")
+                                                        .order-wrap
+                                                            h5 Rustic Minidress with Halterneck
+                                                            p Versatile sporty slogans short sleeve quirky laid back orange lux hoodies vests pins badges.
+                                                            ul 
+                                                                li 
+                                                                    p Prize : 
+                                                                    span $20.00
+                                                                li 
+                                                                    p Size : 
+                                                                    span M
+                                                                li 
+                                                                    p Order Id :
+                                                                    span ghat56han50
+                                                .return-box
+                                                    .review-box
+                                                        ul.rating 
+                                                            li 
+                                                                i.fa-regular.fa-star
+                                                                i.fa-regular.fa-star
+                                                                i.fa-regular.fa-star
+                                                                i.fa-regular.fa-star
+                                                                i.fa-regular.fa-star
+                                                    h6  
+                                                        | * Exchange/Return window closed on 20 mar
+                                        .col-12
+                                            .order-box
+                                                .order-container 
+                                                    .order-icon
+                                                        i.iconsax(data-icon="box")
+                                                        .couplet
+                                                            i.fa-solid.fa-check
+                                                    .order-detail 
+                                                        h5 Delivered
+                                                        p on Fri, 1 Mar
+                                                .product-order-detail 
+                                                    .product-box 
+                                                        a(href="product.html") 
+                                                            img(src="../assets/images/notification/2.jpg", alt="")
+                                                        .order-wrap
+                                                            h5 Rustic Minidress with Halterneck
+                                                            p Versatile sporty slogans short sleeve quirky laid back orange lux hoodies vests pins badges.
+                                                            ul 
+                                                                li 
+                                                                    p Prize : 
+                                                                    span $20.00
+                                                                li 
+                                                                    p Size : 
+                                                                    span M
+                                                                li 
+                                                                    p Order Id :
+                                                                    span ghat56han50
+                                                .return-box
+                                                    .review-box
+                                                        ul.rating 
+                                                            li 
+                                                                i.fa-solid.fa-star 
+                                                                i.fa-solid.fa-star 
+                                                                i.fa-solid.fa-star 
+                                                                i.fa-solid.fa-star-half-stroke
+                                                                i.fa-regular.fa-star
+                                                        span(data-bs-toggle='modal' data-bs-target='#Reviews-modal' title='Quick View' tabindex='0') Write Review
+                                                    h6  
+                                                        | * Exchange/Return window closed on 20 mar
+                                        .col-12
+                                            .order-box
+                                                .order-container 
+                                                    .order-icon
+                                                        i.iconsax(data-icon="box-add")
+                                                        .couplet
+                                                            i.fa-solid.fa-xmark
+                                                    .order-detail 
+                                                        h5 Cancelled
+                                                        p on Fri, 1 Mar
+                                                        h6 
+                                                            b Refund lanitiated : 
+                                                            | $774.00 on Thu, 24 Feb 2024. 
+                                                            a(href="#")  View Refunddetails
+                                                .product-order-detail 
+                                                    .product-box 
+                                                        a(href="product.html") 
+                                                            img(src="../assets/images/notification/6.jpg", alt="")
+                                                        .order-wrap
+                                                            h5 Rustic Minidress with Halterneck
+                                                            p Versatile sporty slogans short sleeve quirky laid back orange lux hoodies vests pins badges.
+                                                            ul 
+                                                                li 
+                                                                    p Prize : 
+                                                                    span $20.00
+                                                                li 
+                                                                    p Size : 
+                                                                    span M
+                                                                li 
+                                                                    p Order Id :
+                                                                    span ghat56han50
+                                                .return-box
+                                                    .review-box
+                                                        ul.rating 
+                                                            li 
+                                                                i.fa-regular.fa-star
+                                                                i.fa-regular.fa-star
+                                                                i.fa-regular.fa-star
+                                                                i.fa-regular.fa-star
+                                                                i.fa-regular.fa-star
+                                                    h6  
+                                                        | * Exchange/Return window closed on 20 mar
+                        #saved-card.tab-pane.fade(role='tabpanel' aria-labelledby='saved-card-tab')
+                            .dashboard-right-box
+                                .saved-card 
+                                    .sidebar-title
+                                        .loader-line
+                                        h4 My Card Details
+                                    .payment-section
+                                        .row.gy-3
+                                            .col-xxl-4.col-md-6
+                                                .payment-card
+                                                    .bank-info
+                                                        img.bank(src='../assets/images/bank-card/bank1.png' alt='bank1')
+                                                        .card-type
+                                                            img.bank-card(src='../assets/images/bank-card/1.png' alt='card')
+                                                    .card-details
+                                                        span Card Number
+                                                        h5 6458 50XX XXXX 0851
+                                                    .card-details-wrap
+                                                        .card-details
+                                                            span Name On Card
+                                                            h5 Josephin water
+                                                        .text-center.card-details
+                                                            span Validity
+                                                            h5 XX/XX
+                                                        .btn-box
+                                                            span(data-bs-toggle='modal' data-bs-target='#edit-bank-card' title='Quick View' tabindex='0')
+                                                                i.iconsax(data-icon="edit-1")
+                                                            span(data-bs-toggle='modal' data-bs-target='#bank-card-modal' title='Quick View' tabindex='0')
+                                                                i.iconsax(data-icon="trash")
+                                            .col-xxl-4.col-md-6
+                                                .payment-card
+                                                    .bank-info
+                                                        img.bank(src='../assets/images/bank-card/bank2.png' alt='bank1')
+                                                        .card-type
+                                                            img.bank-card(src='../assets/images/bank-card/2.png' alt='card')
+                                                    .card-details
+                                                        span Card Number
+                                                        h5 6458 50XX XXXX 0851
+                                                    .card-details-wrap
+                                                        .card-details
+                                                            span Name On Card
+                                                            h5 Josephin water
+                                                        .text-center.card-details
+                                                            span Validity
+                                                            h5 XX/XX
+                                                        .btn-box
+                                                            span(data-bs-toggle='modal' data-bs-target='#edit-bank-card' title='Quick View' tabindex='0')
+                                                                i.iconsax(data-icon="edit-1")
+                                                            span(data-bs-toggle='modal' data-bs-target='#bank-card-modal' title='Quick View' tabindex='0')
+                                                                i.iconsax(data-icon="trash")
+                                            .col-xxl-4.col-md-6
+                                                .payment-card
+                                                    .bank-info
+                                                        img.bank(src='../assets/images/bank-card/bank3.png' alt='bank1')
+                                                        .card-type
+                                                            img.bank-card(src='../assets/images/bank-card/3.png' alt='card')
+                                                    .card-details
+                                                        span Card Number
+                                                        h5 6458 50XX XXXX 0851
+                                                    .card-details-wrap
+                                                        .card-details
+                                                            span Name On Card
+                                                            h5 Josephin water
+                                                        .text-center.card-details
+                                                            span Validity
+                                                            h5 XX/XX
+                                                        .btn-box
+                                                            span(data-bs-toggle='modal' data-bs-target='#edit-bank-card' title='Quick View' tabindex='0')
+                                                                i.iconsax(data-icon="edit-1")
+                                                            span(data-bs-toggle='modal' data-bs-target='#bank-card-modal' title='Quick View' tabindex='0')
+                                                                i.iconsax(data-icon="trash")
+                                            .col-xxl-4.col-md-6 
+                                                .payment-card
+                                                    .add-card
+                                                        h6(data-bs-toggle='modal' data-bs-target='#add-bank-card' title='Quick View' tabindex='0') + Add Card
+                        #address.tab-pane.fade(role='tabpanel' aria-labelledby='address-tab') 
+                            .dashboard-right-box
+                                .address-tab
+                                    .sidebar-title
+                                        .loader-line
+                                        h4 My Address Details
+                                    .row.gy-3
+                                        .col-xxl-4.col-md-6
+                                            .address-option
+                                                label(for="address-billing-0")  
+                                                    span.delivery-address-box 
+                                                        span.form-check 
+                                                            input.custom-radio#address-billing-0(type="radio" checked="checked" name="radio")
+                                                        span.address-detail
+                                                            span.address 
+                                                                span.address-title New Home 
+                                                            span.address  
+                                                                span.address-home 
+                                                                    span.address-tag  Address:
+                                                                    | 26, Starts Hollow Colony, Denver, Colorado, United States
+                                                            span.address  
+                                                                span.address-home  
+                                                                    span.address-tag Pin Code:
+                                                                    | 80014
+                                                            span.address 
+                                                                span.address-home 
+                                                                    span.address-tag Phone :
+                                                                    | +1 5551855359
+                                                    span.buttons 
+                                                        a.btn.btn_black.sm(href="#" data-bs-toggle='modal' data-bs-target='#edit-box' title='Quick View' tabindex='0') Edit 
+                                                        a.btn.btn_outline.sm(href="#" data-bs-toggle='modal' data-bs-target='#bank-card-modal' title='Quick View' tabindex='0') Delete 
+                                        .col-xxl-4.col-md-6
+                                            .address-option
+                                                label(for="address-billing-3")  
+                                                    span.delivery-address-box 
+                                                        span.form-check 
+                                                            input.custom-radio#address-billing-3(type="radio" name="radio")
+                                                        span.address-detail
+                                                            span.address 
+                                                                span.address-title IT Office
+                                                            span.address  
+                                                                span.address-home 
+                                                                    span.address-tag  Address:
+                                                                    | 55B, Claire Cav Street, San Jose, California, United States
+                                                            span.address  
+                                                                span.address-home  
+                                                                    span.address-tag Pin Code:
+                                                                    | 94088
+                                                            span.address 
+                                                                span.address-home 
+                                                                    span.address-tag Phone :
+                                                                    | +1 5551855359
+                                                    span.buttons 
+                                                        a.btn.btn_black.sm(href="#" data-bs-toggle='modal' data-bs-target='#edit-box' title='Quick View' tabindex='0') Edit 
+                                                        a.btn.btn_outline.sm(href="#" data-bs-toggle='modal' data-bs-target='#bank-card-modal' title='Quick View' tabindex='0') Delete
+                                        .col-xxl-4.col-md-6
+                                            .address-option
+                                                label(for="address-billing-2")  
+                                                    span.delivery-address-box 
+                                                        span.form-check 
+                                                            input.custom-radio#address-billing-2(type="radio" name="radio")
+                                                        span.address-detail
+                                                            span.address 
+                                                                span.address-title IT Office
+                                                            span.address  
+                                                                span.address-home 
+                                                                    span.address-tag  Address:
+                                                                    | 55B, Claire Cav Street, San Jose, California, United States
+                                                            span.address  
+                                                                span.address-home  
+                                                                    span.address-tag Pin Code:
+                                                                    | 94088
+                                                            span.address 
+                                                                span.address-home 
+                                                                    span.address-tag Phone :
+                                                                    | +1 5551855359
+                                                    span.buttons 
+                                                        a.btn.btn_black.sm(href="#" data-bs-toggle='modal' data-bs-target='#edit-box' title='Quick View' tabindex='0') Edit 
+                                                        a.btn.btn_outline.sm(href="#" data-bs-toggle='modal' data-bs-target='#bank-card-modal' title='Quick View' tabindex='0') Delete
+                                        .col-xxl-4.col-md-6
+                                            .address-option
+                                                label(for="address-billing-2")  
+                                                    span.delivery-address-box 
+                                                        span.form-check 
+                                                            input.custom-radio#address-billing-2(type="radio" name="radio")
+                                                        span.address-detail
+                                                            span.address 
+                                                                span.address-title IT Office
+                                                            span.address  
+                                                                span.address-home 
+                                                                    span.address-tag  Address:
+                                                                    | 55B, Claire Cav Street, San Jose, California, United States
+                                                            span.address  
+                                                                span.address-home  
+                                                                    span.address-tag Pin Code:
+                                                                    | 94088
+                                                            span.address 
+                                                                span.address-home 
+                                                                    span.address-tag Phone :
+                                                                    | +1 5551855359
+                                                    span.buttons 
+                                                        a.btn.btn_black.sm(href="#" data-bs-toggle='modal' data-bs-target='#edit-box' title='Quick View' tabindex='0') Edit 
+                                                        a.btn.btn_outline.sm(href="#" data-bs-toggle='modal' data-bs-target='#bank-card-modal' title='Quick View' tabindex='0') Delete
+                                    button.btn.add-address(data-bs-toggle='modal' data-bs-target='#add-address' title='Quick View' tabindex='0') + Add Address
+                        #privacy.tab-pane.fade(role='tabpanel' aria-labelledby='privacy-tab') 
+                            .dashboard-right-box
+                                .privacy-tab
+                                    .sidebar-title
+                                        .loader-line
+                                        h4 Privacy
+                                    .row 
+                                        .col-12 
+                                            .privacy-title
+                                                h5 Allows others to see my profile
+                                                p Choose who can access your app and if users need to 
+                                                    a(href="sign-up.html")  sign up.
+                                            span.short-title access
+                                            ul.privacy-items
+                                                li 
+                                                    .privacy-icon 
+                                                        i.iconsax(data-icon="lock-2")
+                                                    .privacy-contant 
+                                                        h6 Private
+                                                        p Only users you choose can access
+                                                    label.switch
+                                                        input(type='checkbox' checked='')
+                                                        span.slider.round
+                                                li 
+                                                    .privacy-icon 
+                                                        i.iconsax(data-icon="globe")
+                                                    .privacy-contant 
+                                                        h6 Public
+                                                        p Anyone with the link can
+                                                    label.switch
+                                                        input(type='checkbox')
+                                                        span.slider.round
+                                            span.short-title Users
+                                            ul.privacy-items
+                                                li 
+                                                    .privacy-icon 
+                                                        i.iconsax(data-icon="package")
+                                                    .privacy-contant 
+                                                        h6 Users in the users table 
+                                                        p Only users in the users table can sign in 
+                                                    label.switch
+                                                        input(type='checkbox' checked='')
+                                                        span.slider.round
+                                                li 
+                                                    .privacy-icon 
+                                                        i.iconsax(data-icon="fingerprint-circle")
+                                                    .privacy-contant 
+                                                        h6 ongoing production team 
+                                                        p only members of your team can sign in 
+                                                    label.switch
+                                                        input(type='checkbox')
+                                                        span.slider.round
+                                                li 
+                                                    .privacy-icon 
+                                                        i.iconsax(data-icon="add-layer")
+                                                    .privacy-contant 
+                                                        h6 anyone form domain(s)
+                                                        p only users with your email domain 
+                                                    label.switch
+                                                        input(type='checkbox' checked='')
+                                                        span.slider.round
+                                                li 
+                                                    .privacy-icon 
+                                                        i.iconsax(data-icon="mail")
+                                                    .privacy-contant 
+                                                        h6 any email in table 
+                                                        p Anyone with email included in a table 
+                                                    label.switch
+                                                        input(type='checkbox')
+                                                        span.slider.round
+                                            span.short-title 
+                                            ul.privacy-items
+                                                li 
+                                                    .privacy-contant 
+                                                        h6 Publishing 
+                                                        p Your Project is Published
+                                                    .publish-button 
+                                                        button.btn Unpublish
+
+    //-------- Footer Section ---------//
+    footer.footer-layout-img 
+        section.section-b-space.footer-1
+            .custom-container.container
+                .row 
+                    .col-xl-3.col-lg-4.col-md-6
+                        .footer-content
+                            .footer-logo
+                                a(href="index.html") 
+                                    img.img-fluid(src="../assets/images/logo/logo-white-1.png" alt="Footer Logo")
+                            ul 
+                                li 
+                                    i.iconsax(data-icon="location")
+                                    h6 1418 Riverwood Drive, Suite 3245 Cottonwood, CA 96052, United States
+                                li 
+                                    i.iconsax(data-icon="phone-calling")
+                                    h6 + 185659635
+                                li 
+                                    i.iconsax(data-icon="mail")
+                                    h6 contact@katie.com
+                    .col.offset-xl-1
+                        .footer-content
+                            div
+                                .footer-title.d-md-block 
+                                    h5 About Us
+                                    ul.footer-details.accordion-hidden 
+                                        li 
+                                            a.nav(href="index.html") Home
+                                        li 
+                                            a.nav(href="collection-left-sidebar.html") Shop
+                                        li 
+                                            a.nav(href="about-us.html") About Us
+                                        li 
+                                            a.nav(href="blog-left-sidebar.html") Blog
+                                        li 
+                                            a.nav(href="contact.html") Contact
+                    .col
+                        .footer-content
+                            div
+                                .footer-title.d-md-block
+                                    h5 New Categories
+                                    ul.footer-details.accordion-hidden 
+                                        li 
+                                            a.nav(href="product-bundle.html") Latest Shoes
+                                        li 
+                                            a.nav(href="variant-radio.html") Branded Jeans
+                                        li 
+                                            a.nav(href="product.html") New Jackets
+                                        li 
+                                            a.nav(href="variant-images.html") Colorful Hoodies
+                                        li 
+                                            a.nav(href="variant-dropdown.html") Best Perfume
+                    .col
+                        .footer-content
+                            div
+                                .footer-title.d-md-block 
+                                    h5 Get Help
+                                    ul.footer-details.accordion-hidden 
+                                        li 
+                                            a.nav(href="order-success.html") Your Orders
+                                        li 
+                                            a.nav(href="dashboard.html") Your Account
+                                        li 
+                                            a.nav(href="order-tracking.html") Track Orders
+                                        li 
+                                            a.nav(href="wishlist.html") Your Wishlist
+                                        li 
+                                            a.nav(href="faq.html") Shopping FAQs
+                    .col
+                        .footer-content
+                            div
+                                .footer-title.d-md-block 
+                                    h5 My Account
+                                    ul.footer-details.accordion-hidden 
+                                        li 
+                                            a.nav(href="dashboard.html") My Account
+                                        li 
+                                            a.nav(href="login.html") Login/Register
+                                        li 
+                                            a.nav(href="cart.html") Cart
+                                        li 
+                                            a.nav(href="order-success.html") Order History
+                                        li 
+                                            a.nav(href="faq.html") Delivery FAQs
+        .sub-footer 
+            .custom-container.container
+                .row 
+                    .col-xl-6.col-md-6.col-sm-12
+                        .footer-end
+                            h6 2024 Copyright By Themeforest Powered By Pixelstrap 
+                    .col-xl-6.col-md-6.col-sm-12
+                        .payment-card-bottom
+                            ul 
+                                li 
+                                    img(src="../assets/images/footer/discover.png" alt="")
+                                li 
+                                    img(src="../assets/images/footer/american.png" alt="")
+                                li 
+                                    img(src="../assets/images/footer/master.png" alt="")
+                                li 
+                                    img(src="../assets/images/footer/giro.png" alt="")
+    
+    #offcanvasRight.offcanvas.offcanvas-end.shopping-details(tabindex='-1' aria-labelledby='offcanvasRightLabel')
+        .offcanvas-header
+            h4#offcanvasRightLabel.offcanvas-title Shopping Cart
+            button.btn-close(type='button' data-bs-dismiss='offcanvas' aria-label='Close')
+        .offcanvas-body.theme-scrollbar
+            ul.offcanvas-cart
+                li 
+                    a(href="#") 
+                        img(src="../assets/images/cart/1.jpg", alt="") 
+                    div 
+                        h6.mb-0 Shirts Men's Clothing
+                        p $35
+                            del $40
+                            span.btn-cart
+                                | $
+                                span#total.btn-cart__total 105
+                        .btn-containter
+                            .btn-control
+                                button#btn-remove.btn-control__remove &minus;
+                                .btn-control__quantity
+                                    #quantity-previous 2
+                                    #quantity-current 3
+                                    #quantity-next 4
+                                button#btn-add.btn-control__add +
+                    i.iconsax.delete-icon(data-icon="trash")
+                li 
+                    a(href="#") 
+                        img(src="../assets/images/cart/2.jpg", alt="") 
+                    div 
+                        h6.mb-0 Shirts Men's Clothing
+                        p $35
+                            del $40
+                            span.btn-cart
+                                | $
+                                span#total1.btn-cart__total 105
+                        .btn-containter
+                            .btn-control
+                                button#btn-remove1.btn-control__remove &minus;
+                                .btn-control__quantity
+                                    #quantity1-previous 2
+                                    #quantity1-current 3
+                                    #quantity1-next 4
+                                button#btn-add1.btn-control__add +
+                    i.iconsax.delete-icon(data-icon="trash")
+                li 
+                    a(href="#") 
+                        img(src="../assets/images/cart/3.jpg", alt="") 
+                    div 
+                        h6.mb-0 Shirts Men's Clothing
+                        p $35
+                            del $40
+                            span.btn-cart
+                                | $
+                                span#total2.btn-cart__total 105
+                        .btn-containter
+                            .btn-control
+                                button#btn-remove2.btn-control__remove &minus;
+                                .btn-control__quantity
+                                    #quantity2-previous 2
+                                    #quantity2-current 3
+                                    #quantity2-next 4
+                                button#btn-add2.btn-control__add +
+                    i.iconsax.delete-icon(data-icon="trash")
+                li 
+                    a(href="#") 
+                        img(src="../assets/images/cart/4.jpg", alt="") 
+                    div 
+                        h6.mb-0 Shirts Men's Clothing
+                        p $35
+                            del $40
+                            span.btn-cart
+                                | $
+                                span#total3.btn-cart__total 105
+                        .btn-containter
+                            .btn-control
+                                button#btn-remove3.btn-control__remove &minus;
+                                .btn-control__quantity
+                                    #quantity3-previous 2
+                                    #quantity3-current 3
+                                    #quantity3-next 4
+                                button#btn-add3.btn-control__add +
+                    i.iconsax.delete-icon(data-icon="trash")
+        .offcanvas-footer
+            p Spend 
+                span $ 14.81  
+                | more and enjoy  
+                span FREE SHIPPING!
+            .footer-range-slider
+                .progress(role='progressbar' aria-label='Animated striped example' aria-valuenow='46' aria-valuemin='0' aria-valuemax='100')
+                    .progress-bar.progress-bar-striped.progress-bar-animated.theme-default(style='width: 46%')
+            .price-box  
+                h6 Total :
+                p $ 49.59 USD
+            .cart-button 
+                a.btn.btn_outline(href="cart.html")  View Cart
+                a.btn.btn_black(href="check-out.html")  Checkout
+   
+    //- Reviews modal 
+    #edit-box.reviews-modal.modal.theme-modal.fade(tabindex='-1' role='dialog' aria-modal='true')
+        .modal-dialog.modal-md.modal-dialog-centered(role='document')
+            .modal-content
+                .modal-header
+                    h4 Edit Profile
+                    button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+                .modal-body.pt-0
+                    .row.g-3         
+                        .col-6 
+                            .from-group 
+                                label.form-label First Name
+                                input.form-control(type='text' name='review[author]' placeholder="Enter your name.")
+                        .col-6 
+                            .from-group 
+                                label.form-label Last Name
+                                input.form-control(type='text' name='review[author]' placeholder="Enter your name.")
+                        .col-6
+                            .from-group 
+                                label.form-label Email address
+                                input.form-control(type='email' placeholder="john.smith@example.com")
+                        .col-6 
+                            .from-group 
+                                label.form-label Phone
+                                input.form-control(type='number' name='review[author]' placeholder="Enter your Number.")
+                        .col-12     
+                            .from-group     
+                                label.form-label Address
+                                textarea.form-control(cols='30' rows='5' placeholder="Write your Address...")
+                        button.btn.btn-submit(type='submit' data-bs-dismiss="modal" aria-label="Close") Submit
+    
+    //- Reviews modal 
+    #add-address.reviews-modal.modal.theme-modal.fade(tabindex='-1' role='dialog' aria-modal='true')
+        .modal-dialog.modal-md.modal-dialog-centered(role='document')
+            .modal-content
+                .modal-header
+                    h4 Edit Profile
+                    button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+                .modal-body.pt-0
+                    .row.g-3         
+                        .col-6 
+                            .from-group 
+                                label.form-label First Name
+                                input.form-control(type='text' name='review[author]' placeholder="Enter your name.")
+                        .col-6 
+                            .from-group 
+                                label.form-label Last Name
+                                input.form-control(type='text' name='review[author]' placeholder="Enter your name.")
+                        .col-6
+                            .from-group 
+                                label.form-label Email address
+                                input.form-control(type='email' placeholder="john.smith@example.com")
+                        .col-6 
+                            .from-group 
+                                label.form-label Phone
+                                input.form-control(type='number' name='review[author]' placeholder="Enter your Number.")
+                        .col-12     
+                            .from-group     
+                                label.form-label Address
+                                textarea.form-control(cols='30' rows='5' placeholder="Write your Address...")
+                        button.btn.btn-submit(type='submit' data-bs-dismiss="modal" aria-label="Close") Submit
+
+    //- Edit email
+    #edit-email.reviews-modal.modal.theme-modal.fade(tabindex='-1' role='dialog' aria-modal='true')
+        .modal-dialog.modal-md.modal-dialog-centered(role='document')
+            .modal-content
+                .modal-header
+                    h4 Edit Email
+                    button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+                .modal-body.pt-0
+                    .row.g-3         
+                        .col-12 
+                            .from-group 
+                                label.form-label First Name
+                                input.form-control(type='text' name='review[author]' placeholder="Enter your name.")
+                        .col-12
+                            .from-group 
+                                label.form-label Email address
+                                input.form-control(type='email' placeholder="john.smith@example.com")
+                        .col-12 
+                            .from-group 
+                                label.form-label Phone
+                                input.form-control(type='number' name='review[author]' placeholder="Enter your Number.")
+                        button.btn.btn-submit(type='submit' data-bs-dismiss="modal" aria-label="Close") Submit
+    
+    //- Edit password
+    #edit-password.reviews-modal.modal.theme-modal.fade(tabindex='-1' role='dialog' aria-modal='true')
+        .modal-dialog.modal-md.modal-dialog-centered(role='document')
+            .modal-content
+                .modal-header
+                    h4 Edit Password
+                    button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+                .modal-body.pt-0
+                    .row.g-3         
+                        .col-12 
+                            .from-group 
+                                label.form-label Current Password
+                                input.form-control(type='password' name='review[author]' placeholder="Enter Current Password.")
+                        .col-12
+                            .from-group 
+                                label.form-label New password
+                                input.form-control(type='password' name='review[author]' placeholder="Enter New password.")
+                        .col-12
+                            .from-group 
+                                label.form-label Confirm password
+                                input.form-control(type='password' name='review[author]' placeholder="Enter Confirm password")
+                        button.btn.btn-submit(type='submit' data-bs-dismiss="modal" aria-label="Close") Submit
+    
+    //- Confirmation Modal
+    #Confirmation-modal.modal.theme-modal.fade.confirmation-modal(tabindex='-1' role='dialog' aria-modal='true')
+        .modal-dialog.modal-md.modal-dialog-centered(role='document')
+            .modal-content
+                .modal-body     
+                    img.img-fluid(src="../assets/images/gif/question.gif", alt="")
+                    h4 Confirmation
+                    p Are you sure you want to proceed?
+                    .submit-button 
+                        button.btn(type='submit' data-bs-dismiss="modal" aria-label="Close") No
+                        a.btn(href="login.html") Yes
+    
+    //- Confirmation Modal
+    #bank-card-modal.modal.theme-modal.fade.confirmation-modal(tabindex='-1' role='dialog' aria-modal='true')
+        .modal-dialog.modal-md.modal-dialog-centered(role='document')
+            .modal-content
+                .modal-body     
+                    img.img-fluid(src="../assets/images/gif/question.gif", alt="")
+                    h4 Are You Sure ?
+                    p The object will establish a new permission for this object, inheriting the permission for the use/group, preview.
+                    .submit-button 
+                        button.btn(type='submit' data-bs-dismiss="modal" aria-label="Close") No
+                        button.btn(type='submit' data-bs-dismiss="modal" aria-label="Close") Yes
+    
+    //- Reviews modal 
+    #Reviews-modal.reviews-modal.modal.theme-modal.fade(tabindex='-1' role='dialog' aria-modal='true')
+        .modal-dialog.modal-md.modal-dialog-centered(role='document')
+            .modal-content
+                .modal-header
+                    h4 Write A Review
+                    button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+                .modal-body.pt-0
+                    .row.g-3
+                        .col-12 
+                            .reviews-product 
+                                div 
+                                    img(src="../assets/images/notification/1.jpg", alt="")
+                                    div 
+                                        h5 Denim Skirts Corset Blazer
+                                        p $20.00 
+                                            del $35.00
+                                        ul.rating.p-0.mb
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-regular.fa-star            
+                        .col-6 
+                            .from-group 
+                                label.form-label Name
+                                input.form-control(type='text' name='review[author]' placeholder="Enter your name.")
+                        .col-6
+                            .from-group 
+                                label.form-label(for='exampleInputEmail1') Email address
+                                input#exampleInputEmail1.form-control(type='email' placeholder="john.smith@example.com")
+                        .col-12 
+                            .from-group 
+                                label.form-label Review Title
+                                input.form-control(type='text' name='review[author]' placeholder="Look great")
+                        .col-12     
+                            .from-group 
+                                label.form-label Review Content
+                                textarea.form-control(cols='30' rows='5' placeholder="Write your comments here...")
+                        button.btn.btn-submit(type='submit' data-bs-dismiss="modal" aria-label="Close") Submit
+    
+    //- Reviews modal 
+    #edit-bank-card.reviews-modal.modal.theme-modal.fade(tabindex='-1' role='dialog' aria-modal='true')
+        .modal-dialog.modal-md.modal-dialog-centered(role='document')
+            .modal-content
+                .modal-header
+                    h4 Edit Card
+                    button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+                .modal-body.pt-0
+                    .row.g-3         
+                        .col-12
+                            .from-group 
+                                label.form-label Card Holder Name
+                                input.form-control(type='text' name='name' value="Josephin water")
+                        .col-12
+                            .from-group 
+                                label.form-label Card Number
+                                input.form-control(type='number' name='name' value="6458502535450851")
+                        .col-6
+                            .from-group 
+                                label.form-label Expiry Date
+                                input.form-control(type='date' name="date" )
+                        .col-6 
+                            .from-group 
+                                label.form-label Cv
+                                input.form-control(type='number' name='cv' value="456")
+                        button.btn.btn-submit(type='submit' data-bs-dismiss="modal" aria-label="Close") Submit
+    
+    //- Reviews modal 
+    #add-bank-card.reviews-modal.modal.theme-modal.fade(tabindex='-1' role='dialog' aria-modal='true')
+        .modal-dialog.modal-md.modal-dialog-centered(role='document')
+            .modal-content
+                .modal-header
+                    h4 Add Bank Card
+                    button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+                .modal-body.pt-0
+                    .row.g-3         
+                        .col-12
+                            .from-group 
+                                label.form-label Card Holder Name
+                                input.form-control(type='text' name='name' placeholder="Josephin water..")
+                        .col-12
+                            .from-group 
+                                label.form-label Card Number
+                                input.form-control(type='number' name='name' placeholder="645850253545XXXX..")
+                        .col-6
+                            .from-group 
+                                label.form-label Expiry Date
+                                input.form-control(type='date' name="date")
+                        .col-6 
+                            .from-group 
+                                label.form-label Cv
+                                input.form-control(type='number' name='cv' placeholder="456")
+                        button.btn.btn-submit(type='submit' data-bs-dismiss="modal" aria-label="Close") Submit
+    
+    #offcanvasTop.offcanvas.offcanvas-top.search-details(tabindex='-1' aria-labelledby='offcanvasTopLabel')
+        .offcanvas-header
+            button.btn-close(type='button' data-bs-dismiss='offcanvas' aria-label='Close')
+                i.fa-solid.fa-xmark
+        .offcanvas-body.theme-scrollbar
+            div.container
+                h3 What are you trying to find?
+                div.search-box 
+                    input(type="search", name="text" placeholder="I'm looking for…")
+                    i.iconsax(data-icon="search-normal-2")
+                h4 Popular Searches
+                ul.rapid-search
+                    li 
+                        a(href="collection-left-sidebar.html")
+                            i.iconsax(data-icon="search-normal-2")
+                            | Jeans Women
+                    li 
+                        a(href="collection-left-sidebar.html")
+                            i.iconsax(data-icon="search-normal-2")
+                            | Blazer Women
+                    li 
+                        a(href="collection-left-sidebar.html")
+                            i.iconsax(data-icon="search-normal-2")
+                            | Jeans Men
+                    li 
+                        a(href="collection-left-sidebar.html")
+                            i.iconsax(data-icon="search-normal-2")
+                            | Blazer Men
+                    li 
+                        a(href="collection-left-sidebar.html")
+                            i.iconsax(data-icon="search-normal-2")
+                            | T-Shirts Men
+                    li 
+                        a(href="collection-left-sidebar.html")
+                            i.iconsax(data-icon="search-normal-2")
+                            | Shoes Men
+                    li 
+                        a(href="collection-left-sidebar.html")
+                            i.iconsax(data-icon="search-normal-2")
+                            | T-Shirts Women
+                    li 
+                        a(href="collection-left-sidebar.html")
+                            i.iconsax(data-icon="search-normal-2")
+                            | Bags
+                    li 
+                        a(href="collection-left-sidebar.html")
+                            i.iconsax(data-icon="search-normal-2")
+                            | Sneakers Women
+                    li 
+                        a(href="collection-left-sidebar.html")
+                            i.iconsax(data-icon="search-normal-2")
+                            | Dresses
+                h4 You Might Like
+                .row.gy-4.ratio_square-2.preemptive-search  
+                        .col-xl-2.col-sm-4.col-6  
+                            .product-box-6
+                                .img-wrapper
+                                    .product-image
+                                        a(href="product.html") 
+                                            img.bg-img(src="../assets/images/product/product-2/blazers/1.jpg", alt="product")
+                                .product-detail
+                                    div
+                                        a(href="product.html") 
+                                            h6  Women's Stylish Top
+                                        p $50.00 
+                                        ul.rating       
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star-half-stroke
+                                            li
+                                                i.fa-regular.fa-star
+                                            li 4+
+                        .col-xl-2.col-sm-4.col-6  
+                            .product-box-6
+                                .img-wrapper
+                                    .product-image
+                                        a(href="product.html") 
+                                            img.bg-img(src="../assets/images/product/product-2/blazers/2.jpg", alt="product")
+                                .product-detail
+                                    div
+                                        a(href="product.html") 
+                                            h6  Women's Stylish Top
+                                        p $95.00 
+                                            del $140.00
+                                        ul.rating       
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star-half-stroke
+                                            li
+                                                i.fa-regular.fa-star
+                                            li
+                                                i.fa-regular.fa-star
+                                            li 3+
+                        .col-xl-2.col-sm-4.col-6  
+                            .product-box-6
+                                .img-wrapper
+                                    .product-image
+                                        a(href="product.html") 
+                                            img.bg-img(src="../assets/images/product/product-2/blazers/3.jpg", alt="product")
+                                .product-detail
+                                    div
+                                        a(href="product.html") 
+                                            h6  Women's Stylish Top
+                                        p $80.00 
+                                            del $140.00
+                                        ul.rating       
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star-half-stroke
+                                            li
+                                                i.fa-regular.fa-star
+                                            li 4
+                        .col-xl-2.col-sm-4.col-6  
+                            .product-box-6
+                                .img-wrapper
+                                    .product-image
+                                        a(href="product.html") 
+                                            img.bg-img(src="../assets/images/product/product-2/blazers/4.jpg", alt="product")
+                                .product-detail
+                                    div
+                                        a(href="product.html") 
+                                            h6  Women's Stylish Top
+                                        p $90.00 
+                                        ul.rating       
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star-half-stroke
+                                            li
+                                                i.fa-regular.fa-star
+                                            li 2+
+                        .col-xl-2.col-sm-4.col-6  
+                            .product-box-6
+                                .img-wrapper
+                                    .product-image
+                                        a(href="product.html") 
+                                            img.bg-img(src="../assets/images/product/product-2/blazers/5.jpg", alt="product")
+                                .product-detail
+                                    div
+                                        a(href="product.html") 
+                                            h6  Women's Stylish Top
+                                        p $180.00 
+                                            del $140.00
+                                        ul.rating       
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star-half-stroke
+                                            li
+                                                i.fa-regular.fa-star
+                                            li 4+
+                        .col-xl-2.col-sm-4.col-6  
+                            .product-box-6
+                                .img-wrapper
+                                    .product-image
+                                        a(href="product.html") 
+                                            img.bg-img(src="../assets/images/product/product-2/blazers/6.jpg", alt="product")
+                                .product-detail
+                                    a(href="product.html") 
+                                        h6  Women's Stylish Top
+                                    p $120.00 
+                                    ul.rating       
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star-half-stroke
+                                            li
+                                                i.fa-regular.fa-star
+                                            li 4+
+    
+    //- Cookie Box -//
+    .wrapper
+        .title-box 
+            img(src="../assets/images/other-img/cookie.png", alt="")
+            h3 Cookies Consent
+        .info
+            p We use cookies to improve our site and your shopping experience. By continuing to browse our site you accept our cookie policy.
+        .buttons
+            button#acceptBtn.button.btn.btn_outline.sm Accept
+            button.button.btn.btn_black.sm Decline
+    
+    //- 
+    .theme-btns
+        button#dark-btn.btntheme
+            i.fa-regular.fa-moon
+            .text Dark
+            
+        button#rtl-btn.btntheme.rtlBtnEl
+            i.fa-solid.fa-repeat
+            .rtl Rtl
+                    
+    include ../../components/footer-files

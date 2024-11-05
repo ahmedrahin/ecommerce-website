@@ -1,0 +1,114 @@
+/*=====================
+02. Button css start
+==========================*/
+
+.btn_black{
+    padding: calc(6px + (8 - 6) * ((100vw - 320px) / (1920 - 320))) calc(8px + (24 - 8) * ((100vw - 320px) / (1920 - 320)));
+    background-image: linear-gradient(to right, rgba(34, 34, 34 , 1) 0%, #494949 51%, rgba(34, 34, 34 , 1) 100%);
+    color: rgba(var(--white) , 1) !important;
+    border-radius: 0;
+    font-size: $font-20;
+    font-weight: 500;
+    background-size: 200% auto; 
+    transition: all 0.5s ease;
+    display: inline-flex;
+    gap: 6px;
+    align-items: center;
+    justify-content: center;
+    svg {
+        width: 20px;
+        height: 20px;
+        fill: rgba(var(--white) , 1);
+    }
+    &:hover {
+        background-position: right center;
+        color: rgba(var(--white), 1);
+    }
+    &.sm {
+        padding: calc(6px + (6 - 6) * ((100vw - 320px) / (1920 - 320))) calc(8px + (24 - 8) * ((100vw - 320px) / (1920 - 320)));
+    }
+}
+.btn_outline{
+    padding: calc(6px + (8 - 6) * ((100vw - 320px) / (1920 - 320))) calc(8px + (24 - 8) * ((100vw - 320px) / (1920 - 320)));
+    border: 1px solid rgba(var(--theme-font-color) , 1);
+    border-radius: 0;
+    font-size: $font-20;
+    font-weight: 500;
+    transition: all 0.5s ease;
+    position: relative;
+    color: rgba(var(--theme-font-color) , 1);
+    svg {
+        width: 20px;
+        height: 20px;
+        transition: all 0.4s ease;
+        fill: rgba(var(--theme-font-color) , 1);
+    }
+    &:hover {
+        border-color: rgba(var(--theme-default),1);
+        background-color: rgba(var(--theme-default),0.1);
+        color: rgba(var(--theme-default),1);
+        svg {
+            fill: rgba(var(--theme-default),1);
+        }
+    }
+    &.sm{
+        padding: calc(6px + (6 - 6) * ((100vw - 320px) / (1920 - 320))) calc(8px + (24 - 8) * ((100vw - 320px) / (1920 - 320)))
+    }
+}
+.link-hover-anim {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    line-height: 1;
+    cursor: pointer;
+    transition: all .4s ease-in-out;
+    .link-strong{
+        position: relative;
+        display: inline-block;
+        overflow: hidden;
+        font-size: $font-20;
+        padding: 0;
+        font-weight: 500;
+        transition: all .4s ease-in-out;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        svg {
+            width: 20px;
+            height: 20px;
+            margin:  0 4px;
+        }
+    }
+    .link-strong-unhovered {
+        display: block;
+        color: rgba(var(--theme-default),1);
+        svg {
+            fill: rgba(var(--theme-default),1);
+        }
+    }
+    .link-strong-hovered {
+        display: block;
+        position: absolute;
+        top: 2px;
+        opacity: 0;
+        color: rgba(var(--theme-font-color) , 1);
+        transform: translateY(150%) translateZ(0.001px) skewY(10deg);
+        svg {
+            fill: rgba(var(--theme-font-color) , 1);
+        }
+    }
+    &:hover {
+        .link-strong-unhovered{
+            opacity: 0;
+            transform: translateY(-150%) translateZ(0.001px) skewY(-10deg);
+        }
+        .link-strong-hovered{
+            opacity: 1;
+            transform: translateY(0) translateZ(0.001px) skewY(0);
+        }
+    }
+}
+
+
+/*=====================
+02. Button css End
+==========================*/

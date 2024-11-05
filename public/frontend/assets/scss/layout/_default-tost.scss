@@ -1,0 +1,21 @@
+
+.toastify {
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(var(--white), 1);
+    background: rgba( var(--white), 0.8 );
+    box-shadow: 0 0px 8px 2px rgba( var(--black), 0.2 );
+    color: rgba(var(--success-color), 1);
+    font-weight: 500;
+    border-radius: $radius-4;
+    font-size: 16px;
+    border: 1px solid rgba(var(--success-color), 1);
+    @media (max-width: 1199px) {
+        max-width: 100% !important;
+        margin: 0 10px;
+    }
+    .toast-close{
+        color: rgba(var(--success-color), 1);
+        margin-left: 16px;
+        opacity: 1;
+    }
+}

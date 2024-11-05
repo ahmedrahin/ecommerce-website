@@ -1,0 +1,106 @@
+/// Specification Table ///
+.specification-table {
+    border: 1px solid rgba(var(--light-border), 1);
+    margin: 0;
+    border-radius: 10px;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 15px;
+    &.striped {
+      tr {
+        &:nth-child(odd) {
+          td,
+          th {
+            background-color: rgba(var(--box-background), 0.5);
+          }
+        }
+      }
+    }
+    tr {
+      th,
+      td {
+        padding: calc(8px + (15 - 8) * ((100vw - 320px) / (1920 - 320)));
+        border: none;
+        white-space: nowrap;
+      }
+      &:not(:last-of-type) {
+        th,
+        td {
+          border-bottom: 1px solid rgba(var(--light-border), 1);
+        }
+      }
+  
+      th {
+        background-color: transparent;
+        font-size: calc(14px + (16 - 14) * ((100vw - 320px) / (1920 - 320)));
+        color: rgba(var(--light-color), 1);
+        min-width: 130px;
+        font-weight: 400;
+        border-right: 1px solid rgba(var(--light-border), 1);
+        vertical-align: middle;
+        [dir="rtl"] & {
+          border-right: unset;
+          border-left: 1px solid rgba(var(--light-border), 1);
+        }
+      }
+  
+      td {
+        font-weight: 500;
+        vertical-align: middle;
+        font-size: calc(14px + (16 - 14) * ((100vw - 320px) / (1920 - 320)));
+        color: rgba(var(--theme-font-color), 1);
+      }
+    }
+  }
+
+  // table 
+  .table {
+    thead{
+      tr {
+        th {
+          padding: 14px;
+          border-bottom: none;
+          color: rgba(var(--light-color), 1);
+          font-weight: 500;
+          font-size: $font-20;
+          text-align: center;
+          background-color: rgba(var(--box-background), 1);
+          white-space: nowrap;
+          &:first-child {
+            text-align: left;
+            border-radius: 6px 0 0 0;
+            [dir="rtl"] & {
+              text-align: right;
+            }
+          }
+          &:last-child {
+            border-radius: 0 6px 0 0;
+          }
+        }
+      }
+    }
+    tbody {
+      tr {
+        border-bottom: 1px solid rgba(var(--light-border), 1);
+        
+        td {
+          padding: 14px;
+          border-bottom: none;
+          vertical-align: middle;
+          white-space: nowrap;
+          text-align: center;
+          background-color: rgba(var(--light-white), 1);
+          color: rgba(var(--theme-font-color), 1);
+          &:first-child{
+            text-align: left;
+            [dir="rtl"] & {
+              text-align: right;
+            }
+          }
+        }
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }

@@ -1,0 +1,59 @@
+//- - var countdown       = true; 
+doctype html
+html(lang='en')
+  include ../../components/header-files
+  body.coming-soon-section 
+    include ../../components/tap_top
+    include ../../components/cursor
+    header 
+        .custom-container.container.header-1
+            .row 
+                .col-12
+                    .main-menu 
+                        a.brand-logo(href="index.html") 
+                            img.img-fluid(src="../assets/images/logo/logo-white-1.png", alt="logo")
+                        .sub_header
+                            ul.justify-content-end
+                                li 
+                                    a(href="https://www.instagram.com/" target="_blank") 
+                                        i.iconsax(data-icon="instagram")
+
+                                li 
+                                    a(href="https://www.facebook.com/" target="_blank")
+                                        i.iconsax(data-icon="facebook")
+                                li
+                                    a(href="https://www.google.com/" target="_blank")
+                                        i.iconsax(data-icon="google")
+    section     
+        .coming-soon-box
+            h3 Coming Soon!
+            h5 Site Under Construction, We Are Currently Working
+            p  sleek, chic, trendy, coming soon, stay tuned!
+            .countdown
+                ul.clockdiv9
+                    li 
+                        div
+                            .timer
+                                .days
+                            span.title Days
+                    li 
+                        div
+                            .timer
+                                .hours
+                            span.title Hours
+                    li 
+                        div 
+                            .timer
+                                .minutes
+                            span.title Min
+                    li 
+                        div
+                            .timer
+                                .seconds
+                            span.title Sec
+            a.btn.btn_black(href="index.html")  Back to Home 
+    footer   
+        p Copyright © 2024 
+            a(href="index.html") Katie.   
+            |  All Rights Reserved.
+    include ../../components/footer-files

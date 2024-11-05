@@ -1,0 +1,121 @@
+:root {
+    --light-white: 255, 255, 255;
+    --white: 255, 255, 255;
+    --black: 0, 0, 0;
+    --light-color: 118, 118, 118;
+    --theme-font-color: 34, 34, 34;
+    --bs-heading-color: #222;
+    --dark-color: 38, 40, 52;
+    --light-background: 242, 242, 242;
+    --box-background: 248, 248, 248;    
+    --light-border: 233, 233, 233;
+    --dark-border: 118, 118, 118;
+    --star-yellow: 255, 196, 0;
+    --theme-default : 204, 162, 112;
+    --success-color : 48, 153, 117;
+    --danger-color: 255, 79, 79;
+    --border: 238, 238, 238;
+    .layout-2 {
+        --theme-default : 238, 144, 81;
+    }
+    .layout-3 {
+        --theme-default : 254, 94, 53;  
+    }
+    .layout-4 {
+        --theme-default : 226, 131, 90;
+    }
+} 
+
+.dark {
+    --light-white: 26, 25, 25;
+    --white: 223, 223, 223;
+    --black: 255, 255, 255;
+    --light-color: 118, 118, 118;
+    --theme-font-color: 255, 255, 255;
+    --bs-heading-color: #fff;
+    --bs-body-color: #a3a3a3;
+    --dark-color: 222, 222, 222;
+    --light-background: 242, 242, 242;
+    --box-background: 47, 47, 47;
+    --light-border: 40, 40, 40;
+    --dark-border: 118, 118, 118;
+    --border: 58, 57, 57;
+}
+// colors 
+$bg-color: #6570e6;
+$bg-color-1: #b54747;
+$bg-color-2: #dc9260;
+$bg-color-3: #FFC7C7;
+$bg-color-4: #CCA270;
+$bg-color-5: #B19A8C;
+$bg-color-6: #F0E5D7;
+$bg-color-7: #222222;
+
+// Theme colors variables
+$theme-color-1: #FE5E35;
+$theme-color-2: #EE9051;
+$theme-color-3: #CCA270;
+$theme-color-4: #417394;
+
+//fonts
+$font-awesome: "Font Awesome 6";
+$font-outfit : "Outfit", sans-serif;
+$font-serif: sans-serif;
+
+// font size 
+$font-14: 14px;
+$font-12: 12px;
+$font-18: calc(14px + (17 - 14) * ((100vw - 320px) / (1920 - 320)));
+$font-20: calc(14px + (20 - 14) * ((100vw - 320px) / (1920 - 320)));
+$font-24: calc(16px + (24 - 16) * ((100vw - 320px) / (1920 - 320)));
+$font-28: calc(18px + (28 - 18) * ((100vw - 320px) / (1920 - 320)));
+$font-32: calc(20px + (32 - 20) * ((100vw - 320px) / (1920 - 320)));
+$font-50: calc(24px + (50 - 24) * ((100vw - 320px) / (1920 - 320)));
+
+// modal padding 
+
+// Border
+$radius-4: 4px;
+
+
+
+.bg-color-purple {
+    background-color: $bg-color;
+}
+.bg-color-blue {
+    background-color: $bg-color-1;
+}
+.bg-color-red {
+    background-color: $bg-color-2;
+}
+.bg-color-yellow {
+    background-color: $bg-color-3;
+}
+.theme-default{
+    background-color: rgba(var(--theme-default), 1) !important;
+}
+.bg-color-brown {
+    background-color: $bg-color-4;
+}
+.bg-color-chocolate {
+    background-color: $bg-color-5;
+}
+.bg-color-coffee {
+    background-color: $bg-color-6;
+}
+.bg-color-black {
+    background-color: $bg-color-7;
+}
+.theme-color{
+    color: rgba(var(--theme-default), 1);
+}
+.light-bg {
+    background-color: rgba(var(--box-background) , 1);
+}
+.danger-color {
+    background-color: rgba(var(--danger-color) , 1);
+}
+.star-color {
+    background-color: rgba(var(--star-yellow) , 1);
+}
+

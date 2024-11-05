@@ -1,0 +1,60 @@
+.slide-2{
+    background-color: rgba(var(--box-background), 1);
+    padding: calc(12px + (30 - 12) * ((100vw - 320px) / (1920 - 320))) 0;
+    .logo-block{
+        text-align: center;
+        a{
+            img {
+                margin: 0 auto;
+                opacity: 0.6;
+                transition: all .4s ease-in-out;
+               .dark & {
+                    filter: invert(1);
+                }
+            }
+        }
+        &:hover {
+            a{
+                img {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+.logo-slider{
+    .swiper-wrapper{
+        .swiper-slide{
+            text-align: center;
+            a{
+                img {
+                    margin: 0 auto;
+                    opacity: 0.6;
+                    transition: all .4s ease-in-out;
+                    .dark & {
+                        filter: invert(1);
+                    }
+                }
+            }
+            &:hover {
+                a{
+                    img {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.brand-logo-txt   {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    h4 {
+        margin-bottom: 18px;
+        color: rgba(var(--light-color), 1);
+        font-weight: 400;
+    }
+    
+}

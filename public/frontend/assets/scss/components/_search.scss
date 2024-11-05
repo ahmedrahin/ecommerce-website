@@ -1,0 +1,56 @@
+/*=====================
+01. Search css start
+==========================*/
+.input-box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%) scale(0);
+    width: 100%;
+    visibility: hidden;
+    opacity: 0;
+    transition: all .4s ease-in-out;
+    input {
+        width: 100%;
+        padding: 15px 50px;
+        background-color: rgba(var(--white),1);
+        border-radius: 8px;
+        border: none;
+        box-shadow: 0px 0px 5px rgba(var(--black),0.2);
+       .dark & {
+            background-color: rgba(34, 34, 34, 1);
+        }
+    }
+    .iconsax {
+        --Iconsax-Size: 20px;
+        --Iconsax-Color: rgba(var(--light-color), 1);
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        [dir="rtl"] & {
+            right: 15px;
+            left: unset;
+        }
+    }
+    .close-icon{
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 20px;
+        color: rgba(var(--light-color), 1);
+        transform: rotate(0deg);
+        transition: all .4s ease-in-out;
+        [dir="rtl"] & {
+            right: unset;
+            left: 15px;
+        }
+        &:hover {
+            transform: rotate(-90deg);
+        }
+    }
+    &.open {
+        visibility: visible;
+        opacity: 1;
+        transform: translate(-50% , -50%) scale(1);
+}
+}

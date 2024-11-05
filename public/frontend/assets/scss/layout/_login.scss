@@ -1,0 +1,159 @@
+
+.login-img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.log-in-box{
+    background-color: rgba(var(--box-background), 1);
+    border-radius: $radius-4;
+    padding: calc(15px + (50 - 15) * ((100vw - 320px) / (1920 - 320)));
+    .form-floating{
+        input {
+            border: 1px solid rgba(var(--light-border), 1);
+            font-size: 18px;
+            &:focus {
+                box-shadow: none;
+            }
+        }
+        label {
+            color: rgba(var(--light-color), 1);
+            font-size: 16px;
+            margin-bottom: 0;
+        }
+    }
+    .forgot-box{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        div {
+            input {
+                vertical-align: -5px;
+            }
+            label {
+                margin-bottom: 0;
+                font-size: calc(14px + (16 - 14) * ((100vw - 320px) / (1920 - 320)));
+                cursor: pointer;
+                span {
+                    color: rgba(var(--theme-default), 1);
+                    font-size: calc(14px + (16 - 14) * ((100vw - 320px) / (1920 - 320)));
+                    font-weight: 500;
+                }
+            }
+        }
+        a{
+            font-weight: 500;
+            color: rgba(var(--theme-default), 1);
+        }
+    }
+}
+.login{
+    width: 100%;
+    background-image: linear-gradient(to right, rgba(var(--theme-default), 1) 0%, #c28f51 51%, rgba(var(--theme-default), 1) 100%);
+    border-radius: $radius-4;
+}
+.log-in-title {
+    margin-bottom: 12px;
+    h4 {
+        line-height: 1.2;
+        margin-bottom: 0;
+    }
+}
+.other-log-in {
+    position: relative;
+    margin: 20px 0 0;
+    text-align: center;
+    &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        background-color: rgba(var(--light-border), 1);
+        width: 100%;
+        height: 1px;
+    }
+    h6 {
+        padding: 0 16px;
+        background-color: rgba(var(--box-background), 1);
+        color: rgba(var(--light-color), 1);
+        display: inline-block;
+        position: relative;
+        margin-bottom: 0;
+    }
+}
+.log-in-button{
+    text-align: center;
+    margin-top: 20px;
+    ul {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 0 auto;
+        li {
+            height: 40px;
+            width: 100%;
+            background-color: transparent;
+            border: 1px solid rgba(var(--theme-default), 1);
+            border-radius: $radius-4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all .4s ease-in-out;
+            a{
+                transition: all .4s ease-in-out;
+                color: rgba(var(--theme-default), 1);
+                font-weight: 500;
+                i {
+                    transition: all .4s ease-in-out;
+                    color: rgba(var(--theme-default), 1);
+                }
+            }
+            &:hover {
+                background-color: rgba(var(--theme-default), 1);
+                a{
+                    color: rgba(var(--white), 1);
+                    i{
+                        color: rgba(var(--white), 1);
+                    }
+                }
+            }
+        }
+    }
+}
+.login-bg-img{
+    background-image: url(../images/login/bg-img.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    height: 100%;
+}
+.sign-up-box{
+    text-align: center;
+    padding-top: 15px;
+    p {
+        font-size: calc(14px + (16 - 14) * ((100vw - 320px) / (1920 - 320)));
+    }
+    a {
+        font-weight: 500;
+        color: rgba(var(--theme-default), 1);
+    }
+}
+.otp-input {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    input {
+      width: 100%;
+      text-align: center !important;
+      margin: 0 !important;
+      border-radius: 4px;
+      text-align: left;
+      padding: calc(6px + (10 - 6) * ((100vw - 320px) / (1920 - 320))) !important;
+      border: 1px solid rgba(var(--light-border), 1);
+      &:focus {
+        box-shadow: none;
+        border: 1px solid rgba(var(--light-border), 1);
+    }
+    }
+  }

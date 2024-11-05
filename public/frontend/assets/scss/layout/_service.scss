@@ -1,0 +1,136 @@
+/**=====================
+    Service css
+==========================**/
+
+.service{
+    ul {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+        @media (max-width: 991px) {
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            gap: 20px;
+        }
+        @media (max-width: 480px) {
+            display: grid;
+            justify-content: start;
+        }
+        li {
+            border-right: 1px solid rgba(var(--border), 1);
+            width: 100%;
+            [dir="rtl"] & {
+                border-left:  1px solid rgba(var(--border), 1);
+                border-right: unset;
+            }
+            @media (max-width: 991px) {
+                width: 48%;
+                &:nth-child(even) {
+                    border-right: unset;
+                }
+            }
+            @media (max-width: 523px) {
+                width: 100%;
+            }
+            @media (max-width: 480px) {
+                width: auto;
+                border-right: none;
+                border-bottom: 1px solid rgba(var(--border), 1);
+                padding-bottom: 8px;
+            }
+            &:last-child{
+                border-right: none;
+                border-bottom: none;
+                padding-bottom: 0;
+                [dir="rtl"] & {
+                    border-left: none;
+                }
+            }
+            .service-block{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: calc(10px + (20 - 10) * ((100vw - 320px) / (1920 - 320)));
+                position: relative;
+
+                @media (max-width: 991px) {
+                    justify-content: flex-start;
+                }
+                img {
+                    @media (max-width: 991px) {
+                        width: 45px;
+                        height: 50px;
+                    }
+                }
+                h6 {
+                    transition: all .4s ease-in-out;
+                    overflow:hidden;
+                    display: -webkit-box !important;
+                    -webkit-line-clamp: 1;
+                    -webkit-box-orient: vertical;
+                    white-space: normal;
+                    margin-bottom: 0;
+                }
+                img {
+                    transition: all .4s ease-in-out;
+                   .dark & {
+                        filter: invert(1);
+                    }
+                       
+                }
+                p {
+                    text-overflow:ellipsis;
+                    overflow:hidden;
+                    display: -webkit-box !important;
+                    -webkit-line-clamp: 1;
+                    -webkit-box-orient: vertical;
+                    white-space: normal;
+                }
+                &:hover {
+                    h6 {
+                        color: rgba(var(--theme-default), 1);
+                    }
+                    img {
+                        animation: tada 1.5s ease infinite;
+                    }
+                }
+            }
+        }
+    }
+}
+@keyframes tada {
+    0% {
+        transform: scaleX(1);
+    }
+    10% {
+        transform: scale3d(0.9, 0.9, 0.9) rotate(-3deg);
+    }
+    20% {
+        transform: scale3d(0.9, 0.9, 0.9) rotate(-3deg);
+    }
+    30% {
+        transform: scale3d(1.1, 1.1, 1.1) rotate(3deg);
+    }
+    50% {
+        transform: scale3d(1.1, 1.1, 1.1) rotate(3deg);
+    }
+    70% {
+        transform: scale3d(1.1, 1.1, 1.1) rotate(3deg);
+    }
+    90% {
+        transform: scale3d(1.1, 1.1, 1.1) rotate(3deg);
+    }
+    40% {
+        transform: scale3d(1.1, 1.1, 1.1) rotate(-3deg);
+    }
+    60% {
+        transform: scale3d(1.1, 1.1, 1.1) rotate(-3deg);
+    }
+    80% {
+        transform: scale3d(1.1, 1.1, 1.1) rotate(-3deg);
+    }
+    100% {
+        transform: scaleX(1);
+    }
+}

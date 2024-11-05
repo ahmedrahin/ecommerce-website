@@ -1,0 +1,35 @@
+/**=====================
+     Offer css
+==========================**/
+.offer-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: calc(8px + (22 - 8) * ((100vw - 320px) / (1920 - 320))) 6px;
+    p{
+        color: rgba(var(--theme-font-color), 1);
+        font-weight: 500;
+    }
+    .btn{
+        font-size: 16px;
+        text-decoration: none;
+        svg {
+            width: 16px;
+            height: 16px;
+        }
+    }
+    &:first-child{
+        background-color: rgba($bg-color-1 , 0.4);
+    }
+    &:nth-child(2) {
+        background-color: rgba($theme-color-1 , 0.1) !important;
+    }
+    &:nth-child(3) {
+        background-color: rgba(var(--box-background) , 1) !important;
+    }
+    &:last-child {
+        background-color: rgba($theme-color-1 , 0.1) !important;
+    }
+}

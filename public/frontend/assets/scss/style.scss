@@ -1,0 +1,68 @@
+/*-----------------------------------------------------------------------------------
+
+Template Name: Katie
+Template URI: themes.pixelstrap.net/katie/template
+Description: This is doctor website
+Author: Pixelstrap
+Author URI: https://themeforest.net/user/pixelstrap
+
+----------------------------------------------------------------------------------- */
+
+
+/* 1. General CSS
+    1.1. Button CSS
+    1.2. Title CSS */
+
+
+//Utils
+@import "utils/mixin";
+
+// themes
+@import "themes/variables";
+@import "themes/general";
+@import "themes/button";
+@import "themes/mode-button";
+
+// base
+@import "base/reset";
+@import "base/range-slider";
+
+//layout
+@import "layout/accordion";
+@import "layout/header";
+@import "layout/tap-top";
+@import "layout/nav-bar";
+@import "layout/footer";
+@import "layout/modal";
+@import "layout/instagram";
+@import "layout/blog";
+@import "layout/offer";
+@import "layout/swiper-slider";
+@import "layout/service";
+@import "layout/default-tost";
+@import "layout/collection-sidebar";
+@import "layout/range-slider";
+@import "layout/product-thumbnail";
+@import "layout/table";
+@import "layout/cart";
+@import "layout/check-out";
+@import "layout/login";
+@import "layout/cookie";
+@import "layout/contact-us";
+@import "layout/compare";
+@import "layout/faq";
+@import "layout/dashboard";
+@import "layout/order-success";
+@import "layout/order-tracking";
+@import "layout/about";
+
+//components
+@import "components/skeleton-loader";
+@import "components/home-section";
+@import "components/title";
+@import "components/product-box";
+@import "components/slider";
+@import "components/search";
+@import "components/banner";
+@import "components/ratio";
+@import "components/cursor";

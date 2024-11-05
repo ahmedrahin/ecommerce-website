@@ -1,0 +1,9 @@
+{{-- change needed --}}
+  
+  1. show data record in every datatable. (Showing 2 of 3 attributes.)
+  2. notice all slug error
+  3.search filtering error
+  4.success msg show by session after product edit
+  5.select2 problem solve in shipping method.
+ 
+  

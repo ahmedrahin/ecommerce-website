@@ -1,0 +1,1722 @@
+//- - var countdown            = true; 
+//- - var notify               = true;
+//- - var swiper_slider        = true;
+//- - var grid                 = true;
+
+
+doctype html
+html(lang='en')
+  include ../../components/header-files
+  body
+    include ../../components/tap_top
+    include ../../components/cursor
+    //------ Header -------//
+    header 
+        .top_header 
+            p Free Coupe Code: Summer Sale On Selected items Use:
+                span NEW 26
+                a(href="collection-left-sidebar.html")  SHOP NOW
+        .custom-container.container.header-1
+            .row 
+                .col-12.p-0 
+                    .mobile-fix-option
+                        ul
+                            li 
+                                a(href="index.html")
+                                    i.iconsax(data-icon="home-1")
+                                    | Home
+                            li
+                                a(href="search.html")
+                                    i.iconsax(data-icon="search-normal-2")
+                                    | Search
+
+                            li.shopping-cart  
+                                a(href="cart.html")
+                                    i.iconsax(data-icon="shopping-cart")
+                                    | Cart
+                            li
+                                a(href="wishlist.html")
+                                    i.iconsax(data-icon="heart")
+                                    | My Wish
+                            li 
+                                a(href="dashboard.html")
+                                    i.iconsax(data-icon="user-2")
+                                    | Account
+
+                    #staticBackdrop.offcanvas.offcanvas-start(data-bs-backdrop='static' tabindex='-1' aria-labelledby='staticBackdropLabel')
+                        .offcanvas-header
+                            h3#staticBackdropLabel.offcanvas-title Offcanvas
+                            button.btn-close(type='button' data-bs-dismiss='offcanvas' aria-label='Close')
+                        .offcanvas-body
+                            div
+                            | I will not close if you click outside of me.
+                .col-12
+                    .main-menu 
+                        a.brand-logo(href="index.html") 
+                            img.img-fluid.for-light(src="../assets/images/logo/logo.png", alt="logo")
+                            img.img-fluid.for-dark(src="../assets/images/logo/logo-white-1.png", alt="logo")
+                        nav#main-nav
+                            ul#sm-horizontal.nav-menu.sm-horizontal.theme-scrollbar
+                                li#mobile-back.mobile-back
+                                    | Back
+                                    i.fa-solid.fa-angle-right.ps-2(aria-hidden='true')
+                                li 
+                                    a.nav-link(href="#") Home 
+                                        span 
+                                            i.fa-solid.fa-angle-down
+                                    .mega-menu
+                                        .row.gy-3 
+                                            .col-xl-3
+                                                a(href="index.html" target="_blank").layout-images
+                                                    .layout-box.img-1 
+                                                    h5 Layout 1
+                                            .col-xl-3 
+                                                a(href="layout-2.html" target="_blank").layout-images
+                                                    .layout-box.img-2
+                                                    h5 Layout 2
+                                            .col-xl-3
+                                                a(href="layout-3.html" target="_blank").layout-images
+                                                    .layout-box.img-3
+                                                    h5 Layout 3
+                                            .col-xl-3  
+                                                a(href="layout-4.html" target="_blank").layout-images
+                                                    .layout-box.img-4
+                                                    h5 Layout 4
+                                li 
+                                    a.nav-link(href="#") Shop
+                                        span 
+                                            i.fa-solid.fa-angle-down
+                                    ul.nav-submenu
+                                        li 
+                                            a(href="collection-left-sidebar.html") Collection Left Sidebar
+                                        li 
+                                            a(href="collection-right-sidebar.html") Collection Right Sidebar
+                                        li 
+                                            a(href="collection-no-sidebar.html") Collection No Sidebar
+                                        li 
+                                            a(href="collection-3-grid.html") Collection 3 Grid
+                                        li 
+                                            a(href="collection-4-grid.html") Collection 4 Grid
+                                        li 
+                                            a(href="collection-list-view.html") Collection List View 
+                                                span.badge-sm.theme-default new
+                                        li 
+                                            a(href="collection-slider.html") Collection Slider
+                                        li 
+                                            a(href="offcanvas-filter.html") Offcanvas Filter 
+                                        li 
+                                            a(href="load-more.html") Load More
+                                                span.badge-sm.danger-color.animated Hot
+                                li 
+                                    a.nav-link(href="#") Product 
+                                        span 
+                                            i.fa-solid.fa-angle-down
+                                    .mega-menu.p-0.overflow-hidden
+                                        .row
+                                            .col-xl-4
+                                                ul.p-2 
+                                                    li 
+                                                        a(href="product.html") Product
+                                                    li 
+                                                        a(href="product-sticky.html") Product Sticky
+                                                    li 
+                                                        a(href="product-four-image.html") Product image
+                                                    li 
+                                                        a(href="product-bottom.html") Product Bottom
+                                                    li 
+                                                        a(href="product-video.html") Product Video
+                                                            span.badge-sm.theme-default new
+                                                    li 
+                                                        a(href="product-accordion.html") Product Accordion
+                                                    li 
+                                                        a(href="product-sold-out.html") Product Sold Out 
+                                                            span.badge-sm.danger-color.animated Hot
+                                                    li 
+                                                        a(href="without-thumbnail.html") Without Thumbnail 
+                                            .col-xl-4
+                                                ul.p-2
+                                                    li 
+                                                        a(href="product-bundle.html") Bundle (Cross Sale) 
+                                                            span.badge-sm.danger-color.animated Hot
+                                                    li 
+                                                        a(href="variant-rectangle.html") Variant Rectangle  
+                                                    li 
+                                                        a(href="variant-images.html")  Variant Image Swatch 
+                                                            span.badge-sm.theme-default new
+                                                    li 
+                                                        a(href="variant-color.html") Variant Color
+                                                    li 
+                                                        a(href="variant-radio.html") Variant Radio
+                                                    li 
+                                                        a(href="variant-dropdown.html") Variant Dropdown 
+                                                    li 
+                                                        a(href="inner-zoom.html") Inner Zoom Images 
+                                                            span.badge-sm.danger-color.animated Hot
+                                            .col-xl-4.d-none.d-xl-block.px-0
+                                                .menu-banner    
+                                                    img.w-100.img-fluid(src="../assets/images/mega-menu/banner.png", alt="")
+                                li 
+                                    a.nav-link(href="#") FashiOffers 
+                                        span 
+                                            i.fa-solid.fa-angle-down
+                                        p.lable-nav Hot
+                                    .mega-menu.p-0.overflow-hidden
+                                        .row.gy-4.align-items-center
+                                            .col-xl-5
+                                                .mega-img
+                                                    .img-1
+                                                        img.img-fluid(src="../assets/images/mega-menu/5.jpg", alt="")  
+                                                    .img-1
+                                                        img.img-fluid(src="../assets/images/mega-menu/6.jpg", alt="")
+                                            .col-xl-2.px-0
+                                                ul
+                                                    li 
+                                                        a(href="../email-template/welcome.html") Welcome Template
+                                                            span.badge-sm.danger-color.animated Hot
+                                                    li 
+                                                        a(href="../email-template/order-success.html") Order Success
+                                                    li 
+                                                        a(href="../email-template/reset-password.html") Reset Password
+                                                    li 
+                                                        a(href="../invoice/invoice-1.html") Invoice 1
+                                                    li 
+                                                        a(href="../invoice/invoice-2.html") Invoice 2
+                                                    li 
+                                                        a(href="../invoice/invoice-3.html") Invoice 3
+                                            .col-xl-5
+                                                img.img-fluid(src="../assets/images/mega-menu/1.png", alt="")
+                                li 
+                                    a.nav-link(href="#") Page  
+                                        span 
+                                            i.fa-solid.fa-angle-down
+                                    ul.nav-submenu
+                                        
+                                        li 
+                                            a(href="search.html") Search
+                                        li 
+                                            a(href="wishlist.html") Wishlist
+                                        li 
+                                            a(href="faq.html") Faq
+                                        li 
+                                            a(href="dashboard.html") My Dashboard 
+                                                span.badge-sm.theme-default new
+                                        li 
+                                            a(href="order-success.html") Order Success
+                                        li 
+                                            a(href="order-tracking.html") Order Tracking
+                                        li 
+                                            a(href="maintenance.html") Maintenance
+                                                span.badge-sm.danger-color.animated Hot
+                                        li 
+                                            a(href="check-out.html") Check Out
+                                        li 
+                                            a(href="compare.html") Compare
+                                        li 
+                                            a(href="about-us.html") About Us
+                                        li 
+                                            a(href="look-book.html") Look Book 
+                                                span.badge-sm.theme-default new
+                                        li 
+                                            a(href="404.html") 404 
+                                        li 
+                                            a(href="cart.html") cart 
+                                        li 
+                                            a(href="login.html")  Login 
+                                                span.badge-sm.danger-color.animated Hot 
+                                        li 
+                                            a(href="forget-password.html")  Forgot Password 
+                                        li 
+                                            a(href="otp.html")  otp 
+                                        li 
+                                            a(href="sign-up.html")  Sign Up 
+                                li 
+                                    a.nav-link(href="#") Blog
+                                        span 
+                                            i.fa-solid.fa-angle-down
+                                    ul.nav-submenu
+                                        li 
+                                            a(href="blog-left-sidebar.html") Blog Left Sidebar 
+                                        li 
+                                            a(href="blog-right-sidebar.html") Blog Right Sidebar 
+                                        li 
+                                            a(href="blog-list.html") Blog List
+                                        li 
+                                            a(href="blog-details.html") Blog Details
+                                        li 
+                                            a(href="blog-no-sidebar.html") Blog No Sidebar
+                                li 
+                                    a.nav-link(href="contact.html") Contact 
+                        .sub_header
+                            #toggle-nav.toggle-nav
+                                i.fa-solid.fa-bars-staggered.sidebar-bar
+                            ul.justify-content-end
+                                li 
+                                    button(href="#" data-bs-toggle='offcanvas' data-bs-target='#offcanvasTop' aria-controls='offcanvasTop')
+                                        i.iconsax(data-icon="search-normal-2")
+    
+                                li 
+                                    a(href="wishlist.html")
+                                        i.iconsax(data-icon="heart")
+                                        span.cart_qty_cls 2
+                                li.onhover-div
+                                    a(href="#")
+                                        i.iconsax(data-icon="user-2")
+                                    .onhover-show-div.user  
+                                        ul 
+                                            li 
+                                                a(href="login.html") Login 
+                                            li 
+                                                a(href="sign-up.html") Register
+                                li.onhover-div.shopping-cart  
+                                    a.p-0(href="#" data-bs-toggle='offcanvas' data-bs-target='#offcanvasRight' aria-controls='offcanvasRight')
+                                        .shoping-prize
+                                            i.iconsax.pe-2(data-icon="basket-2") 
+                                            | 0 items
+    
+    //------- Header Breadcrumb -------//
+    section.section-b-space.pt-0 
+        .heading-banner
+            .custom-container.container
+                .row.align-items-center
+                    .col-sm-6
+                        h4 Product Sticky
+                    .col-sm-6
+                        ul.breadcrumb.float-end
+                            li.breadcrumb-item 
+                                a(href="index.html") Home 
+                            li.breadcrumb-item.active 
+                                a(href="#") Product Sticky
+
+    //------- main section ----------//
+    section.section-b-space.pt-0.product-thumbnail-page
+        .custom-container.container
+            .row.gy-4    
+                .col-lg-6
+                    .row.gy-3.ratio_square-2
+                        .col-12
+                            a(href="#") 
+                                img.bg-img(src="../assets/images/product/slider/1.jpg", alt="")
+                        .col-12
+                            a(href="#") 
+                                img.bg-img(src="../assets/images/product/slider/2.jpg", alt="")
+                        .col-12
+                            a(href="#") 
+                                img.bg-img(src="../assets/images/product/slider/3.jpg", alt="")
+                        .col-12
+                            a(href="#") 
+                                video.video-tag.img-fluid(loop='' autoplay='' muted='')
+                                    source(src='../assets/images/product/slider/clothing.mp4' type='video/mp4')
+                                    |  Your browser does not support the video tag.
+                        .col-12
+                            a(href="#") 
+                                img.bg-img(src="../assets/images/product/slider/5.jpg", alt="")
+                        .col-12
+                            a(href="#") 
+                                img.bg-img(src="../assets/images/product/slider/6.jpg", alt="")
+                        .col-12
+                            a(href="#") 
+                                img.bg-img(src="../assets/images/product/slider/7.jpg", alt="")
+                .col-lg-6
+                    .product-detail-box.sticky
+                        .product-option 
+                            div.move-fast-box.d-flex.align-items-center.gap-1
+                                img(src="../assets/images/gif/fire.gif", alt="")
+                                p Move fast!
+                            h3 Rustic Minidress with Halterneck
+                            p $20.00
+                                del $35.00
+                                span.offer-btn 25% off
+                            .rating 
+                                ul 
+                                    li 
+                                        i.fa-solid.fa-star 
+                                        i.fa-solid.fa-star 
+                                        i.fa-solid.fa-star 
+                                        i.fa-solid.fa-star-half-stroke
+                                        i.fa-regular.fa-star
+                                    li (4.7) Rating
+                                p Dressing up. People just don't do it anymore. We have to change that. Give me time and I'll give you a revolution. What I hate is nasty, ugly people. The market is like a language, and you have to be able to understand what they're saying. 
+                            .buy-box.border-buttom
+                                ul 
+                                    li 
+                                        span(data-bs-toggle='modal' data-bs-target='#size-chart' title='Quick View' tabindex='0')
+                                            i.iconsax.me-2(data-icon="ruler")
+                                            | Size Chart
+                                    li 
+                                        span(data-bs-toggle='modal' data-bs-target='#terms-conditions-modal' title='Quick View' tabindex='0')
+                                            i.iconsax.me-2(data-icon="truck")
+                                            | Delivery & return
+                                    li 
+                                        span(data-bs-toggle='modal' data-bs-target='#question-box' title='Quick View' tabindex='0')
+                                            i.iconsax.me-2(data-icon="question-message")
+                                            | Ask a Question
+                            .d-flex
+                                div  
+                                    h5 Size:
+                                    .size-box
+                                        ul.selected
+                                            li
+                                                a(href='#') s
+                                            li
+                                                a(href='#') m
+                                            li.active
+                                                a(href='#') l
+                                            li
+                                                a(href='#') xl  
+                            div
+                                h5 Color:
+                                .color-box
+                                    ul.color-variant
+                                        li.bg-color-brown
+                                        li.bg-color-chocolate
+                                        li.bg-color-coffee
+                                        li.bg-color-black
+                            .quantity-box.d-flex.align-items-center.gap-3
+                                .quantity
+                                    button.minus(type='button')
+                                        i.fa-solid.fa-minus
+                                    input(type='number' value='1' min='1' max='20')
+                                    button.plus(type='button')
+                                        i.fa-solid.fa-plus
+                                .d-flex.align-items-center.gap-3.w-100    
+                                    a.btn.btn_black.sm(href="#" data-bs-toggle='offcanvas' data-bs-target='#offcanvasRight' aria-controls='offcanvasRight') Add To Cart
+                                    a.btn.btn_outline.sm(href="#") Buy Now
+                            .buy-box
+                                ul 
+                                    li 
+                                        a(href="wishlist.html") 
+                                            i.fa-regular.fa-heart.me-2
+                                            | Add To Wishlist
+                                    li 
+                                        a(href="compare.html") 
+                                            i.fa-solid.fa-arrows-rotate.me-2
+                                            | Add To Compare
+                                    li 
+                                        a(href="#" data-bs-toggle='modal' data-bs-target='#social-box' title='Quick View' tabindex='0')
+                                            i.fa-solid.fa-share-nodes.me-2
+                                            | Share
+                            .sale-box 
+                                div.d-flex.align-items-center.gap-2
+                                    img(src="../assets/images/gif/timer.gif", alt="")
+                                    p Limited Time Left! Hurry, Sale Ending!
+                                .countdown
+                                    ul.clockdiv1
+                                        li 
+                                            .timer
+                                                .days
+                                            span.title Days
+                                        li :
+                                        li 
+                                            .timer
+                                                .hours
+                                            span.title Hours
+                                        li :
+                                        li 
+                                            .timer
+                                                .minutes
+                                            span.title Min
+                                        li :
+                                        li 
+                                            .timer
+                                                .seconds
+                                            span.title Sec
+                            .dz-info 
+                                ul 
+                                    li
+                                        .d-flex.align-items-center.gap-2 
+                                            h6 Sku:
+                                            p  SKU_45 
+                                    li 
+                                        .d-flex.align-items-center.gap-2 
+                                            h6 Available: 
+                                            p Pre-Order
+                                    li 
+                                        .d-flex.align-items-center.gap-2 
+                                            h6 Tags: 
+                                            p Color  Pink Clay , Athletic, Accessories, Vendor Kalles
+                                    li
+                                        .d-flex.align-items-center.gap-2 
+                                            h6 Vendor: 
+                                            p  Balenciaga
+                            .share-option
+                                h5 Secure Checkout  
+                                img.img-fluid(src="../assets/images/other-img/secure_payments.png", alt="")
+        .product-section-box.x-small-section.pt-0 
+            .custom-container.container
+                .row 
+                    .col-12 
+                        ul#Product.product-tab.theme-scrollbar.nav.nav-tabs.nav-underline(role='tablist')
+                            li.nav-item(role='presentation')
+                                button#Description-tab.nav-link.active(data-bs-toggle='tab' data-bs-target='#Description-tab-pane' role='tab' aria-controls='Description-tab-pane' aria-selected='true') Description
+                            li.nav-item(role='presentation')
+                                button#specification-tab.nav-link(data-bs-toggle='tab' data-bs-target='#specification-tab-pane' role='tab' aria-controls='specification-tab-pane' aria-selected='false') Specification
+                            li.nav-item(role='presentation')
+                                button#question-tab.nav-link(data-bs-toggle='tab' data-bs-target='#question-tab-pane' role='tab' aria-controls='question-tab-pane' aria-selected='false') Q & A
+                            li.nav-item(role='presentation')
+                                button#Reviews-tab.nav-link(data-bs-toggle='tab' data-bs-target='#Reviews-tab-pane' role='tab' aria-controls='Reviews-tab-pane' aria-selected='false') Reviews
+                        #ProductContent.tab-content.product-content
+                            #Description-tab-pane.tab-pane.fade.show.active(role='tabpanel' aria-labelledby='Description-tab' tabindex='0')
+                                .row.gy-4 
+                                    .col-12     
+                                        p.paragraphs Experience the perfect blend of comfort and style with our Summer Breeze Cotton Dress. Crafted from 100% premium cotton, this dress offers a soft and breathable feel, making it ideal for warm weather. The lightweight fabric ensures you stay cool and comfortable throughout the day.
+                                        p.paragraphs Perfect for casual outings, beach trips, or summer parties. Pair it with sandals for a relaxed look or dress it up with heels and accessories for a more polished ensemble.
+                                    .col-12    
+                                        .row.gy-4 
+                                            .col-xxl-3.col-lg-4.col-sm-6
+                                                .general-summery 
+                                                    h5 Product Specifications
+                                                    ul 
+                                                        li 100% Premium Cotton
+                                                        li A-line silhouette with a flattering fit
+                                                        li Knee-length for versatile styling
+                                                        li V-neck for a touch of elegance
+                                                        li Short sleeves for a casual look
+                                                        li Available in solid colors and floral prints
+                                            .col-xxl-3.col-lg-4.col-sm-6
+                                                .general-summery  
+                                                    h5 Washing Instructions
+                                                    ul 
+                                                        li Use cold water for washing
+                                                        li Use a low heat setting for drying.
+                                                        li Avoid using bleach on this fabric.
+                                                        li Use a low heat setting when ironing.
+                                                        li Do not take this item to a dry cleaner.
+                                            .col-xxl-3.col-lg-4.col-sm-6
+                                                .general-summery 
+                                                    h5 Size & Fit
+                                                    ul 
+                                                        li The model (height 5'8) is wearing a size S
+                                                        li Measurements taken from size Small
+                                                        li Chest: 30"
+                                                        li Length: 20"
+
+                            #specification-tab-pane.tab-pane.fade(role='tabpanel' aria-labelledby='specification-tab' tabindex='0') 
+                                p I like to be real. I don't like things to be staged or fussy. Grunge is a hippied romantic version of punk. I have my favourite fashion decade, yes, yes, yes: '60s. It was a sort of little revolution; the clothes were amazing but not too exaggerated. Fashions fade, style is eternal. A girl should be two things: classy and fabulous.
+                                .table-responsive.theme-scrollbar
+                                    table.specification-table.table.striped
+                                        tr
+                                            th Product Dimensions
+                                            td 15 x 15 x 3 cm; 250 Grams
+                                        tr
+                                            th Date First Available
+                                            td 5 April 2021
+                                        tr
+                                            th Manufacturer&rlm;
+                                            td Aditya Birla Fashion and Retail Limited
+                                        tr
+                                            th ASIN
+                                            td B06Y28LCDN
+                                        tr
+                                            th Item model number
+                                            td AMKP317G04244
+                                        tr
+                                            th Department
+                                            td Men
+                                        tr
+                                            th Item Weight
+                                            td 250 G
+                                        tr
+                                            th Item Dimensions LxWxH
+                                            td 15 x 15 x 3 Centimeters
+                                        tr
+                                            th Net Quantity
+                                            td 1 U
+                                        tr
+                                            th Included Components&rlm;
+                                            td 1-T-shirt
+                                        tr
+                                            th Generic Name
+                                            td T-shirt
+                            #question-tab-pane.tab-pane.fade(role='tabpanel' aria-labelledby='question-tab' tabindex='0') 
+                                .question-main-box 
+                                    h5 Have Doubts Regarding This  Product ?
+                                    h6(data-bs-toggle='modal' data-bs-target='#question-modal' title='Quick View' tabindex='0') Post Your Question
+                                .question-answer
+                                    ul 
+                                        li 
+                                            .question-box
+                                                p Q1 
+                                                h6 Which designer created the little black dress?
+                                                ul.link-dislike-box 
+                                                    li 
+                                                        a(href="#")
+                                                            i.iconsax(data-icon="like") 
+                                                            | 0
+                                                    li 
+                                                        a(href="#")
+                                                            i.iconsax(data-icon="dislike") 
+                                                            | 0
+                                            .answer-box
+                                                b Ans.
+                                                span The little black dress (LBD) is often attributed to the iconic fashion designer Coco Chanel. She popularized the concept of the LBD in the 1920s, offering a simple, versatile, and elegant garment that became a staple in women's fashion.
+                                        li 
+                                            .question-box
+                                                p Q2 
+                                                h6 Which First Lady influenced women's fashion in the 1960s?
+                                                ul.link-dislike-box 
+                                                    li 
+                                                        a(href="#")
+                                                            i.iconsax(data-icon="like") 
+                                                            | 0
+                                                    li 
+                                                        a(href="#")
+                                                            i.iconsax(data-icon="dislike") 
+                                                            | 0
+                                            .answer-box
+                                                b Ans.
+                                                span The First Lady who significantly influenced women's fashion in the 1960s was Jacqueline Kennedy, the wife of President John F. Kennedy. She was renowned for her elegant and sophisticated style, often wearing simple yet chic outfits that set trends during her time in the White House. 
+                                        li 
+                                            .question-box
+                                                p Q3 
+                                                h6 What was the first name of the fashion designer Chanel?
+                                                ul.link-dislike-box 
+                                                    li 
+                                                        a(href="#")
+                                                            i.iconsax(data-icon="like") 
+                                                            | 0 
+                                                    li 
+                                                        a(href="#")
+                                                            i.iconsax(data-icon="dislike") 
+                                                            | 0
+                                            .answer-box
+                                                b Ans.
+                                                span The first name of the fashion designer Chanel was Gabrielle. Gabrielle "Coco" Chanel was a pioneering French fashion designer known for her timeless designs, including the iconic Chanel suit and the little black dress.
+                                        li 
+                                            .question-box
+                                                p Q4 
+                                                h6 Carnaby Street, famous in the 60s as a fashion center, is in which capital?
+                                                ul.link-dislike-box 
+                                                    li 
+                                                        a(href="#")
+                                                            i.iconsax(data-icon="like") 
+                                                            | 0
+                                                    li 
+                                                        a(href="#")
+                                                            i.iconsax(data-icon="dislike") 
+                                                            | 0
+                                            .answer-box
+                                                b Ans.
+                                                span Carnaby Street, famous for its association with fashion and youth culture in the 1960s, is located in London, the capital of the United Kingdom.🎉
+                                        li 
+                                            .question-box
+                                                p Q5 
+                                                h6 Threadless is a company selling unique what?
+                                                ul.link-dislike-box 
+                                                    li 
+                                                        a(href="#")
+                                                            i.iconsax(data-icon="like") 
+                                                            | 0
+                                                    li 
+                                                        a(href="#")
+                                                            i.iconsax(data-icon="dislike") 
+                                                            | 0
+                                            .answer-box
+                                                b Ans.
+                                                span Threadless is a company selling unique T-shirts.
+                            #Reviews-tab-pane.tab-pane.fade(role='tabpanel' aria-labelledby='Reviews-tab' tabindex='0')  
+                                .row.gy-4
+                                    .col-lg-4
+                                        .review-right
+                                            .customer-rating
+                                                
+                                                .global-rating
+                                                    div
+                                                        h5 4.5
+                                                    div
+                                                        h6 Average Ratings
+                                                        ul.rating.p-0.mb
+                                                            li
+                                                                i.fa-solid.fa-star
+                                                            li
+                                                                i.fa-solid.fa-star
+                                                            li
+                                                                i.fa-solid.fa-star
+                                                            li
+                                                                i.fa-solid.fa-star
+                                                            li
+                                                                i.fa-regular.fa-star
+                                                            li
+                                                                span (14)
+                                                ul.rating-progess
+                                                    li
+                                                        p 5 Star
+                                                        .progress(role='progressbar' aria-label='Animated striped example' aria-valuenow='75' aria-valuemin='0' aria-valuemax='100')
+                                                            .progress-bar.progress-bar-striped.progress-bar-animated(style='width: 80%')
+                                                        p 80%
+                                                    li
+                                                        p 4 Star
+                                                        .progress(role='progressbar' aria-label='Animated striped example' aria-valuenow='75' aria-valuemin='0' aria-valuemax='100')
+                                                            .progress-bar.progress-bar-striped.progress-bar-animated(style='width: 70%')
+                                                        p 70%
+                                                    li
+                                                        p 3 Star
+                                                        .progress(role='progressbar' aria-label='Animated striped example' aria-valuenow='75' aria-valuemin='0' aria-valuemax='100')
+                                                            .progress-bar.progress-bar-striped.progress-bar-animated(style='width: 55%')
+                                                        p 55%
+                                                    li
+                                                        p 2 Star
+                                                        .progress(role='progressbar' aria-label='Animated striped example' aria-valuenow='75' aria-valuemin='0' aria-valuemax='100')
+                                                            .progress-bar.progress-bar-striped.progress-bar-animated(style='width: 40%')
+                                                        p 40%
+                                                    li
+                                                        p 1 Star
+                                                        .progress(role='progressbar' aria-label='Animated striped example' aria-valuenow='75' aria-valuemin='0' aria-valuemax='100')
+                                                            .progress-bar.progress-bar-striped.progress-bar-animated(style='width: 25%')
+                                                        p 25%
+                                                button.btn.reviews-modal(data-bs-toggle='modal' data-bs-target='#Reviews-modal' title='Quick View' tabindex='0') Write a review
+                                    .col-lg-8 
+                                        .comments-box 
+                                            h5 Comments 
+                                            ul.theme-scrollbar 
+                                                li 
+                                                    .comment-items 
+                                                        .user-img 
+                                                            img(src="../assets/images/user/1.jpg", alt="")
+                                                        .user-content 
+                                                            .user-info 
+                                                                div.d-flex.justify-content-between.gap-3 
+                                                                    h6  
+                                                                        i.iconsax(data-icon="user-1")
+                                                                        | Michel Poe
+                                                                    span 
+                                                                        i.iconsax(data-icon="clock")
+                                                                        | Mar 29, 2022
+                                                                ul.rating.p-0.mb
+                                                                    li
+                                                                        i.fa-solid.fa-star
+                                                                    li
+                                                                        i.fa-solid.fa-star
+                                                                    li
+                                                                        i.fa-solid.fa-star
+                                                                    li
+                                                                        i.fa-solid.fa-star
+                                                                    li
+                                                                            i.fa-regular.fa-star
+
+                                                            p Khaki cotton blend military jacket flattering fit mock horn buttons and patch pockets showerproof black lightgrey. Printed lining patch pockets jersey blazer built in pocket square wool casual quilted jacket without hood azure.
+                                                            a(href="#") 
+                                                                span 
+                                                                    i.iconsax(data-icon="undo")
+                                                                    |  Replay
+                                                li.reply 
+                                                    .comment-items 
+                                                        .user-img 
+                                                            img(src="../assets/images/user/2.jpg", alt="")
+                                                        .user-content 
+                                                            .user-info 
+                                                                div.d-flex.justify-content-between.gap-3 
+                                                                    h6  
+                                                                        i.iconsax(data-icon="user-1")
+                                                                        | Michel Poe
+                                                                    span 
+                                                                        i.iconsax(data-icon="clock")
+                                                                        | Mar 29, 2022
+                                                                ul.rating.p-0.mb
+                                                                    li
+                                                                        i.fa-solid.fa-star
+                                                                    li
+                                                                        i.fa-solid.fa-star
+                                                                    li
+                                                                        i.fa-solid.fa-star
+                                                                    li
+                                                                        i.fa-solid.fa-star
+                                                                    li
+                                                                            i.fa-regular.fa-star
+
+                                                            p Khaki cotton blend military jacket flattering fit mock horn buttons and patch pockets showerproof black lightgrey. Printed lining patch pockets jersey blazer built in pocket square wool casual quilted jacket without hood azure.
+                                                            a(href="#") 
+                                                                span 
+                                                                    i.iconsax(data-icon="undo")
+                                                                    |  Replay
+                                                li 
+                                                    .comment-items 
+                                                        .user-img 
+                                                            img(src="../assets/images/user/3.jpg", alt="")
+                                                        .user-content 
+                                                            .user-info 
+                                                                div.d-flex.justify-content-between.gap-3 
+                                                                    h6  
+                                                                        i.iconsax(data-icon="user-1")
+                                                                        | Michel Poe
+                                                                    span 
+                                                                        i.iconsax(data-icon="clock")
+                                                                        | Mar 29, 2022
+                                                                ul.rating.p-0.mb
+                                                                    li
+                                                                        i.fa-solid.fa-star
+                                                                    li
+                                                                        i.fa-solid.fa-star
+                                                                    li
+                                                                        i.fa-solid.fa-star
+                                                                    li
+                                                                        i.fa-solid.fa-star
+                                                                    li
+                                                                            i.fa-regular.fa-star
+
+                                                            p Khaki cotton blend military jacket flattering fit mock horn buttons and patch pockets showerproof black lightgrey. Printed lining patch pockets jersey blazer built in pocket square wool casual quilted jacket without hood azure.
+                                                            a(href="#") 
+                                                                span 
+                                                                    i.iconsax(data-icon="undo")
+                                                                    |  Replay
+
+    //------ product slider section -------//
+    section.section-b-space.pt-0
+        .custom-container.container.product-contain
+            .title.text-start 
+                h3 Related Products
+                svg
+                    use(href='../assets/svg/icon-sprite.svg#main-line')
+            .swiper.special-offer-slide-2
+                .swiper-wrapper.ratio1_3
+                    .swiper-slide
+                        .product-box-3
+                            .img-wrapper
+                                .label-block
+                                    span.lable-1 NEW
+                                    a.label-2.wishlist-icon(href='javascript:void(0)' tabindex='0')
+                                        i.iconsax(data-icon="heart" aria-hidden='true' data-bs-toggle='tooltip' data-bs-title='Add to Wishlist')
+                                .product-image
+                                    a.pro-first(href="product.html") 
+                                        img.bg-img(src="../assets/images/product/product-3/15.jpg", alt="product")
+                                    a.pro-sec(href="product.html") 
+                                        img.bg-img(src="../assets/images/product/product-3/18.jpg", alt="product")
+                                .cart-info-icon 
+                                    a(href='#' data-bs-toggle='modal' data-bs-target='#addtocart' tabindex='0')
+                                        i.iconsax(data-icon="basket-2" aria-hidden='true' data-bs-toggle='tooltip' data-bs-title='Add to cart') 
+                                    a(href='compare.html' tabindex='0')
+                                        i.iconsax(data-icon="arrow-up-down" aria-hidden='true' data-bs-toggle='tooltip' data-bs-title='Compare')
+                                    a(href='#' data-bs-toggle='modal' data-bs-target='#quick-view' tabindex='0')
+                                        i.iconsax(data-icon="eye" aria-hidden='true' data-bs-toggle='tooltip' data-bs-title='Quick View')
+                                .countdown
+                                    ul.clockdiv2
+                                        li 
+                                            .timer
+                                                .days
+                                            span.title Days
+                                        li.dot 
+                                            span :
+                                        li 
+                                            .timer
+                                                .hours
+                                            span.title Hours
+                                        li.dot 
+                                            span :
+                                        li 
+                                            .timer
+                                                .minutes
+                                            span.title Min
+                                        li.dot 
+                                            span :
+                                        li 
+                                            .timer
+                                                .seconds
+                                            span.title Sec
+                            .product-detail
+                                ul.rating       
+                                    li
+                                        i.fa-solid.fa-star
+                                    li
+                                        i.fa-solid.fa-star
+                                    li
+                                        i.fa-solid.fa-star
+                                    li
+                                        i.fa-solid.fa-star-half-stroke
+                                    li
+                                        i.fa-regular.fa-star
+                                    li 4.3
+                                a(href="product.html") 
+                                    h6 Greciilooks Women's Stylish Top
+                                p $100.00  
+                                    del $140.00
+                                    span -20%
+                    .swiper-slide
+                        .product-box-3
+                            .img-wrapper
+                                .label-block
+                                    span.lable-1 NEW
+                                    a.label-2.wishlist-icon(href='javascript:void(0)' tabindex='0')
+                                        i.iconsax(data-icon="heart" aria-hidden='true' data-bs-toggle='tooltip' data-bs-title='Add to Wishlist')
+                                .product-image
+                                    a.pro-first(href="product.html") 
+                                        img.bg-img(src="../assets/images/product/product-3/20.jpg", alt="product")
+                                    a.pro-sec(href="product.html") 
+                                        img.bg-img(src="../assets/images/product/product-3/22.jpg", alt="product")
+                                .cart-info-icon 
+                                    a(href='#' data-bs-toggle='modal' data-bs-target='#addtocart' tabindex='0')
+                                        i.iconsax(data-icon="basket-2" aria-hidden='true' data-bs-toggle='tooltip' data-bs-title='Add to cart') 
+                                    a(href='compare.html' tabindex='0')
+                                        i.iconsax(data-icon="arrow-up-down" aria-hidden='true' data-bs-toggle='tooltip' data-bs-title='Compare')
+                                    a(href='#' data-bs-toggle='modal' data-bs-target='#quick-view' tabindex='0')
+                                        i.iconsax(data-icon="eye" aria-hidden='true' data-bs-toggle='tooltip' data-bs-title='Quick View')
+                            .product-detail
+                                ul.rating       
+                                    li
+                                        i.fa-solid.fa-star
+                                    li
+                                        i.fa-solid.fa-star
+                                    li
+                                        i.fa-solid.fa-star
+                                    li
+                                        i.fa-solid.fa-star
+                                    li
+                                        i.fa-regular.fa-star
+                                    li 4.3
+                                a(href="product.html") 
+                                    h6 Wide Linen-Blend Trousers
+                                p $100.00  
+                                    del $18.00 
+                    .swiper-slide
+                        .product-box-3
+                            .img-wrapper
+                                .label-block
+                                    span.lable-1 NEW
+                                    a.label-2.wishlist-icon(href='javascript:void(0)' tabindex='0')
+                                        i.iconsax(data-icon="heart" aria-hidden='true' data-bs-toggle='tooltip' data-bs-title='Add to Wishlist')
+                                .product-image
+                                    a.pro-first(href="product.html") 
+                                        img.bg-img(src="../assets/images/product/product-3/9.jpg", alt="product")
+                                    a.pro-sec(href="product.html") 
+                                        img.bg-img(src="../assets/images/product/product-3/11.jpg", alt="product")
+                                .cart-info-icon 
+                                    a(href='#' data-bs-toggle='modal' data-bs-target='#addtocart' tabindex='0')
+                                        i.iconsax(data-icon="basket-2" aria-hidden='true' data-bs-toggle='tooltip' data-bs-title='Add to cart') 
+                                    a(href='compare.html' tabindex='0')
+                                        i.iconsax(data-icon="arrow-up-down" aria-hidden='true' data-bs-toggle='tooltip' data-bs-title='Compare')
+                                    a(href='#' data-bs-toggle='modal' data-bs-target='#quick-view' tabindex='0')
+                                        i.iconsax(data-icon="eye" aria-hidden='true' data-bs-toggle='tooltip' data-bs-title='Quick View')
+                            .product-detail
+                                ul.rating       
+                                    li
+                                        i.fa-solid.fa-star
+                                    li
+                                        i.fa-solid.fa-star
+                                    li
+                                        i.fa-solid.fa-star
+                                    li
+                                        i.fa-solid.fa-star
+                                    li
+                                        i.fa-solid.fa-star
+                                    li 4.3
+                                a(href="product.html") 
+                                    h6 Long Sleeve Rounded T-Shirt
+                                p $12.30  
+                                    del $140.00
+                                    span -20%
+                    .swiper-slide
+                        .product-box-3
+                            .img-wrapper
+                                .label-block
+                                    span.lable-1 NEW
+                                    a.label-2.wishlist-icon(href='javascript:void(0)' tabindex='0')
+                                        i.iconsax(data-icon="heart" aria-hidden='true' data-bs-toggle='tooltip' data-bs-title='Add to Wishlist')
+                                .product-image
+                                    a.pro-first(href="product.html") 
+                                        img.bg-img(src="../assets/images/product/product-3/12.jpg", alt="product")
+                                    a.pro-sec(href="product.html") 
+                                        img.bg-img(src="../assets/images/product/product-3/13.jpg", alt="product")
+                                .cart-info-icon 
+                                    a(href='#' data-bs-toggle='modal' data-bs-target='#addtocart' tabindex='0')
+                                        i.iconsax(data-icon="basket-2" aria-hidden='true' data-bs-toggle='tooltip' data-bs-title='Add to cart') 
+                                    a(href='compare.html' tabindex='0')
+                                        i.iconsax(data-icon="arrow-up-down" aria-hidden='true' data-bs-toggle='tooltip' data-bs-title='Compare')
+                                    a(href='#' data-bs-toggle='modal' data-bs-target='#quick-view' tabindex='0')
+                                        i.iconsax(data-icon="eye" aria-hidden='true' data-bs-toggle='tooltip' data-bs-title='Quick View')
+                                .countdown
+                                    ul.clockdiv11
+                                        li 
+                                            .timer
+                                                .days
+                                            span.title Days
+                                        li.dot 
+                                            span :
+                                        li 
+                                            .timer
+                                                .hours
+                                            span.title Hours
+                                        li.dot 
+                                            span :
+                                        li 
+                                            .timer
+                                                .minutes
+                                            span.title Min
+                                        li.dot 
+                                            span :
+                                        li 
+                                            .timer
+                                                .seconds
+                                            span.title Sec
+                            .product-detail
+                                ul.rating       
+                                    li
+                                        i.fa-solid.fa-star
+                                    li
+                                        i.fa-solid.fa-star
+                                    li
+                                        i.fa-solid.fa-star
+                                    li
+                                        i.fa-solid.fa-star
+                                    li
+                                        i.fa-solid.fa-star-half-stroke
+                                    li 4.3
+                                a(href="product.html") 
+                                    h6 Blue lined White T-Shirt
+                                p $190.00  
+                                    del $210.00
+                    .swiper-slide
+                        .product-box-3
+                            .img-wrapper
+                                .label-block
+                                    span.lable-1 NEW
+                                    a.label-2.wishlist-icon(href='javascript:void(0)' tabindex='0')
+                                        i.iconsax(data-icon="heart" aria-hidden='true' data-bs-toggle='tooltip' data-bs-title='Add to Wishlist')
+                                .product-image
+                                    a.pro-first(href="product.html") 
+                                        img.bg-img(src="../assets/images/product/product-3/21.jpg", alt="product")
+                                    a.pro-sec(href="product.html") 
+                                        img.bg-img(src="../assets/images/product/product-3/14.jpg", alt="product")
+                                .cart-info-icon 
+                                    a(href='#' data-bs-toggle='modal' data-bs-target='#addtocart' tabindex='0')
+                                        i.iconsax(data-icon="basket-2" aria-hidden='true' data-bs-toggle='tooltip' data-bs-title='Add to cart') 
+                                    a(href='compare.html' tabindex='0')
+                                        i.iconsax(data-icon="arrow-up-down" aria-hidden='true' data-bs-toggle='tooltip' data-bs-title='Compare')
+                                    a(href='#' data-bs-toggle='modal' data-bs-target='#quick-view' tabindex='0')
+                                        i.iconsax(data-icon="eye" aria-hidden='true' data-bs-toggle='tooltip' data-bs-title='Quick View')
+                                .countdown
+                                    ul.clockdiv10
+                                        li 
+                                            .timer
+                                                .days
+                                            span.title Days
+                                        li.dot 
+                                            span :
+                                        li 
+                                            .timer
+                                                .hours
+                                            span.title Hours
+                                        li.dot 
+                                            span :
+                                        li 
+                                            .timer
+                                                .minutes
+                                            span.title Min
+                                        li.dot 
+                                            span :
+                                        li 
+                                            .timer
+                                                .seconds
+                                            span.title Sec
+                            .product-detail
+                                ul.rating       
+                                    li
+                                        i.fa-solid.fa-star
+                                    li
+                                        i.fa-solid.fa-star
+                                    li
+                                        i.fa-solid.fa-star
+                                    li
+                                        i.fa-solid.fa-star-half-stroke
+                                    li
+                                        i.fa-regular.fa-star
+                                    li 4.3
+                                a(href="product.html") 
+                                    h6 Greciilooks Women's Stylish Top
+                                p $100.00  
+                                    del $140.00
+                                    span -20%
+            
+    //-------- Footer Section ---------//
+    footer.footer-layout-img 
+        section.section-b-space.footer-1
+            .custom-container.container
+                .row 
+                    .col-xl-3.col-lg-4.col-md-6
+                        .footer-content
+                            .footer-logo
+                                a(href="index.html") 
+                                    img.img-fluid(src="../assets/images/logo/logo-white-1.png" alt="Footer Logo")
+                            ul 
+                                li 
+                                    i.iconsax(data-icon="location")
+                                    h6 1418 Riverwood Drive, Suite 3245 Cottonwood, CA 96052, United States
+                                li 
+                                    i.iconsax(data-icon="phone-calling")
+                                    h6 + 185659635
+                                li 
+                                    i.iconsax(data-icon="mail")
+                                    h6 contact@katie.com
+                    .col.offset-xl-1
+                        .footer-content
+                            div
+                                .footer-title.d-md-block 
+                                    h5 About Us
+                                    ul.footer-details.accordion-hidden 
+                                        li 
+                                            a.nav(href="index.html") Home
+                                        li 
+                                            a.nav(href="collection-left-sidebar.html") Shop
+                                        li 
+                                            a.nav(href="about-us.html") About Us
+                                        li 
+                                            a.nav(href="blog-left-sidebar.html") Blog
+                                        li 
+                                            a.nav(href="contact.html") Contact
+                    .col
+                        .footer-content
+                            div
+                                .footer-title.d-md-block
+                                    h5 New Categories
+                                    ul.footer-details.accordion-hidden 
+                                        li 
+                                            a.nav(href="product-bundle.html") Latest Shoes
+                                        li 
+                                            a.nav(href="variant-radio.html") Branded Jeans
+                                        li 
+                                            a.nav(href="product.html") New Jackets
+                                        li 
+                                            a.nav(href="variant-images.html") Colorful Hoodies
+                                        li 
+                                            a.nav(href="variant-dropdown.html") Best Perfume
+                    .col
+                        .footer-content
+                            div
+                                .footer-title.d-md-block 
+                                    h5 Get Help
+                                    ul.footer-details.accordion-hidden 
+                                        li 
+                                            a.nav(href="order-success.html") Your Orders
+                                        li 
+                                            a.nav(href="dashboard.html") Your Account
+                                        li 
+                                            a.nav(href="order-tracking.html") Track Orders
+                                        li 
+                                            a.nav(href="wishlist.html") Your Wishlist
+                                        li 
+                                            a.nav(href="faq.html") Shopping FAQs
+                    .col
+                        .footer-content
+                            div
+                                .footer-title.d-md-block 
+                                    h5 My Account
+                                    ul.footer-details.accordion-hidden 
+                                        li 
+                                            a.nav(href="dashboard.html") My Account
+                                        li 
+                                            a.nav(href="login.html") Login/Register
+                                        li 
+                                            a.nav(href="cart.html") Cart
+                                        li 
+                                            a.nav(href="order-success.html") Order History
+                                        li 
+                                            a.nav(href="faq.html") Delivery FAQs
+        .sub-footer 
+            .custom-container.container
+                .row 
+                    .col-xl-6.col-md-6.col-sm-12
+                        .footer-end
+                            h6 2024 Copyright By Themeforest Powered By Pixelstrap 
+                    .col-xl-6.col-md-6.col-sm-12
+                        .payment-card-bottom
+                            ul 
+                                li 
+                                    img(src="../assets/images/footer/discover.png" alt="")
+                                li 
+                                    img(src="../assets/images/footer/american.png" alt="")
+                                li 
+                                    img(src="../assets/images/footer/master.png" alt="")
+                                li 
+                                    img(src="../assets/images/footer/giro.png" alt="")
+    
+    #offcanvasRight.offcanvas.offcanvas-end.shopping-details(tabindex='-1' aria-labelledby='offcanvasRightLabel')
+        .offcanvas-header
+            h4#offcanvasRightLabel.offcanvas-title Shopping Cart
+            button.btn-close(type='button' data-bs-dismiss='offcanvas' aria-label='Close')
+        .offcanvas-body.theme-scrollbar
+            ul.offcanvas-cart
+                li 
+                    a(href="#") 
+                        img(src="../assets/images/cart/1.jpg", alt="") 
+                    div 
+                        h6.mb-0 Shirts Men's Clothing
+                        p $35
+                            del $40
+                            span.btn-cart
+                                | $
+                                span#total.btn-cart__total 105
+                        .btn-containter
+                            .btn-control
+                                button#btn-remove.btn-control__remove &minus;
+                                .btn-control__quantity
+                                    #quantity-previous 2
+                                    #quantity-current 3
+                                    #quantity-next 4
+                                button#btn-add.btn-control__add +
+                    i.iconsax.delete-icon(data-icon="trash")
+                li 
+                    a(href="#") 
+                        img(src="../assets/images/cart/2.jpg", alt="") 
+                    div 
+                        h6.mb-0 Shirts Men's Clothing
+                        p $35
+                            del $40
+                            span.btn-cart
+                                | $
+                                span#total1.btn-cart__total 105
+                        .btn-containter
+                            .btn-control
+                                button#btn-remove1.btn-control__remove &minus;
+                                .btn-control__quantity
+                                    #quantity1-previous 2
+                                    #quantity1-current 3
+                                    #quantity1-next 4
+                                button#btn-add1.btn-control__add +
+                    i.iconsax.delete-icon(data-icon="trash")
+                li 
+                    a(href="#") 
+                        img(src="../assets/images/cart/3.jpg", alt="") 
+                    div 
+                        h6.mb-0 Shirts Men's Clothing
+                        p $35
+                            del $40
+                            span.btn-cart
+                                | $
+                                span#total2.btn-cart__total 105
+                        .btn-containter
+                            .btn-control
+                                button#btn-remove2.btn-control__remove &minus;
+                                .btn-control__quantity
+                                    #quantity2-previous 2
+                                    #quantity2-current 3
+                                    #quantity2-next 4
+                                button#btn-add2.btn-control__add +
+                    i.iconsax.delete-icon(data-icon="trash")
+                li 
+                    a(href="#") 
+                        img(src="../assets/images/cart/4.jpg", alt="") 
+                    div 
+                        h6.mb-0 Shirts Men's Clothing
+                        p $35
+                            del $40
+                            span.btn-cart
+                                | $
+                                span#total3.btn-cart__total 105
+                        .btn-containter
+                            .btn-control
+                                button#btn-remove3.btn-control__remove &minus;
+                                .btn-control__quantity
+                                    #quantity3-previous 2
+                                    #quantity3-current 3
+                                    #quantity3-next 4
+                                button#btn-add3.btn-control__add +
+                    i.iconsax.delete-icon(data-icon="trash")
+        .offcanvas-footer
+            p Spend 
+                span $ 14.81  
+                | more and enjoy  
+                span FREE SHIPPING!
+            .footer-range-slider
+                .progress(role='progressbar' aria-label='Animated striped example' aria-valuenow='46' aria-valuemin='0' aria-valuemax='100')
+                    .progress-bar.progress-bar-striped.progress-bar-animated.theme-default(style='width: 46%')
+            .price-box  
+                h6 Total :
+                p $ 49.59 USD
+            .cart-button 
+                a.btn.btn_outline(href="cart.html")  View Cart
+                a.btn.btn_black(href="check-out.html")  Checkout
+   
+    //- Reviews modal 
+    #Reviews-modal.customer-reviews-modal.modal.theme-modal.fade(tabindex='-1' role='dialog' aria-modal='true')
+        .modal-dialog.modal-md.modal-dialog-centered(role='document')
+            .modal-content
+                .modal-header
+                    h4 Write A Review
+                    button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+                .modal-body.pt-0
+                    .row.g-3
+                        .col-12 
+                            .reviews-product 
+                                div 
+                                    img(src="../assets/images/modal/1.jpg", alt="")
+                                    div 
+                                        h5 Denim Skirts Corset Blazer
+                                        p $20.00 
+                                            del $35.00
+                        .col-12 
+                            .customer-rating
+                                label.form-label Review Content :
+                                ul.rating.p-0.mb
+                                    li
+                                        i.fa-regular.fa-star
+                                    li
+                                        i.fa-regular.fa-star
+                                    li
+                                        i.fa-regular.fa-star
+                                    li
+                                        i.fa-regular.fa-star
+                                    li
+                                        i.fa-regular.fa-star            
+                        .col-12     
+                            .from-group 
+                                label.form-label Review Content :
+                                textarea#comment.form-control(cols='30' rows='4' placeholder="Write your comments here...")
+                        button.btn.btn-submit(type='submit' data-bs-dismiss="modal" aria-label="Close") Submit
+    
+    //- Reviews modal 
+    #question-modal.reviews-modal.modal.theme-modal.fade(tabindex='-1' role='dialog' aria-modal='true')
+        .modal-dialog.modal-md.modal-dialog-centered(role='document')
+            .modal-content
+                .modal-header
+                    h4 Ask a question
+                    button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+                .modal-body.pt-0
+                    .row.g-3
+                        .col-12 
+                            .reviews-product 
+                                div 
+                                    img(src="../assets/images/modal/1.jpg", alt="")
+                                    div 
+                                        h5 Denim Skirts Corset Blazer
+                                        p $20.00 
+                                            del $35.00
+                                        ul.rating.p-0.mb
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-regular.fa-star            
+                        .col-12     
+                            .from-group 
+                                label.form-label Your Question
+                                textarea#comment-1.form-control(cols='30' rows='5' placeholder="Write Your Question here...")
+                        .modal-button-group
+                            button.btn.btn-cancel(type='submit' data-bs-dismiss="modal" aria-label="Close") Cancel
+                            button.btn.btn-submit(type='submit' data-bs-dismiss="modal" aria-label="Close") Submit
+    
+    //-  Quick-view modal popup start -//                           
+    #quick-view.modal.theme-modal.fade(tabindex='-1' role='dialog' aria-modal='true')
+      .modal-dialog.modal-lg.modal-dialog-centered(role='document')
+        .modal-content
+          .modal-body
+            button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+            .row.align-items-center
+              .col-lg-6.col-xs-12
+                .quick-view-img
+                    .swiper.modal-slide-1
+                        .swiper-wrapper.ratio_square-2
+                            .swiper-slide
+                                img.bg-img(src='../assets/images/pro/1.jpg' alt="")
+                            .swiper-slide
+                                img.bg-img(src='../assets/images/pro/2.jpg' alt="")
+                            .swiper-slide
+                                img.bg-img(src='../assets/images/pro/3.jpg' alt="")
+                            .swiper-slide
+                                img.bg-img(src='../assets/images/pro/4.jpg' alt="")
+                    .swiper.modal-slide-2
+                        .swiper-wrapper.ratio3_4
+                            .swiper-slide
+                                img.bg-img(src='../assets/images/pro/5.jpg' alt="")
+                            .swiper-slide
+                                img.bg-img(src='../assets/images/pro/6.jpg' alt="")
+                            .swiper-slide
+                                img.bg-img(src='../assets/images/pro/7.jpg' alt="")
+                            .swiper-slide
+                                img.bg-img(src='../assets/images/pro/8.jpg' alt="")
+              .col-lg-6.rtl-text
+                .product-right
+                  h3 Women Pink Shirt
+                  h5 $32.96
+                    del $50.12
+                  ul.color-variant
+                    li.bg-color-brown
+                    li.bg-color-chocolate
+                    li.bg-color-coffee
+                    li.bg-color-black
+                  .border-product
+                    h6 Product details
+                    p Western yoke on an Indigo shirt made of 100% cotton. Ideal for informal gatherings, this top will ensure your comfort and style throughout the day.
+                  .product-description
+                    .size-box
+                      ul
+                        li.active
+                          a(href='#') s
+                        li
+                          a(href='#') m
+                        li
+                          a(href='#') l
+                        li
+                          a(href='#') xl
+                    h6.product-title Quantity
+                    .quantity
+                        button.minus(type='button')
+                            i.fa-solid.fa-minus
+                        input(type='number' value='1' min='1' max='20')
+                        button.plus(type='button')
+                            i.fa-solid.fa-plus
+                  .product-buttons
+                    a.btn.btn-solid(href='cart.html') Add to cart
+                    a.btn.btn-solid(href='product.html') View detail
+    
+    //- Terms & Conditions
+    #terms-conditions-modal.terms-conditions-modal.modal.theme-modal.fade(tabindex='-1' role='dialog' aria-modal='true')
+        .modal-dialog.modal-lg.modal-dialog-centered(role='document')
+            .modal-content
+                .modal-header
+                    h4 Delivery & return
+                    button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+                .modal-body.pt-0
+                    ul.returns-policy 
+                        li  
+                            b Return Policy: 
+                            | Most unopened items can be returned within 30 days of delivery for a full refund. We cover return shipping costs for our errors (e.g., incorrect or defective items). Refunds typically process within four weeks, although often faster. This includes return transit time (5-10 business days), processing upon receipt (3-5 business days), and your bank's refund processing (5-10 business days). To return an item, log in, access your order, and click "Return Item(s)." We'll email you once your return is processed.
+                        li – Free shipping on orders over $100.
+                        li – Returns accepted within 10 days of receipt or tracking number for unworn items. 
+                        li – Items must be in their original packaging and
+                        li – Standard shipping charges apply otherwise. Please refer to our delivery Terms & Conditions for further details.
+                        li – Returned products must be in original packaging, safety wrapped, undamaged, and unworn. 
+    
+    //- cart-view modal popup start -//                         
+    #addtocart.modal.theme-modal.fade.cart-modal(tabindex='-1' role='dialog' aria-modal='true')
+      .modal-dialog.modal-lg.modal-dialog-centered(role='document')
+        .modal-content
+          .modal-body.modal1
+            .custom-container.container
+                 .row
+                    .col-12.px-0   
+                        .modal-bg.addtocart
+                            button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+                            .d-flex
+                                a(href='#')
+                                    img.img-fluid.blur-up.lazyload.pro-img(src='../assets/images/modal/0.jpg' alt='')
+                                .add-card-content.align-self-center.text-center
+                                    a(href='#')
+                                        h6
+                                            i.fa-solid.fa-check   
+                                            | Item 
+                                            span men full sleeves
+                                            span  successfully added to your Cart
+                                    .buttons
+                                        a.view-cart.btn.btn-solid(href='cart.html') Your cart
+                                        a.checkout.btn.btn-solid(href='check-out.html') Check out
+                                        a.continue.btn.btn-solid(href='index.html') Continue shopping
+                                    .upsell_payment
+                                        img.img-fluid.blur-up.lazyload(src='../assets/images/payment_cart.png' alt='')
+                    .col-12
+                        .product-upsell
+                            h5 Products Loved by Our Customers
+                            svg
+                                use(href='../assets/svg/icon-sprite.svg#main-line')
+                    .col-lg-4.col-md-6.col-12
+                        .card-img   
+                            img(src="../assets/images/modal/1.jpg", alt="user")
+                            a(href="#")  
+                                h6 Woven Jacket
+                                p $25
+                        .card-img   
+                            img(src="../assets/images/modal/2.jpg", alt="user")
+                            a(href="#") 
+                                h6 Printed Dresses
+                                p $25
+                    .col-lg-4.col-md-6.col-12  
+                        .card-img   
+                            img(src="../assets/images/modal/3.jpg", alt="user")
+                            a(href="#") 
+                                h6 Woven Jacket
+                                p $25
+                        .card-img   
+                            img(src="../assets/images/modal/4.jpg", alt="user")
+                            a(href="#") 
+                                h6 Printed Dresses
+                                p $25
+                    .col-lg-4.col-md-6.col-12
+                        .card-img   
+                            img(src="../assets/images/modal/5.jpg", alt="user")
+                            a(href="#") 
+                                h6 Woven Jacket
+                                p $25
+                        .card-img   
+                            img(src="../assets/images/modal/6.jpg", alt="user")
+                            a(href="#") 
+                                h6 Printed Dresses
+                                p $25
+
+    //- size chart
+    #size-chart.modal.theme-modal.fade(tabindex='-1' role='dialog' aria-modal='true')
+        .modal-dialog.modal-lg.modal-dialog-centered(role='document')
+            .modal-content
+                .modal-header
+                    h4 Size Chart
+                    button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+                .modal-body.pt-0
+                    a(href="#") 
+                        img.img-fluid(src="../assets/images/size-chart/size-chart.jpg", alt="")
+
+    //- Question Modal
+    #question-box.modal.theme-modal.fade.question-answer-modal(tabindex='-1' role='dialog' aria-modal='true')
+        .modal-dialog.modal-dialog-centered(role='document')
+            .modal-content
+                .modal-header
+                    h4 Ask a Question
+                    button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+                .modal-body.pt-0
+                    .row.g-3
+                        .col-12 
+                            .reviews-product 
+                                div 
+                                    img(src="../assets/images/modal/0.jpg", alt="")
+                                    div 
+                                        h5 Denim Skirts Corset Blazer
+                                        p $20.00 
+                                            del $35.00           
+                        .col-12     
+                            .from-group 
+                                label.form-label Your Question :
+                                textarea#comment.form-control(cols='30' rows='4' placeholder="Write your Question here...")
+                        .modal-button-group
+                            button.btn.btn-cancel(type='submit' data-bs-dismiss="modal" aria-label="Close") Cancel
+                            button.btn.btn-submit(type='submit' data-bs-dismiss="modal" aria-label="Close") Submit
+
+    //- Social box
+    #social-box.modal.theme-modal.fade.social-modal(tabindex='-1' role='dialog' aria-modal='true')
+        .modal-dialog.modal-sm.modal-dialog-centered(role='document')
+            .modal-content
+                .modal-header
+                    h6 Copy link
+                    button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+                .modal-body
+                    input.form-field.form-field--input(type='text' value='http://localhost:3000/katie/template/product.html#')
+                    h6 Share:
+                    ul 
+                        li 
+                            a(href="https://www.facebook.com/" target="_blank") 
+                                i.fa-brands.fa-facebook-f
+                        li 
+                            a(href="https://in.pinterest.com/" target="_blank") 
+                                i.fa-brands.fa-pinterest-p
+                        li 
+                            a(href="https://twitter.com/" target="_blank") 
+                                i.fa-brands.fa-x-twitter
+                        li 
+                            a(href="https://www.instagram.com/" target="_blank") 
+                                i.fa-brands.fa-instagram
+
+    #offcanvasTop.offcanvas.offcanvas-top.search-details(tabindex='-1' aria-labelledby='offcanvasTopLabel')
+        .offcanvas-header
+            button.btn-close(type='button' data-bs-dismiss='offcanvas' aria-label='Close')
+                i.fa-solid.fa-xmark
+        .offcanvas-body.theme-scrollbar
+            div.container
+                h3 What are you trying to find?
+                div.search-box 
+                    input(type="search", name="text" placeholder="I'm looking for…")
+                    i.iconsax(data-icon="search-normal-2")
+                h4 Popular Searches
+                ul.rapid-search
+                    li 
+                        a(href="collection-left-sidebar.html")
+                            i.iconsax(data-icon="search-normal-2")
+                            | Jeans Women
+                    li 
+                        a(href="collection-left-sidebar.html")
+                            i.iconsax(data-icon="search-normal-2")
+                            | Blazer Women
+                    li 
+                        a(href="collection-left-sidebar.html")
+                            i.iconsax(data-icon="search-normal-2")
+                            | Jeans Men
+                    li 
+                        a(href="collection-left-sidebar.html")
+                            i.iconsax(data-icon="search-normal-2")
+                            | Blazer Men
+                    li 
+                        a(href="collection-left-sidebar.html")
+                            i.iconsax(data-icon="search-normal-2")
+                            | T-Shirts Men
+                    li 
+                        a(href="collection-left-sidebar.html")
+                            i.iconsax(data-icon="search-normal-2")
+                            | Shoes Men
+                    li 
+                        a(href="collection-left-sidebar.html")
+                            i.iconsax(data-icon="search-normal-2")
+                            | T-Shirts Women
+                    li 
+                        a(href="collection-left-sidebar.html")
+                            i.iconsax(data-icon="search-normal-2")
+                            | Bags
+                    li 
+                        a(href="collection-left-sidebar.html")
+                            i.iconsax(data-icon="search-normal-2")
+                            | Sneakers Women
+                    li 
+                        a(href="collection-left-sidebar.html")
+                            i.iconsax(data-icon="search-normal-2")
+                            | Dresses
+                h4 You Might Like
+                .row.gy-4.ratio_square-2.preemptive-search  
+                        .col-xl-2.col-sm-4.col-6  
+                            .product-box-6
+                                .img-wrapper
+                                    .product-image
+                                        a(href="product.html") 
+                                            img.bg-img(src="../assets/images/product/product-2/blazers/1.jpg", alt="product")
+                                .product-detail
+                                    div
+                                        a(href="product.html") 
+                                            h6  Women's Stylish Top
+                                        p $50.00 
+                                        ul.rating       
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star-half-stroke
+                                            li
+                                                i.fa-regular.fa-star
+                                            li 4+
+                        .col-xl-2.col-sm-4.col-6  
+                            .product-box-6
+                                .img-wrapper
+                                    .product-image
+                                        a(href="product.html") 
+                                            img.bg-img(src="../assets/images/product/product-2/blazers/2.jpg", alt="product")
+                                .product-detail
+                                    div
+                                        a(href="product.html") 
+                                            h6  Women's Stylish Top
+                                        p $95.00 
+                                            del $140.00
+                                        ul.rating       
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star-half-stroke
+                                            li
+                                                i.fa-regular.fa-star
+                                            li
+                                                i.fa-regular.fa-star
+                                            li 3+
+                        .col-xl-2.col-sm-4.col-6  
+                            .product-box-6
+                                .img-wrapper
+                                    .product-image
+                                        a(href="product.html") 
+                                            img.bg-img(src="../assets/images/product/product-2/blazers/3.jpg", alt="product")
+                                .product-detail
+                                    div
+                                        a(href="product.html") 
+                                            h6  Women's Stylish Top
+                                        p $80.00 
+                                            del $140.00
+                                        ul.rating       
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star-half-stroke
+                                            li
+                                                i.fa-regular.fa-star
+                                            li 4
+                        .col-xl-2.col-sm-4.col-6  
+                            .product-box-6
+                                .img-wrapper
+                                    .product-image
+                                        a(href="product.html") 
+                                            img.bg-img(src="../assets/images/product/product-2/blazers/4.jpg", alt="product")
+                                .product-detail
+                                    div
+                                        a(href="product.html") 
+                                            h6  Women's Stylish Top
+                                        p $90.00 
+                                        ul.rating       
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star-half-stroke
+                                            li
+                                                i.fa-regular.fa-star
+                                            li 2+
+                        .col-xl-2.col-sm-4.col-6  
+                            .product-box-6
+                                .img-wrapper
+                                    .product-image
+                                        a(href="product.html") 
+                                            img.bg-img(src="../assets/images/product/product-2/blazers/5.jpg", alt="product")
+                                .product-detail
+                                    div
+                                        a(href="product.html") 
+                                            h6  Women's Stylish Top
+                                        p $180.00 
+                                            del $140.00
+                                        ul.rating       
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star-half-stroke
+                                            li
+                                                i.fa-regular.fa-star
+                                            li 4+
+                        .col-xl-2.col-sm-4.col-6  
+                            .product-box-6
+                                .img-wrapper
+                                    .product-image
+                                        a(href="product.html") 
+                                            img.bg-img(src="../assets/images/product/product-2/blazers/6.jpg", alt="product")
+                                .product-detail
+                                    a(href="product.html") 
+                                        h6  Women's Stylish Top
+                                    p $120.00 
+                                    ul.rating       
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star
+                                            li
+                                                i.fa-solid.fa-star-half-stroke
+                                            li
+                                                i.fa-regular.fa-star
+                                            li 4+
+  
+    //- Cookie Box -//
+    .wrapper
+        .title-box 
+            img(src="../assets/images/other-img/cookie.png", alt="")
+            h3 Cookies Consent
+        .info
+            p We use cookies to improve our site and your shopping experience. By continuing to browse our site you accept our cookie policy.
+        .buttons
+            button#acceptBtn.button.btn.btn_outline.sm Accept
+            button.button.btn.btn_black.sm Decline
+
+    //- 
+    .theme-btns
+        button#dark-btn.btntheme
+            i.fa-regular.fa-moon
+            .text Dark
+            
+        button#rtl-btn.btntheme.rtlBtnEl
+            i.fa-solid.fa-repeat
+            .rtl Rtl
+
+    include ../../components/footer-files

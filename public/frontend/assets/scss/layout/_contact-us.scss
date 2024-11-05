@@ -1,0 +1,115 @@
+.contact-main{
+    .contact-box {
+        p {
+            margin-bottom: 20px; 
+            @include text-ellipsis ( $line: 1,);
+        }
+        h6 {
+            @include text-ellipsis ( $line: 1,);
+        }
+        .contact-form {
+            label {
+                font-size: calc(15px + (16 - 15) * ((100vw - 320px) / (1920 - 320)));
+                font-weight: 500;
+            }
+            input {
+                background-color: rgba(var(--box-background), 1);
+                padding: 12px 15px;
+                border: 1px solid rgba(var(--light-border), 1);
+                &:focus {
+                    box-shadow: none;
+                }
+                &::placeholder {
+                    color: rgba(var(--light-color), 0.8);
+                }
+            }
+            textarea{
+                background-color: rgba(var(--box-background), 1);
+                border: 1px solid rgba(var(--light-border), 1);
+                padding: 10px;
+                &:focus {
+                    box-shadow: none;
+                }
+                &::placeholder {
+                    color: rgba(var(--light-color), 0.8);
+                }
+            }
+        }   
+    }
+    .contact-img {
+        @media (max-width: 991px) {
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        img {
+            @media (max-width: 991px) {
+                width: 60%;
+            }
+            @media (max-width: 767px) {
+                width: 90%;
+            }
+        }
+    }
+}
+.address-content{
+    margin-bottom: 12px !important;
+    p {
+        font-size: calc(18px + (24 - 18) * ((100vw - 320px) / (1920 - 320))) !important;
+        font-weight: 500;
+        color: rgba(var(--theme-font-color), 1);
+        margin: 0 !important;
+        span {
+            background-color: rgba(var(--theme-font-color), 1) !important;
+        }
+    }
+}
+.address-items {
+    display: flex;
+    align-items: center;
+    .icon-box {
+        height: 50px;
+        width: 50px;
+        border-radius: $radius-4;
+        background-color: rgba(var(--theme-default), 1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 1;
+        .iconsax {
+            --Iconsax-Size: 24px;
+            --Iconsax-Color: rgba(var(--white), 1);
+        }
+    }
+    .contact-box {
+        width: calc(100% - 50px);
+        background-color: rgba(var(--box-background), 1);
+        padding: 20px 10px 20px 40px;
+        border: 1px solid rgba(var(--light-border), 1);
+        border-radius: $radius-4;
+        transform: translateX(-24px);
+        [dir="rtl"] & {
+            padding: 20px 40px 20px 10px;
+            transform: translateX(24px);
+        }
+        h6 {
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        p {
+            margin-bottom: 0;
+        }
+    }
+    &:hover {
+        .icon-box {
+            .iconsax{
+                animation: tada 2s ease infinite;
+            }
+        }
+    }
+}
+.map-section{
+    margin-bottom: -10px;
+}
