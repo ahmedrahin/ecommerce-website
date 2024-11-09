@@ -23,9 +23,9 @@ class SelectProduct extends Component
     {
         $this->loadProducts();
         $this->categories = Category::orderBy('name', 'asc')->where('status', 1)->get();
+        
         $this->selectedProducts = session()->get('selectedProducts', []);
         $this->quantities = session()->get('quantities', []);
-    
         $this->totalQuantity = session()->get('totalQuantity', 0);
         $this->totalCost = session()->get('totalCost', 0);
     

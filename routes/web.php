@@ -7,6 +7,7 @@
 */
 
 use App\Http\Controllers\Frontend\PagesController;
+use App\Http\Controllers\Frontend\ShopController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,7 +45,15 @@ use App\Http\Controllers\Apps\CouponController;
 |--------------------------------------------------------------------------
 */
 
+// home and static pages
 Route::get('/', [PagesController::class, 'home'])->name('homepage');
+
+// shop page
+Route::prefix('shop')->controller(ShopController::class)->group(function () {
+    Route::get('/', 'allProducts')->name('shop');
+});
+// product-details page
+Route::get('/product/{slug}', [ShopController::class, 'productDetails'])->name('product-details');
 
 /*
 |--------------------------------------------------------------------------
@@ -84,7 +93,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // product management
     Route::name('product-management.')->group(function () {
         Route::controller(ProductController::class)->group(function () {
-
             // Apply middleware for permissions
             Route::get('/all-product', 'index')->name('index')->middleware('can:all product');
             Route::get('/create-product', 'create')->name('create')->middleware('can:add product');
