@@ -16,7 +16,16 @@ class ShopController extends Controller
     // product details page
     public function productDetails(string $slug){
         if( $slug ){
-            $product = Product::where('slug', $slug)->first();
+            $product = Product::where('slug', $slug)
+            ->with([
+                'category:id,name',
+                'brand:id,name',
+                'galleryImages:id,product_id,image',
+                'tags:id,product_id,name',
+                'productStock:id,product_id',
+                'productStock.attributeOptions:id,product_stock_id,attribute_id,attribute_value_id'
+            ])
+            ->first();
         }
         return view('frontend.pages.product.details', compact('product'));
     }

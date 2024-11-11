@@ -12,6 +12,11 @@ class Product extends Model
     use HasFactory, SoftDeletes;
 
     protected $guarded = [];
+    
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItems::class);
+    }
 
     public function category()
     {

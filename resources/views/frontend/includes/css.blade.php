@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/vendors/iconsax.css')}}"/>
 <!-- Bootstrap css-->
 <link rel="stylesheet" type="text/css" id="rtl-link" href="{{asset('frontend/css/vendors/bootstrap.css')}}"/>
-<link rel="stylesheet" type="text/css" href="{{asset('frontend/css/vendors/swiper-slider/swiper-bundle.min.css')}}"/>
+
 <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/vendors/toastify.css')}}"/>
 <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/style.css')}}"/>
 <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/custom.css')}}"/>

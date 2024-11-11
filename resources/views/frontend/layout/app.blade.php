@@ -5,6 +5,7 @@
 <head>
     @include('frontend.includes.header')
     @include('frontend.includes.css')
+    @livewireStyles
 </head>
 
 <body class="skeleton_body">
@@ -17,8 +18,10 @@
  
     @include('frontend.includes.footer')
     @yield('footer-content')
+    @include('frontend.includes.cart-sidebar')
     @include('frontend.includes.script')
 
+    @livewireScripts
 </body>
 
 </html>

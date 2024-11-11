@@ -6341,7 +6341,7 @@ footer .footer-1 .social-icon > li:hover a i {
 }
 .product-detail-box .product-option h3 {
     font-size: calc(17.6px + 0.75vw);
-    margin: 20px 0 15px;
+    margin: 10px 0 7px;
 }
 .product-detail-box .product-option .sale-box {
     background-color: rgba(var(--box-background), 1);
@@ -6393,7 +6393,7 @@ footer .footer-1 .social-icon > li:hover a i {
 }
 .product-detail-box .product-option .rating ul {
     display: flex;
-    gap: 10px;
+    gap: 3px;
     margin: 6px 0 10px;
 }
 .product-detail-box .product-option .rating ul li {
@@ -6402,7 +6402,7 @@ footer .footer-1 .social-icon > li:hover a i {
 .product-detail-box .product-option .rating ul li i {
     color: #f99d21;
 }
-.product-detail-box .product-option .rating > p {
+.short-description, .product-detail-box .product-option .rating > p span {
     color: rgba(var(--light-color), 1);
     display: -webkit-box !important;
     margin: 6px 0;
@@ -7030,13 +7030,7 @@ footer .footer-1 .social-icon > li:hover a i {
     display: flex;
     gap: 10px;
 }
-.customer-reviews-modal .modal-body .customer-rating label,
-.question-answer-modal .modal-body .customer-rating label {
-    color: rgba(var(--theme-font-color), 1);
-    font-size: 16px;
-    font-weight: 400;
-    margin-bottom: 4px;
-}
+
 .customer-reviews-modal .modal-body .customer-rating .rating li i,
 .question-answer-modal .modal-body .customer-rating .rating li i {
     color: rgba(var(--star-yellow), 1);

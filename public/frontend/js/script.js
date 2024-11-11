@@ -138,61 +138,9 @@ for (var i = 0; i < footerButton.length; ++i) {
 }
 
 
-/*====================
-       title change 
-   =======================*/
-var title = document.title;
 
-window.addEventListener('focus', function () {
-    document.title = title;
-});
 
-window.addEventListener('blur', function () {
-    document.title = "🎉 Come Back...";
-});
 
-/*====================
-   other js 
-=======================*/
-
-document.addEventListener('DOMContentLoaded', function () {
-    console.log("DOM fully loaded and parsed");
-
-    var sizeItems = document.querySelectorAll('.size-box ul li');
-    console.log("sizeItems:", sizeItems);
-
-    sizeItems.forEach(function (item) {
-        item.addEventListener('click', function (e) {
-            console.log("Clicked on size item:", this);
-
-            sizeItems.forEach(function (sizeItem) {
-                sizeItem.classList.remove('active');
-            });
-
-            var selectSize = document.getElementById('selectSize');
-            console.log("selectSize:", selectSize);
-
-            if (selectSize) {
-                selectSize.classList.remove('cartMove');
-            } else {
-                console.log("Element with id 'selectSize' not found.");
-            }
-
-            this.classList.add('active');
-            this.parentNode.classList.add('selected');
-        });
-    });
-});
-
-var colorItems = document.querySelectorAll('.color-variant li');
-colorItems.forEach(function (item) {
-    item.addEventListener('click', function (e) {
-        colorItems.forEach(function (colorItem) {
-            colorItem.classList.remove('active');
-        });
-        this.classList.add('active');
-    });
-});
 
 
 /*====================

@@ -170,6 +170,7 @@ var swiper = new Swiper(".special-offer-slide-2", {
   spaceBetween: 30,
   slidesPerView: 4,
   loop: true,
+  
   pagination: {
     el: ".swiper-pagination",
     clickable: true,
@@ -304,6 +305,7 @@ var swiper = new Swiper(".product-slider", {
   direction: 'vertical',
   spaceBetween: 15,
   slidesPerView: 5,
+  initialSlide: 0,
   loop: true,
   freeMode: true,
   watchSlidesProgress: true,
