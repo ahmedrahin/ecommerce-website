@@ -2620,6 +2620,8 @@ header .mobile-fix-option {
 }
 .shopping-details .offcanvas-body > ul li img {
     width: 90px;
+    height: 90px;
+    object-fit: cover;
 }
 .shopping-details .offcanvas-body > ul li h6 {
     font-weight: 500;
@@ -6595,7 +6597,7 @@ footer .footer-1 .social-icon > li:hover a i {
 }
 .product-detail-box .product-option .quantity-box .btn_black {
     animation: horizontal-shaking 6s ease infinite;
-    background-image: linear-gradient(to right, rgba(var(--theme-default), 1) 0, #c28f51 51%, rgba(var(--theme-default), 1) 100%);
+    /* background-image: linear-gradient(to right, rgba(var(--theme-default), 1) 0, #c28f51 51%, rgba(var(--theme-default), 1) 100%); */
     border-radius: 4px;
     display: block;
     font-size: calc(13.6px + 0.125vw);

@@ -39,74 +39,22 @@ tapTopElement.addEventListener('click', function () {
     03.toggle nav
  ============================*/
 
-    const toggleNav = document.getElementById('toggle-nav');
-    const mobileBack = document.getElementById('mobile-back');
-    const smHorizontal = document.getElementById('sm-horizontal');
-    toggleNav.addEventListener('click', function() {
-        smHorizontal.classList.add('open');
-    });
-    mobileBack.addEventListener('click', function() {
-        smHorizontal.classList.remove('open');
-    });
+    // const toggleNav = document.getElementById('toggle-nav');
+    // const mobileBack = document.getElementById('mobile-back');
+    // const smHorizontal = document.getElementById('sm-horizontal');
+    // toggleNav.addEventListener('click', function() {
+    //     smHorizontal.classList.add('open');
+    // });
+    // mobileBack.addEventListener('click', function() {
+    //     smHorizontal.classList.remove('open');
+    // });
 
  
 /*============================
         07.cart js 
 ============================*/
 
-function initializeCounter(counterId, totalId, addBtnId, removeBtnId) {
-    const quantityPrevious = document.querySelector(`#${counterId}-previous`);
-    const quantityCurrent = document.querySelector(`#${counterId}-current`);
-    const quantityNext = document.querySelector(`#${counterId}-next`);
 
-    const total = document.querySelector(`#${totalId}`);
-
-    const addBtn = document.querySelector(`#${addBtnId}`);
-    const removeBtn = document.querySelector(`#${removeBtnId}`);
-
-    quantityPrevious.innerHTML = 0;
-    quantityCurrent.innerHTML = 1;
-    quantityNext.innerHTML = 2;
-    total.innerHTML = 35;
-
-    addBtn.addEventListener("click", () => {
-        total.innerHTML = parseInt(total.innerHTML) + 35;
-        quantityCurrent.classList.add("added");
-        quantityNext.classList.add("added");
-
-        setTimeout(() => {
-            quantityPrevious.innerHTML = parseInt(quantityPrevious.innerHTML) + 1;
-            quantityCurrent.innerHTML = parseInt(quantityCurrent.innerHTML) + 1;
-            quantityNext.innerHTML = parseInt(quantityNext.innerHTML) + 1;
-            quantityCurrent.classList.remove("added");
-            quantityNext.classList.remove("added");
-        }, 500);
-    });
-
-    removeBtn.addEventListener("click", () => {
-        if (parseInt(quantityCurrent.innerHTML) <= 0) {
-            return null;
-        }
-
-        total.innerHTML = parseInt(total.innerHTML) - 35;
-        quantityCurrent.classList.add("removed");
-        quantityPrevious.classList.add("removed");
-
-        setTimeout(() => {
-            quantityPrevious.innerHTML = parseInt(quantityPrevious.innerHTML) - 1;
-            quantityCurrent.innerHTML = parseInt(quantityCurrent.innerHTML) - 1;
-            quantityNext.innerHTML = parseInt(quantityNext.innerHTML) - 1;
-            quantityCurrent.classList.remove("removed");
-            quantityPrevious.classList.remove("removed");
-        }, 500);
-    });
-}
-
-// Example usage:
-initializeCounter("quantity", "total", "btn-add", "btn-remove");
-initializeCounter("quantity1", "total1", "btn-add1", "btn-remove1");
-initializeCounter("quantity2", "total2", "btn-add2", "btn-remove2");
-initializeCounter("quantity3", "total3", "btn-add3", "btn-remove3");
 
 
 /*============================
@@ -137,26 +85,6 @@ for (var i = 0; i < footerButton.length; ++i) {
     })
 }
 
-
-
-
-
-
-
-/*====================
-       offcanvas cart 
-   =======================*/
-document.addEventListener('DOMContentLoaded', function () {
-    var deleteIcons = document.querySelectorAll('.delete-icon');
-    deleteIcons.forEach(function (icon) {
-        icon.addEventListener('click', function () {
-            var listItem = icon.closest('li');
-            if (listItem) {
-                listItem.remove();
-            }
-        });
-    });
-});
 
 
 /*====================

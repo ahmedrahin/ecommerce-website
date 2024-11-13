@@ -8,14 +8,12 @@
  <script src="{{asset('frontend/js/countdown.js')}}"></script>
  {{-- <script src="{{asset('frontend/js/newsletter.js')}}"></script> --}}
  <script src="{{asset('frontend/js/skeleton-loader.js')}}"></script>
- <!-- touchspin-->
- <script src="{{asset('frontend/js/touchspin.js')}}"></script>
  <script src="{{asset('frontend/js/grid-option.js')}}"></script>
  <!-- tost js -->
  <script src="{{asset('frontend/js/toastify.js')}}"></script>
  {{-- <script src="{{asset('frontend/js/theme-setting.js')}}"></script> --}}
  <!-- Theme js-->
- <script src="{{asset('frontend/js/script.js')}}"></script>
+ <script src="{{asset('frontend/js/script.js')}}" ></script>
 
  {{-- iconsax --}}
  <script>
@@ -36,6 +34,16 @@
     }
     init_iconsax();
  </script>
+
+
+ {{-- reload js after livewire load --}}
+ <script>
+    document.addEventListener("livewire:load", function () {
+        Livewire.hook('message.processed', (message, component) => {
+            init_iconsax();
+        });
+    });
+  </script>
 
  {{-- messages --}}
  <script>
@@ -73,3 +81,4 @@
 </script>
 
  @yield('page-script')
+ @yield('addcart-js')

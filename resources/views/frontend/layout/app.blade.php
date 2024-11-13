@@ -13,6 +13,8 @@
     <!-- menu item -->
     @include('frontend.includes.menu')
 
+   
+
     <!-- body content -->
     @yield('body-content')
  

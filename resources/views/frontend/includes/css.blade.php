@@ -11,8 +11,9 @@
 <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/vendors/iconsax.css')}}"/>
 <!-- Bootstrap css-->
 <link rel="stylesheet" type="text/css" id="rtl-link" href="{{asset('frontend/css/vendors/bootstrap.css')}}"/>
-
+<link rel="stylesheet" type="text/css" id="rtl-link" href="{{asset('frontend/css/bootstrap-icons.css')}}"/>
 <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/vendors/toastify.css')}}"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/style.css')}}"/>
 <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/custom.css')}}"/>
 {{-- page css file --}}

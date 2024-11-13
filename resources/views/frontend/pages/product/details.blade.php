@@ -6,7 +6,6 @@
 
 @section('page-css')
   <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/vendors/swiper-slider/swiper-bundle.min.css')}}"/>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
   <style>
     #Description-tab-pane li{
@@ -75,6 +74,7 @@
 
     
 @section('body-content')
+
   <section class="section-b-space pt-0"> 
     <div class="heading-banner">
       <div class="custom-container container">
@@ -163,48 +163,19 @@
               {{-- chart and delivery information --}}
               <livewire:frontend.product.size-chart-qustion />
 
-              {{-- product variation --}}
+             
+              {{-- add to cart and product varation --}}
+              <livewire:frontend.cart.add-cart :productId="$product->id" />
               
-
-              <div class="quantity-box d-flex align-items-center gap-3">
-                <div class="quantity">
-                  <button class="minus" type="button"><i class="fa-solid fa-minus"></i></button>
-                  <input type="number" value="1" min="1" max="20">
-                  <button class="plus" type="button"><i class="fa-solid fa-plus"></i></button>
-                </div>
-                <div class="d-flex align-items-center gap-3 w-100">   <a class="btn btn_black sm" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Add To Cart</a>
-                  {{-- <a class="btn btn_outline sm" href="#">Buy Now</a> --}}
-                </div>
-              </div>
-              <div class="buy-box">
+              <div class="buy-box border-top pt-3">
                 <ul> 
                   <li> <a href="wishlist.html"> <i class="fa-regular fa-heart me-2"></i>Add To Wishlist</a></li>
                   <li> <a href="#" data-bs-toggle="modal" data-bs-target="#social-box" title="Quick View" tabindex="0"><i class="fa-solid fa-share-nodes me-2"></i>Share</a></li>
                 </ul>
               </div>
               
-              <div class="dz-info" style="border: none;"> 
-                <ul> 
-                  <li>
-                    <div class="d-flex align-items-center gap-2"> 
-                      <h6>Sku:</h6>
-                      <p> {{$product->sku_code}} </p>
-                    </div>
-                  </li>
-                  <li> 
-                    <div class="d-flex align-items-center gap-2"> 
-                      <h6>Quantity: </h6>
-                      
-                        @if($product->quantity > 0)
-                            <p class="text-success">Available: {{ $product->quantity }}</p>
-                        @else
-                            <p class="text-danger">Out of stock</p>
-                        @endif
-
-                    </div>
-                  </li>
-                </ul>
-              </div>
+              {{-- others infromation dz-info --}}
+              @include('frontend.pages.product.dz-info')
 
               {{-- <div class="sale-box"> 
                 <div class="d-flex align-items-center gap-2"><img src="../assets/images/gif/timer.gif" alt="">
@@ -310,24 +281,8 @@
   {{-- js for rating --}}
   <script>
     function setRating(value) {
-        // Update star colors based on selected rating
-        // document.querySelectorAll('#star-rating label').forEach((label, index) => {
-        //     label.style.color = (index < value) ? '#FFD700' : '#ddd';
-        //     console.log(value);
-        // });
-
-        // Call Livewire to update the rating value
         Livewire.emit('updatedRating', value);
     }
-  </script>
-
-  {{-- reload js after livewire load --}}
-  <script>
-    document.addEventListener("livewire:load", function () {
-        Livewire.hook('message.processed', (message, component) => {
-            init_iconsax();
-        });
-    });
   </script>
 
   {{-- product qty and variaiton js --}}

@@ -14,7 +14,7 @@ class ProductReview extends Component
     public $email;
     public $user_id;
     public $comment;
-    public $rating = 0;
+    public $rating;
 
     // Event listeners
     protected $listeners = [
