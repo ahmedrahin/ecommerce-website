@@ -8,7 +8,7 @@
     <div class="offcanvas-body theme-scrollbar">
         @if( !empty($cart) )
             <ul class="offcanvas-cart">
-                @foreach($cart as $productId => $item)
+                @foreach($cart as $cartKey => $item)
                     <li>
                         <a href="{{ route('product-details', $item['slug']) }}">
                             <img src="{{ asset($item['image_url']) }}" alt="{{ $item['name'] }}"/>
@@ -17,6 +17,17 @@
                             <a href="{{ route('product-details', $item['slug']) }}"> 
                                 <h6 class="mb-0">{{ $item['name'] }}</h6>
                             </a>
+                            
+                            <!-- Display selected size and color -->
+                            <p>
+                                @if(isset($item['size']) && $item['size'])
+                                    <strong>Size:</strong> {{ $item['size'] }}
+                                @endif
+                                @if(isset($item['color']) && $item['color'])
+                                    <strong>Color:</strong> {{ $item['color'] }}
+                                @endif
+                            </p>
+                
                             <p>
                                 ৳{{ $item['offer_price'] }}
                                 @if($item['discount_option'] != 1)
@@ -24,27 +35,26 @@
                                 @endif
                                 <span class="btn-cart"> = ৳<span class="btn-cart__total">{{ $item['offer_price'] * $item['quantity'] }}</span></span>
                             </p>
-    
+                
                             <div class="quantity">
-                                <button type="button" class="removeQty" wire:click="decrementQuantity({{ $productId }})">
+                                <button type="button" class="removeQty" wire:click="decrementQuantity('{{ $cartKey }}')">
                                     <i class="fa-solid fa-minus"></i>
                                 </button>
-    
-                                <input type="number" class="Qtyinput" wire:model.lazy="quantities.{{ $productId }}" 
-                                    min="1" data-product-id="{{ $productId }}" 
-                                    data-quantity="{{ $item['available_quantity'] }}" 
-                                    wire:change="updateQuantities({{ $productId }}, $event.target.value)"
+                
+                                <input type="number" class="Qtyinput" wire:model.lazy="quantities.{{ $cartKey }}" 
+                                    min="1" wire:change="updateQuantities('{{ $cartKey }}', $event.target.value)"
                                     value="{{ $item['quantity'] }}" />
                                     
-                                <button type="button" class="addQty" wire:click="incrementQuantity({{ $productId }})">
+                                <button type="button" class="addQty" wire:click="incrementQuantity('{{ $cartKey }}')">
                                     <i class="fa-solid fa-plus"></i>
                                 </button>
                             </div> 
-    
+                
                         </div>
-                        <i wire:click="removeItem({{ $productId }})" class="iconsax delete-icon" data-icon="trash"></i>
+                        <i wire:click="removeItem('{{ $cartKey }}')" class="iconsax delete-icon" data-icon="trash"></i>
                     </li>
                 @endforeach
+            
             </ul>
         @else
             <div class="no-cart">

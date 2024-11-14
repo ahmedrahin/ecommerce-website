@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 
+
 class ShopController extends Controller
 {   
     // show product in shop page
@@ -26,6 +27,7 @@ class ShopController extends Controller
                 'productStock.attributeOptions:id,product_stock_id,attribute_id,attribute_value_id'
             ])
             ->first();
+           
         }
         return view('frontend.pages.product.details', compact('product'));
     }

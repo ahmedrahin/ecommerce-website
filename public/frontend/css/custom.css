@@ -158,3 +158,14 @@
     top: -22px;
     left: 12px;
 }
+.selected li {
+    cursor: pointer;
+}
+.option-box label{
+    margin-bottom: 0 !important;
+    font-weight: 500;
+    cursor: pointer;
+}
+.option-box li.active label{
+    color: white;
+}
