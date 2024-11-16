@@ -10,7 +10,6 @@
  <script src="{{asset('frontend/js/skeleton-loader.js')}}"></script>
  <!-- tost js -->
  <script src="{{asset('frontend/js/toastify.js')}}"></script>
- {{-- <script src="{{asset('frontend/js/theme-setting.js')}}"></script> --}}
  <!-- Theme js-->
  <script src="{{asset('frontend/js/script.js')}}" ></script>
 

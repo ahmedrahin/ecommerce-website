@@ -50,10 +50,8 @@
                   </div>
                 </li>
                 <li class="onhover-div shopping-cart">
-                  
-                       {{-- cart btn --}}
-                       <livewire:frontend.cart.btn-cart />
-                  
+                    {{-- cart btn --}}
+                    <livewire:frontend.cart.btn-cart />
                 </li>
               </ul>
             </div>

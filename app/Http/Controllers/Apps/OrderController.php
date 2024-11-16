@@ -29,7 +29,7 @@ class OrderController extends Controller
         return $dataTable->render('pages.apps.order.list');
     }
     
-   // add new order page
+    // add new order page
     public function create(){
         $ShippingMethods = ShippingMethod::orderBy('base_id', 'desc')->where('status', 1)->get();
         $districts = District::orderBy('name', 'asc')->where('status',1)->get();
@@ -84,35 +84,57 @@ class OrderController extends Controller
             'shipping_cost' => $request->shipping_cost,
             'note' => $request->note,
 
-            'grand_total' => $grandTotal 
+            'grand_total' => $grandTotal + $request->shipping_cost
         ]);
     
         // Loop through session data and save each product as order items
         foreach ($selectedProducts as $productId) {
             $quantity = $quantities[$productId] ?? 1;
-    
-            // Fetch the latest price for the product
+        
+            // Fetch the latest product information
             $product = Product::find($productId);
             if ($product) {
-                $price = ($product->discount_option != 1) ? $product->offer_price : $product->base_price;
-    
-                // Create the order item
-                $order->orderItems()->create([
-                    'product_id' => $productId,
-                    'quantity' => $quantity,
-                    'price' => $price,
-                ]);
-            }
+                // Check stock availability
+                if ($product->quantity >= $quantity) {
+                    // Determine price based on discount option
+                    $price = ($product->discount_option != 1) ? $product->offer_price : $product->base_price;
+                    $product->update(['quantity' => $product->quantity - $quantity]);
+        
+                    // Create the order item
+                    $order->orderItems()->create([
+                        'product_id' => $productId,
+                        'quantity' => $quantity,
+                        'price' => $price,
+                    ]);
+                } 
+            } 
         }
+        
     
         // Clear session data after order creation
         session()->forget(['selectedProducts', 'quantities', 'totalQuantity', 'totalCost']);
-    
+        $this->refreshCache();
         return response()->json([
             'message' => 'Order has been successfully created!',
             'order_id' => $order->id,
         ], 200);
     }
+
+    // checkout page
+    public function checkout()
+    {
+        // Fetch cart data from the session
+        $cart = session()->get('cart', []);
+
+        // Check if the cart is empty and redirect if necessary
+        if (empty($cart)) {
+            return redirect()->route('shop'); // Replace 'shop' with your actual shop route name
+        }
+
+        // Pass the cart data to the checkout view
+        return view('frontend.pages.order.checkout', ['cart' => $cart]);
+    }
+
     
     // edit the order
     public function edit(int $id){

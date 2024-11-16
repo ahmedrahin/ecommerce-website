@@ -16,7 +16,18 @@
           <div class="accordion-collapse collapse show" id="panelsStayOpen-collapseEight">
               <div class="accordion-body">
                   <ul class="collection-list">
-                   
+                    <li> 
+                      <input class="custom-checkbox" id="" type="checkbox" name="text">
+                      <label for="">Best sellers</label>
+                    </li>
+                    <li> 
+                      <input class="custom-checkbox" id="" type="checkbox" name="text">
+                      <label for="">New arrivals</label>
+                    </li>
+                    <li> 
+                      <input class="custom-checkbox" id="" type="checkbox" name="text">
+                      <label for="">Free shipping</label>
+                    </li>
                   </ul>
               </div>
           </div>

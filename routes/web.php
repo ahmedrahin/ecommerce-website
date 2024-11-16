@@ -55,6 +55,9 @@ Route::prefix('shop')->controller(ShopController::class)->group(function () {
 // product-details page
 Route::get('/product/{slug}', [ShopController::class, 'productDetails'])->name('product-details');
 
+// checkout page
+Route::get('/checkout', [OrderController::class, 'checkout'])->name('checkout');
+
 /*
 |--------------------------------------------------------------------------
 | Admin Web Routes

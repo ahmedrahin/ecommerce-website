@@ -27,26 +27,31 @@ class ShoppingCart extends Component
         
         // Reverse the cart array to display the latest items first
         $this->cart = array_reverse($this->cart, true);
-    
-        // Populate product details for each unique cart item
+
+        // Create a temporary cart array to store valid items
+        $validCart = [];
+
         foreach ($this->cart as $cartKey => $item) {
             $productId = explode('-', $cartKey)[0];
             $product = Product::find($productId);
-    
-            // Attach product details to each cart item
-            if ($product) {
-                $this->cart[$cartKey]['name'] = $product->name;
-                $this->cart[$cartKey]['slug'] = $product->slug;
-                $this->cart[$cartKey]['offer_price'] = $product->offer_price;
-                $this->cart[$cartKey]['price'] = $product->base_price;
-                $this->cart[$cartKey]['image_url'] = $product->thumb_image;
-                $this->cart[$cartKey]['available_quantity'] = $product->quantity;
-                $this->cart[$cartKey]['discount_option'] = $product->discount_option;
+
+            if ($product && $product->status == 1  && $product->quantity > 0) { 
+                $validCart[$cartKey] = $item;
+                $validCart[$cartKey]['name'] = $product->name;
+                $validCart[$cartKey]['slug'] = $product->slug;
+                $validCart[$cartKey]['offer_price'] = $product->offer_price;
+                $validCart[$cartKey]['price'] = $product->base_price;
+                $validCart[$cartKey]['image_url'] = $product->thumb_image;
+                $validCart[$cartKey]['available_quantity'] = $product->quantity;
+                $validCart[$cartKey]['discount_option'] = $product->discount_option;
                 $this->quantities[$cartKey] = $item['quantity'] ?? 1;
             }
         }
+
+        // Update the session with the valid cart
+        session()->put('cart', $validCart);
+        $this->cart = $validCart;
     }
-    
     
     public function updateQuantities($cartKey, $quantity)
     {
