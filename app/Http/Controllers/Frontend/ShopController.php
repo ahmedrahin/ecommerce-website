@@ -11,7 +11,7 @@ class ShopController extends Controller
 {   
     // show product in shop page
     public function allProducts(){
-        return view('frontend.pages.product.shop');
+        return view('frontend.pages.shop.shop');
     }
 
     // product details page

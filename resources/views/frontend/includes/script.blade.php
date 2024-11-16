@@ -8,7 +8,6 @@
  <script src="{{asset('frontend/js/countdown.js')}}"></script>
  {{-- <script src="{{asset('frontend/js/newsletter.js')}}"></script> --}}
  <script src="{{asset('frontend/js/skeleton-loader.js')}}"></script>
- <script src="{{asset('frontend/js/grid-option.js')}}"></script>
  <!-- tost js -->
  <script src="{{asset('frontend/js/toastify.js')}}"></script>
  {{-- <script src="{{asset('frontend/js/theme-setting.js')}}"></script> --}}
