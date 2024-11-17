@@ -7941,7 +7941,14 @@ footer .footer-1 .social-icon > li:hover a i {
 .payment-options {
     background-color: rgba(var(--box-background), 1);
     border-radius: 4px;
-    padding: 15px calc(8.4px + 1.125vw);
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(var(--light-border), 1);
+    margin-bottom: 25px;
+    padding-bottom: 22px;
+    padding-top: 5px;
+}
+.payment-box img{
+    width: 160px;
 }
 .payment-options .payment-box {
     align-items: center;
@@ -7951,6 +7958,10 @@ footer .footer-1 .social-icon > li:hover a i {
     display: flex;
     gap: 6px;
     padding: 18px 20px;
+    border: 1px solid #eaeaea;
+}
+.payment-options .payment-box:hover{
+    border: 1px solid rgba(var(--theme-default), 1);;
 }
 .payment-options .payment-box label {
     cursor: pointer;

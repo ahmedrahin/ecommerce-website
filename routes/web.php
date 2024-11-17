@@ -83,7 +83,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 
     Route::name('user-management.')->group(function () {
-        // Route::resource('/user-management/users', UserManagementController::class);
+        Route::resource('/user-management/users', UserManagementController::class);
     });
 
     Route::prefix('product-catalogue')->name('product-catalogue.')->middleware('can:product catalouge')->group(function () {
@@ -132,6 +132,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // order management
     Route::name('order-management.')->middleware('can:order catalouge')->group(function(){
         Route::resource('/order', OrderController::class);
+        Route::get('/order-invoice/{id}', [OrderController::class, 'order_invoice'])->name('invoice');
     });
 
     // coupon

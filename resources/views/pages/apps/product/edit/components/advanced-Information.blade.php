@@ -64,7 +64,7 @@
                                 <div class="d-flex align-items-center gap-4">
                                     <input type="number" class="form-control mw-100 w-200px"
                                         name="variations[{{$index}}][option_quantity]"
-                                        placeholder="Quantity" value="{{ $productStock->quantity }}" />
+                                        placeholder="Quantity" value="{{ $productStock->quantity }}" hidden/>
                                     <button type="button" data-repeater-delete=""
                                             class="btn btn-sm btn-icon btn-light-danger">
                                         <i class="ki-duotone ki-cross fs-1">
@@ -116,7 +116,7 @@
                             <div class="d-flex align-items-center gap-4">
                                 <input type="number" class="form-control mw-100 w-200px"
                                     name="variations[0][option_quantity]"
-                                    placeholder="Quantity" />
+                                    placeholder="Quantity" value="{{$product->quantity}}" hidden />
                                 <button type="button" data-repeater-delete=""
                                         class="btn btn-sm btn-icon btn-light-danger">
                                     <i class="ki-duotone ki-cross fs-1">
@@ -286,7 +286,7 @@
                     <div class="d-flex align-items-center gap-4">
                         <input type="number" class="form-control mw-100 w-200px"
                             name="variations[${qtyCounter}][option_quantity]"
-                            placeholder="Quantity" />
+                            placeholder="Quantity" value="{{$product->quantity}}" hidden />
                         <button type="button" data-repeater-delete=""
                                 class="btn btn-sm btn-icon btn-light-danger">
                             <i class="ki-duotone ki-cross fs-1">

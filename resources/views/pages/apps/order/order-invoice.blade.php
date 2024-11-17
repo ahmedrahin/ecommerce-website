@@ -20,13 +20,13 @@
                     <div class="text-sm-end">
                         <!--begin::Logo-->
                         <a href="#" class="d-block mw-150px ms-sm-auto">
-                            <img alt="Logo" src="assets/media/svg/brand-logos/lloyds-of-london-logo.svg" class="w-100" />
+                            <img alt="Logo" src="{{asset(config('app.logo'))}}" style="width: 100px" />
                         </a>
                         <!--end::Logo-->
                         <!--begin::Text-->
                         <div class="text-sm-end fw-semibold fs-4 text-muted mt-7">
-                            <div>Cecilia Chapman, 711-2880 Nulla St, Mankato</div>
-                            <div>Mississippi 96522</div>
+                            <div>{{config('app.name')}}, {{config('app.address')}}</div>
+                            <div>{{config('app.state')}}</div>
                         </div>
                         <!--end::Text-->
                     </div>
@@ -37,8 +37,8 @@
                     <!--begin::Wrapper-->
                     <div class="d-flex flex-column gap-7 gap-md-10">
                         <!--begin::Message-->
-                        <div class="fw-bold fs-2">Dear Melody Macy
-                        <span class="fs-6">(melody@altbox.com)</span>,
+                        <div class="fw-bold fs-2">Dear {{$order->name}}
+                        <span class="fs-6">({{$order->phone}})</span>,
                         <br />
                         <span class="text-muted fs-5">Here are your order details. We thank you for your purchase.</span></div>
                         <!--begin::Message-->
@@ -49,37 +49,57 @@
                         <div class="d-flex flex-column flex-sm-row gap-7 gap-md-10 fw-bold">
                             <div class="flex-root d-flex flex-column">
                                 <span class="text-muted">Order ID</span>
-                                <span class="fs-5">#14534</span>
+                                <span class="fs-5">#{{$order->id}}</span>
                             </div>
                             <div class="flex-root d-flex flex-column">
-                                <span class="text-muted">Date</span>
-                                <span class="fs-5">19 July, 2023</span>
+                                <span class="text-muted">Order Date</span>
+                                <span class="fs-5">{{ \Carbon\Carbon::parse($order->order_date)->format('d F, Y') }}</span>
+                            </div>
+                            <div class="flex-root d-flex flex-column">
+                                <span class="text-muted">Time</span>
+                                <span class="fs-5">{{ \Carbon\Carbon::parse($order->order_date)->diffForHumans() }}</span>
                             </div>
                             <div class="flex-root d-flex flex-column">
                                 <span class="text-muted">Invoice ID</span>
-                                <span class="fs-5">#INV-000414</span>
+                                <span class="fs-5">#INV-{{$order->id}}</span>
                             </div>
                             <div class="flex-root d-flex flex-column">
-                                <span class="text-muted">Shipment ID</span>
-                                <span class="fs-5">#SHP-0025410</span>
+                                <span class="text-muted">Shipping method</span>
+                                <span class="fs-5">
+                                    @if($order->shippingMethod)
+                                        @if($order->shippingMethod->base_id)
+                                            Inside {{ $order->shippingMethod->District->name }} 
+                                        @else
+                                            {{ $order->shippingMethod->provider_name }}
+                                        @endif
+                                    @else
+                                        N/A
+                                    @endif
+                                </span>
+                            </div>
+                            <div class="flex-root d-flex flex-column">
+                                <span class="text-muted">Payment method</span>
+                                <span class="fs-5">
+                                    {{ $order->payment_type == 'cod' ? 'Cash on delivery' : 'Online Payment' }}
+                                </span>
                             </div>
                         </div>
                         <!--end::Order details-->
                         <!--begin::Billing & shipping-->
                         <div class="d-flex flex-column flex-sm-row gap-7 gap-md-10 fw-bold">
                             <div class="flex-root d-flex flex-column">
-                                <span class="text-muted">Billing Address</span>
-                                <span class="fs-6">Unit 1/23 Hastings Road,
-                                <br />Melbourne 3000,
-                                <br />Victoria,
-                                <br />Australia.</span>
+                                <span class="text-muted">Shipping Address</span>
+                                <span class="fs-6">
+                                    {{$order->shipping_address}},
+                                    {{$order->zip_code ? 'zip-code:'.$order->zip_code : '' }}
+                                    <br />{{$order->district->name}}.
+                                </span>
                             </div>
                             <div class="flex-root d-flex flex-column">
-                                <span class="text-muted">Shipping Address</span>
-                                <span class="fs-6">Unit 1/23 Hastings Road,
-                                <br />Melbourne 3000,
-                                <br />Victoria,
-                                <br />Australia.</span>
+                                <span class="text-muted">Billing Address</span>
+                                <span class="fs-6">
+                                    
+                                </span>
                             </div>
                         </div>
                         <!--end::Billing & shipping-->
@@ -97,61 +117,72 @@
                                         </tr>
                                     </thead>
                                     <tbody class="fw-semibold text-gray-600">
-                                        <tr>
-                                            <td>
-                                                <div class="d-flex align-items-center">
-                                                    <!--begin::Thumbnail-->
-                                                    <a href="../../demo1/dist/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
-                                                        <span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/1.png);"></span>
-                                                    </a>
-                                                    <!--end::Thumbnail-->
-                                                    <!--begin::Title-->
-                                                    <div class="ms-5">
-                                                        <div class="fw-bold">Product 1</div>
-                                                        <div class="fs-7 text-muted">Delivery Date: 19/07/2023</div>
+
+                                        @foreach( $order->orderItems as $item )
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <a href="{{route('product-management.show',$item->product->id)}}" class="symbol symbol-50px">
+                                                            <span class="symbol-label" style="background-image:url({{asset($item->product->thumb_image)}});"></span>
+                                                        </a>
+
+                                                        <div class="ms-5">
+                                                            <a href="{{route('product-management.show',$item->product->id)}}" class="text-gray-800 fs-5 fw-bold">{{ $item->product->name }}</a>
+                                                            {{-- show varitaion --}}
+                                                            @if( $item->orderItemVariations->count() > 0 )
+                                                                <div class="fs-7 text-muted">
+                                                                    @foreach( $item->orderItemVariations as $itemVariant )
+                                                                        {{ucfirst($itemVariant->attribute_name) . ':' . ucfirst($itemVariant->attribute_value)}}  @if (!$loop->last) - @endif
+                                                                    @endforeach
+                                                                </div>
+                                                            @endif
+                                                        </div>
+                                                
                                                     </div>
-                                                    <!--end::Title-->
-                                                </div>
+                                                </td>
+                                                <td class="text-center">{{$item->product->sku_code}}</td>
+                                                <td class="text-center">{{$item->quantity}}</td>
+                                                <td class="text-center">৳{{$item->price}}</td>
+                                                <td class="text-end">৳{{ number_format($item->price * $item->quantity, 2) }}</td>
+                                            </tr>
+                                        @endforeach
+
+                                        @php
+                                            $subtotal = 0;
+                                        @endphp
+
+                                        @foreach($order->orderItems as $item)
+                                            @php
+                                                $subtotal += $item->price * $item->quantity;
+                                            @endphp
+                                        @endforeach
+
+                                        <tr>
+                                            <td colspan="4" class="text-end">Subtotal</td>
+                                            <td class="text-end">৳{{ number_format($subtotal, 2) }}</td>
+                                        </tr>
+
+                                        @php
+                                            $grandTotal = $order->grand_total ?? 0;
+                                            $discount = $order->coupon_discount ?? 0;
+                                            $discountPercentage = $grandTotal > 0 ? ($discount / $grandTotal) * 100 : 0;
+                                        @endphp
+
+                                        <tr>
+                                            <td colspan="4" class="text-end">Discount ({{$discountPercentage}}%)</td>
+                                            <td class="text-end">
+                                                ৳{{ $discount }} 
                                             </td>
-                                            <td class="text-end">01626002</td>
-                                            <td class="text-end">2</td>
-                                            <td class="text-end">$240.00</td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td colspan="4" class="text-end">Shipping Rate</td>
+                                            <td class="text-end">৳{{$order->shipping_cost}}</td>
                                         </tr>
                                         <tr>
-                                            <td>
-                                                <div class="d-flex align-items-center">
-                                                    <!--begin::Thumbnail-->
-                                                    <a href="../../demo1/dist/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
-                                                        <span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/100.png);"></span>
-                                                    </a>
-                                                    <!--end::Thumbnail-->
-                                                    <!--begin::Title-->
-                                                    <div class="ms-5">
-                                                        <div class="fw-bold">Footwear</div>
-                                                        <div class="fs-7 text-muted">Delivery Date: 19/07/2023</div>
-                                                    </div>
-                                                    <!--end::Title-->
-                                                </div>
-                                            </td>
-                                            <td class="text-end">04844001</td>
-                                            <td class="text-end">1</td>
-                                            <td class="text-end">$24.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3" class="text-end">Subtotal</td>
-                                            <td class="text-end">$264.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3" class="text-end">VAT (0%)</td>
-                                            <td class="text-end">$0.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3" class="text-end">Shipping Rate</td>
-                                            <td class="text-end">$5.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3" class="fs-3 text-dark fw-bold text-end">Grand Total</td>
-                                            <td class="text-dark fs-3 fw-bolder text-end">$269.00</td>
+                                            <td colspan="4" class="fs-3 text-dark text-end">Grand Total</td>
+                                            <td class="text-dark fs-3 fw-bolder text-end">৳{{ number_format($order->grand_total,2)}}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -171,7 +202,7 @@
                         <button type="button" class="btn btn-success my-1 me-3" onclick="window.print();">Print Invoice</button>
                         <!-- end::Pint-->
                         <!-- begin::Download-->
-                        <button type="button" class="btn btn-light-success my-1">Download</button>
+                        {{-- <button type="button" class="btn btn-light-success my-1">Download</button> --}}
                         <!-- end::Download-->
                     </div>
                     <!-- end::Actions-->

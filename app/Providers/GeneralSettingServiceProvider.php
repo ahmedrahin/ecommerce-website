@@ -30,6 +30,8 @@ class GeneralSettingServiceProvider extends ServiceProvider
                 config(['app.logo' => $settings->logo ?? null]);
                 config(['app.favicon' => $settings->fav_icon ?? null]);
                 config(['app.email' => $settings->email ?? null]);
+                config(['app.address' => $settings->address ?? null]);
+                config(['app.state' => $settings->state ?? null]);
             }
 
             config(['app.error', 'tostar']);

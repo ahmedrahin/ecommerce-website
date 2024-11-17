@@ -148,8 +148,9 @@ class OrderController extends Controller
     }
 
     // order invoice genarate
-    public function order_invoice(){
-        return view('pages.apps.order.order-invoice');
+    public function order_invoice(int $id){
+        $order = Order::find($id);
+        return view('pages.apps.order.order-invoice', compact('order'));
     }
 
      // Refresh the cache

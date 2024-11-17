@@ -10,6 +10,7 @@ use App\Models\Product;
 use Illuminate\Support\Facades\Cache;
 use Auth;
 use Carbon\Carbon;
+use App\Models\Coupon;
 
 class Checkout extends Component
 {   
@@ -19,11 +20,15 @@ class Checkout extends Component
     public $shipping_address;
     public $district_id;
     public $note;
+    public $payment_type;
     public $selectedShippingMethodId; 
     public $selectedShippingCharge = 0 ;
 
     public $cart = [];
     public $shippingMethods;
+    public $couponCode;
+    public $discountAmount = 0;
+    public $appliedCoupon;
     private $cacheKey;
 
     protected $listeners = [
@@ -39,6 +44,57 @@ class Checkout extends Component
     {
         $this->checkCart();
         $this->loadShippingMethods();
+        $this->payment_type = 'cod';
+
+        $this->appliedCoupon = session()->get('applied_coupon', null);
+    }
+
+    public function applyCoupon()
+    {   
+        if( $this->couponCode == null ){
+            $this->emit('error', 'please enter your coupon code.');
+            return;
+        }
+        
+        $coupon = Coupon::where('code', $this->couponCode)
+            ->where('status', 1)
+            ->whereDate('start_at', '<=', now()) 
+            ->where(function ($query) {
+                $query->whereNull('expire_date') 
+                    ->orWhereDate('expire_date', '>=', now());
+            })
+            ->first();
+
+
+        if (!$coupon) {
+            $this->emit('error', 'Invalid or expired coupon code!');
+            $this->couponCode = '';
+            return;
+        }
+
+        // Apply the discount based on coupon type
+        if ($coupon->discount_type == 'percentage') {
+            $this->discountAmount = $this->getTotalAmount() * ($coupon->discount_amount / 100);
+        } else {
+            $this->discountAmount = $coupon->discount_amount;
+        }
+
+        // Store the coupon and discount amount
+        session()->put('applied_coupon', [
+            'code' => $this->couponCode,
+            'discount' => $this->discountAmount,
+        ]);
+        $this->emit('success', 'Coupon applied successfully!');
+    }
+
+    public function removeCoupon()
+    {
+        $this->couponCode = null;
+        $this->discountAmount = 0;
+        $this->appliedCoupon = [];
+        session()->forget('applied_coupon');
+
+        $this->emit('info', 'Coupon removed.');
     }
 
     public function updatedDistrictId($value)
@@ -102,6 +158,9 @@ class Checkout extends Component
         if( $this->selectedShippingCharge == null ){
             $this->emit('warning', 'select a shipping method');
             return;
+        }elseif( $this->payment_type == null ){
+            $this->emit('warning', 'select a payment method');
+            return;
         }
 
         $selectedProduct = session()->get('cart', []);
@@ -114,40 +173,57 @@ class Checkout extends Component
             'phone'                     => $this->phone,
             'shipping_address'          => $this->shipping_address,
             'district_id'               => $this->district_id,
-            // 'payment_type'              => $this->payment_type,
+            'payment_type'              => $this->payment_type,
             'shipping_method'           => $this->selectedShippingMethodId,
             'order_date'                => Carbon::now()->format('Y-m-d H:i:s'),
             'shipping_cost'             => $this->selectedShippingCharge,
             'note'                      => $this->note,
-            'grand_total'               => $this->grandTotal()
+            'grand_total'               => $this->grandTotal(),
+            'coupon_code'               => $this->appliedCoupon['code'] ?? null, 
+            'coupon_discount'           => $this->appliedCoupon['discount'] ?? 0,
         ]);
 
         foreach ($selectedProduct as $productData) {
             $productId = $productData['product_id'] ?? null;
-           
             $quantity = $productData['quantity'] ?? 1;
-        
+
             if (!$productId) {
                 continue;
             }
-        
+
             $product = Product::find($productId);
-        
+
             if ($product) {
                 if ($product->quantity >= $quantity) {
                     $price = ($product->discount_option != 1) ? $product->offer_price : $product->base_price;
-        
+
                     $product->update(['quantity' => $product->quantity - $quantity]);
-        
+
                     // Create the order item
-                    $order->orderItems()->create([
+                    $orderItem = $order->orderItems()->create([
                         'product_id' => $productId,
                         'quantity' => $quantity,
                         'price' => $price,
                     ]);
+
+                    // Insert variations (size, color, etc.)
+                    $variations = [
+                        'size' => $productData['size'] ?? null,
+                        'color' => $productData['color'] ?? null,
+                    ];
+
+                    foreach ($variations as $attributeName => $attributeValue) {
+                        if ($attributeValue) { 
+                            $orderItem->orderItemVariations()->create([
+                                'attribute_name' => $attributeName,
+                                'attribute_value' => $attributeValue,
+                            ]);
+                        }
+                    }
                 }
             }
         }
+
         
         session()->forget('cart');
         $this->emit('cartUpdated');
@@ -175,9 +251,12 @@ class Checkout extends Component
         return $total;
     }
 
-    public function grandTotal(){
-        return $this->getTotalAmount() + $this->selectedShippingCharge;
+    public function grandTotal()
+    {
+        $discount = $this->appliedCoupon ? ($this->appliedCoupon['discount'] ?? 0) : 0;
+        return $this->getTotalAmount() + $this->selectedShippingCharge - $discount;
     }
+
 
     public function checkCart()
     {
@@ -185,6 +264,7 @@ class Checkout extends Component
         
         if (empty($this->cart)) {
             return redirect()->route('shop');
+            session()->forget('applied_coupon');
         }
     } 
     

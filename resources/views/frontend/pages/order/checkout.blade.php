@@ -5,7 +5,12 @@
 @endsection
 
 @section('page-css')
- 
+    <style>
+        .btn-coupon span{
+          color: white;
+          font-size: 15px;
+        }
+    </style>
 @endsection
 
     

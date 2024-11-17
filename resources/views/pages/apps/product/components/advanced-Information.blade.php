@@ -61,7 +61,9 @@
                             @endforeach
                         </div>
                         <div class="d-flex align-items-center gap-4">
-                            
+                            <input type="number" class="form-control mw-100 w-200px"
+                                   name="variations[0][option_quantity]"
+                                   placeholder="Quantity" hidden />
                             <button type="button" data-repeater-delete=""
                                     class="btn btn-sm btn-icon btn-light-danger">
                                 <i class="ki-duotone ki-cross fs-1">
@@ -270,7 +272,9 @@
                         @endforeach
                     </div>
                     <div class="d-flex align-items-center gap-4">
-                      
+                        <input type="number" class="form-control mw-100 w-200px"
+                            name="variations[${qtyCounter}][option_quantity]"
+                            placeholder="Quantity"  hidden />
                         <button type="button" data-repeater-delete=""
                                 class="btn btn-sm btn-icon btn-light-danger">
                             <i class="ki-duotone ki-cross fs-1">

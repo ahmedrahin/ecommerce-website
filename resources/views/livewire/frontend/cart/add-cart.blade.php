@@ -24,7 +24,7 @@
 
       {{-- Display all attributes except "Color" first --}}
       @foreach ($groupedAttributes as $attribute_id => $attributeValues)
-          @if($attributesList[$attribute_id]->attr_name != 'Color')
+          @if($attributesList[$attribute_id]->attr_name != 'Color' && $attributesList[$attribute_id]->attr_name == 'Size')
               <div class="d-flex">
                   <div> 
                       <h5>{{ $attributesList[$attribute_id]->attr_name }}:</h5>

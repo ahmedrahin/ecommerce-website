@@ -21,6 +21,11 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function district()
+    {
+        return $this->belongsTo(District::class);
+    }
+
     public function shippingMethod()
     {
         return $this->belongsTo(ShippingMethod::class, 'shipping_method');

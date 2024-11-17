@@ -243,22 +243,42 @@
                                                 <span class="path3"></span>
                                             </i>Customer</div>
                                         </td>
-                                        <td class="fw-bold text-end">
-                                            <div class="d-flex align-items-center justify-content-end">
-                                                <!--begin:: Avatar -->
-                                                <div class="symbol symbol-circle symbol-25px overflow-hidden me-3">
-                                                    <a href="">
-                                                        <div class="symbol-label">
-                                                            <img src="assets/media/avatars/300-23.jpg" class="w-100" />
-                                                        </div>
-                                                    </a>
+                                        @if( $order->user_id != null )
+                                            <td class="fw-bold text-end">
+                                                <div class="d-flex align-items-center justify-content-end">
+                                                    <!--begin:: Avatar -->
+                                                    <div class="symbol symbol-circle symbol-25px overflow-hidden me-3">
+                                                        <a href="">
+                                                            <div class="symbol-label">
+                                                                <img src="{{ asset($order->user->avatar && file_exists(public_path($order->user->avatar)) 
+                                                                ? $order->user->avatar 
+                                                                : 'uploads/admin/Default_pfp.svg.webp') }}" 
+                                                                class="w-100" 
+                                                                alt="User Avatar" />
+                                                    
+                                                            </div>
+                                                        </a>
+                                                    </div>
+
+                                                    <a href="" class="text-gray-600 text-hover-primary">{{ $order->name }}</a>
                                                 </div>
-                                                <!--end::Avatar-->
-                                                <!--begin::Name-->
-                                                <a href="" class="text-gray-600 text-hover-primary">{{ $order->name }}</a>
-                                                <!--end::Name-->
-                                            </div>
-                                        </td>
+                                            </td>
+                                        @else
+                                            <td class="fw-bold text-end">
+                                                <div class="d-flex align-items-center justify-content-end">
+                                                    <!--begin:: Avatar -->
+                                                    <div class="symbol symbol-circle symbol-25px overflow-hidden me-3">
+                                                        <a href="#">
+                                                            <div class="symbol-label">
+                                                                <img src="{{asset('uploads/admin/Default_pfp.svg.webp')}}" class="w-100" />
+                                                            </div>
+                                                        </a>
+                                                    </div>
+
+                                                    <span class="text-gray-600 text-hover-primary">{{ $order->name }}</span>
+                                                </div>
+                                            </td>
+                                        @endif
                                     </tr>
                                     <tr>
                                         <td class="text-muted">
@@ -328,7 +348,7 @@
                                             </span></div>
                                         </td>
                                         <td class="fw-bold text-end">
-                                            <a href="../../demo1/dist/apps/invoices/view/invoice-3.html" class="text-gray-600 text-hover-primary">#INV-000414</a>
+                                            <a href="{{route('order-management.invoice',$order->id)}}" class="text-gray-600 text-hover-primary">#INV-{{$order->id}}</a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -353,27 +373,10 @@
                                             <a href="#" class="text-gray-600 text-hover-primary">#SHP-0025410</a>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td class="text-muted">
-                                            <div class="d-flex align-items-center">
-                                            <i class="ki-duotone ki-discount fs-2 me-2">
-                                                <span class="path1"></span>
-                                                <span class="path2"></span>
-                                            </i>Reward Points
-                                            <span class="ms-1" data-bs-toggle="tooltip" title="Reward value earned by customer when purchasing this order">
-                                                <i class="ki-duotone ki-information-5 text-gray-500 fs-6">
-                                                    <span class="path1"></span>
-                                                    <span class="path2"></span>
-                                                    <span class="path3"></span>
-                                                </i>
-                                            </span></div>
-                                        </td>
-                                        <td class="fw-bold text-end">600</td>
-                                    </tr>
 
                                     <div class="download-btn">
-                                        <a href="" target="_blank" class="btn btn-success btn-sm me-lg-n7"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                                        <a href="" class="btn btn-danger btn-sm"><i class="fa fa-cloud-download" aria-hidden="true"></i></a>
+                                        <a href="{{route('order-management.invoice',$order->id)}}" target="_blank" class="btn btn-success btn-sm me-lg-n7"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                        {{-- <a href="" class="btn btn-danger btn-sm"><i class="fa fa-cloud-download" aria-hidden="true"></i></a> --}}
                                     </div>
                                 </tbody>
                             </table>
@@ -407,10 +410,9 @@
                                 </div>
                                 <!--end::Card header-->
                                 <!--begin::Card body-->
-                                <div class="card-body pt-0">Unit 1/23 Hastings Road,
-                                <br />Melbourne 3000,
-                                <br />Victoria,
-                                <br />Australia.</div>
+                                <div class="card-body pt-0">
+
+                                </div>
                                 <!--end::Card body-->
                             </div>
                             <!--end::Payment address-->
@@ -429,10 +431,11 @@
                                 </div>
                                 <!--end::Card header-->
                                 <!--begin::Card body-->
-                                <div class="card-body pt-0">Unit 1/23 Hastings Road,
-                                <br />Melbourne 3000,
-                                <br />Victoria,
-                                <br />Australia.</div>
+                                <div class="card-body pt-0" style="font-size: 16px;">
+                                    {{$order->shipping_address}},
+                                    {{$order->zip_code ? 'zip-code:'.$order->zip_code : '' }}
+                                    <br />{{$order->district->name}}.
+                                </div>
                                 <!--end::Card body-->
                             </div>
                             <!--end::Shipping address-->
@@ -442,7 +445,7 @@
                             <!--begin::Card header-->
                             <div class="card-header">
                                 <div class="card-title">
-                                    <h2>Order #14534</h2>
+                                    <h2>Order Items</h2>
                                 </div>
                             </div>
                             <!--end::Card header-->
@@ -454,70 +457,79 @@
                                         <thead>
                                             <tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0">
                                                 <th class="min-w-175px">Product</th>
-                                                <th class="min-w-100px text-end">SKU</th>
-                                                <th class="min-w-70px text-end">Qty</th>
-                                                <th class="min-w-100px text-end">Unit Price</th>
+                                                <th class="min-w-100px text-center">SKU</th>
+                                                <th class="min-w-70px text-center">Qty</th>
+                                                <th class="min-w-100px text-center">Unit Price</th>
                                                 <th class="min-w-100px text-end">Total</th>
                                             </tr>
                                         </thead>
                                         <tbody class="fw-semibold text-gray-600">
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <!--begin::Thumbnail-->
-                                                        <a href="../../demo1/dist/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
-                                                            <span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/1.png);"></span>
-                                                        </a>
-                                                        <!--end::Thumbnail-->
-                                                        <!--begin::Title-->
-                                                        <div class="ms-5">
-                                                            <a href="../../demo1/dist/apps/ecommerce/catalog/edit-product.html" class="fw-bold text-gray-600 text-hover-primary">Product 1</a>
-                                                            <div class="fs-7 text-muted">Delivery Date: 19/07/2023</div>
+
+                                            @foreach( $order->orderItems as $item )
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <a href="{{route('product-management.show',$item->product->id)}}" class="symbol symbol-50px">
+                                                                <span class="symbol-label" style="background-image:url({{asset($item->product->thumb_image)}});"></span>
+                                                            </a>
+
+                                                            <div class="ms-5">
+                                                                <a href="{{route('product-management.show',$item->product->id)}}" class="text-gray-800 fs-5 fw-bold">{{ $item->product->name }}</a>
+                                                                {{-- show varitaion --}}
+                                                                @if( $item->orderItemVariations->count() > 0 )
+                                                                    <div class="fs-7 text-muted">
+                                                                        @foreach( $item->orderItemVariations as $itemVariant )
+                                                                            {{ucfirst($itemVariant->attribute_name) . ':' . ucfirst($itemVariant->attribute_value)}}  @if (!$loop->last) - @endif
+                                                                        @endforeach
+                                                                    </div>
+                                                                @endif
+                                                            </div>
+                                                    
                                                         </div>
-                                                        <!--end::Title-->
-                                                    </div>
-                                                </td>
-                                                <td class="text-end">02315008</td>
-                                                <td class="text-end">2</td>
-                                                <td class="text-end">$120.00</td>
-                                                <td class="text-end">$240.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <!--begin::Thumbnail-->
-                                                        <a href="../../demo1/dist/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
-                                                            <span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/100.png);"></span>
-                                                        </a>
-                                                        <!--end::Thumbnail-->
-                                                        <!--begin::Title-->
-                                                        <div class="ms-5">
-                                                            <a href="../../demo1/dist/apps/ecommerce/catalog/edit-product.html" class="fw-bold text-gray-600 text-hover-primary">Footwear</a>
-                                                            <div class="fs-7 text-muted">Delivery Date: 19/07/2023</div>
-                                                        </div>
-                                                        <!--end::Title-->
-                                                    </div>
-                                                </td>
-                                                <td class="text-end">02364003</td>
-                                                <td class="text-end">1</td>
-                                                <td class="text-end">$24.00</td>
-                                                <td class="text-end">$24.00</td>
-                                            </tr>
+                                                    </td>
+                                                    <td class="text-center">{{$item->product->sku_code}}</td>
+                                                    <td class="text-center">{{$item->quantity}}</td>
+                                                    <td class="text-center">৳{{$item->price}}</td>
+                                                    <td class="text-end">৳{{ number_format($item->price * $item->quantity, 2) }}</td>
+                                                    </tr>
+                                                @endforeach
+
+                                            @php
+                                                $subtotal = 0;
+                                            @endphp
+
+                                            @foreach($order->orderItems as $item)
+                                                @php
+                                                    $subtotal += $item->price * $item->quantity;
+                                                @endphp
+                                            @endforeach
+
                                             <tr>
                                                 <td colspan="4" class="text-end">Subtotal</td>
-                                                <td class="text-end">$264.00</td>
+                                                <td class="text-end">৳{{ number_format($subtotal, 2) }}</td>
                                             </tr>
+
+                                            @php
+                                                $grandTotal = $order->grand_total ?? 0;
+                                                $discount = $order->coupon_discount ?? 0;
+                                                $discountPercentage = $grandTotal > 0 ? ($discount / $grandTotal) * 100 : 0;
+                                            @endphp
+
                                             <tr>
-                                                <td colspan="4" class="text-end">VAT (0%)</td>
-                                                <td class="text-end">$0.00</td>
+                                                <td colspan="4" class="text-end">Discount ({{$discountPercentage}}%)</td>
+                                                <td class="text-end">
+                                                    ৳{{ $discount }} 
+                                                </td>
                                             </tr>
+
+
                                             <tr>
                                                 <td colspan="4" class="text-end">Shipping Rate</td>
-                                                <td class="text-end">$5.00</td>
+                                                <td class="text-end">৳{{$order->shipping_cost}}</td>
                                             </tr>
                                             <tr>
                                                 <td colspan="4" class="fs-3 text-dark text-end">Grand Total</td>
-                                                <td class="text-dark fs-3 fw-bolder text-end">$269.00</td>
+                                                <td class="text-dark fs-3 fw-bolder text-end">৳{{$order->grand_total}}</td>
                                             </tr>
                                         </tbody>
                                     </table>
