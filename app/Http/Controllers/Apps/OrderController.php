@@ -110,7 +110,6 @@ class OrderController extends Controller
             } 
         }
         
-    
         // Clear session data after order creation
         session()->forget(['selectedProducts', 'quantities', 'totalQuantity', 'totalCost']);
         $this->refreshCache();
@@ -125,10 +124,8 @@ class OrderController extends Controller
     {
         // Fetch cart data from the session
         $cart = session()->get('cart', []);
-
-        // Check if the cart is empty and redirect if necessary
         if (empty($cart)) {
-            return redirect()->route('shop'); // Replace 'shop' with your actual shop route name
+            return redirect()->route('shop');
         }
 
         // Pass the cart data to the checkout view

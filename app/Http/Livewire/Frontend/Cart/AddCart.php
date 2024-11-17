@@ -125,6 +125,7 @@ class AddCart extends Component
                     'quantity' => $this->quantity,
                     'size' => $this->selectedSize,
                     'color' => $this->selectedColor,
+                    'added_at' => now(),
                 ];
                 $this->emit('success', 'The product added to your cart.');
             } else {

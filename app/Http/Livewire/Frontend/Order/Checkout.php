@@ -5,6 +5,11 @@ namespace App\Http\Livewire\Frontend\Order;
 use Livewire\Component;
 use App\Models\ShippingMethod;
 use App\Models\District;
+use App\Models\Order;
+use App\Models\Product;
+use Illuminate\Support\Facades\Cache;
+use Auth;
+use Carbon\Carbon;
 
 class Checkout extends Component
 {   
@@ -19,10 +24,16 @@ class Checkout extends Component
 
     public $cart = [];
     public $shippingMethods;
+    private $cacheKey;
 
     protected $listeners = [
         'cartUpdated' => 'refreshCart',
     ];
+
+    public function __construct()
+    {
+        $this->cacheKey = config('dbcachekey.order');
+    }
 
     public function mount()
     {
@@ -92,6 +103,56 @@ class Checkout extends Component
             $this->emit('warning', 'select a shipping method');
             return;
         }
+
+        $selectedProduct = session()->get('cart', []);
+
+        $order = Order::create([
+            'user_id'                   => Auth::id() ?? null,
+            'user_type'                 => 'customer',
+            'name'                      => $this->name,
+            'email'                     => $this->email,
+            'phone'                     => $this->phone,
+            'shipping_address'          => $this->shipping_address,
+            'district_id'               => $this->district_id,
+            // 'payment_type'              => $this->payment_type,
+            'shipping_method'           => $this->selectedShippingMethodId,
+            'order_date'                => Carbon::now()->format('Y-m-d H:i:s'),
+            'shipping_cost'             => $this->selectedShippingCharge,
+            'note'                      => $this->note,
+            'grand_total'               => $this->grandTotal()
+        ]);
+
+        foreach ($selectedProduct as $productData) {
+            $productId = $productData['product_id'] ?? null;
+           
+            $quantity = $productData['quantity'] ?? 1;
+        
+            if (!$productId) {
+                continue;
+            }
+        
+            $product = Product::find($productId);
+        
+            if ($product) {
+                if ($product->quantity >= $quantity) {
+                    $price = ($product->discount_option != 1) ? $product->offer_price : $product->base_price;
+        
+                    $product->update(['quantity' => $product->quantity - $quantity]);
+        
+                    // Create the order item
+                    $order->orderItems()->create([
+                        'product_id' => $productId,
+                        'quantity' => $quantity,
+                        'price' => $price,
+                    ]);
+                }
+            }
+        }
+        
+        session()->forget('cart');
+        $this->emit('cartUpdated');
+        session()->flash('success', 'Your order has been successfully placed. Thank you!!');
+        $this->refreshCache();
     }
 
     public function loadCart()
@@ -132,6 +193,14 @@ class Checkout extends Component
         // Reset error bag and validation
         $this->resetErrorBag();
         $this->resetValidation();
+    }
+
+    private function refreshCache()
+    {
+        Cache::forget($this->cacheKey);
+        Cache::rememberForever($this->cacheKey, function () {
+            return Order::orderBy('id', 'desc')->get();
+        });
     }
 
     public function render()

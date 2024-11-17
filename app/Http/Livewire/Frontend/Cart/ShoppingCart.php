@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Frontend\Cart;
 
 use Livewire\Component;
 use App\Models\Product;
+use Illuminate\Support\Carbon;
 
 class ShoppingCart extends Component
 {
@@ -24,10 +25,22 @@ class ShoppingCart extends Component
     {
         // Retrieve the cart from session
         $this->cart = session()->get('cart', []);
+        $now = now();
+        $cartUpdated = false;
+    
+        foreach ($this->cart as $cartKey => $item) {
+            if (!empty($item['added_at']) && $now->diffInMinutes(Carbon::parse($item['added_at'])) > 30) {
+                unset($this->cart[$cartKey]);
+                $cartUpdated = true;
+            }
+        }
+    
+        if ($cartUpdated) {
+            // Update the session with the modified cart
+            session()->put('cart', $this->cart);
+            $this->emit('cartUpdated');
+        }
         
-        // Reverse the cart array to display the latest items first
-        $this->cart = array_reverse($this->cart, true);
-
         // Create a temporary cart array to store valid items
         $validCart = [];
 
@@ -126,7 +139,6 @@ class ShoppingCart extends Component
         }
         return $total;
     }
-    
 
     public function refreshCart()
     {

@@ -107,29 +107,6 @@ class ProductController extends Controller
                 ]
             ], 422);
         }
-
-        // Custom validation for variations' quantity based on attributes
-        $errors = [];
-        $variations = $request->input('variations', []);
-        $attributesData = $request->input('attributes', []);
-
-        foreach ($variations as $index => $variation) {
-            $selectedAttributes = $attributesData[$index] ?? [];
-            $optionQuantity = $variation['option_quantity'] ?? null;
-
-            // Check if any attributes are checked (not empty) for this variation
-            $hasCheckedAttributes = collect($selectedAttributes)->contains(function ($attribute) {
-                return !empty($attribute['attribute']); 
-            });
-
-            // If attributes are checked, validate the quantity
-            if ($hasCheckedAttributes) {
-                // Check if quantity is valid (required and greater than 0)
-                if (is_null($optionQuantity) || !is_numeric($optionQuantity) || $optionQuantity <= 0) {
-                    $errors["variations.$index.option_quantity"] = ['The quantity is required and must be a positive number when attributes are selected.'];
-                }
-            }
-        }     
                 
         if (!empty($errors)) {
             return response()->json(['errors' => $errors], 422);
@@ -142,9 +119,6 @@ class ProductController extends Controller
 
         // Create the product
         $product = Product::create($data);
-
-        // Handle gallery images
-        // $this->handleGalleryUploads($request, $product);
 
         // Handle tags if provided
         $this->storeTags($request, $product);
@@ -162,28 +136,30 @@ class ProductController extends Controller
             return false;
         });
 
-        // Filter variations: Only variations with quantity > 0
+        // Filter variations: Allow variations with empty `option_quantity`
         $filteredVariations = array_filter($option_qty, function ($variation) {
-            return isset($variation['option_quantity']) && $variation['option_quantity'] > 0;
+            return isset($variation['option_quantity']) || $variation['option_quantity'] === null; 
         });
+
 
         // Handle combinations of attributes and variations
         $combinedFilteredData = [];
 
         foreach ($filteredVariations as $variationIndex => $variation) {
-            $quantity = $variation['option_quantity'] ?? 0;
-
+            $quantity = !empty($variation['option_quantity']) ? $variation['option_quantity'] : $product->quantity;
+            
             $validAttributes = array_filter($filteredAttributes[$variationIndex] ?? [], function ($attribute) {
                 return isset($attribute['attribute_value']) && !empty($attribute['attribute_value']);
             });
-
+        
             if (!empty($validAttributes)) {
                 $combinedFilteredData[] = [
-                    'quantity' => $quantity,
+                    'quantity' => $quantity, 
                     'attributes' => $validAttributes,
                 ];
             }
         }
+        
 
         if (!empty($combinedFilteredData)) {
             $this->storeProductOptions($combinedFilteredData, $product);
@@ -285,12 +261,13 @@ class ProductController extends Controller
     public function storeProductOptions(array $options, Product $product): void
     {
         foreach ($options as $option) {
+            // If quantity is not set in the option, fallback to product's quantity
             $productStock = $product->productStock()->create([
                 'sku_code' => $product->sku_code,
-                'quantity' => $option['quantity'], 
+                'quantity' => $option['quantity'] ?? $product->quantity, 
             ]);
 
-            // here sent the attribute option data
+            // Here, send the attribute option data
             foreach ($option['attributes'] as $attribute) {
                 $productStock->attributeOptions()->create([
                     'attribute_id' => $attribute['attribute'] ?? null,
@@ -299,6 +276,7 @@ class ProductController extends Controller
             }
         }
     }
+
     
     /**
      * Display the product details.

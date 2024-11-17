@@ -89,29 +89,6 @@ class ProductEditController extends Controller
                     ]
                 ], 422);
             }
-
-            // Custom validation for variations' quantity based on attributes
-            $errors = [];
-            $variations = $request->input('variations', []);
-            $attributesData = $request->input('attributes', []);
-
-            foreach ($variations as $index => $variation) {
-                $selectedAttributes = $attributesData[$index] ?? [];
-                $optionQuantity = $variation['option_quantity'] ?? null;
-
-                // Check if any attributes are checked (not empty) for this variation
-                $hasCheckedAttributes = collect($selectedAttributes)->contains(function ($attribute) {
-                    return !empty($attribute['attribute']); 
-                });
-
-                // If attributes are checked, validate the quantity
-                if ($hasCheckedAttributes) {
-                    // Check if quantity is valid (required and greater than 0)
-                    if (is_null($optionQuantity) || !is_numeric($optionQuantity) || $optionQuantity <= 0) {
-                        $errors["variations.$index.option_quantity"] = ['The quantity is required and must be a positive number when attributes are selected.'];
-                    }
-                }
-            }     
                     
             if (!empty($errors)) {
                 return response()->json(['errors' => $errors], 422);
@@ -146,15 +123,15 @@ class ProductEditController extends Controller
                 });
 
                 // Filter variations: Only variations with quantity > 0
-                $filteredVariations = array_filter($option_qty, function ($variation) {
-                    return isset($variation['option_quantity']) && $variation['option_quantity'] > 0;
+                 $filteredVariations = array_filter($option_qty, function ($variation) {
+                    return isset($variation['option_quantity']) || $variation['option_quantity'] === null; 
                 });
 
                 // Handle combinations of attributes and variations
                 $combinedFilteredData = [];
 
                 foreach ($filteredVariations as $variationIndex => $variation) {
-                    $quantity = $variation['option_quantity'] ?? 0;
+                    $quantity = !empty($variation['option_quantity']) ? $variation['option_quantity'] : $product->quantity;
 
                     $validAttributes = array_filter($filteredAttributes[$variationIndex] ?? [], function ($attribute) {
                         return isset($attribute['attribute_value']) && !empty($attribute['attribute_value']);
@@ -226,41 +203,44 @@ class ProductEditController extends Controller
     }
 
    // Update existing product options and stock
-    public function updateProductOptions(array $options, Product $product): void
-    {
-        // Get existing product stock IDs
-        $existingStockIds = $product->productStock()->pluck('id')->toArray();
-
-        foreach ($options as $option) {
-            if (!empty($option['id'])) {
-                // Update existing stock
-                $productStock = $product->productStock()->find($option['id']);
-                if ($productStock) {
-                    $productStock->update([
-                        'quantity' => $option['quantity'],
-                    ]);
-
-                    // Update attribute options for the stock
-                    $this->updateOrCreateAttributeOptions($productStock, $option['attributes']);
-                    // Remove updated stock from the list of existing IDs
-                    $existingStockIds = array_diff($existingStockIds, [$option['id']]);
-                }
-            } else {
-                // Create new stock if no existing stock ID
-                $productStock = $product->productStock()->create([
-                    'quantity' => $option['quantity'],
-                ]);
-
-                // Create attribute options for the new stock
-                $this->updateOrCreateAttributeOptions($productStock, $option['attributes']);
-            }
-        }
-
-        // Delete any remaining stock that was not updated
-        if (!empty($existingStockIds)) {
-            $product->productStock()->whereIn('id', $existingStockIds)->delete();
-        }
-    }
+   public function updateProductOptions(array $options, Product $product): void
+   {
+       // Get existing product stock IDs
+       $existingStockIds = $product->productStock()->pluck('id')->toArray();
+   
+       foreach ($options as $option) {
+           $quantity = $option['quantity'] ?? $product->quantity;  // Default to product's main quantity if empty
+   
+           if (!empty($option['id'])) {
+               // Update existing stock
+               $productStock = $product->productStock()->find($option['id']);
+               if ($productStock) {
+                   $productStock->update([
+                       'quantity' => $quantity,  // Use the quantity from the option or the product quantity
+                   ]);
+   
+                   // Update attribute options for the stock
+                   $this->updateOrCreateAttributeOptions($productStock, $option['attributes']);
+                   // Remove updated stock from the list of existing IDs
+                   $existingStockIds = array_diff($existingStockIds, [$option['id']]);
+               }
+           } else {
+               // Create new stock if no existing stock ID
+               $productStock = $product->productStock()->create([
+                   'quantity' => $quantity,  // Use the quantity from the option or the product quantity
+               ]);
+   
+               // Create attribute options for the new stock
+               $this->updateOrCreateAttributeOptions($productStock, $option['attributes']);
+           }
+       }
+   
+       // Delete any remaining stock that was not updated
+       if (!empty($existingStockIds)) {
+           $product->productStock()->whereIn('id', $existingStockIds)->delete();
+       }
+   }
+   
 
     // Method to update or create attribute options
     private function updateOrCreateAttributeOptions(ProductStock $productStock, array $attributes): void
@@ -309,12 +289,14 @@ class ProductEditController extends Controller
     public function storeProductOptions(array $options, Product $product): void
     {
         foreach ($options as $option) {
+            $quantity = $option['quantity'] ?? $product->quantity;  // Default to product's main quantity if empty
+
             $productStock = $product->productStock()->create([
                 'sku_code' => $product->sku_code,
-                'quantity' => $option['quantity'], 
+                'quantity' => $quantity,  // Use the quantity from the option or the product quantity
             ]);
 
-            // here sent the attribute option data
+            // Create attribute options for the new stock
             foreach ($option['attributes'] as $attribute) {
                 $productStock->attributeOptions()->create([
                     'attribute_id' => $attribute['attribute'] ?? null,
@@ -323,6 +305,7 @@ class ProductEditController extends Controller
             }
         }
     }
+
 
     //product attribute update and delete
     private function deleteAllOption(Product $product): void
