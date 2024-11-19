@@ -89,7 +89,7 @@ class AttrValue extends Component
     {
         // Prepare the attr value data
         $attrValueData = [
-            'attr_value'    => $this->attr_value,
+            'attr_value'    => ucfirst($this->attr_value),
             'attr_id'       => $this->attr_id,
             'option'        => $this->option,
         ];
@@ -120,7 +120,7 @@ class AttrValue extends Component
     private function updateExistingAttrValue()
     {
         $attrValue = AttributeValue::findOrFail($this->value_id);
-        $attrValue->attr_value  = $this->attr_value;
+        $attrValue->attr_value  = ucfirst($this->attr_value);
         $attrValue->option      = $this->option;
  
         $attrValue->save();

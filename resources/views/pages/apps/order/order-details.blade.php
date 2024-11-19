@@ -57,11 +57,7 @@
         }
     </style>
 
-    <!--begin::Content-->
-   
-        <!--begin::Content container-->
-        
-        <!--begin::Order details page-->
+    
         <div class="d-flex flex-column gap-7 gap-lg-10">
             <div class="d-flex flex-wrap flex-stack gap-5 gap-lg-10">
                 <!--begin:::Tabs-->
@@ -72,9 +68,9 @@
                     </li>
                     <!--end:::Tab item-->
                     <!--begin:::Tab item-->
-                    {{-- <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#kt_ecommerce_sales_order_history">Order History</a>
-                    </li> --}}
+                    </li>
                     <!--end:::Tab item-->
                 </ul>
                 <!--end:::Tabs-->
@@ -90,308 +86,307 @@
                 <a href="{{route('order-management.order.create')}}" class="btn btn-primary btn-sm">Add New Order</a>
                 <!--end::Button-->
             </div>
-            <!--begin::Order summary-->
-            <div class="d-flex flex-column flex-xl-row gap-7 gap-lg-10">
-                <!--begin::Order details-->
-                <div class="card card-flush py-4 flex-row-fluid order-items-bx">
-                    <!--begin::Card header-->
-                    <div class="card-header">
-                        <div class="card-title">
-                            <h2>Order Details (#{{$order->id}})</h2>
-                        </div>
-                    </div>
-                    <!--end::Card header-->
-                    <!--begin::Card body-->
-                    <div class="card-body pt-0 pb-0">
-                        <div class="table-responsive">
-                            <!--begin::Table-->
-                            <table class="table align-middle table-row-bordered mb-0 fs-6 gy-5 min-w-300px">
-                                <tbody class="fw-semibold text-gray-600">
-                                    <tr>
-                                        <td class="text-muted">
-                                            <div class="d-flex align-items-center">
-                                            <i class="ki-duotone ki-calendar fs-2 me-2">
-                                                <span class="path1"></span>
-                                                <span class="path2"></span>
-                                            </i>Order Date</div>
-                                        </td>
-                                        <td class="fw-bold text-end">{{ \Carbon\Carbon::parse($order->order_date)->format('m/d/Y') }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-muted">
-                                            <div class="d-flex align-items-center">
-                                            <i class="ki-duotone ki-wallet fs-2 me-2">
-                                                <span class="path1"></span>
-                                                <span class="path2"></span>
-                                                <span class="path3"></span>
-                                                <span class="path4"></span>
-                                            </i>Payment Method</div>
-                                        </td>
-                                        <td class="fw-bold text-end">
-                                            {{ $order->payment_type == 'cod' ? 'Cash on delivery' : 'Online' }}
-                                            @php
-                                                $paymentImg = $order->payment_type == 'cod' 
-                                                    ? 'assets/media/payment-methods/cod.png' 
-                                                    : 'assets/media/payment-methods/visa.svg';
-                                            @endphp
-                                            <img src="{{asset($paymentImg)}}" class="w-40px ms-2" />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-muted">
-                                            <div class="d-flex align-items-center">
-                                            <i class="ki-duotone ki-truck fs-2 me-2">
-                                                <span class="path1"></span>
-                                                <span class="path2"></span>
-                                                <span class="path3"></span>
-                                                <span class="path4"></span>
-                                                <span class="path5"></span>
-                                            </i>Shipping Method</div>
-                                        </td>
-                                        <td class="fw-bold text-end">
-                                            @if($order->shippingMethod)
-                                                @if($order->shippingMethod->base_id)
-                                                    Inside {{ $order->shippingMethod->District->name }} - {{ $order->shipping_cost }} tk
-                                                @else
-                                                    {{ $order->shippingMethod->provider_name }} - {{ $order->shipping_cost }} tk
-                                                @endif
-                                            @else
-                                                N/A
-                                            @endif
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-muted">
-                                            <div class="d-flex align-items-center">
-                                            <i class="ki-duotone ki-time fs-2 me-2">
-                                            <span class="path1"></span>
-                                            <span class="path2"></span>
-                                            </i>Time</div>
-                                        </td>
-                                        <td class="fw-bold text-end">
-                                            {{ \Carbon\Carbon::parse($order->order_date)->diffForHumans() }}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-muted">
-                                            <div class="d-flex align-items-center">
-                                            <i class="ki-duotone ki-two-credit-cart fs-2 me-2">
-                                                <span class="path1"></span>
-                                                <span class="path2"></span>
-                                                <span class="path3"></span>
-                                                <span class="path4"></span>
-                                                <span class="path5"></span>
-                                            </i>Transaction_id</div>
-                                        </td>
-                                        <td class="fw-bold text-end">{{$order->transaction_id ?? '-'}}</td>
-                                    </tr>
-                                    @if( !is_null($order->coupon_code) )
-                                        <tr>
-                                            <td class="text-muted">
-                                                <div class="d-flex align-items-center">
-                                                <i class="ki-duotone ki-discount fs-2 me-2">
-                                                    <span class="path1"></span>
-                                                    <span class="path2"></span>
-                                                </i>Coupon Code</div>
-                                            </td>
-                                            <td class="fw-bold text-end">
 
-                                            </td>
-                                        </tr>
-                                    @endif
-                                    <tr>
-                                        <td class="text-muted">
-                                            <div class="d-flex align-items-center">
-                                            <i class="ki-duotone ki-watch fs-2 me-2">
-                                                <span class="path1"></span>
-                                                <span class="path2"></span>
-                                            </i>Issue Date</div>
-                                        </td>
-                                        <td class="fw-bold text-end">12-09-24</td>
-                                    </tr>
-                                    
-                                    
-                                </tbody>
-                            </table>
-                            <!--end::Table-->
-                        </div>
-                    </div>
-                    <!--end::Card body-->
-                </div>
-                <!--end::Order details-->
-                <!--begin::Customer details-->
-                <div class="card card-flush py-4 flex-row-fluid">
-                    <!--begin::Card header-->
-                    <div class="card-header">
-                        <div class="card-title">
-                            <h2>Customer Details</h2>
-                        </div>
-                    </div>
-                    <!--end::Card header-->
-                    <!--begin::Card body-->
-                    <div class="card-body pt-0 pb-0">
-                        <div class="table-responsive">
-                            <!--begin::Table-->
-                            <table class="table align-middle table-row-bordered mb-0 fs-6 gy-5 min-w-300px">
-                                <tbody class="fw-semibold text-gray-600">
-                                    <tr>
-                                        <td class="text-muted">
-                                            <div class="d-flex align-items-center">
-                                            <i class="ki-duotone ki-profile-circle fs-2 me-2">
-                                                <span class="path1"></span>
-                                                <span class="path2"></span>
-                                                <span class="path3"></span>
-                                            </i>Customer</div>
-                                        </td>
-                                        @if( $order->user_id != null )
-                                            <td class="fw-bold text-end">
-                                                <div class="d-flex align-items-center justify-content-end">
-                                                    <!--begin:: Avatar -->
-                                                    <div class="symbol symbol-circle symbol-25px overflow-hidden me-3">
-                                                        <a href="">
-                                                            <div class="symbol-label">
-                                                                <img src="{{ asset($order->user->avatar && file_exists(public_path($order->user->avatar)) 
-                                                                ? $order->user->avatar 
-                                                                : 'uploads/admin/Default_pfp.svg.webp') }}" 
-                                                                class="w-100" 
-                                                                alt="User Avatar" />
-                                                    
-                                                            </div>
-                                                        </a>
-                                                    </div>
-
-                                                    <a href="" class="text-gray-600 text-hover-primary">{{ $order->name }}</a>
-                                                </div>
-                                            </td>
-                                        @else
-                                            <td class="fw-bold text-end">
-                                                <div class="d-flex align-items-center justify-content-end">
-                                                    <!--begin:: Avatar -->
-                                                    <div class="symbol symbol-circle symbol-25px overflow-hidden me-3">
-                                                        <a href="#">
-                                                            <div class="symbol-label">
-                                                                <img src="{{asset('uploads/admin/Default_pfp.svg.webp')}}" class="w-100" />
-                                                            </div>
-                                                        </a>
-                                                    </div>
-
-                                                    <span class="text-gray-600 text-hover-primary">{{ $order->name }}</span>
-                                                </div>
-                                            </td>
-                                        @endif
-                                    </tr>
-                                    <tr>
-                                        <td class="text-muted">
-                                            <div class="d-flex align-items-center">
-                                            <i class="ki-duotone ki-sms fs-2 me-2">
-                                                <span class="path1"></span>
-                                                <span class="path2"></span>
-                                            </i>Email</div>
-                                        </td>
-                                        <td class="fw-bold text-end">
-                                            <a href="mailto:{{$order->email ?? '-'}};" class="text-gray-600 text-hover-primary">{{$order->email ?? '-'}}</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-muted">
-                                            <div class="d-flex align-items-center">
-                                            <i class="ki-duotone ki-phone fs-2 me-2">
-                                                <span class="path1"></span>
-                                                <span class="path2"></span>
-                                            </i>Phone</div>
-                                        </td>
-                                        <td class="fw-bold text-end">
-                                            <a href="tel:{{$order->phone}}" class="text-gray-600 text-hover-primary">
-                                                {{$order->phone}}
-                                            </a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <!--end::Table-->
-                        </div>
-                    </div>
-                    <!--end::Card body-->
-                </div>
-                <!--end::Customer details-->
-                <!--begin::Documents-->
-                <div class="card card-flush py-4 flex-row-fluid">
-                    <!--begin::Card header-->
-                    <div class="card-header">
-                        <div class="card-title">
-                            <h2>Documents</h2>
-                        </div>
-                    </div>
-                    <!--end::Card header-->
-                    <!--begin::Card body-->
-                    <div class="card-body pt-0 pb-0">
-                        <div class="table-responsive">
-                            <!--begin::Table-->
-                            <table class="table align-middle table-row-bordered mb-0 fs-6 gy-5 min-w-300px">
-                                <tbody class="fw-semibold text-gray-600">
-                                    <tr>
-                                        <td class="text-muted">
-                                            <div class="d-flex align-items-center">
-                                            <i class="ki-duotone ki-devices fs-2 me-2">
-                                                <span class="path1"></span>
-                                                <span class="path2"></span>
-                                                <span class="path3"></span>
-                                                <span class="path4"></span>
-                                                <span class="path5"></span>
-                                            </i>Invoice
-                                            <span class="ms-1" data-bs-toggle="tooltip" title="View the invoice generated by this order.">
-                                                <i class="ki-duotone ki-information-5 text-gray-500 fs-6">
-                                                    <span class="path1"></span>
-                                                    <span class="path2"></span>
-                                                    <span class="path3"></span>
-                                                </i>
-                                            </span></div>
-                                        </td>
-                                        <td class="fw-bold text-end">
-                                            <a href="{{route('order-management.invoice',$order->id)}}" class="text-gray-600 text-hover-primary">#INV-{{$order->id}}</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-muted">
-                                            <div class="d-flex align-items-center">
-                                            <i class="ki-duotone ki-truck fs-2 me-2">
-                                                <span class="path1"></span>
-                                                <span class="path2"></span>
-                                                <span class="path3"></span>
-                                                <span class="path4"></span>
-                                                <span class="path5"></span>
-                                            </i>Shipping
-                                            <span class="ms-1" data-bs-toggle="tooltip" title="View the shipping manifest generated by this order.">
-                                                <i class="ki-duotone ki-information-5 text-gray-500 fs-6">
-                                                    <span class="path1"></span>
-                                                    <span class="path2"></span>
-                                                    <span class="path3"></span>
-                                                </i>
-                                            </span></div>
-                                        </td>
-                                        <td class="fw-bold text-end">
-                                            <a href="#" class="text-gray-600 text-hover-primary">#SHP-0025410</a>
-                                        </td>
-                                    </tr>
-
-                                    <div class="download-btn">
-                                        <a href="{{route('order-management.invoice',$order->id)}}" target="_blank" class="btn btn-success btn-sm me-lg-n7"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                                        {{-- <a href="" class="btn btn-danger btn-sm"><i class="fa fa-cloud-download" aria-hidden="true"></i></a> --}}
-                                    </div>
-                                </tbody>
-                            </table>
-                            <!--end::Table-->
-                        </div>
-                    </div>
-                    <!--end::Card body-->
-                </div>
-                <!--end::Documents-->
-            </div>
-            <!--end::Order summary-->
-            <!--begin::Tab content-->
             <div class="tab-content">
                 <!--begin::Tab pane-->
                 <div class="tab-pane fade show active" id="kt_ecommerce_sales_order_summary" role="tab-panel">
+                    <div class="d-flex flex-column flex-xl-row gap-7 gap-lg-10 mb-12">
+                        <!--begin::Order details-->
+                        <div class="card card-flush py-4 flex-row-fluid order-items-bx">
+                            <!--begin::Card header-->
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <h2>Order Details (#{{$order->id}})</h2>
+                                </div>
+                            </div>
+                            <!--end::Card header-->
+                            <!--begin::Card body-->
+                            <div class="card-body pt-0 pb-0">
+                                <div class="table-responsive">
+                                    <!--begin::Table-->
+                                    <table class="table align-middle table-row-bordered mb-0 fs-6 gy-5 min-w-300px">
+                                        <tbody class="fw-semibold text-gray-600">
+                                            <tr>
+                                                <td class="text-muted">
+                                                    <div class="d-flex align-items-center">
+                                                    <i class="ki-duotone ki-calendar fs-2 me-2">
+                                                        <span class="path1"></span>
+                                                        <span class="path2"></span>
+                                                    </i>Order Date</div>
+                                                </td>
+                                                <td class="fw-bold text-end">{{ \Carbon\Carbon::parse($order->order_date)->format('m/d/Y') }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-muted">
+                                                    <div class="d-flex align-items-center">
+                                                    <i class="ki-duotone ki-wallet fs-2 me-2">
+                                                        <span class="path1"></span>
+                                                        <span class="path2"></span>
+                                                        <span class="path3"></span>
+                                                        <span class="path4"></span>
+                                                    </i>Payment Method</div>
+                                                </td>
+                                                <td class="fw-bold text-end">
+                                                    {{ $order->payment_type == 'cod' ? 'Cash on delivery' : 'Online' }}
+                                                    @php
+                                                        $paymentImg = $order->payment_type == 'cod' 
+                                                            ? 'assets/media/payment-methods/cod.png' 
+                                                            : 'assets/media/payment-methods/visa.svg';
+                                                    @endphp
+                                                    <img src="{{asset($paymentImg)}}" class="w-40px ms-2" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-muted">
+                                                    <div class="d-flex align-items-center">
+                                                    <i class="ki-duotone ki-truck fs-2 me-2">
+                                                        <span class="path1"></span>
+                                                        <span class="path2"></span>
+                                                        <span class="path3"></span>
+                                                        <span class="path4"></span>
+                                                        <span class="path5"></span>
+                                                    </i>Shipping Method</div>
+                                                </td>
+                                                <td class="fw-bold text-end">
+                                                    @if($order->shippingMethod)
+                                                        @if($order->shippingMethod->base_id)
+                                                            Inside {{ $order->shippingMethod->District->name }} - {{ $order->shipping_cost }} tk
+                                                        @else
+                                                            {{ $order->shippingMethod->provider_name }} - {{ $order->shipping_cost }} tk
+                                                        @endif
+                                                    @else
+                                                        N/A
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-muted">
+                                                    <div class="d-flex align-items-center">
+                                                    <i class="ki-duotone ki-time fs-2 me-2">
+                                                    <span class="path1"></span>
+                                                    <span class="path2"></span>
+                                                    </i>Time</div>
+                                                </td>
+                                                <td class="fw-bold text-end">
+                                                    {{ \Carbon\Carbon::parse($order->order_date)->diffForHumans() }}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-muted">
+                                                    <div class="d-flex align-items-center">
+                                                    <i class="ki-duotone ki-two-credit-cart fs-2 me-2">
+                                                        <span class="path1"></span>
+                                                        <span class="path2"></span>
+                                                        <span class="path3"></span>
+                                                        <span class="path4"></span>
+                                                        <span class="path5"></span>
+                                                    </i>Transaction_id</div>
+                                                </td>
+                                                <td class="fw-bold text-end">{{$order->transaction_id ?? '-'}}</td>
+                                            </tr>
+                                            @if( !is_null($order->cupon_code) )
+                                                <tr>
+                                                    <td class="text-muted">
+                                                        <div class="d-flex align-items-center">
+                                                        <i class="ki-duotone ki-discount fs-2 me-2">
+                                                            <span class="path1"></span>
+                                                            <span class="path2"></span>
+                                                        </i>Coupon Code</div>
+                                                    </td>
+                                                    <td class="fw-bold text-end">
+                                                        {{ $order->cupon_code }}
+                                                    </td>
+                                                </tr>
+                                            @endif
+                                            <tr>
+                                                <td class="text-muted">
+                                                    <div class="d-flex align-items-center">
+                                                    <i class="ki-duotone ki-watch fs-2 me-2">
+                                                        <span class="path1"></span>
+                                                        <span class="path2"></span>
+                                                    </i>Issue Date</div>
+                                                </td>
+                                                <td class="fw-bold text-end">12-09-24</td>
+                                            </tr>
+                                            
+                                            
+                                        </tbody>
+                                    </table>
+                                    <!--end::Table-->
+                                </div>
+                            </div>
+                            <!--end::Card body-->
+                        </div>
+                        <!--end::Order details-->
+                        <!--begin::Customer details-->
+                        <div class="card card-flush py-4 flex-row-fluid">
+                            <!--begin::Card header-->
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <h2>Customer Details</h2>
+                                </div>
+                            </div>
+                            <!--end::Card header-->
+                            <!--begin::Card body-->
+                            <div class="card-body pt-0 pb-0">
+                                <div class="table-responsive">
+                                    <!--begin::Table-->
+                                    <table class="table align-middle table-row-bordered mb-0 fs-6 gy-5 min-w-300px">
+                                        <tbody class="fw-semibold text-gray-600">
+                                            <tr>
+                                                <td class="text-muted">
+                                                    <div class="d-flex align-items-center">
+                                                    <i class="ki-duotone ki-profile-circle fs-2 me-2">
+                                                        <span class="path1"></span>
+                                                        <span class="path2"></span>
+                                                        <span class="path3"></span>
+                                                    </i>Customer</div>
+                                                </td>
+                                                @if( $order->user_id != null )
+                                                    <td class="fw-bold text-end">
+                                                        <div class="d-flex align-items-center justify-content-end">
+                                                            <!--begin:: Avatar -->
+                                                            <div class="symbol symbol-circle symbol-25px overflow-hidden me-3">
+                                                                <a href="">
+                                                                    <div class="symbol-label">
+                                                                        <img src="{{ asset($order->user->avatar && file_exists(public_path($order->user->avatar)) 
+                                                                        ? $order->user->avatar 
+                                                                        : 'uploads/admin/Default_pfp.svg.webp') }}" 
+                                                                        class="w-100" 
+                                                                        alt="User Avatar" />
+                                                            
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+        
+                                                            <a href="" class="text-gray-600 text-hover-primary">{{ $order->name }}</a>
+                                                        </div>
+                                                    </td>
+                                                @else
+                                                    <td class="fw-bold text-end">
+                                                        <div class="d-flex align-items-center justify-content-end">
+                                                            <!--begin:: Avatar -->
+                                                            <div class="symbol symbol-circle symbol-25px overflow-hidden me-3">
+                                                                <a href="#">
+                                                                    <div class="symbol-label">
+                                                                        <img src="{{asset('uploads/admin/Default_pfp.svg.webp')}}" class="w-100" />
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+        
+                                                            <span class="text-gray-600 text-hover-primary">{{ $order->name }}</span>
+                                                        </div>
+                                                    </td>
+                                                @endif
+                                            </tr>
+                                            <tr>
+                                                <td class="text-muted">
+                                                    <div class="d-flex align-items-center">
+                                                    <i class="ki-duotone ki-sms fs-2 me-2">
+                                                        <span class="path1"></span>
+                                                        <span class="path2"></span>
+                                                    </i>Email</div>
+                                                </td>
+                                                <td class="fw-bold text-end">
+                                                    <a href="mailto:{{$order->email ?? '-'}};" class="text-gray-600 text-hover-primary">{{$order->email ?? '-'}}</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-muted">
+                                                    <div class="d-flex align-items-center">
+                                                    <i class="ki-duotone ki-phone fs-2 me-2">
+                                                        <span class="path1"></span>
+                                                        <span class="path2"></span>
+                                                    </i>Phone</div>
+                                                </td>
+                                                <td class="fw-bold text-end">
+                                                    <a href="tel:{{$order->phone}}" class="text-gray-600 text-hover-primary">
+                                                        {{$order->phone}}
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <!--end::Table-->
+                                </div>
+                            </div>
+                            <!--end::Card body-->
+                        </div>
+                        <!--end::Customer details-->
+                        <!--begin::Documents-->
+                        <div class="card card-flush py-4 flex-row-fluid">
+                            <!--begin::Card header-->
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <h2>Documents</h2>
+                                </div>
+                            </div>
+                            <!--end::Card header-->
+                            <!--begin::Card body-->
+                            <div class="card-body pt-0 pb-0">
+                                <div class="table-responsive">
+                                    <!--begin::Table-->
+                                    <table class="table align-middle table-row-bordered mb-0 fs-6 gy-5 min-w-300px">
+                                        <tbody class="fw-semibold text-gray-600">
+                                            <tr>
+                                                <td class="text-muted">
+                                                    <div class="d-flex align-items-center">
+                                                    <i class="ki-duotone ki-devices fs-2 me-2">
+                                                        <span class="path1"></span>
+                                                        <span class="path2"></span>
+                                                        <span class="path3"></span>
+                                                        <span class="path4"></span>
+                                                        <span class="path5"></span>
+                                                    </i>Invoice
+                                                    <span class="ms-1" data-bs-toggle="tooltip" title="View the invoice generated by this order.">
+                                                        <i class="ki-duotone ki-information-5 text-gray-500 fs-6">
+                                                            <span class="path1"></span>
+                                                            <span class="path2"></span>
+                                                            <span class="path3"></span>
+                                                        </i>
+                                                    </span></div>
+                                                </td>
+                                                <td class="fw-bold text-end">
+                                                    <a href="{{route('order-management.invoice',$order->id)}}" class="text-gray-600 text-hover-primary">#INV-{{$order->id}}</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-muted">
+                                                    <div class="d-flex align-items-center">
+                                                    <i class="ki-duotone ki-truck fs-2 me-2">
+                                                        <span class="path1"></span>
+                                                        <span class="path2"></span>
+                                                        <span class="path3"></span>
+                                                        <span class="path4"></span>
+                                                        <span class="path5"></span>
+                                                    </i>Shipping
+                                                    <span class="ms-1" data-bs-toggle="tooltip" title="View the shipping manifest generated by this order.">
+                                                        <i class="ki-duotone ki-information-5 text-gray-500 fs-6">
+                                                            <span class="path1"></span>
+                                                            <span class="path2"></span>
+                                                            <span class="path3"></span>
+                                                        </i>
+                                                    </span></div>
+                                                </td>
+                                                <td class="fw-bold text-end">
+                                                    <a href="#" class="text-gray-600 text-hover-primary">#SHP-0025410</a>
+                                                </td>
+                                            </tr>
+        
+                                            <div class="download-btn">
+                                                <a href="{{route('order-management.invoice',$order->id)}}" target="_blank" class="btn btn-success btn-sm me-lg-n7"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                                {{-- <a href="" class="btn btn-danger btn-sm"><i class="fa fa-cloud-download" aria-hidden="true"></i></a> --}}
+                                            </div>
+                                        </tbody>
+                                    </table>
+                                    <!--end::Table-->
+                                </div>
+                            </div>
+                            <!--end::Card body-->
+                        </div>
+                        <!--end::Documents-->
+                    </div>
+
                     <!--begin::Orders-->
                     <div class="d-flex flex-column gap-7 gap-lg-10">
                         <div class="d-flex flex-column flex-xl-row gap-7 gap-lg-10">
@@ -512,11 +507,11 @@
                                             @php
                                                 $grandTotal = $order->grand_total ?? 0;
                                                 $discount = $order->coupon_discount ?? 0;
-                                                $discountPercentage = $grandTotal > 0 ? ($discount / $grandTotal) * 100 : 0;
+                                                $discountPercentage = $subtotal > 0 ? ($discount / $subtotal) * 100 : 0;
                                             @endphp
 
                                             <tr>
-                                                <td colspan="4" class="text-end">Discount ({{$discountPercentage}}%)</td>
+                                                <td colspan="4" class="text-end">Discount ({{round($discountPercentage)}}%)</td>
                                                 <td class="text-end">
                                                     ৳{{ $discount }} 
                                                 </td>
@@ -529,7 +524,7 @@
                                             </tr>
                                             <tr>
                                                 <td colspan="4" class="fs-3 text-dark text-end">Grand Total</td>
-                                                <td class="text-dark fs-3 fw-bolder text-end">৳{{$order->grand_total}}</td>
+                                                <td class="text-dark fs-3 fw-bolder text-end">৳{{ number_format($order->grand_total,2)}}</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -543,15 +538,18 @@
                     <!--end::Orders-->
                 </div>
                 <!--end::Tab pane-->
-                
             </div>
-            <!--end::Tab content-->
+
+            <div class="tab-content">
+                <!--begin::Tab pane-->
+                <div class="tab-pane fade show active" id="kt_ecommerce_sales_order_history" role="tab-panel">
+                    
+                </div>
+                <!--end::Tab pane-->
+            </div>
+           
         </div>
-        <!--end::Order details page-->
         
-        <!--end::Content container-->
-    
-    <!--end::Content-->
 
     @push('scripts')
         <script>

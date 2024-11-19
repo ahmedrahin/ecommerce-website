@@ -1,16 +1,20 @@
 <div>
-   {{-- product variation --}}
 
-   @php 
+   {{-- product single variation --}}
+    @php 
       $productStocks = $product->productStock ?? collect(); 
       $attributesList = $attributes->keyBy('id'); 
       $attributesValuesList = $attributesValues->keyBy('id'); 
       $groupedAttributes = []; 
+
+      $singleVariationStocks = $productStocks->filter(function ($productStock) {
+            return $productStock->attributeOptions->count() === 1; 
+        });
     @endphp
 
-    @if($productStocks->isNotEmpty())
+    @if($singleVariationStocks->isNotEmpty())
       {{-- Group attributes and their values --}}
-      @foreach ($productStocks as $productStock)
+      @foreach ($singleVariationStocks as $productStock)
           @php 
               $attributeOptions = $productStock->attributeOptions; 
           @endphp
@@ -70,33 +74,77 @@
 
     @endif
 
+    {{-- @php
+        $productStocks = $product->productStock ?? collect(); 
+        $attributesList = $attributes->keyBy('id'); 
+        $attributesValuesList = $attributesValues->keyBy('id'); 
 
-<div class="quantity-box d-flex align-items-center gap-3">
-  <div class="quantity" id="quantity">
-      <button type="button" class="minus">
-          <i class="fa-solid fa-minus"></i>
-      </button>
-      <input type="number" class="quntity-filed" wire:model="quantity" min="1" data-quantity="{{$product->quantity}}" />
-      <button  type="button" class="plus">
-          <i class="fa-solid fa-plus"></i>
-      </button>
-  </div>
-  
-  <div class="d-flex align-items-center gap-3 w-100">
-    @if( $product->quantity > 0 )
-      <button wire:click="addToCart" class="btn btn_black sm addcart" style="width: 200px;">
-        <span wire:loading.remove wire:target="addToCart">Add to cart</span>
-        <span wire:loading wire:target="addToCart">
-            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-        </span>
-      </button>
-    @else
-      <button class="btn btn_black sm addcart" style="width: 200px;" disabled>
-          Out of stock
-      </button>
-    @endif
-  </div>
-</div>
+        $combinationStocks = $productStocks->filter(function ($productStock) {
+            return $productStock->attributeOptions->count() > 1; 
+        });
+
+        $combinations = []; 
+
+        if ($combinationStocks->isNotEmpty()) {
+            foreach ($combinationStocks as $productStock) {
+                $combinationParts = [];
+                foreach ($productStock->attributeOptions as $attributeOption) {
+                    $attributeName = $attributesList[$attributeOption->attribute_id]->attr_name ?? '';
+                    $attributeValue = $attributesValuesList[$attributeOption->attribute_value_id]->attr_value ?? '';
+                    $combinationParts[] = "{$attributeName}: {$attributeValue}";
+                }
+                $combinations[] = [
+                    'id' => $productStock->id,
+                    'label' => implode(' - ', $combinationParts),
+                ];
+            }
+        }
+    @endphp --}}
+
+    {{-- product combinaiton varation --}}
+    {{-- @if(!empty($combinations))
+        <div class="d-flex">
+            <div>
+                <h5>Select Variation:</h5>
+                <select name="product_combination" class="form-control" >
+                    <option value="">-- Select --</option>
+                    @foreach($combinations as $combination)
+                        <option value="{{ $combination['id'] }}">
+                            {{ $combination['label'] }}
+                        </option>
+                    @endforeach
+                </select>
+                
+            </div>
+        </div>
+    @endif --}}
+
+    <div class="quantity-box d-flex align-items-center gap-3">
+        <div class="quantity" id="quantity">
+            <button type="button" class="minus">
+                <i class="fa-solid fa-minus"></i>
+            </button>
+            <input type="number" class="quntity-filed" wire:model="quantity" min="1" data-quantity="{{$product->quantity}}" />
+            <button  type="button" class="plus">
+                <i class="fa-solid fa-plus"></i>
+            </button>
+        </div>
+    
+        <div class="d-flex align-items-center gap-3 w-100">
+            @if( $product->quantity > 0 )
+            <button wire:click="addToCart" class="btn btn_black sm addcart" style="width: 200px;">
+                <span wire:loading.remove wire:target="addToCart">Add to cart</span>
+                <span wire:loading wire:target="addToCart">
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                </span>
+            </button>
+            @else
+            <button class="btn btn_black sm addcart" style="width: 200px;" disabled>
+                Out of stock
+            </button>
+            @endif
+        </div>
+    </div>
 
 
 @section('addcart-js')
@@ -140,7 +188,6 @@
             }
         });
     });
-
   </script>
 
   {{-- product qty and variaiton js --}}

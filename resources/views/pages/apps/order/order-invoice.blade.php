@@ -111,8 +111,9 @@
                                     <thead>
                                         <tr class="border-bottom fs-6 fw-bold text-muted">
                                             <th class="min-w-175px pb-2">Products</th>
-                                            <th class="min-w-70px text-end pb-2">SKU</th>
-                                            <th class="min-w-80px text-end pb-2">QTY</th>
+                                            <th class="min-w-70px text-center pb-2">SKU</th>
+                                            <th class="min-w-80px text-center pb-2">QTY</th>
+                                            <th class="min-w-100px text-center pb-2">Unit Price</th>
                                             <th class="min-w-100px text-end pb-2">Total</th>
                                         </tr>
                                     </thead>
@@ -165,11 +166,11 @@
                                         @php
                                             $grandTotal = $order->grand_total ?? 0;
                                             $discount = $order->coupon_discount ?? 0;
-                                            $discountPercentage = $grandTotal > 0 ? ($discount / $grandTotal) * 100 : 0;
+                                            $discountPercentage = $subtotal > 0 ? ($discount / $subtotal) * 100 : 0;
                                         @endphp
 
                                         <tr>
-                                            <td colspan="4" class="text-end">Discount ({{$discountPercentage}}%)</td>
+                                            <td colspan="4" class="text-end">Discount ({{round($discountPercentage)}}%)</td>
                                             <td class="text-end">
                                                 ৳{{ $discount }} 
                                             </td>

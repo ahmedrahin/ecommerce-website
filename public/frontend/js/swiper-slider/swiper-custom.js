@@ -187,7 +187,7 @@ var swiper = new Swiper(".special-offer-slide-2", {
       slidesPerView: 3,
     },
     992: {
-      slidesPerView: 4,
+      slidesPerView: 5,
     },
   },
 });

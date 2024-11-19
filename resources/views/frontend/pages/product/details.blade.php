@@ -163,10 +163,6 @@
               {{-- chart and delivery information --}}
               <livewire:frontend.product.size-chart-qustion />
 
-              
-
-              
-
               {{-- add to cart and product varation --}}
               <livewire:frontend.cart.add-cart :productId="$product->id" />
               
@@ -256,6 +252,8 @@
       </div>
     </div>
   </section>
+
+  @include('frontend.pages.product.related-product')
  
 @endsection 
     

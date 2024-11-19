@@ -72,6 +72,20 @@ class Checkout extends Component
             return;
         }
 
+        if( $coupon->min_purchase_amount && ($coupon->min_purchase_amount > $this->getTotalAmount() ) ){
+            $this->emit('error', 'You need to minimum purchase ' . $coupon->min_purchase_amount . 'tk for use this coupon');
+            $this->couponCode = '';
+            return;
+        }
+
+        // Check usage limit
+        $usage = $coupon->orders()->count();
+        if ($coupon->usage_limit && ($usage >= $coupon->usage_limit)) {
+            $this->emit('error', 'The coupon usage limit has been reached.');
+            $this->couponCode = '';
+            return;
+        }
+
         // Apply the discount based on coupon type
         if ($coupon->discount_type == 'percentage') {
             $this->discountAmount = $this->getTotalAmount() * ($coupon->discount_amount / 100);
@@ -84,6 +98,7 @@ class Checkout extends Component
             'code' => $this->couponCode,
             'discount' => $this->discountAmount,
         ]);
+        $this->appliedCoupon = session()->get('applied_coupon');
         $this->emit('success', 'Coupon applied successfully!');
     }
 
@@ -179,7 +194,7 @@ class Checkout extends Component
             'shipping_cost'             => $this->selectedShippingCharge,
             'note'                      => $this->note,
             'grand_total'               => $this->grandTotal(),
-            'coupon_code'               => $this->appliedCoupon['code'] ?? null, 
+            'cupon_code'               => $this->appliedCoupon['code'] ?? null, 
             'coupon_discount'           => $this->appliedCoupon['discount'] ?? 0,
         ]);
 
@@ -223,12 +238,12 @@ class Checkout extends Component
                 }
             }
         }
-
         
         session()->forget('cart');
         $this->emit('cartUpdated');
         session()->flash('success', 'Your order has been successfully placed. Thank you!!');
         $this->refreshCache();
+        $this->removeCoupon();
     }
 
     public function loadCart()
@@ -263,8 +278,8 @@ class Checkout extends Component
         $this->loadCart();
         
         if (empty($this->cart)) {
-            return redirect()->route('shop');
             session()->forget('applied_coupon');
+            return redirect()->route('shop');
         }
     } 
     

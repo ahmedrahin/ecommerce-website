@@ -6326,7 +6326,7 @@ footer .footer-1 .social-icon > li:hover a i {
     color: rgba(var(--light-color), 1);
     font-weight: 400;
 }
-.product-detail-box .product-option > p .offer-btn {
+.offer-btn {
     background-color: rgba(var(--danger-color), 0.1);
     border-radius: 4px;
     color: rgba(var(--danger-color), 1);
@@ -6496,7 +6496,7 @@ footer .footer-1 .social-icon > li:hover a i {
 .product-detail-box .product-option .color-box ul {
     align-items: center;
     display: flex;
-    gap: 10px;
+    gap: 6px;
 }
 .product-detail-box .product-option .color-box ul li {
     border-radius: 50%;
@@ -6649,11 +6649,11 @@ footer .footer-1 .social-icon > li:hover a i {
 .product-detail-box .product-option .option-box.rectangle-box ul li.active {
     outline-color: rgba(var(--theme-default), 1);
 }
-.product-detail-box .product-option .option-box ul {
+.option-box ul {
     display: flex;
-    gap: 7px;
+    gap: 5px;
 }
-.product-detail-box .product-option .option-box ul li {
+ .option-box ul li {
     align-items: center;
     border: 1px solid rgba(var(--light-border), 1);
     border-radius: 50%;
@@ -6663,18 +6663,18 @@ footer .footer-1 .social-icon > li:hover a i {
     transition: all 0.4s ease-in-out;
     width: 30px;
 }
-.product-detail-box .product-option .option-box ul li a {
+.option-box ul li a {
     color: rgba(var(--theme-font-color), 1);
     text-transform: uppercase;
 }
-.product-detail-box .product-option .option-box ul li.active {
+.option-box ul li.active {
     background-color: rgba(var(--theme-default));
     border-color: transparent;
 }
-.product-detail-box .product-option .option-box ul li.active a {
+.option-box ul li.active a {
     color: rgba(var(--white), 1);
 }
-.product-detail-box .product-option .find-size {
+.product-option .find-size {
     cursor: pointer;
     text-decoration: underline;
     text-underline-offset: 5px;
@@ -10856,14 +10856,16 @@ body.skeleton_body {
         display: none;
     }
 }
-.skeleton_loader .special-offer-slider .product-box-4 .product-size-stock .option-box span {
+ .option-box span {
     display: inline-block;
     height: 20px;
     margin-top: 10px;
     width: 100px;
 }
-.skeleton_loader .special-offer-slider .product-box-4 .product-size-stock .option-box p,
-.skeleton_loader .special-offer-slider .product-box-4 .product-size-stock .option-box span {
+
+ .option-box p,
+
+  .option-box span {
     animation: skeleton-loader 2s linear infinite;
     background-image: linear-gradient(90deg, hsla(0, 0%, 83%, 0.3) 8%, #e4e4e4 18%, hsla(0, 0%, 83%, 0.3) 33%);
     background-size: 800px 104px;

@@ -167,4 +167,4 @@ document.addEventListener('DOMContentLoaded', () => {
   
     // Attach resize event listener
     window.addEventListener('resize', handleResize);
-  });
+});

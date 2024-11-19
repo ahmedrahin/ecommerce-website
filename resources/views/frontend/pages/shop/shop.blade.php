@@ -46,9 +46,14 @@
         </div>
       </div>
     </div>
-  </section>    
+  </section> 
+  
+  {{-- quick view modal --}}
+  <livewire:frontend.cart.quick-view />
 
-  @section('page-script')
+@endsection
+  
+@section('page-script')
   <script>
       document.addEventListener('livewire:load', function () {
           // Listen for a custom event to remove the category tag
@@ -66,11 +71,9 @@
               }
           });
 
-         
       });
   </script>
 
-  @endsection
-
 @endsection
+
     
