@@ -63,7 +63,7 @@ class OrderDataTable extends DataTable
                 return number_format($order->grand_total, 2).'৳';
             })
             ->editColumn('order_date', function (Order $order) {
-                $formattedDate = Carbon::parse($order->order_date)->format('m/d/Y') . '<br>';
+                $formattedDate = Carbon::parse($order->order_date)->format('d M Y') . '<br>';
                 $futureTime = Carbon::parse($order->order_date)->addHours(5);
                 $timeUntilFuture = $futureTime->diffForHumans();
                 $statusClass = 'text-primary';

@@ -12,7 +12,7 @@ class ProductAction extends Component
 {
     public $status = 'active';
 
-    // Cache key for brands
+    
     private $cacheKey;
 
     // Event listeners

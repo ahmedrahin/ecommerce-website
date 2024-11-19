@@ -64,4 +64,14 @@ class User extends Authenticatable
         return $this->belongsTo(District::class, 'division_id');
     }
 
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function Products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
 }

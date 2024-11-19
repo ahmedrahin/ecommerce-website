@@ -1,5 +1,5 @@
 <div>
-<div class="d-flex flex-center flex-column py-5">
+<div class="d-flex flex-center flex-column py-5 pb-0">
     <!--begin::Avatar-->
     <div class="symbol symbol-100px symbol-circle mb-5">
         @if($user->avatar)
@@ -26,7 +26,7 @@
     <!--end::Position-->
     <!--begin::Info-->
     <!--begin::Info heading-->
-    <div class="fw-bold mb-3">Assigned Tickets
+    {{-- <div class="fw-bold mb-3">Assigned Tickets
         <span class="ms-2" ddata-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true"
             data-bs-content="Number of support tickets assigned, closed and pending this week.">
             <i class="ki-duotone ki-information fs-7">
@@ -35,9 +35,9 @@
                 <span class="path3"></span>
             </i>
         </span>
-    </div>
+    </div> --}}
     <!--end::Info heading-->
-    <div class="d-flex flex-wrap flex-center">
+    {{-- <div class="d-flex flex-wrap flex-center">
         <!--begin::Stats-->
         <div class="border border-gray-300 border-dashed rounded py-3 px-3 mb-3">
             <div class="fs-4 fw-bold text-gray-700">
@@ -74,7 +74,7 @@
             <div class="fw-semibold text-muted">Open</div>
         </div>
         <!--end::Stats-->
-    </div>
+    </div> --}}
     <!--end::Info-->
 </div>
 

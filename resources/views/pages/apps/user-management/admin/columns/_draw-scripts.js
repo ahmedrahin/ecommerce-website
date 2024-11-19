@@ -23,6 +23,8 @@ document.querySelectorAll('[data-kt-action="delete_row"]').forEach(function (ele
     });
 });
 
+
+
 //change status
 document.querySelectorAll('.change-status').forEach(function (element) {
     element.addEventListener('click', function() {

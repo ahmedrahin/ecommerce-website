@@ -9,6 +9,7 @@ use Yajra\DataTables\Html\Builder as HtmlBuilder;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Str;
 
 class ProductsDataTable extends DataTable
 {
@@ -25,9 +26,12 @@ class ProductsDataTable extends DataTable
                 $url = route('product-management.show', $product->id);
                 $imagePath = $product->thumb_image ? $product->thumb_image : 'uploads/blank-image.svg'; 
                 $imageUrl = asset($imagePath);
+                $truncatedName = Str::limit($product->name, 25, '...');
+
                 $pName = '<a target="_blank" class="text-gray-800 text-hover-primary fs-5 fw-bold" href="' . $url . '">';
-                $pName .= '<img src="' . asset($imageUrl) . '" alt="' . $product->name . '" width="50" height="50" class="table-product-image" style="object-fit: cover; margin-right: 10px;">';
-                $pName .= $product->name . '</a>';
+                $pName .= '<img src="' . $imageUrl . '" alt="' . $product->name . '" width="50" height="50" class="table-product-image" style="object-fit: cover; margin-right: 10px;">';
+                $pName .= $truncatedName . '</a>';
+
                 return $pName;
             })
             ->editColumn('base_price', function (Product $product) {

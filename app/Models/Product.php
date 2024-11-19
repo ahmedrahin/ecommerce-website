@@ -47,6 +47,8 @@ class Product extends Model
     {
         return $this->hasMany(ProductStock::class);
     }
+
+    
     
     public function tags()
     {
