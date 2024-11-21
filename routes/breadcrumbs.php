@@ -26,7 +26,7 @@ Breadcrumbs::for('admin-management.admin-list.index', function (BreadcrumbTrail 
 
 
 // Home > Dashboard > User Management
-Breadcrumbs::for('user-management.index', function (BreadcrumbTrail $trail) {
+Breadcrumbs::for('user-management.users.index', function (BreadcrumbTrail $trail) {
     $trail->parent('dashboard');
     $trail->push('User Management', route('user-management.users.index'));
 });
@@ -35,6 +35,12 @@ Breadcrumbs::for('user-management.index', function (BreadcrumbTrail $trail) {
 Breadcrumbs::for('admin-management.users.index', function (BreadcrumbTrail $trail) {
     $trail->parent('user-management.index');
     $trail->push('Users', route('user-management.users.index'));
+});
+
+// Home > Dashboard > User Management > User > [User]
+Breadcrumbs::for('user-management.users.show', function (BreadcrumbTrail $trail, $user) {
+    $trail->parent('user-management.users.index');
+    $trail->push(ucwords($user->name), route('user-management.users.show', $user));
 });
 
 // Home > Dashboard > Admin Management > Admin > [Admin]

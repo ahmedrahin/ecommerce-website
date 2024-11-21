@@ -8,6 +8,7 @@
 
 use App\Http\Controllers\Frontend\PagesController;
 use App\Http\Controllers\Frontend\ShopController;
+use App\Http\Controllers\Frontend\UserDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,18 +53,22 @@ Route::get('/', [PagesController::class, 'home'])->name('homepage');
 Route::prefix('shop')->controller(ShopController::class)->group(function () {
     Route::get('/', 'allProducts')->name('shop');
 });
+
 // product-details page
 Route::get('/product/{slug}', [ShopController::class, 'productDetails'])->name('product-details');
 
 // checkout page
 Route::get('/checkout', [OrderController::class, 'checkout'])->name('checkout');
 
+// user dashboard page
+Route::get('/dashboard/{id}', [UserDashboardController::class, 'dashboard'])->name('user.dashboard');
+
 /*
 |--------------------------------------------------------------------------
 | Admin Web Routes
 |--------------------------------------------------------------------------
 */
-Route::get('/c-clean', function () {
+Route::get('/c-clean', function (){
     Artisan::call('cache:clear');
     Artisan::call('view:clear');
     Artisan::call('route:clear');
@@ -72,7 +77,7 @@ Route::get('/c-clean', function () {
     return env('APP_NAME') . ' All cache cleared.';
 });
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'verified', 'isAdmin'])->group(function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 

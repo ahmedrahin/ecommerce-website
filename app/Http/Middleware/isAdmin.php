@@ -15,7 +15,7 @@ class isAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!auth()->check() || auth()->user()->isAdmin !== 1) {
+        if ( auth()->user()->isAdmin !== 1) {
             // If the user is not authenticated or is not an admin, return an error message
             return redirect()->back();
         }

@@ -1,11 +1,11 @@
 <x-default-layout>
 
     @section('title')
-    Admin List
+    User List
     @endsection
 
     @section('breadcrumbs')
-    {{ Breadcrumbs::render('admin-management.admin-list.index') }}
+    {{ Breadcrumbs::render('user-management.users.index') }}
     @endsection
 
     <div class="card">
@@ -17,7 +17,7 @@
                 <div class="d-flex align-items-center position-relative my-1">
                     {!! getIcon('magnifier', 'fs-3 position-absolute ms-5') !!}
                     <input type="text" data-kt-user-table-filter="search"
-                        class="form-control form-control-solid w-250px ps-13" placeholder="Search admin"
+                        class="form-control form-control-solid w-250px ps-13" placeholder="Search user"
                         id="mySearchInput" />
                 </div>
                 <!--end::Search-->
@@ -26,25 +26,6 @@
 
             <!--begin::Card toolbar-->
             <div class="card-toolbar">
-                <!--begin::Toolbar-->
-                <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
-                    <!--begin::Add user-->
-                    @can('add admin')
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#kt_modal_add_user">
-                            {!! getIcon('plus', 'fs-2', '', 'i') !!}
-                            Create Admin
-                        </button>
-                    @else
-                        <button type="button" class="btn btn-primary" onclick="errorAccess('You do not have permission to add admin.')">
-                            {!! getIcon('plus', 'fs-2', '', 'i') !!}
-                            Create Admin
-                        </button>
-                    @endif
-                    <!--end::Add user-->
-                </div>
-                <!--end::Toolbar-->
-
                 <!--begin::Modal-->
                 <livewire:user.add-admin-modal></livewire:user.add-admin-modal>
                 <!--end::Modal-->

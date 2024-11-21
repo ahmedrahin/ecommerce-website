@@ -91,4 +91,15 @@
         <!--end::Col-->
     </div>
     <!--end::Row-->
+
+    @push('scripts')
+
+        @if (session('success'))
+            <script>
+                toastr.success("{{ session('success') }}");
+            </script>
+        @endif
+    
+    @endpush
+
 </x-default-layout>

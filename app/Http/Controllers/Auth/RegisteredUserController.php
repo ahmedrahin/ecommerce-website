@@ -21,8 +21,7 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        addJavascriptFile('assets/js/custom/authentication/sign-up/general.js');
-
+        
         return view('pages.auth.register');
     }
 
@@ -54,6 +53,7 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        session()->flash('success', 'Hey ' . $user->name . ' Thanks for registration.');
+
     }
 }

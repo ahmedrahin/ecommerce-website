@@ -9,6 +9,14 @@
 
 @endsection
 
+@section('body-content')
+   
+@endsection
+    
+@section('page-script')
+   
+@endsection
+
     
     
     

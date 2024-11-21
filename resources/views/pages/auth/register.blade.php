@@ -1,145 +1,136 @@
-<x-auth-layout>
+@extends('frontend.layout.app')
 
-    <!--begin::Form-->
-    <form class="form w-100" novalidate="novalidate" id="kt_sign_up_form" data-kt-redirect-url="{{ route('login') }}" action="{{ route('register') }}">
-        @csrf
-        <!--begin::Heading-->
-        <div class="text-center mb-11">
-            <!--begin::Title-->
-            <h1 class="text-dark fw-bolder mb-3">
-                Sign Up
-            </h1>
-            <!--end::Title-->
+@section('page-title')
+    Register | {{ config('app.name') }}
+@endsection
 
-            <!--begin::Subtitle-->
-            <div class="text-gray-500 fw-semibold fs-6">
-                Your Social Campaigns
-            </div>
-            <!--end::Subtitle--->
-        </div>
-        <!--begin::Heading-->
-
-        <!--begin::Login options-->
-        <div class="row g-3 mb-9">
-            <!--begin::Col-->
-            <div class="col-md-6">
-                <!--begin::Google link--->
-                <a href="#" class="btn btn-flex btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
-                    <img alt="Logo" src="{{ image('svg/brand-logos/google-icon.svg') }}" class="h-15px me-3"/>
-                    Sign in with Google
-                </a>
-                <!--end::Google link--->
-            </div>
-            <!--end::Col-->
-
-            <!--begin::Col-->
-            <div class="col-md-6">
-                <!--begin::Google link--->
-                <a href="#" class="btn btn-flex btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
-                    <img alt="Logo" src="{{ image('svg/brand-logos/apple-black.svg') }}" class="theme-light-show h-15px me-3"/>
-                    <img alt="Logo" src="{{ image('svg/brand-logos/apple-black-dark.svg') }}" class="theme-dark-show h-15px me-3"/>
-                    Sign in with Apple
-                </a>
-                <!--end::Google link--->
-            </div>
-            <!--end::Col-->
-        </div>
-        <!--end::Login options-->
-
-        <!--begin::Separator-->
-        <div class="separator separator-content my-14">
-            <span class="w-125px text-gray-500 fw-semibold fs-7">Or with email</span>
-        </div>
-        <!--end::Separator-->
-
-        <!--begin::Input group--->
-        <div class="fv-row mb-8">
-            <!--begin::Name-->
-            <input type="text" placeholder="Name" name="name" autocomplete="off" class="form-control bg-transparent"/>
-            <!--end::Name-->
-        </div>
-
-        <!--begin::Input group--->
-        <div class="fv-row mb-8">
-            <!--begin::Email-->
-            <input type="text" placeholder="Email" name="email" autocomplete="off" class="form-control bg-transparent"/>
-            <!--end::Email-->
-        </div>
-
-        <!--begin::Input group-->
-        <div class="fv-row mb-8" data-kt-password-meter="true">
-            <!--begin::Wrapper-->
-            <div class="mb-1">
-                <!--begin::Input wrapper-->
-                <div class="position-relative mb-3">
-                    <input class="form-control bg-transparent" type="password" placeholder="Password" name="password" autocomplete="off"/>
-
-                    <span class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2" data-kt-password-meter-control="visibility">
-                        <i class="bi bi-eye-slash fs-2"></i>
-                        <i class="bi bi-eye fs-2 d-none"></i>
-                    </span>
+@section('body-content')
+<section class="section-b-space pt-10 login-bg-img ">
+    <div class="custom-container container login-page">
+        <div class="row align-items-center">
+            <div class="col-xxl-7 col-6 d-none d-lg-block">
+                <div class="login-img">
+                    <img class="img-fluid" src="{{ asset('frontend/images/1.svg') }}">
                 </div>
-                <!--end::Input wrapper-->
-
-                <!--begin::Meter-->
-                <div class="d-flex align-items-center mb-3" data-kt-password-meter-control="highlight">
-                    <div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
-                    <div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
-                    <div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
-                    <div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px"></div>
+            </div>
+            <div class="col-xxl-4 col-lg-6 mx-auto">
+                <div class="log-in-box">
+                    <div class="log-in-title">
+                        <h4>Welcome To {{ config('app.name') }}</h4>
+                        <p>Create New Account</p>
+                    </div>
+                    <div class="login-box">
+                        <form id="registerForm" method="POST">
+                            @csrf
+                            <div class="col-12">
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="name" type="text" name="name" placeholder="Full Name">
+                                    <label for="name">Enter Your Name</label>
+                                    <div class="text-danger mt-2" id="nameError"></div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="email" type="email" name="email" placeholder="name@example.com">
+                                    <label for="email">Enter Your Email</label>
+                                    <div class="text-danger mt-2" id="emailError"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-12">
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="password" type="password" name="password" placeholder="Password">
+                                    <label for="password">Enter Your Password</label>
+                                    <div class="text-danger mt-2" id="passwordError"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-12">
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="password_confirmation" type="password" name="password_confirmation" placeholder="Confirm Password">
+                                    <label for="password_confirmation">Confirm Your Password</label>
+                                    <div class="text-danger mt-2" id="passwordConfirmationError"></div>
+                                </div>
+                            </div>
+                            
+                           
+                            <button class="btn login btn_black sm" id="registerButton" type="submit">
+                                <span id="spinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                                Sign Up
+                            </button>
+                        </form>
+                    </div>
+                    <div class="sign-up-box">
+                        <p>Already have an account?</p>
+                        <a href="{{ route('user.login') }}">Log In</a>
+                    </div>
                 </div>
-                <!--end::Meter-->
-            </div>
-            <!--end::Wrapper-->
-
-            <!--begin::Hint-->
-            <div class="text-muted">
-                Use 8 or more characters with a mix of letters, numbers & symbols.
-            </div>
-            <!--end::Hint-->
-        </div>
-        <!--end::Input group--->
-
-        <!--end::Input group--->
-        <div class="fv-row mb-8">
-            <!--begin::Repeat Password-->
-            <input placeholder="Repeat Password" name="password_confirmation" type="password" autocomplete="off" class="form-control bg-transparent"/>
-            <!--end::Repeat Password-->
-        </div>
-        <!--end::Input group--->
-
-        <!--begin::Input group--->
-        <div class="fv-row mb-10">
-            <div class="form-check form-check-custom form-check-solid form-check-inline">
-                <input class="form-check-input" type="checkbox" name="toc" value="1"/>
-
-                <label class="form-check-label fw-semibold text-gray-700 fs-6">
-                    I Agree &
-
-                    <a href="#" class="ms-1 link-primary">Terms and conditions</a>.
-                </label>
             </div>
         </div>
-        <!--end::Input group--->
+    </div>
+</section>
+@endsection
 
-        <!--begin::Submit button-->
-        <div class="d-grid mb-10">
-            <button type="submit" id="kt_sign_up_submit" class="btn btn-primary">
-                @include('partials/general/_button-indicator', ['label' => 'Sign Up'])
-            </button>
-        </div>
-        <!--end::Submit button-->
+@section('page-script')
+    <script src="{{asset('frontend/js/jq.min.js')}}"></script>
+    <script>
+      $(document).ready(function () {
+            $("#registerForm").on("submit", function (e) {
+                e.preventDefault();
 
-        <!--begin::Sign up-->
-        <div class="text-gray-500 text-center fw-semibold fs-6">
-            Already have an Account?
+                // Clear previous errors
+                $("#nameError").text("");
+                $("#emailError").text("");
+                $("#passwordError").text("");
+                $("#passwordConfirmationError").text("");
 
-            <a href="/login" class="link-primary fw-semibold">
-                Sign in
-            </a>
-        </div>
-        <!--end::Sign up-->
-    </form>
-    <!--end::Form-->
+                // Show spinner and disable button
+                $("#spinner").removeClass("d-none");
+                $("#registerButton").prop("disabled", true);
 
-</x-auth-layout>
+                // Form data
+                let formData = {
+                    name: $("#name").val(),
+                    email: $("#email").val(),
+                    password: $("#password").val(),
+                    password_confirmation: $("#password_confirmation").val(),
+                };
+
+                $.ajax({
+                    url: "{{ route('user.register') }}",
+                    type: "POST",
+                    data: formData,
+                    headers: {
+                        "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                    },
+                    success: function (response) {
+                        window.location.href = "{{ route('homepage') }}";
+                    },
+                    error: function (xhr) {
+                        if (xhr.responseJSON.errors) {
+                            let errors = xhr.responseJSON.errors;
+                            if (errors.name) {
+                                $("#nameError").text(errors.name[0]);
+                            }
+                            if (errors.email) {
+                                $("#emailError").text(errors.email[0]);
+                            }
+                            if (errors.password) {
+                                $("#passwordError").text(errors.password[0]);
+                            }
+                            if (errors.password_confirmation) {
+                                $("#passwordConfirmationError").text(errors.password_confirmation[0]);
+                            }
+                        }
+                    },
+                    complete: function () {
+                        // Hide spinner and enable button
+                        $("#spinner").addClass("d-none");
+                        $("#registerButton").prop("disabled", false);
+                    },
+                });
+            });
+        });
+
+    </script>
+@endsection

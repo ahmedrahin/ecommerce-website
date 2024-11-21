@@ -41,14 +41,9 @@
                   <button href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop"><i class="iconsax" data-icon="search-normal-2"></i></button>
                 </li>
                 <li> <a href="wishlist.html"><i class="iconsax" data-icon="heart"></i><span class="cart_qty_cls">2</span></a></li>
-                <li class="onhover-div"><a href="#"><i class="iconsax" data-icon="user-2"></i></a>
-                  <div class="onhover-show-div user"> 
-                    <ul> 
-                      <li> <a href="login.html">Login </a></li>
-                      <li> <a href="sign-up.html">Register</a></li>
-                    </ul>
-                  </div>
-                </li>
+
+                @include('frontend.includes.auth')
+
                 <li class="onhover-div shopping-cart">
                     {{-- cart btn --}}
                     <livewire:frontend.cart.btn-cart />

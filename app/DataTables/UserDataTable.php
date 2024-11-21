@@ -9,7 +9,7 @@ use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 
-class UsersDataTable extends DataTable
+class UserDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -20,15 +20,10 @@ class UsersDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->rawColumns(['user', 'last_login_at'])
-            ->editColumn('admin', function (User $user) {
+            ->editColumn('user', function (User $user) {
                 return view('pages.apps.user-management.admin.columns._user', compact('user'));
             })
-            ->editColumn('role', function (User $user) {
-                $role = $user->roles->first()?->name ?? 'No Role';
-                $badgeClass = app(\App\Actions\GetThemeType::class)->handle('badge-light-?', $role);
-                
-                return "<span class='badge {$badgeClass}'>{$role}</span>";                
-            })            
+                       
             ->editColumn('id', function (User $user) {
                 return '<span class="badge badge-light-primary">' . $user->id . '</span>';
             })
@@ -42,7 +37,7 @@ class UsersDataTable extends DataTable
                 return view('pages.apps.user-management.admin.columns._active_status', compact('user'));
             })
             ->addColumn('action', function (User $user) {
-                return view('pages.apps.user-management.admin.columns._actions', compact('user'));
+                return view('pages.apps.user-management.user.columns._actions', compact('user'));
             })
             ->setRowId('id')
             ->rawColumns(['role', 'last_login_at', 'status', 'id']);
@@ -53,8 +48,8 @@ class UsersDataTable extends DataTable
      * Get the query source of dataTable.
      */
     public function query(User $model): QueryBuilder
-    {
-        return $model->newQuery();
+    {   
+        return $model->newQuery()->where('isAdmin', 2);
     }
 
     /**
@@ -70,7 +65,7 @@ class UsersDataTable extends DataTable
             ->addTableClass('table align-middle table-row-dashed fs-6 gy-5 dataTable no-footer text-gray-600 fw-semibold')
             ->setTableHeadClass('text-start text-muted fw-bold fs-7 text-uppercase gs-0')
             ->orderBy(2)
-            ->drawCallback("function() {" . file_get_contents(resource_path('views/pages//apps/user-management/admin/columns/_draw-scripts.js')) . "}");
+            ->drawCallback("function() {" . file_get_contents(resource_path('views/pages//apps/user-management/user/columns/_draw-scripts.js')) . "}");
     }
 
     /**
@@ -81,8 +76,8 @@ class UsersDataTable extends DataTable
         return [
             //Column::make('email'),
             //  Column::computed('DT_RowIndex')->title('Sl.')->addClass('text-center')->orderable(false)->searchable(false),
-            Column::make('admin')->addClass('d-flex align-items-center')->name('name'),
-            Column::make('role')->searchable(false)->addClass('align-items-center'),
+            Column::make('user')->addClass('d-flex align-items-center')->name('name'),
+            
             Column::make('last_login_at')->title('Last Login'),
             Column::make('id')->title('User ID')->addClass('text-center'),
             Column::make('created_at')->title('Joined Date')->addClass('text-nowrap'),

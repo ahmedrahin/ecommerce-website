@@ -1,8 +1,12 @@
 <x-auth-layout>
 
+    @section('title')
+        Reset Password
+    @endsection
+
     <!--begin::Form-->
     <form class="form w-100" novalidate="novalidate" id="kt_password_reset_form"
-        data-kt-redirect-url="{{ route('login') }}" action="{{ route('password.request') }}">
+        data-kt-redirect-url="{{ route('login') }}" action="{{ route('admin.password.email') }}">
         @csrf
         <!--begin::Heading-->
         <div class="text-center mb-10">

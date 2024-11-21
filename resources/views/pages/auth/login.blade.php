@@ -12,7 +12,7 @@
         <div class="text-center mb-11">
             <!--begin::Title-->
             <h1 class="text-dark fw-bolder mb-3">
-                Login In
+                Log in
             </h1>
             
         </div>
@@ -40,7 +40,7 @@
             <div></div>
 
             <!--begin::Link-->
-            <a href="{{ route('password.request') }}" class="link-primary">
+            <a href="{{ route('admin.password.request') }}" class="link-primary">
                 Forgot Password ?
             </a>
             <!--end::Link-->

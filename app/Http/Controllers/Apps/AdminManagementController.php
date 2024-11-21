@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Apps;
 
-use App\DataTables\UsersDataTable;
+use App\DataTables\AdminDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 
@@ -14,7 +14,7 @@ class AdminManagementController extends Controller
     }
 
 
-    public function index(UsersDataTable $dataTable)
+    public function index(AdminDataTable $dataTable)
     {
         return $dataTable->render('pages.apps.user-management.admin.list');
     }

@@ -190,7 +190,7 @@ class AddAdminModal extends Component
         }
         elseif(auth()->id() == $user->id){
             $user->update(['status' => $status]);
-            if ($status == 0) {
+            if ($user->status == 0) {
                 // Log the user out
                 Auth::logout();
         
@@ -199,7 +199,7 @@ class AddAdminModal extends Component
                 request()->session()->regenerateToken();
                 
                 DB::table('sessions')
-                ->where('user_id', $this->user->id)
+                ->where('user_id', $user->id)
                 ->delete();
         
                 // Flash a session message and redirect to login page
@@ -208,6 +208,16 @@ class AddAdminModal extends Component
         }
         else {
             $user->update(['status' => $status]);
+            if ($user->status == 0) {
+                DB::table('sessions')
+                ->where('user_id', $user->id)
+                ->delete();
+        
+                // Flash a session message and redirect to login page
+                if( $user->isAdmin == 1 ){
+                    return redirect()->route('login')->with('info', 'Your account has been disabled and you have been logged out.');
+                }
+            }
         }
 
         $message = $status == 0 ? "{$user->name} account is Disable" : "{$user->name} account is Enable";
