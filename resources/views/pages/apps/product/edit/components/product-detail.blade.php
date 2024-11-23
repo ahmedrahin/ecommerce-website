@@ -4,7 +4,7 @@
             <h2>Product Details</h2>
         </div>
     </div>
-    <div class="card-body pt-0">
+    <div class="card-body pt-0 pb-0">
         <label class="form-label">Brand</label>
         <select name="brand_id" data-control="select2" class="form-select form-select-solid mb-5" data-placeholder="Select a brand" data-allow-clear="true">
             <option value="">Select a brand</option>
@@ -29,28 +29,61 @@
         </select>
         <span id="subcategory_id" class="text-danger"></span>
 
-        <label class="form-label">Subsubcategory</label>
+        {{-- <label class="form-label">Subsubcategory</label>
         <select name="subsubcategory_id" id="subsubcategory_id_item" data-control="select2" class="form-select form-select-solid mb-5" data-placeholder="Select a subsubcategory" data-allow-clear="true">
             <option></option>
         </select>
-        <span id="subsubcategory_id" class="text-danger"></span>
+        <span id="subsubcategory_id" class="text-danger"></span> --}}
 
-        <label class="form-label">Product Status</label>
-        <select class="form-select form-select-solid" 
-        id="product_status" 
-        name="status"
-        data-control="select2"
-        data-placeholder="Select a status">
-            <option></option>
-            <option value="1" {{ $product->status == 1 ? 'selected' : '' }}>Active</option>
-            <option value="0" {{ $product->status == 0 ? 'selected' : '' }}>Inactive</option>
-        </select>
-        <span id="status" class="text-danger"></span>
-        
         <label class="form-label d-block">Tags</label>
         <input id="kt_tagify_for_product" class="form-control mb-2" value="{{ json_encode($tagItem) }}" />
         <span id="tags" class="text-danger"></span>
-        <h2></h2>
+        
+        <div class="mb-5">
+            <label class="form-label d-block">Filtering</label>
+            <div class="form-check form-check-custom form-check-solid mb-3">
+                <input class="form-check-input" type="checkbox" id="is_new" name="is_new" value="1" {{ $product->is_new == 1 ? 'checked' : '' }}>
+                <label for="is_new" class="form-check-label">set as new product</label>
+            </div>
+
+            <div class="form-check form-check-custom form-check-solid mb-2">
+                <input class="form-check-input" type="checkbox" id="is_featured" name="is_featured" value="1" {{ $product->is_featured == 1 ? 'checked' : '' }}>
+                <label for="is_featured" class="form-check-label">set as featured product</label>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="card card-flush py-4">
+    <!--begin::Card header-->
+    <div class="card-header">
+        <!--begin::Card title-->
+        <div class="card-title">
+            <h2>Status</h2>
+        </div>
+        <div class="card-toolbar">
+            <div class="rounded-circle bg-success w-15px h-15px" id="kt_ecommerce_add_product_status"></div>
+        </div>
+    </div>
+    <div class="card-body pt-0 pb-7">
+        <select class="form-select mb-2" data-control="select2" data-hide-search="true" data-placeholder="Select an option" id="kt_ecommerce_add_product_status_select" name="status">
+            <option></option>
+            <option value="1" {{ $product->status == 1 ? 'selected' : '' }}>Published</option>
+            <option value="2" {{ $product->status == 2 ? 'selected' : '' }}>Draft</option>
+            <option value="3" {{ $product->status == 3 ? 'selected' : '' }}>Scheduled</option>
+            <option value="0" {{ $product->status == 0 ? 'selected' : '' }}>Inactive</option>
+        </select>
+
+        <div class="text-muted fs-7">Set the product status.</div>
+
+        <div class="d-none mt-7">
+            <label for="kt_ecommerce_add_product_status_datepicker" class="form-label">Select publishing date and time</label>
+            <input class="form-control" id="kt_ecommerce_add_product_status_datepicker" placeholder="Pick date & time" name="publish_at" value="{{ $product->publish_at }}" />
+            <span id="publish_at" class="text-danger"></span>
+        </div>
+
+        
     </div>
 </div>
 

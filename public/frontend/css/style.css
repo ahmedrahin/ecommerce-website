@@ -248,8 +248,7 @@ select:focus {
     padding-bottom: calc(30px + 3.125vw);
 }
 .section-space,
-.section-t-space,
-section {
+.section-t-space {
     padding-top: calc(30px + 3.125vw);
 }
 .section-b-space {
@@ -1455,8 +1454,9 @@ div#newsletter {
     display: flex;
     justify-content: space-between;
     margin-bottom: 8px;
-    padding: 8px;
+    padding: 3px;
     width: 100%;
+    padding-left: 8px;
 }
 .custom-accordion .accordion .search-box input {
     background-color: transparent;
@@ -1465,7 +1465,7 @@ div#newsletter {
     width: 100%;
 }
 .custom-accordion .accordion .search-box .iconsax {
-    --Iconsax-Size: 20px;
+    --Iconsax-Size: 16px;
     --Iconsax-Color: rgba(var(--light-color), 1);
     margin-right: 8px;
 }
@@ -1652,7 +1652,7 @@ div#newsletter {
 .custom-accordion .accordion .accordion-item .accordion-body .collection-list {
     align-items: center;
     display: grid;
-    gap: 10px;
+    gap: 5px;
 }
 .custom-accordion .accordion .accordion-item .accordion-body .collection-list li {
     align-items: center;

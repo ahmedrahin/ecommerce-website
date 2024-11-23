@@ -71,6 +71,7 @@ class ProductController extends Controller
             'status'                    => 'required|in:1,2,3,0',
             'publish_at'                => 'nullable|date',
             'expire_date'               => 'nullable|date|after_or_equal:now',
+            'thumb_image'               => 'required'
         ];
     
         // Conditionally require the discount_percentage_or_flat_amount field
@@ -91,6 +92,7 @@ class ProductController extends Controller
             'publish_at.date' => 'The publish date must be a valid date.',
             'publish_at.after_or_equal' => 'The publish date must be a current or future time.',
             'expire_date.after_or_equal'  => 'The expiry date must be a current or future time.',
+            'thumb_image.required' => 'Select a thumbnail image'
         ];
 
         // Validate the request with initial rules
@@ -213,9 +215,9 @@ class ProductController extends Controller
             'status'            => $request->status,
             'publish_at'        => $request->publish_at,
             'free_shipping'    => $request->free_shipping ?? 'no',
-            'is_new'           => $request->is_new ?? 0,
-            'is_featured'      => $request->is_featured ?? 0,
-            'user_id'          => 1,
+            'is_new'           => $request->is_new ?? 2,
+            'is_featured'      => $request->is_featured ?? 2,
+            'user_id'          => Auth::id(),
             'expire_date'      => $request->expire_date,
             ...$discountDetails,
         ];

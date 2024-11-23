@@ -60,6 +60,10 @@ class ProductEditController extends Controller
                 'gallery_image.*'           => 'nullable|image',
                 'discount_option'           => 'nullable|in:1,2,3',
                 'discount_percentage_or_flat_amount' => 'nullable|numeric|min:0',
+                'status'                    => 'required|in:1,2,3,0',
+                'publish_at'                => 'nullable|date',
+                // 'expire_date'               => 'nullable|date|after_or_equal:now',
+                'thumb_image'               => 'required'
             ];
         
             // Conditionally require the discount_percentage_or_flat_amount field
@@ -67,12 +71,18 @@ class ProductEditController extends Controller
                 $rules['discount_percentage_or_flat_amount'] = 'required|numeric|min:1';
             }
 
+            
+
             // Custom validation messages
             $messages = [
-                'discount_percentage_or_flat_amount.required' => 'The discount amount field is required when a discount option is selected.',
+               'discount_percentage_or_flat_amount.required' => 'The discount amount is required when a discount option is selected.',
                 'discount_percentage_or_flat_amount.numeric' => 'The discount amount must be a number.',
                 'discount_percentage_or_flat_amount.min' => 'The discount amount must be at least 1.',
-                'gallery_image.*.image' => 'Each gallery image must be an image file'
+                'publish_at.required' => 'The publish date is required when scheduling the product.',
+                'publish_at.date' => 'The publish date must be a valid date.',
+                'publish_at.after_or_equal' => 'The publish date must be a current or future time.',
+                'expire_date.after_or_equal'  => 'The expiry date must be a current or future time.',
+                'thumb_image.required' => 'Select a thumbnail image'
             ];
 
             // Validate the request data
@@ -401,8 +411,12 @@ class ProductEditController extends Controller
             'quantity'          => $validated['quantity'],
             'sku_code'          => $validated['sku_code'],
             'video_link'        => $request->video_link,
-            'is_featured'       =>  2,
+            'free_shipping'    => $request->free_shipping ?? 'no',
+            'is_new'           => $request->is_new ?? 2,
+            'is_featured'      => $request->is_featured ?? 2,
             'status'            => $request->status,
+            'publish_at'        => $request->publish_at,
+            'expire_date'      => $request->expire_date,
             ...$discountDetails,
         ];
     }

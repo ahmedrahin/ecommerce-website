@@ -8,10 +8,11 @@ use App\Models\Category;
 class ProductFilter extends Component
 {
     public $selectedCategories = [];
+    public $searchQuery = '';
 
-    // Sync selectedCategories and collectionFilters with query string
     protected $queryString = [
         'selectedCategories' => ['as' => 'categories', 'except' => []],
+        'searchQuery' => ['as' => 'query', 'except' => ''],
     ];
 
     protected $listeners = [
@@ -21,6 +22,11 @@ class ProductFilter extends Component
     public function updatedSelectedCategories()
     {
         $this->emit('filterUpdated', $this->selectedCategories);
+    }
+
+    public function updatedSearchQuery()
+    {
+        $this->emit('searchUpdated', $this->searchQuery); 
     }
 
     public function removeFromSelectedCategories($categoryId)

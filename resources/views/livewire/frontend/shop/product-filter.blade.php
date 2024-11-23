@@ -4,7 +4,15 @@
     </div>
     <div class="accordion" id="accordionPanelsStayOpenExample">
       <div class="search-box">
-        <input type="search" name="text" placeholder="Search here..."><i class="iconsax" data-icon="search-normal-2"></i>
+        <input 
+            type="search" 
+            class="form-control" 
+            placeholder="Search a product..." 
+            wire:model.debounce.500ms="searchQuery"
+        >
+        @if( !$searchQuery )
+          <i class="iconsax" data-icon="search-normal-2"></i>
+        @endif
       </div>
       
       <div class="accordion-item">

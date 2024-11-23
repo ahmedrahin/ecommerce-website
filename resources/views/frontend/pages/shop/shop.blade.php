@@ -7,7 +7,7 @@
 @section('body-content')
 
  
-  <section class="section-b-space pt-10"> 
+  <section> 
     <div class="custom-container container">
       <div class="row"> 
         <div class="col-3"> 
@@ -20,20 +20,8 @@
               <div class="accordion-body">
                 <livewire:frontend.shop.selected-tags :initial-categories="request()->get('categories', [])" />
               </div>
-              <div> <a class="filter-button btn"> 
-                  <h6> <i class="iconsax" data-icon="filter"></i>Filter Menu </h6></a>
-                <div class="category-dropdown">
-                  <label for="cars">Sort By :</label>
-                  <select class="form-select" id="cars" name="carlist">
-                    <option value="">Best selling</option>
-                    <option value="">Popularity</option>
-                    <option value="">Featured</option>
-                    <option value="">Alphabetically, Z-A</option>
-                    <option value="">High - Low Price</option>
-                    <option value="">% Off - Hight To Low</option>
-                  </select>
-                </div>
-              </div>
+                {{-- sort product here --}}
+                <livewire:frontend.shop.sorting></livewire>
               
             </div>
             

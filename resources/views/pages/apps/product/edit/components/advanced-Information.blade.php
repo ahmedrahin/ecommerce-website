@@ -20,6 +20,12 @@
                     </div>
                     <span id="quantity" class="text-danger"></span>
                 </div>
+                <div class=" fv-row">
+                    <label class="form-label">Expire Date</label>
+                    <input class="form-control" id="kt_ecommerce_add_product_expire_datepicker" placeholder="Pick date & time" name="expire_date" value="{{ $product->expire_date }}" />
+                    <span id="expire_date" class="text-danger"></span>
+                    
+                </div>
             </div>
         </div>
         

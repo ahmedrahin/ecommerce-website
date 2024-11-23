@@ -14,19 +14,37 @@ class ShopProduct extends Component
 
     public $selectedCategories = [];
     public $selectedCategoryNames = [];
+    public $searchQuery = '';
+    public $sortOrder = '';
 
     protected $queryString = [
         'selectedCategories' => ['as' => 'categories', 'except' => []],
+        'searchQuery' => ['as' => 'query', 'except' => ''],
+        'sortOrder' => ['as' => 'sort', 'except' => ''],
     ];
 
     protected $listeners = [
         'filterUpdated' => 'updateFilter',
+        'searchUpdated' => 'updateSearchQuery',
+        'sortOrderUpdated' => 'updateSortOrder',
     ];
 
     public function updateFilter($categories)
     {
         $this->selectedCategories = array_values($categories);
         $this->resetPage(); 
+    }
+
+    public function updateSearchQuery($query)
+    {
+        $this->searchQuery = $query;
+        $this->resetPage();
+    }
+
+    public function updateSortOrder($order)
+    {
+        $this->sortOrder = $order;
+        $this->resetPage();
     }
 
     public function render()
@@ -46,7 +64,22 @@ class ShopProduct extends Component
                       ->orWhereIn('subcategory_id', $this->selectedCategories);
                 });
             })
-            ->orderBy('is_featured', 'desc')
+            ->when($this->searchQuery, function ($query) {
+                $query->where('name', 'like', '%' . $this->searchQuery . '%') 
+                    ->orWhereHas('tags', function ($q) { 
+                        $q->where('name', 'like', '%' . $this->searchQuery . '%');
+                    });
+            })
+            ->when($this->sortOrder, function ($query) {
+                if ($this->sortOrder === 'price_desc') {
+                    $query->orderBy('offer_price', 'desc');
+                } elseif ($this->sortOrder === 'price_asc') {
+                    $query->orderBy('offer_price', 'asc');
+                }elseif($this->sortOrder == 'offer'){
+                    $query->where('discount_option', '!=', 1);
+                }
+            })
+            ->orderBy('is_featured', 'asc')
             ->orderBy('id', 'desc')
             ->paginate(20); 
 

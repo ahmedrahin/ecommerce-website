@@ -48,7 +48,7 @@ class ShoppingCart extends Component
             $productId = explode('-', $cartKey)[0];
             $product = Product::find($productId);
 
-            if ($product && $product->status == 1  && $product->quantity > 0) { 
+            if ($product && ($product->status == 1 || $product->status == 3 )  && $product->quantity > 0) { 
                 $validCart[$cartKey] = $item;
                 $validCart[$cartKey]['name'] = $product->name;
                 $validCart[$cartKey]['slug'] = $product->slug;

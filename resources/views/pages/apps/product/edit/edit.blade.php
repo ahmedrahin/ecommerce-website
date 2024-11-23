@@ -65,7 +65,7 @@
                     @include('pages.apps.product.edit.components.advanced-Information')
                 </div>
                 <div class="d-flex justify-content-end">
-                    <button type="submit" id="add_product_submit" class="btn btn-primary">
+                    <button type="submit" id="add_product_submit" class="btn btn-primary" style="width: 200px;">
                         <span class="indicator-label">Save Changes</span>
                         <span class="indicator-progress">Please wait...
                         <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
@@ -255,6 +255,7 @@
         });
 
     </script>
+    <script src="{{asset('assets/js/custom/apps/ecommerce/catalog/save-product.js')}}"></script>
     @endpush
     
 </x-default-layout>

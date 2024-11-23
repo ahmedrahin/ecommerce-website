@@ -26,7 +26,7 @@ class ProductsDataTable extends DataTable
                 $url = route('product-management.show', $product->id);
                 $imagePath = $product->thumb_image ? $product->thumb_image : 'uploads/blank-image.svg'; 
                 $imageUrl = asset($imagePath);
-                $truncatedName = Str::limit($product->name, 25, '...');
+                $truncatedName = Str::limit($product->name, 20, '...');
 
                 $pName = '<a target="_blank" class="text-gray-800 text-hover-primary fs-5 fw-bold" href="' . $url . '">';
                 $pName .= '<img src="' . $imageUrl . '" alt="' . $product->name . '" width="50" height="50" class="table-product-image" style="object-fit: cover; margin-right: 10px;">';

@@ -30,7 +30,7 @@ class ShopController extends Controller
                 ->first();
 
             // Check if the product exists and is active
-            if (!$product || $product->status != 1) {
+            if (!$product || $product->status == 0 || $product->status == 2) {
                 // Redirect to the shop page with a message
                 return redirect()->route('shop')->with('error', 'The product is unavailable.');
             }

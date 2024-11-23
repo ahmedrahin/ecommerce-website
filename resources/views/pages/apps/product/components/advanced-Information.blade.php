@@ -85,7 +85,7 @@
             
         </div>
 
-        <div class="card card-flush py-4">
+        {{-- <div class="card card-flush py-4">
             <!--begin::Card header-->
             <div class="card-header">
                 <div class="card-title">
@@ -151,7 +151,7 @@
                 <!--end::Shipping form-->
             </div>
             <!--end::Card header-->
-        </div>
+        </div> --}}
     </div>
 </div>
 

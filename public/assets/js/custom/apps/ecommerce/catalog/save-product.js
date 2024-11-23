@@ -240,6 +240,8 @@ var KTAppEcommerceSaveProduct = function () {
         const hideDatepicker = () => {
             datepicker.parentNode.classList.add('d-none');
         }
+
+        $(select).trigger('change');
     }
 
 
@@ -259,89 +261,7 @@ var KTAppEcommerceSaveProduct = function () {
             datepicker.parentNode.classList.add('d-none');
         }
 
-    // Condition type handler
-    // const handleConditions = () => {
-    //     const allConditions = document.querySelectorAll('[name="method"][type="radio"]');
-    //     const conditionMatch = document.querySelector('[data-kt-ecommerce-catalog-add-category="auto-options"]');
-    //     allConditions.forEach(radio => {
-    //         radio.addEventListener('change', e => {
-    //             if (e.target.value === '1') {
-    //                 conditionMatch.classList.remove('d-none');
-    //             } else {
-    //                 conditionMatch.classList.add('d-none');
-    //             }
-    //         });
-    //     })
-    // }
-
-    // // Submit form handler
-    // const handleSubmit = () => {
-    //     // Define variables
-    //     let validator;
-
-    //     // Get elements
-    //     const form = document.getElementById('kt_ecommerce_add_product_form');
-    //     const submitButton = document.getElementById('kt_ecommerce_add_product_submit');
-
-    //     // Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
-    //     validator = FormValidation.formValidation(
-    //         form,
-    //         {
-    //             fields: {
-    //                 'product_name': {
-    //                     validators: {
-    //                         notEmpty: {
-    //                             message: 'Product name is required'
-    //                         }
-    //                     }
-    //                 },
-    //                 'sku': {
-    //                     validators: {
-    //                         notEmpty: {
-    //                             message: 'SKU is required'
-    //                         }
-    //                     }
-    //                 },
-    //                 'sku': {
-    //                     validators: {
-    //                         notEmpty: {
-    //                             message: 'Product barcode is required'
-    //                         }
-    //                     }
-    //                 },
-    //                 'shelf': {
-    //                     validators: {
-    //                         notEmpty: {
-    //                             message: 'Shelf quantity is required'
-    //                         }
-    //                     }
-    //                 },
-    //                 'price': {
-    //                     validators: {
-    //                         notEmpty: {
-    //                             message: 'Product base price is required'
-    //                         }
-    //                     }
-    //                 },
-    //                 'tax': {
-    //                     validators: {
-    //                         notEmpty: {
-    //                             message: 'Product tax class is required'
-    //                         }
-    //                     }
-    //                 }
-    //             },
-    //             plugins: {
-    //                 trigger: new FormValidation.plugins.Trigger(),
-    //                 bootstrap: new FormValidation.plugins.Bootstrap5({
-    //                     rowSelector: '.fv-row',
-    //                     eleInvalidClass: '',
-    //                     eleValidClass: ''
-    //                 })
-    //             }
-    //         }
-    //     );
-    // }
+    
 
     // Public methods
     return {

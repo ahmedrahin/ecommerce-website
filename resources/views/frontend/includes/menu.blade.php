@@ -34,10 +34,10 @@
                
               </ul>
             </nav>
-            <div class="search-box"> 
-              <input type="search" name="text" placeholder="I'm looking for…"/>
-              <i class="fa fa-search" aria-hidden="true"></i>
-            </div>
+            
+            {{-- search box --}}
+            <livewire:frontend.shop.search-box />
+            
             <div class="sub_header">
               <div class="toggle-nav" id="toggle-nav"><i class="fa-solid fa-bars-staggered sidebar-bar"></i></div>
               <ul class="justify-content-end">

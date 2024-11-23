@@ -36,8 +36,8 @@ return new class extends Migration
             $table->text('thumb_image')->nullable();
             $table->text('back_image')->nullable();
             $table->enum('free_shipping', ['yes', 'no'])->default('no')->comment('yes or no');
-            $table->boolean('is_new')->default(0)->comment('1=yes or 0=no');
-            $table->boolean('is_featured')->default(0)->comment('1=Yes, 0=No');
+            $table->boolean('is_new')->default(2)->comment('1=yes or 2=no');
+            $table->boolean('is_featured')->default(2)->comment('1=Yes, 2=No');
             $table->softDeletes();
             $table->timestamps();
         });        
