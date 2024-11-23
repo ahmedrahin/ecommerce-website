@@ -34,11 +34,11 @@ class ProductFilter extends Component
     {
         $categories = Category::where('status', 1)
             ->with(['subcategories' => function ($query) {
-                $query->orderBy('name', 'asc')
+                $query->orderBy('id', 'asc')
                     ->where('status', 1)
                     ->withCount('products');
             }, 'product'])
-            ->orderBy('name', 'asc')
+            ->orderBy('id', 'asc')
             ->get();
 
         return view('livewire.frontend.shop.product-filter', compact('categories'));

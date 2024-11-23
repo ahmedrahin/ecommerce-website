@@ -10,12 +10,12 @@
   </li>
 @else
   <li class="onhover-div">
-    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-    @csrf
-</form>
+    @php
+        $route = Auth::user()->isAdmin == 4 ? route('admin-management.admin-list.show', Auth::id()) : route('user.dashboard');
+    @endphp
+    <a href="{{ $route }}">
+        <i class="iconsax" data-icon="user-2"></i>
+    </a>
 
-<a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-    Logout
-</a>
   </li>
 @endif

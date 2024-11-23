@@ -178,11 +178,11 @@
 
 {{-- quick view modal --}}
 <script>
-    // document.querySelectorAll('.quickview').forEach(function (element) {
-    //     element.addEventListener('click', function () {
-    //         Livewire.emit('get_productId', this.getAttribute('data-product-id'));
-    //     });
-    // });
+    document.querySelectorAll('.quickview').forEach(function (element) {
+        element.addEventListener('click', function () {
+            Livewire.emit('get_productId', this.getAttribute('data-product-id'));
+        });
+    });
 </script>
 
  @yield('page-script')

@@ -61,7 +61,8 @@ Route::get('/product/{slug}', [ShopController::class, 'productDetails'])->name('
 Route::get('/checkout', [OrderController::class, 'checkout'])->name('checkout');
 
 // user dashboard page
-Route::get('/dashboard/{id}', [UserDashboardController::class, 'dashboard'])->name('user.dashboard');
+Route::get('/dashboard', [UserDashboardController::class, 'dashboard'])->name('user.dashboard')->middleware('auth');
+Route::get('/invoice/{order_id}', [UserDashboardController::class, 'invoice'])->name('order.invoice')->middleware('auth');
 
 /*
 |--------------------------------------------------------------------------
@@ -79,7 +80,7 @@ Route::get('/c-clean', function (){
 
 Route::middleware(['auth', 'verified', 'isAdmin'])->group(function () {
 
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::name('admin-management.')->middleware('can:admin catalouge')->group(function () {
         Route::resource('/admin-list', AdminManagementController::class);

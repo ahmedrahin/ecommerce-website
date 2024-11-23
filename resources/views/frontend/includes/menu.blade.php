@@ -22,24 +22,26 @@
           </div>
         </div>
         <div class="col-12">
-          <div class="main-menu"> <a class="brand-logo" href="index.html"> <img class="img-fluid for-light" src="{{asset('frontend/images/logo/logo.png')}}" alt="logo"/><img class="img-fluid for-dark" src="{{asset('frontend/images/logo/logo-white-1.png')}}" alt="logo"/></a>
+          <div class="main-menu"> <a class="brand-logo" href="{{url('/')}}"> <img class="img-fluid for-light" src="{{asset('frontend/images/logo/logo.png')}}" alt="logo"/><img class="img-fluid for-dark" src="{{asset('frontend/images/logo/logo-white-1.png')}}" alt="logo"/></a>
             <nav id="main-nav">
               <ul class="nav-menu sm-horizontal theme-scrollbar" id="sm-horizontal">
-                <li>
-                  <a class="nav-link" href="#">Home</a>
+                
+                <li> <a class="nav-link" href="{{route('shop')}}" style="font-weight: 700;">Shop <span> <i class="fa-solid fa-angle-down"></i></span></a>
+                  <div class="mega-menu">
+                    <livewire:frontend.shop.category-menu />
+                  </div>
                 </li>
-                <li> <a class="nav-link" href="{{route('shop')}}">Shop</a>
-                  
-                </li>
-                <li> <a class="nav-link" href="contact.html">Contact </a></li>
+               
               </ul>
             </nav>
+            <div class="search-box"> 
+              <input type="search" name="text" placeholder="I'm looking for…"/>
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </div>
             <div class="sub_header">
               <div class="toggle-nav" id="toggle-nav"><i class="fa-solid fa-bars-staggered sidebar-bar"></i></div>
               <ul class="justify-content-end">
-                <li> 
-                  <button href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop"><i class="iconsax" data-icon="search-normal-2"></i></button>
-                </li>
+                
                 <li> <a href="wishlist.html"><i class="iconsax" data-icon="heart"></i><span class="cart_qty_cls">2</span></a></li>
 
                 @include('frontend.includes.auth')

@@ -91,7 +91,7 @@
                             
 
                             <a href="{{route('product-details', $product->slug)}}">
-                                <h6 style="font-weight: 700;">{{ Str::limit($product->name, 25, '...') }}</h6>
+                                <h6 style="font-weight: 700;">{{ Str::limit($product->name, 22, '...') }}</h6>
                             </a>
     
                             <p>

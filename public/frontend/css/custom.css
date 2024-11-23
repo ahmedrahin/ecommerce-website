@@ -203,3 +203,23 @@
     font-size: 20px;
     letter-spacing: 1px;
 }
+
+header {
+    box-shadow: 0px 2px 15px 1px #0000000d;
+}
+.search-box{
+    width: 50%;
+    display: flex;
+    position: relative;
+}
+.search-box input {
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: 1px solid #c9c9c9;
+}
+.search-box i {
+    position: absolute;
+    right: 15px;
+    top: 32%;
+}
