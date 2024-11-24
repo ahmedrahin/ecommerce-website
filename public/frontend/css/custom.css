@@ -205,9 +205,37 @@
 }
 
 header {
+    width: 100%;
+    background-color: white;
     box-shadow: 0px 2px 15px 1px #0000000d;
-    margin-bottom: 50px;
+    transition: all .3s ease-in-out;
+    margin-bottom: 40px;
 }
+
+header.scrolled {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
+    /* opacity: .95; */
+}
+@keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -100%, 0);
+            transform: translate3d(0, -100%, 0);
+      
+    }
+    to {
+      opacity: 1;
+      -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+      
+    }
+  }
+
 .search-boxmenu{
     width: 50%;
     display: flex;
@@ -284,4 +312,53 @@ header {
 footer {
     margin-top: 50px;
     padding-top: 40px;
+}
+.for-mobile {
+    display: none !important;
+}
+
+
+/* responsive */
+@media (max-width: 576px) {
+    .product-box-3 .product-image{height: 210px;}
+    .product-box-3 .product-image a{height: 210px;}
+    .product-box-3 .product-detail h6{font-size: 13px;padding-top: 4px;line-height: 20px;}
+    .btn-buy, .btn-buy i{font-size: 13px;}
+    .btn-buy i{padding-right: 3px;}
+    footer{margin-top: 0;}
+    header {margin-bottom: 20px;}
+    .for-dekstop {display: none !important;}
+    .for-mobile {display: block !important;}
+    .top-filter-menu select {width: 100% !important;}
+    .for-mobile .tags {padding-top: 12px;}
+    .top-filter-menu {display: block;}
+    .tags li {margin-bottom: 5px;}
+    .top-filter-menu{margin-bottom: 8px;}
+    .quick-view-img img{height: 230px;}
+    #quick-view .name{font-size: 18px;}
+    .theme-modal .modal-dialog .modal-content .modal-body .product-right .product-description{margin-bottom: 15px;}
+    #quick-view .product-variant{padding: 2px 0 0;margin-bottom: 5px;}
+    .theme-modal .modal-dialog .modal-content .modal-body .product-right .color-variant li{height: 20px;width: 20px;}
+    .theme-modal .modal-dialog .modal-content .modal-body .product-right .product-buttons .btn{font-size: 14px; padding: 5px 10px;}
+    .theme-modal .modal-dialog .modal-content .modal-body .product-right .color-variant{margin-bottom: 5px;}
+    .btn-buy{margin-top: 15px;}
+    #quick-view .btn-solid span{font-size: 14px;}
+    .theme-modal .modal-dialog .modal-content .modal-body{padding: 20px 15px;}
+    .option-box label{font-size: 13px;}
+    .option-box ul li{height: 25px;width: 25px;}
+    .tap-top i{font-size: 15px;}
+    .tap-top{width: 30px;height: 30px;}
+    .tap-top.top{right: 10px;}
+    .cart-btn button{font-size: 18px;width: 40px;height: 35px;}
+    .cart-count{font-size: 12px;left: 14px;top: -20px;width: 17px;height: 17px;}
+    h6{font-size: 14px;}
+    .offcanvas-cart ul li p,.offcanvas-cart strong {font-size: 13px;}
+    .shopping-details .quantity button i {
+        font-size: 11px !important;
+    }
+    .shopping-details .quantity button {
+        height: 24px !important;
+        width: 24px !important;
+    }
+    .shopping-details .quantity input{height: 25px !important;width: 45px !important;font-size: 13px;}
 }

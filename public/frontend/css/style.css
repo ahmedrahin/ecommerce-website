@@ -2333,11 +2333,11 @@ header .header-1 .main-menu .sub_header ul li .iconsax {
     --Iconsax-Color: rgba(var(--theme-font-color), 1);
     vertical-align: sub;
 }
-header .mobile-fix-option {
+.mobile-fix-option {
     display: none;
 }
 @media screen and (max-width: 577px) {
-    header .mobile-fix-option {
+     .mobile-fix-option {
         background-color: rgba(var(--box-background), 1);
         bottom: 0;
         display: block !important;
@@ -2346,19 +2346,19 @@ header .mobile-fix-option {
         width: 100%;
         z-index: 8;
     }
-    header .mobile-fix-option ul {
+     .mobile-fix-option ul {
         align-items: center;
         display: flex;
         justify-content: space-evenly;
     }
-    header .mobile-fix-option ul li a {
+     .mobile-fix-option ul li a {
         display: grid;
         font-weight: 500;
         padding: 8px 6px;
         text-align: center;
         transition: all 0.4s ease-in-out;
     }
-    header .mobile-fix-option ul li a .iconsax {
+     .mobile-fix-option ul li a .iconsax {
         font-size: calc(14.4px + 0.5vw);
         line-height: 0;
         transition: all 0.4s ease-in-out;
@@ -2367,7 +2367,7 @@ header .mobile-fix-option {
     }
 }
 @media screen and (max-width: 577px) and (max-width: 420px) {
-    header .mobile-fix-option ul li a {
+     .mobile-fix-option ul li a {
         font-size: 13px;
     }
 }
@@ -2953,7 +2953,6 @@ header .mobile-fix-option {
     position: fixed;
     right: -60px;
     text-align: center;
-    transform: rotate(-10deg);
     transition: all 0.5s ease;
     width: 35px;
     z-index: 7;
@@ -5549,10 +5548,10 @@ footer .footer-1 .social-icon > li:hover a i {
     opacity: 1;
 }
 .top-filter-menu {
-    align-items: center;
+    align-items: end;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 22px;
+    margin-bottom: 20px;
 }
 .top-filter-menu > div {
     align-items: center;

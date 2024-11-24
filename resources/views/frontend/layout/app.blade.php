@@ -9,11 +9,10 @@
 </head>
 
 <body class="skeleton_body">
-
+    {{-- cart btn --}}
+    <livewire:frontend.cart.btnshopping />
     <!-- menu item -->
     @include('frontend.includes.menu')
-
-   
 
     <!-- body content -->
     @yield('body-content')

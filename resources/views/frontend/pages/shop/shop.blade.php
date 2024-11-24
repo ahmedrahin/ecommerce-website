@@ -6,7 +6,9 @@
 
 @section('body-content')
 
- 
+  {{-- quick view modal --}}
+  <livewire:frontend.cart.quick-view />
+
   <section> 
     <div class="custom-container container">
       <div class="row"> 
@@ -17,16 +19,21 @@
         <div class="col-xl-9">
           <div class="sticky">
             <div class="top-filter-menu">
-              <div class="accordion-body">
+              {{-- for dekstop version --}}
+              <div class="accordion-body for-dekstop">
                 <livewire:frontend.shop.selected-tags :initial-categories="request()->get('categories', [])" />
               </div>
                 {{-- sort product here --}}
                 <livewire:frontend.shop.sorting></livewire>
-              
+
+                {{-- for mobile version --}}
+                <div class="accordion-body for-mobile">
+                  <livewire:frontend.shop.selected-tags :initial-categories="request()->get('categories', [])" />
+                </div>
             </div>
             
-                {{-- all products list here --}}
-                <livewire:frontend.shop.shop-product></livewire>
+              {{-- all products list here --}}
+              <livewire:frontend.shop.shop-product></livewire>
   
             </div>
             
@@ -36,13 +43,12 @@
     </div>
   </section> 
   
-  {{-- quick view modal --}}
-  <livewire:frontend.cart.quick-view />
 
 @endsection
   
 @section('page-script')
   <script>
+    
       document.addEventListener('livewire:load', function () {
           // Listen for a custom event to remove the category tag
           Livewire.on('categoryTagRemoved', (categoryId) => {
@@ -59,6 +65,23 @@
               }
           });
 
+      });
+
+      document.addEventListener('DOMContentLoaded', function() {
+          const filterButton = document.querySelector('.filter-button');
+          const backButton = document.querySelector('.back-button');
+          const leftBox = document.querySelector('.left-box');
+          const bgOverlay = document.querySelector('.bg-overlay');
+
+          filterButton.addEventListener('click', function() {
+              leftBox.classList.toggle('open');
+              bgOverlay.classList.toggle('open', leftBox.classList.contains('open'));
+          });
+
+          backButton.addEventListener('click', function() {
+              leftBox.classList.remove('open');
+              bgOverlay.classList.remove('open');
+          });
       });
   </script>
 

@@ -23,20 +23,16 @@
           </h2>
           <div class="accordion-collapse collapse show" id="panelsStayOpen-collapseEight">
               <div class="accordion-body">
-                  <ul class="collection-list">
-                    <li> 
-                      <input class="custom-checkbox" id="" type="checkbox" name="text">
-                      <label for="">Best sellers</label>
+                <ul class="collection-list">
+                    <li>
+                        <input type="checkbox" wire:model="selectedCollections" value="top_selling" id="collection-top-selling" class="custom-checkbox">
+                        <label for="collection-top-selling">Top Selling</label>
                     </li>
-                    <li> 
-                      <input class="custom-checkbox" id="" type="checkbox" name="text">
-                      <label for="">New arrivals</label>
+                    <li>
+                        <input type="checkbox" wire:model="selectedCollections" value="new_arrivals" id="collection-new-arrivals" class="custom-checkbox">
+                        <label for="collection-new-arrivals">New Arrivals</label>
                     </li>
-                    <li> 
-                      <input class="custom-checkbox" id="" type="checkbox" name="text">
-                      <label for="">Free shipping</label>
-                    </li>
-                  </ul>
+                </ul>
               </div>
           </div>
       </div>

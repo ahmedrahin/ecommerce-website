@@ -8,6 +8,10 @@ class Sorting extends Component
 {
     public $sortOrder = '';
 
+    protected $queryString = [
+        'sortOrder' => ['except' => ''], // Keep sortOrder in the URL
+    ];
+
     public function updatedSortOrder($value)
     {
         $this->emit('sortOrderUpdated', $value);

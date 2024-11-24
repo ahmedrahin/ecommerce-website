@@ -116,6 +116,7 @@
                         </div>
                     </div>
                 </div>
+                
             @endforeach
         @else 
              <div style="color: #ff00008a;font-size: 20px;font-weight: 600;">No products found.</div>

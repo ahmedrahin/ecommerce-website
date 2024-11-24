@@ -8,15 +8,18 @@ use App\Models\Category;
 class ProductFilter extends Component
 {
     public $selectedCategories = [];
+    public $selectedCollections = [];
     public $searchQuery = '';
 
     protected $queryString = [
         'selectedCategories' => ['as' => 'categories', 'except' => []],
+        'selectedCollections' => ['as' => 'collections', 'except' => []],
         'searchQuery' => ['as' => 'query', 'except' => ''],
     ];
 
     protected $listeners = [
-        'categoryTagRemoved' => 'removeFromSelectedCategories'
+        'categoryTagRemoved' => 'removeFromSelectedCategories',
+        'collectionTagRemoved' => 'removeFromSelectedCollections',
     ];
 
     public function updatedSelectedCategories()
@@ -29,10 +32,22 @@ class ProductFilter extends Component
         $this->emit('searchUpdated', $this->searchQuery); 
     }
 
+    public function updatedSelectedCollections()
+    {
+        $this->emit('collectionFilterUpdated', $this->selectedCollections);
+    }
+
     public function removeFromSelectedCategories($categoryId)
     {
         $this->selectedCategories = array_values(
             array_diff($this->selectedCategories, [$categoryId])
+        );
+    }
+
+    public function removeFromSelectedCollections($collectionId)
+    {
+        $this->selectedCollections = array_values(
+            array_diff($this->selectedCollections, [$collectionId])
         );
     }
 

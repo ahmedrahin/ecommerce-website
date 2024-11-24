@@ -63,7 +63,7 @@ class ProductEditController extends Controller
                 'status'                    => 'required|in:1,2,3,0',
                 'publish_at'                => 'nullable|date',
                 // 'expire_date'               => 'nullable|date|after_or_equal:now',
-                'thumb_image'               => 'required'
+                
             ];
         
             // Conditionally require the discount_percentage_or_flat_amount field

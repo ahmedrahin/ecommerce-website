@@ -1,18 +1,16 @@
-/*-----------------------------------------------------------------------------------
-
- Template Name:Katie
- Template URI: themes.pixelstrap.net/katie/template
- Description: This is a social website
- Author: Pixelstrap
- Author URI: https://themeforest.net/user/pixelstrap
-
- ----------------------------------------------------------------------------------- */
-
 
 
 /*====================
-       Ratio js
-   =======================*/
+       header scroll
+=======================*/
+window.addEventListener('scroll', function () {
+  const header = document.querySelector('#header');
+  if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+  } else {
+      header.classList.remove('scrolled');
+  }
+});
 
 
 
@@ -39,21 +37,15 @@ tapTopElement.addEventListener('click', function () {
     03.toggle nav
  ============================*/
 
-    // const toggleNav = document.getElementById('toggle-nav');
-    // const mobileBack = document.getElementById('mobile-back');
-    // const smHorizontal = document.getElementById('sm-horizontal');
-    // toggleNav.addEventListener('click', function() {
-    //     smHorizontal.classList.add('open');
-    // });
-    // mobileBack.addEventListener('click', function() {
-    //     smHorizontal.classList.remove('open');
-    // });
-
- 
-/*============================
-        07.cart js 
-============================*/
-
+    const toggleNav = document.getElementById('toggle-nav');
+    const mobileBack = document.getElementById('mobile-back');
+    const smHorizontal = document.getElementById('sm-horizontal');
+    toggleNav.addEventListener('click', function() {
+        smHorizontal.classList.add('open');
+    });
+    mobileBack.addEventListener('click', function() {
+        smHorizontal.classList.remove('open');
+    });
 
 
 

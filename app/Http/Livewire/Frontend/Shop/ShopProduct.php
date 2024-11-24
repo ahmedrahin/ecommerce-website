@@ -14,11 +14,13 @@ class ShopProduct extends Component
 
     public $selectedCategories = [];
     public $selectedCategoryNames = [];
+    public $selectedCollections = [];
     public $searchQuery = '';
     public $sortOrder = '';
 
     protected $queryString = [
         'selectedCategories' => ['as' => 'categories', 'except' => []],
+        'selectedCollections' => ['as' => 'collections', 'except' => []],
         'searchQuery' => ['as' => 'query', 'except' => ''],
         'sortOrder' => ['as' => 'sort', 'except' => ''],
     ];
@@ -27,12 +29,19 @@ class ShopProduct extends Component
         'filterUpdated' => 'updateFilter',
         'searchUpdated' => 'updateSearchQuery',
         'sortOrderUpdated' => 'updateSortOrder',
+        'collectionFilterUpdated' => 'updateCollections',
     ];
 
     public function updateFilter($categories)
     {
         $this->selectedCategories = array_values($categories);
         $this->resetPage(); 
+    }
+
+    public function updateCollections($collections)
+    {
+        $this->selectedCollections = array_values($collections);
+        $this->resetPage();
     }
 
     public function updateSearchQuery($query)
@@ -61,8 +70,23 @@ class ShopProduct extends Component
             ->when(!empty($this->selectedCategories), function ($query) {
                 $query->where(function ($q) {
                     $q->whereIn('category_id', $this->selectedCategories)
-                      ->orWhereIn('subcategory_id', $this->selectedCategories);
+                    ->orWhereIn('subcategory_id', $this->selectedCategories);
                 });
+            })
+            ->when(!empty($this->selectedCollections), function ($query) {
+                $query->where(function ($q) {
+                    if (in_array('new_arrivals', $this->selectedCollections)) {
+                        $q->orWhere(function ($query) {
+                            $query->where('created_at', '>=', now()->subDays(10))
+                                  ->orWhere('is_new', 1);
+                        });
+                    }
+                });
+            
+                if (in_array('top_selling', $this->selectedCollections)) {
+                    $query->withCount('orderItems') 
+                          ->orderBy('order_items_count', 'desc');
+                }
             })
             ->when($this->searchQuery, function ($query) {
                 $query->where('name', 'like', '%' . $this->searchQuery . '%') 
@@ -85,4 +109,5 @@ class ShopProduct extends Component
 
         return view('livewire.frontend.shop.shop-product', compact('products'));
     }
+
 }

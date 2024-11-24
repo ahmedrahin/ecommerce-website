@@ -105,22 +105,6 @@
     }
 </script>
 
-<script>
-    const quickmodal = document.querySelector('#quick-view');
-      quickmodal.addEventListener('show.bs.modal', (e) => {
-          Livewire.emit('open_add_modal');
-      });
- 
-      document.addEventListener('livewire:load', function () {
-          Livewire.on('btnClose', () => {
-            setTimeout(() => {
-              const modalElement = document.getElementById('quick-view');
-              const modalInstance = bootstrap.Modal.getInstance(modalElement); 
-              modalInstance.hide();
-            }, 1000);
-          });
-      });
-</script>
 
  {{-- reload js after livewire load --}}
  <script>
@@ -128,6 +112,12 @@
         Livewire.hook('message.processed', (message, component) => {
             init_iconsax();
             addTocartFuncation();
+
+            document.querySelectorAll('.quickview').forEach(function (element) {
+                element.addEventListener('click', function () {
+                    Livewire.emit('get_productId', this.getAttribute('data-product-id'));
+                });
+            });
         });
     });
  </script>
@@ -178,11 +168,21 @@
 
 {{-- quick view modal --}}
 <script>
-    document.querySelectorAll('.quickview').forEach(function (element) {
-        element.addEventListener('click', function () {
-            Livewire.emit('get_productId', this.getAttribute('data-product-id'));
+    document.addEventListener('livewire:load', function () {
+        Livewire.on('btnClose', () => {
+          setTimeout(() => {
+            const modalElement = document.getElementById('quick-view');
+            const modalInstance = bootstrap.Modal.getInstance(modalElement); 
+            modalInstance.hide();
+          }, 1000);
         });
     });
+
+  document.querySelectorAll('.quickview').forEach(function (element) {
+      element.addEventListener('click', function () {
+          Livewire.emit('get_productId', this.getAttribute('data-product-id'));
+      });
+  });
 </script>
 
  @yield('page-script')

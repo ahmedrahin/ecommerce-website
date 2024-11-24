@@ -26,14 +26,15 @@ class QuickView extends Component
         $this->selectedColor = null;
         $this->sizeError = '';
         $this->colorError = '';
-        $this->on = false;
     }
 
     public function get_productId($id)
-    {
+    {   
+        $this->reset();
         $this->productId = $id;
         if( $this->productId ){
             $this->on = true;
+            $this->open_add_modal();
         }
     }
 
