@@ -75,23 +75,6 @@
     
 @section('body-content')
 
-  <section class="section-b-space pt-0"> 
-    <div class="heading-banner">
-      <div class="custom-container container">
-        <div class="row align-items-center">
-          <div class="col-sm-6">
-            <h4>Product</h4>
-          </div>
-          <div class="col-sm-6">
-            <ul class="breadcrumb float-end">
-              <li class="breadcrumb-item"> <a href="index.html">Home </a></li>
-              <li class="breadcrumb-item active"> <a href="#">Product</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
   <section class="section-b-space pt-0 product-thumbnail-page"> 
     <div class="custom-container container">
       <div class="row gy-4">
@@ -136,7 +119,7 @@
   
                 <div class="move-fast-box d-flex align-items-center gap-2">
                   <i class="fa fa-heart" style="color: #ff6b6b;"></i>
-                  <p>Active Wishlist: {{$product->orderItems->count()}}</p>
+                  <p>Active Wishlist: {{$product->wishlist->count()}}</p>
                 </div>
               </div>
 
@@ -168,10 +151,18 @@
               
               <div class="buy-box border-top pt-3">
                 <ul> 
-                  <li> <a href="wishlist.html"> <i class="fa-regular fa-heart me-2"></i>Add To Wishlist</a></li>
-                  <li> <a href="#" data-bs-toggle="modal" data-bs-target="#social-box" title="Quick View" tabindex="0"><i class="fa-solid fa-share-nodes me-2"></i>Share</a></li>
+                   {{-- add wishlist --}}
+                  <livewire:frontend.wishlist.towishlist :productId="$product->id"></livewire>
+                  <li> 
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#social-box" title="Quick View" tabindex="0">
+                      <i class="fa-solid fa-share-nodes me-2"></i>Share
+                    </a>
+                  </li>
                 </ul>
               </div>
+
+              {{-- add wishlist --}}
+              <livewire:frontend.wishlist.add-wishlist></livewire>
               
               {{-- others infromation dz-info --}}
               @include('frontend.pages.product.dz-info')
@@ -254,6 +245,28 @@
   </section>
 
   @include('frontend.pages.product.related-product')
+
+  {{-- share modal --}}
+  <div class="modal theme-modal fade social-modal" id="social-box" tabindex="-1" role="dialog" aria-modal="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h6>Copy link</h6>
+          <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <input class="form-field form-field--input" type="text" value="http://localhost:3000/katie/template/product.html#">
+          <h6>Share:</h6>
+          <ul> 
+            <li> <a href="https://www.facebook.com/" target="_blank"> <i class="fa-brands fa-facebook-f"></i></a></li>
+            <li> <a href="https://in.pinterest.com/" target="_blank"> <i class="fa-brands fa-pinterest-p"></i></a></li>
+            <li> <a href="https://twitter.com/" target="_blank"> <i class="fa-brands fa-x-twitter"></i></a></li>
+            <li> <a href="https://www.instagram.com/" target="_blank"> <i class="fa-brands fa-instagram"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
  
 @endsection 
     

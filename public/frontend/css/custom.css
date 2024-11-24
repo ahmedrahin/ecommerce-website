@@ -316,7 +316,27 @@ footer {
 .for-mobile {
     display: none !important;
 }
-
+.releted-list .product-box-3 .product-image {
+    height: 190px !important;
+}
+.releted-list .product-box-3 .product-image a {
+    height: 190px !important;
+}
+.releted-list .btn-buy i {
+    font-size: 13px;
+    padding-right: 4px;
+}
+.releted-list  .btn-buy{
+    font-size: 14px;
+    margin-top: 10px;
+    padding: 5px;
+}
+.releted-list .product-box-3 .product-detail p{
+    font-size: 13px;
+}
+.releted-list .product-box-3 .product-detail h6{
+    font-size: 14px;
+}
 
 /* responsive */
 @media (max-width: 576px) {

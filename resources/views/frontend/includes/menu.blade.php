@@ -51,7 +51,9 @@
               <div class="toggle-nav" id="toggle-nav"><i class="fa-solid fa-bars-staggered sidebar-bar"></i></div>
               <ul class="justify-content-end">
                 
-                <li> <a href="wishlist.html"><i class="iconsax" data-icon="heart"></i><span class="cart_qty_cls">2</span></a></li>
+                <li> <a href="{{route('wishlist')}}"><i class="iconsax" data-icon="heart"></i>
+                  <livewire:frontend.wishlist.count-wishlist />
+                </a></li>
 
                 @include('frontend.includes.auth')
 

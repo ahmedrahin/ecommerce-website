@@ -185,5 +185,6 @@
   });
 </script>
 
+
  @yield('page-script')
  @yield('addcart-js')

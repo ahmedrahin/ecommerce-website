@@ -6,8 +6,17 @@
                 <div> 
                     <div class="product-box-3">
                         <div class="img-wrapper">
-                        <div class="label-block"><a class="label-2 wishlist-icon" href="javascript:void(0)" tabindex="0"><i class="iconsax" data-icon="heart" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Add to Wishlist"></i></a>
-                            </div>
+                        <div class="label-block">
+                            @if(in_array($product->id, $wishlist))
+                                <button class="label-2 wishlist-exist" style="border: none;" wire:click="$emit('removeFromWishlist', {{ $product->id }})">
+                                    <i class="fa fa-heart " aria-hidden="true" style="color: #ff00008a;"></i>
+                                </button>
+                            @else
+                                <button class="label-2 wishlist-icon" style="border: none;" wire:click="$emit('get_id', {{ $product->id }})">
+                                    <i class="iconsax" data-icon="heart" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Add to Wishlist"></i>
+                                </button>
+                            @endif
+                        </div>
     
                             {{-- product thumb or back image --}}
                         <div class="product-image {{ !is_null($product->back_image) ? 'has-back-image' : '' }}">

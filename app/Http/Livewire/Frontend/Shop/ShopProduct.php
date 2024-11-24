@@ -6,11 +6,14 @@ use Livewire\Component;
 use App\Models\Product;
 use Carbon\Carbon;
 use Livewire\WithPagination;
+use App\Models\Wishlist;
+use Illuminate\Support\Facades\Auth;
 
 class ShopProduct extends Component
 {
     use WithPagination;
     protected $paginationTheme = 'bootstrap'; 
+    public $wishlist = [];
 
     public $selectedCategories = [];
     public $selectedCategoryNames = [];
@@ -30,7 +33,23 @@ class ShopProduct extends Component
         'searchUpdated' => 'updateSearchQuery',
         'sortOrderUpdated' => 'updateSortOrder',
         'collectionFilterUpdated' => 'updateCollections',
+        'wishlistUpdated' => 'loadWishlist'
     ];
+
+    public function mount(){
+        $this->loadWishlist();
+    }
+
+    public function loadWishlist()
+    {
+        if (Auth::check()) {
+            $this->wishlist = Wishlist::where('user_id', Auth::id())->pluck('product_id')->toArray();
+        } else {
+            $sessionId = session()->getId();
+            $this->wishlist = Wishlist::where('session_id', $sessionId)->pluck('product_id')->toArray();
+        }
+    }
+
 
     public function updateFilter($categories)
     {

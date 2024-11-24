@@ -1,4 +1,4 @@
-<footer class="footer-layout-img"> 
+<footer class="footer-layout-img" style="background-image: url('{{ asset('frontend/images/footer/1.jpg') }}');"> 
     <section class="section-b-space footer-1">
       <div class="custom-container container">
         <div class="row"> 

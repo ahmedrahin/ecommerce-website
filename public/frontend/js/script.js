@@ -49,21 +49,6 @@ tapTopElement.addEventListener('click', function () {
 
 
 
-/*============================
-           05.Tost js 
-   ============================*/
-
-document.querySelectorAll(".wishlist-icon").forEach(function (element) {
-    element.addEventListener("click", function () {
-        Toastify({
-            text: "Success! Item Successfully added in wishlist.!!",
-            duration: 2500,
-            close: true,
-        }).showToast();
-        i++;
-    });
-});
-
 
 /*====================
        footer according

@@ -39,4 +39,9 @@ class ShopController extends Controller
         return view('frontend.pages.product.details', compact('product'));
     }
 
+    // product wishlist
+    public function wishlist(){
+        return view('frontend.pages.shop.wishlist');
+    }
+
 }

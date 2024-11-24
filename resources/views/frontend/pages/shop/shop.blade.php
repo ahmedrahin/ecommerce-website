@@ -8,6 +8,8 @@
 
   {{-- quick view modal --}}
   <livewire:frontend.cart.quick-view />
+  {{-- add wishlist --}}
+  <livewire:frontend.wishlist.add-wishlist></livewire>
 
   <section> 
     <div class="custom-container container">
@@ -42,7 +44,6 @@
       </div>
     </div>
   </section> 
-  
 
 @endsection
   

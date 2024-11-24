@@ -167,7 +167,7 @@ var swiper = new Swiper(".special-offer-slide", {
   },
 });
 var swiper = new Swiper(".special-offer-slide-2", {
-  spaceBetween: 30,
+  spaceBetween: 20,
   slidesPerView: 4,
   loop: true,
   
@@ -187,7 +187,7 @@ var swiper = new Swiper(".special-offer-slide-2", {
       slidesPerView: 3,
     },
     992: {
-      slidesPerView: 5,
+      slidesPerView: 6,
     },
   },
 });

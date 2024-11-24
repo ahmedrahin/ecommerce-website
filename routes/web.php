@@ -52,6 +52,7 @@ Route::get('/', [PagesController::class, 'home'])->name('homepage');
 // shop page
 Route::prefix('shop')->controller(ShopController::class)->group(function () {
     Route::get('/', 'allProducts')->name('shop');
+    Route::get('/wishlist', 'wishlist')->name('wishlist');
 });
 
 // product-details page
