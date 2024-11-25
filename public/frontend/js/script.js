@@ -49,7 +49,6 @@ tapTopElement.addEventListener('click', function () {
 
 
 
-
 /*====================
        footer according
    =======================*/
@@ -62,20 +61,6 @@ for (var i = 0; i < footerButton.length; ++i) {
     })
 }
 
-
-
-/*====================
-       Wishlist card
-   =======================*/
-const wishlistProduct = document.querySelectorAll(".product-wishlist");
-wishlistProduct.forEach(el => {
-    const deleteButton = el.querySelector(".delete-button");
-    deleteButton.addEventListener("click", function () {
-        this.closest(".col").style.display = "none";
-    });
-});
-
-  
 
 /*====================
       Header responsive 

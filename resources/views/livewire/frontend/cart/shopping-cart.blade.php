@@ -75,7 +75,7 @@
                 <h6>Total :</h6>
                 <p>৳ {{ number_format($this->getTotalAmount(), 2) }}</p>
             </div>
-            <div class="cart-button"> <a class="btn btn_outline" href="cart.html"> View Cart</a><a class="btn btn_black" href="{{route('checkout')}}"> Checkout</a></div>
+            <div class="cart-button"> <a class="btn btn_outline" href="{{route('cart')}}"> View Cart</a><a class="btn btn_black" href="{{route('checkout')}}"> Checkout</a></div>
         </div>
     @endif
       

@@ -105,6 +105,52 @@
     }
 </script>
 
+<script>
+    
+    function toggleSearchBox() {
+        const searchBox = document.getElementById('mobileSearchBox');
+        if (searchBox.style.display === 'none' || searchBox.style.display === '') {
+            searchBox.style.display = 'block';
+        } else {
+            searchBox.style.display = 'none';
+        }
+    }
+
+    function closeSearchBox(event) {
+        const searchBox = document.getElementById('mobileSearchBox');
+        const mobileSearch = document.querySelector('.mobile-search');
+        if (searchBox && !mobileSearch.contains(event.target)) {
+            searchBox.style.display = 'none';
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener('click', closeSearchBox);
+
+        // Listen to Livewire events
+        Livewire.on('serchUpdate', function () {
+            toggleSearchBox();
+        });
+    });
+
+    document.addEventListener('click', function (event) {
+        const productList = document.getElementById('product-list');
+        const searchInput = document.getElementById('search-input');
+
+        // Check if the product list exists
+        if (productList) {
+            if (!productList.contains(event.target) && !searchInput.contains(event.target)) {
+                // Hide the product list if clicked outside
+                productList.style.display = 'none';
+            } else if (searchInput.contains(event.target)) {
+                // Show the product list when the search input is clicked
+                productList.style.display = 'block';
+            }
+        }
+    });
+
+    
+</script>
 
  {{-- reload js after livewire load --}}
  <script>
@@ -112,7 +158,7 @@
         Livewire.hook('message.processed', (message, component) => {
             init_iconsax();
             addTocartFuncation();
-
+            
             document.querySelectorAll('.quickview').forEach(function (element) {
                 element.addEventListener('click', function () {
                     Livewire.emit('get_productId', this.getAttribute('data-product-id'));
@@ -122,16 +168,28 @@
     });
  </script>
 
- {{-- messages --}}
- @if (session('success'))
-    <script>
-        Toastify({
-                text: "{{ session('success') }}",
-                duration: 3000
-            }).showToast();
-    </script>
-@endif
 
+{{-- quick view modal --}}
+<script>
+    document.addEventListener('livewire:load', function () {
+        Livewire.on('btnClose', () => {
+          setTimeout(() => {
+            const modalElement = document.getElementById('quick-view');
+            const modalInstance = bootstrap.Modal.getInstance(modalElement); 
+            modalInstance.hide();
+          }, 1000);
+        });
+    });
+
+    document.querySelectorAll('.quickview').forEach(function (element) {
+        element.addEventListener('click', function () {
+            Livewire.emit('get_productId', this.getAttribute('data-product-id'));
+        });
+    });
+    
+</script>
+
+{{-- messages --}}
  <script>
     document.addEventListener('livewire:load', () => {
         Livewire.on('success', (message) => {
@@ -166,25 +224,15 @@
     });
 </script>
 
-{{-- quick view modal --}}
-<script>
-    document.addEventListener('livewire:load', function () {
-        Livewire.on('btnClose', () => {
-          setTimeout(() => {
-            const modalElement = document.getElementById('quick-view');
-            const modalInstance = bootstrap.Modal.getInstance(modalElement); 
-            modalInstance.hide();
-          }, 1000);
-        });
-    });
-
-  document.querySelectorAll('.quickview').forEach(function (element) {
-      element.addEventListener('click', function () {
-          Livewire.emit('get_productId', this.getAttribute('data-product-id'));
-      });
-  });
-</script>
-
+ {{-- messages --}}
+ @if (session('success'))
+    <script>
+        Toastify({
+                text: "{{ session('success') }}",
+                duration: 3000
+            }).showToast();
+    </script>
+@endif
 
  @yield('page-script')
  @yield('addcart-js')

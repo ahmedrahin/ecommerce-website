@@ -75,11 +75,11 @@
     
 @section('body-content')
 
-  <section class="section-b-space pt-0 product-thumbnail-page"> 
+  <section class="product-thumbnail-page"> 
     <div class="custom-container container">
       <div class="row gy-4">
         <div class="col-lg-6"> 
-          <div class="row sticky">
+          <div class="row g-lg-4 g-md-4 g-2 sticky">
             <div class="col-sm-2 col-3">
               <div class="swiper product-slider product-slider-img"> 
                 <div class="swiper-wrapper"> 

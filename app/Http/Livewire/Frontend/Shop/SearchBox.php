@@ -31,7 +31,9 @@ class SearchBox extends Component
             ->orderBy('id', 'desc')
             ->get()
             ->toArray();
+        
     }
+
     public function search()
     {
         return redirect()->to('/shop?query=' . urlencode($this->searchQuery));

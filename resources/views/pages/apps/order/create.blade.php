@@ -89,7 +89,7 @@
                                     </label>
                                 </div>
                                 <!--end::Col-->
-                                <div class="col-md-4 col-lg-12 mt-4">
+                                {{-- <div class="col-md-4 col-lg-12 mt-4">
                                     <label class="btn btn-outline btn-outline-dashed btn-active-light-primary d-flex text-start py-4 px-6 align-items-center" data-kt-button="true">
                                         <span class="form-check form-check-custom form-check-solid form-check-sm align-items-start mt-1">
                                             <input class="form-check-input" type="radio" name="payment_type" value="bksh"  />
@@ -100,7 +100,7 @@
                                             </span>
                                         </span>
                                     </label>
-                                </div>
+                                </div> --}}
                                 <div id="payment_type" class="text-danger"></div>
                             </div>
 

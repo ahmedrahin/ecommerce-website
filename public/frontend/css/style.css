@@ -2274,7 +2274,7 @@ header .header-1 .main-menu nav .sm-horizontal.open {
     }
     header .header-1 .main-menu nav .sm-horizontal li .nav-link {
         display: block;
-        padding: 10px 0;
+        padding: 5px 0;
     }
     header .header-1 .main-menu nav .sm-horizontal li .nav-link:before {
         left: 0;
@@ -2618,12 +2618,13 @@ header .header-1 .main-menu .sub_header ul li .iconsax {
     border-bottom: none;
 }
 .shopping-details .offcanvas-body > ul li img {
-    width: 90px;
+    width: 70px;
     height: 90px;
     object-fit: cover;
 }
 .shopping-details .offcanvas-body > ul li h6 {
     font-weight: 500;
+    font-size: 14px;
 }
 .shopping-details .offcanvas-body > ul li p span {
     color: rgba(var(--theme-default), 1);
@@ -6519,8 +6520,8 @@ footer .footer-1 .social-icon > li:hover a i {
 }
 @media (max-width: 575px) {
     .product-detail-box .product-option .color-box ul li {
-        height: 14px;
-        width: 14px;
+        height: 18px;
+        width: 18px;
     }
 }
 .product-detail-box .product-option .color-box ul li.active:before {
@@ -7505,7 +7506,9 @@ footer .footer-1 .social-icon > li:hover a i {
     gap: 10px;
 }
 .cart-box img {
-    width: 100px;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
 }
 .cart-box a h5 {
     display: -webkit-box !important;
@@ -7517,6 +7520,13 @@ footer .footer-1 .social-icon > li:hover a i {
     margin-bottom: 0;
     white-space: normal;
     white-space: nowrap;
+    font-size: 15px;
+}
+.cart-box p {
+    font-size: 13px;
+}
+.cart-table table tbody tr td a .iconsax{
+    --Iconsax-Color: rgb(243 72 72) !important;
 }
 .cart-box > div {
     width: calc(100% - 110px);
@@ -7946,7 +7956,7 @@ footer .footer-1 .social-icon > li:hover a i {
     padding-top: 5px;
 }
 .payment-box img{
-    width: 160px;
+    width: 140px;
 }
 .payment-options .payment-box {
     align-items: center;

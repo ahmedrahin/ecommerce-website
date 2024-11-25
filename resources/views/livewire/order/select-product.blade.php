@@ -46,7 +46,7 @@
                         @endforeach
                     @endif
                 </div>
-                <button type="button" wire:click="clearSessionData">click</button>
+                {{-- <button type="button" wire:click="clearSessionData">click</button> --}}
                 <div class="fw-bold fs-4" style="font-size: 1.2rem !important;">Total Qty: 
                     <span id="kt_ecommerce_edit_order_total_qty">{{ $totalQuantity }}</span></div>
                 <div class="fw-bold fs-4" style="font-size: 1.2rem !important;">Total Cost:

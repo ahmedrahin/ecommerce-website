@@ -47,6 +47,13 @@ class Checkout extends Component
         $this->payment_type = 'cod';
 
         $this->appliedCoupon = session()->get('applied_coupon', null);
+
+        if( Auth::check() ){
+            $this->name = Auth::user()->name;
+            $this->email = Auth::user()->email;
+            $this->phone = Auth::user()->phone;
+            $this->shipping_address = Auth::user()->shipping_address;
+        }
     }
 
     public function applyCoupon()
@@ -109,7 +116,7 @@ class Checkout extends Component
         $this->appliedCoupon = [];
         session()->forget('applied_coupon');
 
-        $this->emit('info', 'Coupon removed.');
+        // $this->emit('info', 'Coupon removed.');
     }
 
     public function updatedDistrictId($value)
@@ -156,6 +163,8 @@ class Checkout extends Component
     }
 
     public function order(){
+
+        $orderId = 'F' . now()->format('Ymd') . '-' . strtoupper(uniqid());
         // Validation rules
         $rules = [
             'name'  => 'required',
@@ -181,6 +190,7 @@ class Checkout extends Component
         $selectedProduct = session()->get('cart', []);
 
         $order = Order::create([
+            'order_id'                  => $orderId,
             'user_id'                   => Auth::id() ?? null,
             'user_type'                 => 'customer',
             'name'                      => $this->name,
@@ -244,6 +254,7 @@ class Checkout extends Component
         session()->flash('success', 'Your order has been successfully placed. Thank you!!');
         $this->refreshCache();
         $this->removeCoupon();
+        return redirect()->route('success.order', ['order_id' => $orderId]);
     }
 
     public function loadCart()
@@ -272,14 +283,13 @@ class Checkout extends Component
         return $this->getTotalAmount() + $this->selectedShippingCharge - $discount;
     }
 
-
     public function checkCart()
     {
         $this->loadCart();
         
         if (empty($this->cart)) {
             session()->forget('applied_coupon');
-            return redirect()->route('shop');
+            // return redirect()->route('shop');
         }
     } 
     

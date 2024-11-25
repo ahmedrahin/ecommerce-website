@@ -9,6 +9,7 @@
 use App\Http\Controllers\Frontend\PagesController;
 use App\Http\Controllers\Frontend\ShopController;
 use App\Http\Controllers\Frontend\UserDashboardController;
+use App\Models\Order;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +40,6 @@ use App\Http\Controllers\Apps\SettingController;
 use App\Http\Controllers\Apps\AdminManagementController;
 use App\Http\Controllers\Apps\CouponController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Frontend Web Routes
@@ -48,6 +48,8 @@ use App\Http\Controllers\Apps\CouponController;
 
 // home and static pages
 Route::get('/', [PagesController::class, 'home'])->name('homepage');
+Route::get('/about-us', [PagesController::class, 'about'])->name('about');
+Route::get('/contact-us', [PagesController::class, 'contact'])->name('contact');
 
 // shop page
 Route::prefix('shop')->controller(ShopController::class)->group(function () {
@@ -60,6 +62,15 @@ Route::get('/product/{slug}', [ShopController::class, 'productDetails'])->name('
 
 // checkout page
 Route::get('/checkout', [OrderController::class, 'checkout'])->name('checkout');
+Route::get('/success-order/{order_id}', function ($order_id) {
+    $order = Order::where('order_id', $order_id)->firstOrFail();
+    return view('frontend.pages.order.success', compact('order'));
+})->name('success.order');
+
+
+Route::get('/cart', function(){
+    return view('frontend.pages.order.cart');
+})->name('cart')->middleware('check.cart');
 
 // user dashboard page
 Route::get('/dashboard', [UserDashboardController::class, 'dashboard'])->name('user.dashboard')->middleware('auth');

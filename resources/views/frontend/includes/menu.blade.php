@@ -1,10 +1,14 @@
 <div class="mobile-fix-option"> 
   <ul> 
-    <li> <a href="index.html"><i class="iconsax" data-icon="home-1"></i>Home</a></li>
-    <li><a href="search.html"><i class="iconsax" data-icon="search-normal-2"></i>Search</a></li>
-    <li class="shopping-cart"> <a href="cart.html"><i class="iconsax" data-icon="shopping-cart"></i>Cart</a></li>
-    <li><a href="wishlist.html"><i class="iconsax" data-icon="heart"></i>My Wish</a></li>
-    <li> <a href="dashboard.html"><i class="iconsax" data-icon="user-2"></i>Account</a></li>
+    <li> <a href="{{route('homepage')}}"><i class="iconsax" data-icon="home-1"></i>Home</a></li>
+    <li><a href=""><i class="iconsax" data-icon="mail"></i>Contact</a></li>
+    <li class="shopping-cart"> <a href="{{route('cart')}}"><i class="iconsax" data-icon="shopping-cart"></i>Cart</a></li>
+    <li><a href="{{route('wishlist')}}"><i class="iconsax" data-icon="heart"></i>My Wish</a></li>
+    @if( !Auth::check() )
+      <li> <a href="{{route('user.login')}}"><i class="iconsax" data-icon="user-2"></i>Account</a></li>
+    @else 
+      <li> <a href="{{route('user.dashboard')}}"><i class="iconsax" data-icon="user-2"></i>Account</a></li>
+    @endif
   </ul>
 </div>
 
@@ -24,7 +28,8 @@
           </div>
         </div>
         <div class="col-12">
-          <div class="main-menu"> <a class="brand-logo" href="{{url('/')}}"> <img class="img-fluid for-light" src="{{asset('frontend/images/logo/logo.png')}}" alt="logo"/><img class="img-fluid for-dark" src="{{asset('frontend/images/logo/logo-white-1.png')}}" alt="logo"/></a>
+          <div class="main-menu"> 
+            <a class="brand-logo" href="{{url('/')}}"> <img class="img-fluid for-light" src="{{asset(config('app.logo'))}}" alt="logo"/></a>
             <nav id="main-nav" class="for-dekstop">
               <ul class="nav-menu sm-horizontal theme-scrollbar">
                 <li> 
@@ -45,9 +50,15 @@
             </nav>
             
             {{-- search box --}}
-            <livewire:frontend.shop.search-box />
+
+            <div style="width: 50%" class="for-dekstop">
+              <livewire:frontend.shop.search-box />
+            </div>
             
             <div class="sub_header">
+              <div class="for-mobile">
+                <livewire:frontend.shop.search-box-mobile />
+              </div>
               <div class="toggle-nav" id="toggle-nav"><i class="fa-solid fa-bars-staggered sidebar-bar"></i></div>
               <ul class="justify-content-end">
                 

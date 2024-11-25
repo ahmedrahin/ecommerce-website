@@ -135,7 +135,7 @@ class OrderController extends Controller
     
     // edit the order
     public function edit(int $id){
-        dd();
+       
     }
 
     // show the order details

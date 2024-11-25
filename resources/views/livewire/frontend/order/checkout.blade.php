@@ -53,7 +53,7 @@
                         <select  class="form-control" wire:model="district_id">
                             <option value="">Select City</option>
                             @foreach( $districts as $district )
-                                <option value="{{$district->id}}">{{$district->name}}</option>
+                                <option value="{{$district->id}}">{{$district->name}} - {{$district->bn_name}}</option>
                             @endforeach
                         </select>
                         @error('shipping_address')
@@ -171,8 +171,8 @@
 
             <div class="payment-options">
                 <h4 class="mb-3" style="font-size: 16px;">Payment Options</h4>
-                <div class="row gy-3">
-                  <div class="col-sm-6"> 
+                <div class="row g-3">
+                  <div class="col-6"> 
                     <div class="payment-box">
                       <input class="me-2" id="cod" type="radio" checked="checked" value="cod" wire:model="payment_type">
                       <label for="cod">
@@ -181,7 +181,7 @@
                     </div>
                   </div>
 
-                  <div class="col-sm-6"> 
+                  <div class="col-6"> 
                     <div class="payment-box">
                       <input class="me-2" id="ssl" type="radio" checked="checked" value="ssl" wire:model="payment_type">
                       <label for="ssl">

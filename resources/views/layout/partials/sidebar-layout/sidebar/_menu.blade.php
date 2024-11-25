@@ -212,7 +212,7 @@
                     <!--end:Menu item-->
 
                     <!--begin:Menu item-->
-                    <div class="menu-item">
+                    {{-- <div class="menu-item">
                         <!--begin:Menu link-->
                         <a class="menu-link {{ request()->routeIs('product-catalogue.subsubcategory.index') ? 'active' : '' }}"
                             href="{{ route('product-catalogue.subsubcategory.index') }}">
@@ -222,7 +222,7 @@
                             <span class="menu-title">Subsubcategory</span>
                         </a>
                         <!--end:Menu link-->
-                    </div>
+                    </div> --}}
                     <!--end:Menu item-->
                 </div>
                 <!--end:Menu sub-->
@@ -314,12 +314,12 @@
                         </a>
                         <!--end:Menu link-->
                         <!--begin:Menu link-->
-                        <a class="menu-link {{ request()->routeIs('order-management.order.create*') ? 'active' : '' }}" href="{{route('order-management.order.create')}}">
+                        {{-- <a class="menu-link {{ request()->routeIs('order-management.order.create*') ? 'active' : '' }}" href="{{route('order-management.order.create')}}">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
                             <span class="menu-title">Add New Order</span>
-                        </a>
+                        </a> --}}
                         <!--end:Menu link-->
                     </div>
 

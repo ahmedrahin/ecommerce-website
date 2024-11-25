@@ -7,15 +7,39 @@
               <div class="footer-logo"><a href="index.html"> <img class="img-fluid" src="{{asset('frontend/images/logo/logo-white-1.png')}}" alt="Footer Logo"/></a></div>
               <ul> 
                 <li> <i class="iconsax" data-icon="location"></i>
-                  <h6>1418 Riverwood Drive, Suite 3245 Cottonwood, CA 96052, United States</h6>
+                  <h6>{{config('app.address')}}, {{config('app.state')}}</h6>
                 </li>
                 <li> <i class="iconsax" data-icon="phone-calling"></i>
-                  <h6>+ 185659635</h6>
+                  <h6>{{config('app.phone')}}</h6>
                 </li>
                 <li> <i class="iconsax" data-icon="mail"></i>
-                  <h6>contact@katie.com</h6>
+                  <h6><a href="mailto:{{config('app.email')}};">{{config('app.email')}}</a></h6>
                 </li>
               </ul>
+              <div class="social-icon">
+                  <ul>
+                      @if( !is_null(config('app.facebook')) )
+                        <li>
+                          <a href="{{config('app.facebook')}}"><i class="bi bi-facebook"></i></a>
+                        </li>
+                      @endif
+                      @if( !is_null(config('app.whatsapp')) )
+                        <li>
+                          <a href="{{config('app.whatsapp')}}"><i class="bi bi-whatsapp"></i></a>
+                        </li>
+                      @endif
+                      @if( !is_null(config('app.instra')) )
+                        <li>
+                          <a href="{{config('app.instra')}}"><i class="bi bi-instagram"></i></a>
+                        </li>
+                      @endif
+                      @if( !is_null(config('app.youtube')) )
+                        <li>
+                          <a href="{{config('app.youtube')}}"><i class="bi bi-youtube"></i></a>
+                        </li>
+                      @endif
+                  </ul>
+              </div>
             </div>
           </div>
           <div class="col offset-xl-1">
@@ -24,11 +48,11 @@
                 <div class="footer-title d-md-block"> 
                   <h5>About Us</h5>
                   <ul class="footer-details accordion-hidden"> 
-                    <li> <a class="nav" href="index.html">Home</a></li>
-                    <li> <a class="nav" href="collection-left-sidebar.html">Shop</a></li>
-                    <li> <a class="nav" href="about-us.html">About Us</a></li>
-                    <li> <a class="nav" href="blog-left-sidebar.html">Blog</a></li>
-                    <li> <a class="nav" href="contact.html">Contact</a></li>
+                    <li> <a class="nav" href="{{url('/')}}">Home</a></li>
+                    <li> <a class="nav" href="{{route('shop')}}">Shop</a></li>
+                    <li> <a class="nav" href="{{route('about')}}">About Us</a></li>
+                    <li> <a class="nav" href="">Faq</a></li>
+                    <li> <a class="nav" href="{{route('contact')}}">Contact</a></li>
                   </ul>
                 </div>
               </div>
@@ -50,22 +74,7 @@
               </div>
             </div>
           </div>
-          <div class="col">
-            <div class="footer-content">
-              <div>
-                <div class="footer-title d-md-block"> 
-                  <h5>Get Help</h5>
-                  <ul class="footer-details accordion-hidden"> 
-                    <li> <a class="nav" href="order-success.html">Your Orders</a></li>
-                    <li> <a class="nav" href="dashboard.html">Your Account</a></li>
-                    <li> <a class="nav" href="order-tracking.html">Track Orders</a></li>
-                    <li> <a class="nav" href="wishlist.html">Your Wishlist</a></li>
-                    <li> <a class="nav" href="faq.html">Shopping FAQs</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
+         
           <div class="col">
             <div class="footer-content">
               <div>
@@ -75,8 +84,6 @@
                     <li> <a class="nav" href="dashboard.html">My Account</a></li>
                     <li> <a class="nav" href="login.html">Login/Register</a></li>
                     <li> <a class="nav" href="cart.html">Cart</a></li>
-                    <li> <a class="nav" href="order-success.html">Order History</a></li>
-                    <li> <a class="nav" href="faq.html">Delivery FAQs</a></li>
                   </ul>
                 </div>
               </div>
@@ -88,21 +95,12 @@
     <div class="sub-footer"> 
       <div class="custom-container container">
         <div class="row"> 
-          <div class="col-xl-6 col-md-6 col-sm-12">
-            <div class="footer-end">
+          <div class="col-12">
+            <div class="footer-end text-center">
               <h6>2024 Copyright By Themeforest Powered By Pixelstrap </h6>
             </div>
           </div>
-          <div class="col-xl-6 col-md-6 col-sm-12">
-            <div class="payment-card-bottom">
-              <ul> 
-                <li> <img src="{{asset('frontend/images/footer/discover.png')}}" alt=""/></li>
-                <li> <img src="{{asset('frontend/images/footer/american.png')}}" alt=""/></li>
-                <li> <img src="{{asset('frontend/images/footer/master.png')}}" alt=""/></li>
-                <li> <img src="{{asset('frontend/images/footer/giro.png')}}" alt=""/></li>
-              </ul>
-            </div>
-          </div>
+          
         </div>
       </div>
     </div>

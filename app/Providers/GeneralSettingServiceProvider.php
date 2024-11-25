@@ -33,6 +33,10 @@ class GeneralSettingServiceProvider extends ServiceProvider
                 config(['app.phone' => $settings->number1 ?? null]);
                 config(['app.address' => $settings->address ?? null]);
                 config(['app.state' => $settings->state ?? null]);
+                config(['app.facebook' => $settings->facebook ?? null]);
+                config(['app.instra' => $settings->instagram ?? null]);
+                config(['app.whatsapp' => $settings->whatsapp ?? null]);
+                config(['app.youtube' => $settings->youtube ?? null]);
             }
 
             config(['app.error', 'tostar']);

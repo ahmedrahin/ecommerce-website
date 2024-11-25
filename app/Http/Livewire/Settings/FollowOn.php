@@ -32,10 +32,10 @@ class FollowOn extends Component
         $this->validate();
         $updateData = Setting::find($id);
         $updateData->update([
-            'facebook' => $this->facebook,
-            'instagram' => $this->instagram,
-            'youtube' => $this->youtube,
-            'whatsapp' => $this->whatsapp,
+            'facebook' => $this->facebook ?? null,
+            'instagram' => $this->instagram ?? null,
+            'youtube' => $this->youtube ?? null,
+            'whatsapp' => $this->whatsapp ?? null,
         ]);
 
         $this->emit('success', __('Follow on settings Updated successfully.'));
