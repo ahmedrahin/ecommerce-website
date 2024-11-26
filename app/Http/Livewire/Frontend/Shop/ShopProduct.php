@@ -124,7 +124,7 @@ class ShopProduct extends Component
             })
             ->orderBy('is_featured', 'asc')
             ->orderBy('id', 'desc')
-            ->paginate(20); 
+            ->paginate(10); 
 
         return view('livewire.frontend.shop.shop-product', compact('products'));
     }

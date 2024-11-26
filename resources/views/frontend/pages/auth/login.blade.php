@@ -5,7 +5,7 @@
 @endsection
 
 @section('body-content')
-<section class="section-b-space pt-10 login-bg-img ">
+<section class="pt-3 login-bg-img ">
     <div class="custom-container container login-page">
         <div class="row align-items-center">
             <div class="col-xxl-7 col-6 d-none d-lg-block">

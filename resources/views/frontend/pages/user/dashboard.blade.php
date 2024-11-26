@@ -20,7 +20,7 @@
 
 @section('body-content')
 
-    <section class="section-b-space pt-0"> 
+    <section class="section-b-space pt-0 pb-0"> 
         <div class="custom-container container user-dashboard-section"> 
         <div class="row">
             <div class="col-xl-3 col-lg-4">
@@ -44,9 +44,9 @@
                     <li>
                         <button class="nav-link" id="order-tab" data-bs-toggle="pill" data-bs-target="#order" role="tab" aria-controls="order" aria-selected="false"><i class="iconsax" data-icon="receipt-square"></i> Order</button>
                     </li>
-                    <li>
+                    {{-- <li>
                         <button class="nav-link" id="wishlist-tab" data-bs-toggle="pill" data-bs-target="#wishlist" role="tab" aria-controls="wishlist" aria-selected="false"> <i class="iconsax" data-icon="heart"></i>Wishlist </button>
-                    </li>
+                    </li> --}}
 
                 </ul>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -462,6 +462,14 @@
         const modalPass = document.querySelector('#edit-password');
         modalPass.addEventListener('show.bs.modal', (e) => {
             Livewire.emit('open_add_modal');
+        });
+
+        document.querySelector('.left-dashboard-show').addEventListener('click', function() {
+            document.querySelector('.dashboard-left-sidebar').classList.add('open');
+        });
+
+        document.querySelector('.dashboard-left-sidebar-close').addEventListener('click', function() {
+            document.querySelector('.dashboard-left-sidebar').classList.remove('open');
         });
         
    </script>

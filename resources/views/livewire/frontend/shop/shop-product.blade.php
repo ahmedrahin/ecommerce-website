@@ -19,7 +19,7 @@
                         </div>
     
                             {{-- product thumb or back image --}}
-                        <div class="product-image {{ !is_null($product->back_image) ? 'has-back-image' : '' }}">
+                            <div class="product-image {{ !is_null($product->back_image) ? 'has-back-image' : '' }}">
                                 <a href="{{route('product-details', $product->slug)}}">
                                     <img class="product-thumb" src="{{ asset($product->thumb_image ?? 'frontend/images/blank.jpg') }}" alt="product">
                                     @if(!is_null($product->back_image))
@@ -128,12 +128,12 @@
                 
             @endforeach
         @else 
-             <div style="color: #ff00008a;font-size: 20px;font-weight: 600;">No products found.</div>
+             <div style="color: #ff00008a;font-size: 20px;font-weight: 600;width: 100%;">No products found.</div>
         @endif
         
     </div>
     
-    <div class="pagination-wrap mt-5">
+    <div class="pagination-wrap mt-0">
         <ul class="pagination"> 
             {{ $products->links() }}
         </ul>

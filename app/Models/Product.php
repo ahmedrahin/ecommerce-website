@@ -23,6 +23,11 @@ class Product extends Model
         return $this->hasMany(Wishlist::class);
     }
 
+    public function review()
+    {
+        return $this->hasMany(Review::class, 'product_id');
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class);

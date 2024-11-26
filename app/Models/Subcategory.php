@@ -50,6 +50,7 @@ class Subcategory extends Model
 
         return $slug;
     }
+
     
     /**
      * Get the category that owns the subcategory.

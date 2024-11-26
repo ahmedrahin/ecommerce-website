@@ -91,7 +91,7 @@
                                     @endforeach
                                 </ul>
                                 @if ($colorError)
-                                  <div class="text-danger">{{ $colorError }}</div>
+                                  <div class="text-danger" style="margin-top:-10px;">{{ $colorError }}</div>
                               @endif
                             </div>
                         </div>

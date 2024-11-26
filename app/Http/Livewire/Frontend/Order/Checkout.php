@@ -289,7 +289,7 @@ class Checkout extends Component
         
         if (empty($this->cart)) {
             session()->forget('applied_coupon');
-            // return redirect()->route('shop');
+            return redirect()->route('shop');
         }
     } 
     

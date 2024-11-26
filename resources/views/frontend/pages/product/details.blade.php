@@ -137,11 +137,12 @@
               {{-- rating --}}    
               <livewire:frontend.product.review-count :productId="$product->id" />
 
-             <div class="short-description mb-3">
                 @if( !is_null( $product->short_description) && ( $product->short_description != '<p><br></p>') )
-                  {!! $product->short_description !!}
+                  <div class="short-description mb-3">
+                    {!! $product->short_description !!}
+                  </div>
                 @endif
-             </div>
+            
 
               {{-- chart and delivery information --}}
               <livewire:frontend.product.size-chart-qustion />

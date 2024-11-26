@@ -11,53 +11,27 @@
 @endsection
 
 @section('body-content')
+
+  {{-- quick view modal --}}
+  <livewire:frontend.cart.quick-view />
+  {{-- add wishlist --}}
+  <livewire:frontend.wishlist.add-wishlist></livewire>
    
-<section class="pt-0 home-section-3">
-    <div class="container-fluid">
-      <div class="row align-items-center">
-        <div class="col-2 d-none d-xl-block">
-          <ul> 
-            <li> <a href="collection-left-sidebar.html">Women’s Clothing</a></li>
-            <li> <a href="collection-left-sidebar.html">Men’s Clothing</a></li>
-            <li> <a href="collection-left-sidebar.html">Kids Clothing</a></li>
-            <li> <a href="collection-left-sidebar.html">Watch</a></li>
-            <li> <a href="collection-left-sidebar.html">Sports Accessories</a></li>
-            <li> <a href="collection-left-sidebar.html">Sunglass</a></li>
-            <li> <a href="collection-left-sidebar.html">Bags</a></li>
-            <li> <a href="collection-left-sidebar.html">Sneakers</a></li>
-            <li> <a href="collection-left-sidebar.html">Jewellery</a></li>
-            <li> <a href="collection-left-sidebar.html">Hair Accessories</a></li>
-            <li> <a href="collection-left-sidebar.html">Other</a></li>
-          </ul>
-        </div>
+  <section class="pt-0 home-section-3" id="banner-section">
+      <a href="">
         <div class="col pe-0">  
-          <div class="home-banner p-right">                            
-            <img class="img-fluid" src="{{asset('frontend/images/home/slider/1.jpg')}}" alt=""/>
-            <div class="contain-banner"> 
-              <div> 
-                <h4>Hot Offer <span>START TODAY</span></h4>
-                <h1>Explore Your True Creative Fashion.</h1>
-                <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. </p>
-                <div class="link-hover-anim underline"><a class="btn btn_underline link-strong link-strong-unhovered" href="collection-left-sidebar.html">Show Now
-                    <svg>
-                      <use href="../assets/svg/icon-sprite.svg#arrow"></use>
-                    </svg></a><a class="btn btn_underline link-strong link-strong-hovered" href="collection-left-sidebar.html">Show Now
-                    <svg>
-                      <use href="../assets/svg/icon-sprite.svg#arrow"></use>
-                    </svg></a></div>
-              </div>
-            </div>
+          <div class="home-banner p-right"> 
+            <picture>
+                <source media="(max-width: 480px)" srcset="https://fabrilife.com/image-gallery/6739ecf85c862.jpg">
+                <source media="(max-width: 1000px)" srcset="{{asset('frontend/images/home/slider/1.jpg')}}">
+                <img src="{{asset('frontend/images/home/slider/1.jpg')}}" class="img-fluid"">
+            </picture>
+                            
           </div>
-          <ul class="social-icon"> 
-            <li> <a href="#">
-                <h6>Follow Us</h6></a></li>
-            <li> <a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
-            <li> <a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
-          </ul>
         </div>
-      </div>
-    </div>
+      </a>
   </section>
+
   <section class="section-t-space">
     <div class="custom-container container service">
       <ul>
@@ -88,7 +62,7 @@
         <li>
           <div class="service-block border-0"><img src="{{asset('frontend/images/home/4.svg')}}" alt=""/>
             <div>    
-              <h6>Daily Gift Vouchers</h6>
+              <h6>Festival Offer</h6>
               <p>Shopping now is more fun</p>
             </div>
           </div>
@@ -96,137 +70,93 @@
       </ul>
     </div>
   </section>
-  <section class="section-t-space">
+
+  {{-- top categories --}}
+  <section class="topcategory">
+    
+      <div class="heading-banner mb-4">
+        <div class="custom-container container">
+          <div class="row align-items-center">
+            <div class="text-center">
+                <h4 style="font-weight: 600;margin-bottom:0;">Top Categories</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+     <div class="cat-item">
+        @foreach ($categories as $category)
+          <a href="{{ url('/shop') }}?categories[0]={{ $category->id }}">
+              <div class="catBox">
+                  <img src="{{ asset($category->image ?? 'frontend/images/blank.jpg') }}" >
+                  <h5>{{ $category->name }}</h5>
+              </div>
+          </a>
+        @endforeach
+
+        @foreach ($subcategories as $category)
+          <a href="{{ url('/shop') }}?categories[0]={{ $category->id }}">
+              <div class="catBox">
+                  <img src="{{ asset($category->image ?? 'frontend/images/blank.jpg') }}" >
+                  <h5>{{ $category->name }}</h5>
+              </div>
+          </a>
+        @endforeach
+     </div>
+      
+  </section>
+
+  {{-- Highlighted  product --}}
+  <section class="highlitedproduct">
+    <div class="custom-container container">
+        <livewire:frontend.home.highlighted-product/>
+    </div>
+  </section>
+
+  <section class="pt-5">
     <div class="custom-container container">
       <div class="row"> 
-        <div class="col-xxl-5 col-lg-8 offer-box-1">
-          <div class="row gy-4 ratio_45">
-            <div class="col-12">
-              <div class="collection-banner p-left">                                
-                <img class="bg-img" src="{{asset('frontend/images/home/banner-7.jpg')}}" alt=""/>
-                <div class="contain-banner"> 
-                  <div> 
-                    <h4>Up to 60% OFF</h4>
-                    <h3>New Brand Men’s Bag</h3>
-                    <div class="link-hover-anim underline"><a class="btn btn_underline link-strong link-strong-unhovered" href="collection-left-sidebar.html">Shop Collection
-                        <svg>
-                          <use href="../assets/svg/icon-sprite.svg#arrow"></use>
-                        </svg></a><a class="btn btn_underline link-strong link-strong-hovered" href="collection-left-sidebar.html">Shop Collection
-                        <svg>
-                          <use href="../assets/svg/icon-sprite.svg#arrow"></use>
-                        </svg></a></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-12">
-              <div class="collection-banner p-right"><img class="bg-img" src="{{asset('frontend/images/home/banner-8.jpg')}}" alt=""/>
-                <div class="contain-banner"> 
-                  <div> 
-                    <h4>Up to 60% OFF</h4>
-                    <h3>Women’s Stylish Top</h3>
-                    <div class="link-hover-anim underline"><a class="btn btn_underline link-strong link-strong-unhovered" href="collection-left-sidebar.html">Shop Collection
-                        <svg>
-                          <use href="../assets/svg/icon-sprite.svg#arrow"></use>
-                        </svg></a><a class="btn btn_underline link-strong link-strong-hovered" href="collection-left-sidebar.html">Shop Collection
-                        <svg>
-                          <use href="../assets/svg/icon-sprite.svg#arrow"></use>
-                        </svg></a></div>
-                  </div>
-                </div>
+        <div class="col-xxl-6 col-md-6 offer-box-1">
+          <div class="collection-banner p-left">                                
+            <img class="bg-img" src="{{asset('frontend/images/home/banner-7.jpg')}}" width="100%"/>
+            <div class="contain-banner"> 
+              <div> 
+                <h4>Up to 60% OFF</h4>
+                <h3>New Brand Men’s Bag</h3>
+                <div class="link-hover-anim underline"><a class="btn btn_underline link-strong link-strong-unhovered" href="collection-left-sidebar.html">Shop Collection
+                    <svg>
+                      <use href="../assets/svg/icon-sprite.svg#arrow"></use>
+                    </svg></a><a class="btn btn_underline link-strong link-strong-hovered" href="collection-left-sidebar.html">Shop Collection
+                    <svg>
+                      <use href="../assets/svg/icon-sprite.svg#arrow"></use>
+                    </svg></a></div>
               </div>
             </div>
           </div>
+          
         </div>
-        <div class="col-xxl-3 col-4 d-none d-lg-block"> 
-          <div class="special-offer-slider"> 
-            <h4>Special Offer</h4>
-            <div class="swiper special-offer-slide">
-              <div class="swiper-wrapper trending-products">
-                <div class="swiper-slide product-box-3">
-                  <div class="img-wrapper">
-                    <div class="label-block"><span class="lable-1">NEW</span><a class="label-2 wishlist-icon" href="javascript:void(0)" tabindex="0"><i class="iconsax" data-icon="heart" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Add to Wishlist"></i></a></div>
-                    <div class="product-image ratio_apos"><a class="pro-first" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/5.jpg" alt="product"/></a><a class="pro-sec" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/6.jpg" alt="product"/></a></div>
-                    <div class="cart-info-icon"> <a href="#" data-bs-toggle="modal" data-bs-target="#addtocart" tabindex="0"><i class="iconsax" data-icon="basket-2" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Add to card"> </i></a><a href="compare.html" tabindex="0"><i class="iconsax" data-icon="arrow-up-down" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Compare"></i></a><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" tabindex="0"><i class="iconsax" data-icon="eye" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Quick View"></i></a></div>
-                  </div>
-                  <div class="product-detail">
-                    <ul class="rating">      
-                      <li><i class="fa-solid fa-star"></i></li>
-                      <li><i class="fa-solid fa-star"></i></li>
-                      <li><i class="fa-solid fa-star"></i></li>
-                      <li><i class="fa-solid fa-star-half-stroke"></i></li>
-                      <li><i class="fa-regular fa-star"></i></li>
-                      <li>4.3</li>
-                    </ul><a href="product.html"> 
-                      <h6>Greciilooks Women's Stylish Top</h6></a>
-                    <p>$100.00  
-                      <del>$140.00</del><span>-20%</span>
-                    </p>
-                  </div>
-                </div>
-                <div class="swiper-slide product-box-3">
-                  <div class="img-wrapper">
-                    <div class="label-block"><span class="lable-1">NEW</span><a class="label-2 wishlist-icon" href="javascript:void(0)" tabindex="0"><i class="iconsax" data-icon="heart" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Add to Wishlist"></i></a></div>
-                    <div class="product-image ratio_apos"><a class="pro-first" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/8.jpg" alt="product"/></a><a class="pro-sec" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/12.jpg" alt="product"/></a></div>
-                    <div class="cart-info-icon"> <a href="#" data-bs-toggle="modal" data-bs-target="#addtocart" tabindex="0"><i class="iconsax" data-icon="basket-2" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Add to card"> </i></a><a href="compare.html" tabindex="0"><i class="iconsax" data-icon="arrow-up-down" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Compare"></i></a><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" tabindex="0"><i class="iconsax" data-icon="eye" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Quick View"></i></a></div>
-                    <div class="countdown">
-                      <ul class="clockdiv2">
-                        <li> 
-                          <div class="timer">
-                            <div class="days"></div>
-                          </div><span class="title">Days</span>
-                        </li>
-                        <li class="dot"> <span>:</span></li>
-                        <li> 
-                          <div class="timer">
-                            <div class="hours"></div>
-                          </div><span class="title">Hours</span>
-                        </li>
-                        <li class="dot"> <span>:</span></li>
-                        <li> 
-                          <div class="timer">
-                            <div class="minutes"></div>
-                          </div><span class="title">Min</span>
-                        </li>
-                        <li class="dot"> <span>:</span></li>
-                        <li> 
-                          <div class="timer">
-                            <div class="seconds"></div>
-                          </div><span class="title">Sec</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="product-detail">
-                    <ul class="rating">      
-                      <li><i class="fa-solid fa-star"></i></li>
-                      <li><i class="fa-solid fa-star"></i></li>
-                      <li><i class="fa-solid fa-star"></i></li>
-                      <li><i class="fa-solid fa-star"></i></li>
-                      <li><i class="fa-regular fa-star"></i></li>
-                      <li>4.3</li>
-                    </ul><a href="product.html"> 
-                      <h6>Wide Linen-Blend Trousers</h6></a>
-                    <p>$100.00  
-                      <del>$18.00 </del>
-                    </p>
-                  </div>
-                </div>
+        <div class="col-xxl-6 col-md-6 offer-box-1">
+          <div class="collection-banner p-right"><img class="bg-img" src="{{asset('frontend/images/home/banner-8.jpg')}}"  width="100%"/>
+            <div class="contain-banner"> 
+              <div> 
+                <h4>Up to 60% OFF</h4>
+                <h3>Women’s Stylish Top</h3>
+                <div class="link-hover-anim underline"><a class="btn btn_underline link-strong link-strong-unhovered" href="collection-left-sidebar.html">Shop Collection
+                    <svg>
+                      <use href="../assets/svg/icon-sprite.svg#arrow"></use>
+                    </svg></a><a class="btn btn_underline link-strong link-strong-hovered" href="collection-left-sidebar.html">Shop Collection
+                    <svg>
+                      <use href="../assets/svg/icon-sprite.svg#arrow"></use>
+                    </svg></a></div>
               </div>
-              <div class="swiper-button-prev"></div>
-              <div class="swiper-button-next"></div>
             </div>
           </div>
-        </div>
-        <div class="col-4 d-none d-xxl-block"> 
-          <div class="offer-banner-3 ratio1_3"> <a href="#"> <img class="bg-img" src="{{asset('frontend/images/home/banner-9.jpg')}}" alt=""/>
-              <div> <img src="../assets/images/banner/2.png" alt=""/>
-                <h6>SALE UP TO 70%</h6>
-              </div></a></div>
         </div>
       </div>
     </div>
   </section>
+
   <section class="section-t-space">
     <div class="custom-container container">
       <div class="row special-products align-items-center">
@@ -240,471 +170,49 @@
           <div class="theme-tab-3">
             <ul class="nav nav-tabs" role="tablist">
               <li class="nav-item" role="presentation"><a class="nav-link active" data-bs-toggle="tab" data-bs-target="#new-product" role="tab" aria-controls="new-product" aria-selected="true">
-                  <h6>New Products</h6></a></li>
+                  <h6>Offer Products</h6></a></li>
               <li class="nav-item" role="presentation"><a class="nav-link" data-bs-toggle="tab" data-bs-target="#featured-product" role="tab" aria-controls="featured-product" aria-selected="false"> 
-                  <h6>Featured Products</h6></a></li>
+                  <h6>30%+ Discount Products</h6></a></li>
               <li class="nav-item" role="presentation"><a class="nav-link" data-bs-toggle="tab" data-bs-target="#best-seller" role="tab" aria-controls="best-seller" aria-selected="false"> 
-                  <h6>Best Seller</h6></a></li>
+                  <h6>Free Shipping Products</h6></a></li>
             </ul>
           </div>
         </div>
         <div class="col-12"> 
-          <div class="tab-content">
-            <div class="tab-pane fade show active" id="new-product" role="tabpanel" tabindex="0"> 
-              <div class="row ratio1_3 gy-4 gx-3 gx-sm-4">
-                <div class="col-lg-3 col-md-4 col-6">
-                  <div class="product-box-3">
-                    <div class="img-wrapper">
-                      <div class="label-block"><span class="lable-1">NEW</span><a class="label-2 wishlist-icon" href="javascript:void(0)" tabindex="0"><i class="iconsax" data-icon="heart" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Add to Wishlist"></i></a></div>
-                      <div class="product-image"><a class="pro-first" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/1.jpg" alt="product"/></a><a class="pro-sec" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/11.jpg" alt="product"/></a></div>
-                      <div class="cart-info-icon"> <a href="#" data-bs-toggle="modal" data-bs-target="#addtocart" tabindex="0"><i class="iconsax" data-icon="basket-2" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Add to card"> </i></a><a href="compare.html" tabindex="0"><i class="iconsax" data-icon="arrow-up-down" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Compare"></i></a><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" tabindex="0"><i class="iconsax" data-icon="eye" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Quick View"></i></a></div>
-                      <div class="countdown">
-                        <ul class="clockdiv9">
-                          <li> 
-                            <div class="timer">
-                              <div class="days"></div>
-                            </div><span class="title">Days</span>
-                          </li>
-                          <li class="dot"> <span>:</span></li>
-                          <li> 
-                            <div class="timer">
-                              <div class="hours"></div>
-                            </div><span class="title">Hours</span>
-                          </li>
-                          <li class="dot"> <span>:</span></li>
-                          <li> 
-                            <div class="timer">
-                              <div class="minutes"></div>
-                            </div><span class="title">Min</span>
-                          </li>
-                          <li class="dot"> <span>:</span></li>
-                          <li> 
-                            <div class="timer">
-                              <div class="seconds"></div>
-                            </div><span class="title">Sec</span>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="product-detail">
-                      <ul class="rating">      
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star-half-stroke"></i></li>
-                        <li><i class="fa-regular fa-star"></i></li>
-                        <li>4.3</li>
-                      </ul><a href="product.html"> 
-                        <h6>Greciilooks Women's Stylish Top</h6></a>
-                      <p>$100.00  
-                        <del>$140.00</del><span>-20%</span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-6">
-                  <div class="product-box-3">
-                    <div class="img-wrapper">
-                      <div class="label-block"><span class="lable-1">NEW</span><a class="label-2 wishlist-icon" href="javascript:void(0)" tabindex="0"><i class="iconsax" data-icon="heart" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Add to Wishlist"></i></a></div>
-                      <div class="product-image"><a class="pro-first" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/2.jpg" alt="product"/></a><a class="pro-sec" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/19.jpg" alt="product"/></a></div>
-                      <div class="cart-info-icon"> <a href="#" data-bs-toggle="modal" data-bs-target="#addtocart" tabindex="0"><i class="iconsax" data-icon="basket-2" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Add to card"> </i></a><a href="compare.html" tabindex="0"><i class="iconsax" data-icon="arrow-up-down" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Compare"></i></a><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" tabindex="0"><i class="iconsax" data-icon="eye" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Quick View"></i></a></div>
-                    </div>
-                    <div class="product-detail">
-                      <ul class="rating">      
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-regular fa-star"></i></li>
-                        <li>4.3</li>
-                      </ul><a href="product.html"> 
-                        <h6>Wide Linen-Blend Trousers</h6></a>
-                      <p>$100.00  
-                        <del>$18.00 </del>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-6">
-                  <div class="product-box-3">
-                    <div class="img-wrapper">
-                      <div class="label-block"><span class="lable-1">NEW</span><a class="label-2 wishlist-icon" href="javascript:void(0)" tabindex="0"><i class="iconsax" data-icon="heart" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Add to Wishlist"></i></a></div>
-                      <div class="product-image"><a class="pro-first" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/3.jpg" alt="product"/></a><a class="pro-sec" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/18.jpg" alt="product"/></a></div>
-                      <div class="cart-info-icon"> <a href="#" data-bs-toggle="modal" data-bs-target="#addtocart" tabindex="0"><i class="iconsax" data-icon="basket-2" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Add to card"> </i></a><a href="compare.html" tabindex="0"><i class="iconsax" data-icon="arrow-up-down" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Compare"></i></a><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" tabindex="0"><i class="iconsax" data-icon="eye" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Quick View"></i></a></div>
-                    </div>
-                    <div class="product-detail">
-                      <ul class="rating">      
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li>4.3</li>
-                      </ul><a href="product.html"> 
-                        <h6>Long Sleeve Rounded T-Shirt</h6></a>
-                      <p>$12.30  
-                        <del>$140.00</del><span>-20%</span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-6">
-                  <div class="product-box-3">
-                    <div class="img-wrapper">
-                      <div class="label-block"><span class="lable-1">NEW</span><a class="label-2 wishlist-icon" href="javascript:void(0)" tabindex="0"><i class="iconsax" data-icon="heart" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Add to Wishlist"></i></a></div>
-                      <div class="product-image"><a class="pro-first" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/10.jpg" alt="product"/></a><a class="pro-sec" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/21.jpg" alt="product"/></a></div>
-                      <div class="cart-info-icon"> <a href="#" data-bs-toggle="modal" data-bs-target="#addtocart" tabindex="0"><i class="iconsax" data-icon="basket-2" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Add to card"> </i></a><a href="compare.html" tabindex="0"><i class="iconsax" data-icon="arrow-up-down" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Compare"></i></a><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" tabindex="0"><i class="iconsax" data-icon="eye" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Quick View"></i></a></div>
-                      <div class="countdown">
-                        <ul class="clockdiv3">
-                          <li> 
-                            <div class="timer">
-                              <div class="days"></div>
-                            </div><span class="title">Days</span>
-                          </li>
-                          <li class="dot"> <span>:</span></li>
-                          <li> 
-                            <div class="timer">
-                              <div class="hours"></div>
-                            </div><span class="title">Hours</span>
-                          </li>
-                          <li class="dot"> <span>:</span></li>
-                          <li> 
-                            <div class="timer">
-                              <div class="minutes"></div>
-                            </div><span class="title">Min</span>
-                          </li>
-                          <li class="dot"> <span>:</span></li>
-                          <li> 
-                            <div class="timer">
-                              <div class="seconds"></div>
-                            </div><span class="title">Sec</span>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="product-detail">
-                      <ul class="rating">      
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star-half-stroke"></i></li>
-                        <li>4.3</li>
-                      </ul><a href="product.html"> 
-                        <h6>Blue lined White T-Shirt</h6></a>
-                      <p>$190.00  
-                        <del>$210.00</del>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <livewire:frontend.home.special-product/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {{-- newsletter --}}
+  <section class="subscribe section-t-space ratio3_3 mt-4">
+    <div class="container-fluid subscribe-banner">
+      <div class="row align-items-center">
+        
+        <div class="col-lg-4 offset-lg-4 ">
+          <div class="subscribe-content">
+            <h6>GET 20% OFF</h6>
+            <h4>Subscribe to Our Newsletter!</h4>
+            <p>Join the insider list - you’ll be the first to know about new arrivals, insider - only discounts and receive $15 off your first order.</p>
+            <div class="mb-3">
+              <input type="text" name="text" placeholder="Your name..."/>
             </div>
-            <div class="tab-pane fade" id="featured-product" role="tabpanel" tabindex="0">
-              <div class="row ratio1_3 gy-4">
-                <div class="col-lg-3 col-md-4 col-6">
-                  <div class="product-box-3">
-                    <div class="img-wrapper">
-                      <div class="label-block"><span class="lable-1">NEW</span><a class="label-2 wishlist-icon" href="javascript:void(0)" tabindex="0"><i class="iconsax" data-icon="heart" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Add to Wishlist"></i></a></div>
-                      <div class="product-image"><a class="pro-first" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/4.jpg" alt="product"/></a><a class="pro-sec" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/16.jpg" alt="product"/></a></div>
-                      <div class="cart-info-icon"> <a href="#" data-bs-toggle="modal" data-bs-target="#addtocart" tabindex="0"><i class="iconsax" data-icon="basket-2" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Add to card"> </i></a><a href="compare.html" tabindex="0"><i class="iconsax" data-icon="arrow-up-down" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Compare"></i></a><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" tabindex="0"><i class="iconsax" data-icon="eye" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Quick View"></i></a></div>
-                      <div class="countdown">
-                        <ul class="clockdiv4">
-                          <li> 
-                            <div class="timer">
-                              <div class="days"></div>
-                            </div><span class="title">Days</span>
-                          </li>
-                          <li class="dot"> <span>:</span></li>
-                          <li> 
-                            <div class="timer">
-                              <div class="hours"></div>
-                            </div><span class="title">Hours</span>
-                          </li>
-                          <li class="dot"> <span>:</span></li>
-                          <li> 
-                            <div class="timer">
-                              <div class="minutes"></div>
-                            </div><span class="title">Min</span>
-                          </li>
-                          <li class="dot"> <span>:</span></li>
-                          <li> 
-                            <div class="timer">
-                              <div class="seconds"></div>
-                            </div><span class="title">Sec</span>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="product-detail">
-                      <ul class="rating">      
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star-half-stroke"></i></li>
-                        <li><i class="fa-regular fa-star"></i></li>
-                        <li>4.3</li>
-                      </ul><a href="product.html"> 
-                        <h6>Greciilooks Women's Stylish Top</h6></a>
-                      <p>$100.00  
-                        <del>$140.00</del><span>-20%</span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-6">
-                  <div class="product-box-3">
-                    <div class="img-wrapper">
-                      <div class="label-block"><span class="lable-1">NEW</span><a class="label-2 wishlist-icon" href="javascript:void(0)" tabindex="0"><i class="iconsax" data-icon="heart" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Add to Wishlist"></i></a></div>
-                      <div class="product-image"><a class="pro-first" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/11.jpg" alt="product"/></a><a class="pro-sec" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/15.jpg" alt="product"/></a></div>
-                      <div class="cart-info-icon"> <a href="#" data-bs-toggle="modal" data-bs-target="#addtocart" tabindex="0"><i class="iconsax" data-icon="basket-2" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Add to card"> </i></a><a href="compare.html" tabindex="0"><i class="iconsax" data-icon="arrow-up-down" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Compare"></i></a><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" tabindex="0"><i class="iconsax" data-icon="eye" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Quick View"></i></a></div>
-                    </div>
-                    <div class="product-detail">
-                      <ul class="rating">      
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-regular fa-star"></i></li>
-                        <li>4.3</li>
-                      </ul><a href="product.html"> 
-                        <h6>Wide Linen-Blend Trousers</h6></a>
-                      <p>$100.00  
-                        <del>$18.00 </del>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-6">
-                  <div class="product-box-3">
-                    <div class="img-wrapper">
-                      <div class="label-block"><span class="lable-1">NEW</span><a class="label-2 wishlist-icon" href="javascript:void(0)" tabindex="0"><i class="iconsax" data-icon="heart" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Add to Wishlist"></i></a></div>
-                      <div class="product-image"><a class="pro-first" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/9.jpg" alt="product"/></a><a class="pro-sec" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/14.jpg" alt="product"/></a></div>
-                      <div class="cart-info-icon"> <a href="#" data-bs-toggle="modal" data-bs-target="#addtocart" tabindex="0"><i class="iconsax" data-icon="basket-2" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Add to card"> </i></a><a href="compare.html" tabindex="0"><i class="iconsax" data-icon="arrow-up-down" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Compare"></i></a><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" tabindex="0"><i class="iconsax" data-icon="eye" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Quick View"></i></a></div>
-                    </div>
-                    <div class="product-detail">
-                      <ul class="rating">      
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li>4.3</li>
-                      </ul><a href="product.html"> 
-                        <h6>Long Sleeve Rounded T-Shirt</h6></a>
-                      <p>$12.30  
-                        <del>$140.00</del><span>-20%</span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-6">
-                  <div class="product-box-3">
-                    <div class="img-wrapper">
-                      <div class="label-block"><span class="lable-1">NEW</span><a class="label-2 wishlist-icon" href="javascript:void(0)" tabindex="0"><i class="iconsax" data-icon="heart" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Add to Wishlist"></i></a></div>
-                      <div class="product-image"><a class="pro-first" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/10.jpg" alt="product"/></a><a class="pro-sec" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/13.jpg" alt="product"/></a></div>
-                      <div class="cart-info-icon"> <a href="#" data-bs-toggle="modal" data-bs-target="#addtocart" tabindex="0"><i class="iconsax" data-icon="basket-2" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Add to card"> </i></a><a href="compare.html" tabindex="0"><i class="iconsax" data-icon="arrow-up-down" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Compare"></i></a><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" tabindex="0"><i class="iconsax" data-icon="eye" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Quick View"></i></a></div>
-                      <div class="countdown">
-                        <ul class="clockdiv5">
-                          <li> 
-                            <div class="timer">
-                              <div class="days"></div>
-                            </div><span class="title">Days</span>
-                          </li>
-                          <li class="dot"> <span>:</span></li>
-                          <li> 
-                            <div class="timer">
-                              <div class="hours"></div>
-                            </div><span class="title">Hours</span>
-                          </li>
-                          <li class="dot"> <span>:</span></li>
-                          <li> 
-                            <div class="timer">
-                              <div class="minutes"></div>
-                            </div><span class="title">Min</span>
-                          </li>
-                          <li class="dot"> <span>:</span></li>
-                          <li> 
-                            <div class="timer">
-                              <div class="seconds"></div>
-                            </div><span class="title">Sec</span>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="product-detail">
-                      <ul class="rating">      
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star-half-stroke"></i></li>
-                        <li>4.3</li>
-                      </ul><a href="product.html"> 
-                        <h6>Blue lined White T-Shirt</h6></a>
-                      <p>$190.00  
-                        <del>$210.00</del>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div class="mb-3">
+              <input type="text" name="text" placeholder="Your email address..."/>
             </div>
-            <div class="tab-pane fade" id="best-seller" role="tabpanel" tabindex="0"> 
-              <div class="row ratio1_3 gy-4">
-                <div class="col-lg-3 col-md-4 col-6">
-                  <div class="product-box-3">
-                    <div class="img-wrapper">
-                      <div class="label-block"><span class="lable-1">NEW</span><a class="label-2 wishlist-icon" href="javascript:void(0)" tabindex="0"><i class="iconsax" data-icon="heart" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Add to Wishlist"></i></a></div>
-                      <div class="product-image"><a class="pro-first" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/16.jpg" alt="product"/></a><a class="pro-sec" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/2.jpg" alt="product"/></a></div>
-                      <div class="cart-info-icon"> <a href="#" data-bs-toggle="modal" data-bs-target="#addtocart" tabindex="0"><i class="iconsax" data-icon="basket-2" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Add to card"> </i></a><a href="compare.html" tabindex="0"><i class="iconsax" data-icon="arrow-up-down" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Compare"></i></a><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" tabindex="0"><i class="iconsax" data-icon="eye" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Quick View"></i></a></div>
-                      <div class="countdown">
-                        <ul class="clockdiv6">
-                          <li> 
-                            <div class="timer">
-                              <div class="days"></div>
-                            </div><span class="title">Days</span>
-                          </li>
-                          <li class="dot"> <span>:</span></li>
-                          <li> 
-                            <div class="timer">
-                              <div class="hours"></div>
-                            </div><span class="title">Hours</span>
-                          </li>
-                          <li class="dot"> <span>:</span></li>
-                          <li> 
-                            <div class="timer">
-                              <div class="minutes"></div>
-                            </div><span class="title">Min</span>
-                          </li>
-                          <li class="dot"> <span>:</span></li>
-                          <li> 
-                            <div class="timer">
-                              <div class="seconds"></div>
-                            </div><span class="title">Sec</span>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="product-detail">
-                      <ul class="rating">      
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star-half-stroke"></i></li>
-                        <li><i class="fa-regular fa-star"></i></li>
-                        <li>4.3</li>
-                      </ul><a href="product.html"> 
-                        <h6>Greciilooks Women's Stylish Top</h6></a>
-                      <p>$100.00  
-                        <del>$140.00</del><span>-20%</span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-6">
-                  <div class="product-box-3">
-                    <div class="img-wrapper">
-                      <div class="label-block"><span class="lable-1">NEW</span><a class="label-2 wishlist-icon" href="javascript:void(0)" tabindex="0"><i class="iconsax" data-icon="heart" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Add to Wishlist"></i></a></div>
-                      <div class="product-image"><a class="pro-first" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/17.jpg" alt="product"/></a><a class="pro-sec" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/1.jpg" alt="product"/></a></div>
-                      <div class="cart-info-icon"> <a href="#" data-bs-toggle="modal" data-bs-target="#addtocart" tabindex="0"><i class="iconsax" data-icon="basket-2" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Add to card"> </i></a><a href="compare.html" tabindex="0"><i class="iconsax" data-icon="arrow-up-down" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Compare"></i></a><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" tabindex="0"><i class="iconsax" data-icon="eye" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Quick View"></i></a></div>
-                    </div>
-                    <div class="product-detail">
-                      <ul class="rating">      
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star">  </i></li>
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-regular fa-star"></i></li>
-                        <li>4.3</li>
-                      </ul><a href="product.html"> 
-                        <h6>Wide Linen-Blend Trousers</h6></a>
-                      <p>$100.00  
-                        <del>$18.00 </del>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-6">
-                  <div class="product-box-3">
-                    <div class="img-wrapper">
-                      <div class="label-block"><span class="lable-1">NEW</span><a class="label-2 wishlist-icon" href="javascript:void(0)" tabindex="0"><i class="iconsax" data-icon="heart" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Add to Wishlist"></i></a></div>
-                      <div class="product-image"><a class="pro-first" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/18.jpg" alt="product"/></a><a class="pro-sec" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/20.jpg" alt="product"/></a></div>
-                      <div class="cart-info-icon"> <a href="#" data-bs-toggle="modal" data-bs-target="#addtocart" tabindex="0"><i class="iconsax" data-icon="basket-2" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Add to card"> </i></a><a href="compare.html" tabindex="0"><i class="iconsax" data-icon="arrow-up-down" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Compare"></i></a><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" tabindex="0"><i class="iconsax" data-icon="eye" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Quick View"></i></a></div>
-                    </div>
-                    <div class="product-detail">
-                      <ul class="rating">      
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li>4.3</li>
-                      </ul><a href="product.html"> 
-                        <h6>Long Sleeve Rounded T-Shirt</h6></a>
-                      <p>$12.30  
-                        <del>$140.00</del><span>-20%</span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-6">
-                  <div class="product-box-3">
-                    <div class="img-wrapper">
-                      <div class="label-block"><span class="lable-1">NEW</span><a class="label-2 wishlist-icon" href="javascript:void(0)" tabindex="0"><i class="iconsax" data-icon="heart" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Add to Wishlist"></i></a></div>
-                      <div class="product-image"><a class="pro-first" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/19.jpg" alt="product"/></a><a class="pro-sec" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/3.jpg" alt="product"/></a></div>
-                      <div class="cart-info-icon"> <a href="#" data-bs-toggle="modal" data-bs-target="#addtocart" tabindex="0"><i class="iconsax" data-icon="basket-2" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Add to card"> </i></a><a href="compare.html" tabindex="0"><i class="iconsax" data-icon="arrow-up-down" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Compare"></i></a><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" tabindex="0"><i class="iconsax" data-icon="eye" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Quick View"></i></a></div>
-                      <div class="countdown">
-                        <ul class="clockdiv7">
-                          <li> 
-                            <div class="timer">
-                              <div class="days"></div>
-                            </div><span class="title">Days</span>
-                          </li>
-                          <li class="dot"> <span>:</span></li>
-                          <li> 
-                            <div class="timer">
-                              <div class="hours"></div>
-                            </div><span class="title">Hours</span>
-                          </li>
-                          <li class="dot"> <span>:</span></li>
-                          <li> 
-                            <div class="timer">
-                              <div class="minutes"></div>
-                            </div><span class="title">Min</span>
-                          </li>
-                          <li class="dot"> <span>:</span></li>
-                          <li> 
-                            <div class="timer">
-                              <div class="seconds"></div>
-                            </div><span class="title">Sec</span>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="product-detail">
-                      <ul class="rating">      
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star"></i></li>
-                        <li><i class="fa-solid fa-star-half-stroke"></i></li>
-                        <li>4.3</li>
-                      </ul><a href="product.html"> 
-                        <h6>Blue lined White T-Shirt</h6></a>
-                      <p>$190.00  
-                        <del>$210.00</del>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div class="link-hover-anim underline">
+                <a class="btn btn_underline link-strong link-strong-unhovered" href="index.html">Subscribe Now</a>
+                <a class="btn btn_underline link-strong link-strong-hovered" href="index.html">Subscribe Now</a>
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+{{--   
+  
   <section class="section-t-space"> 
     <div class="custom-container container">
       <div class="style-banner">
@@ -983,28 +491,7 @@
       </div>
     </div>
   </section>
-  <section class="section-t-space ratio3_3">
-    <div class="container-fluid subscribe-banner">
-      <div class="row align-items-center">
-        <div class="col-xl-8 col-md-7 col-12 px-0"> <a href="index.html"><img class="bg-img" src="../assets/images/banner/banner-6.png" alt=""/></a></div>
-        <div class="col-xl-4 col-5">
-          <div class="subscribe-content">
-            <h6>GET 20% OFF</h6>
-            <h4>Subscribe to Our Newsletter!</h4>
-            <p>Join the insider list - you’ll be the first to know about new arrivals, insider - only discounts and receive $15 off your first order.</p>
-            <input type="text" name="text" placeholder="Your email address..."/>
-            <div class="link-hover-anim underline"><a class="btn btn_underline link-strong link-strong-unhovered" href="index.html">Subscribe Now
-                <svg>
-                  <use href="../assets/svg/icon-sprite.svg#arrow"></use>
-                </svg></a><a class="btn btn_underline link-strong link-strong-hovered" href="index.html">Subscribe Now
-                <svg>
-                  <use href="../assets/svg/icon-sprite.svg#arrow"></use>
-                </svg></a></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  
   <section class="section-b-space">
     <div class="custom-container container">
       <div class="row">
@@ -1158,7 +645,8 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> --}}
+
 
 @endsection
     

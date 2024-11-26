@@ -6,8 +6,10 @@
     <li><a href="{{route('wishlist')}}"><i class="iconsax" data-icon="heart"></i>My Wish</a></li>
     @if( !Auth::check() )
       <li> <a href="{{route('user.login')}}"><i class="iconsax" data-icon="user-2"></i>Account</a></li>
-    @else 
+    @elseif( Auth::check() && Auth::user()->isAdmin ==2 ) 
       <li> <a href="{{route('user.dashboard')}}"><i class="iconsax" data-icon="user-2"></i>Account</a></li>
+    @elseif( Auth::check() && Auth::user()->isAdmin ==1 )
+      <li> <a href="{{route('admin-management.admin-list.show', Auth::id())}}"><i class="iconsax" data-icon="user-2"></i>Account</a></li>
     @endif
   </ul>
 </div>

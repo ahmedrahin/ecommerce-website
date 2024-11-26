@@ -11,7 +11,7 @@
 @else
   <li class="onhover-div">
     @php
-        $route = Auth::user()->isAdmin == 4 ? route('admin-management.admin-list.show', Auth::id()) : route('user.dashboard');
+        $route = Auth::user()->isAdmin == 1 ? route('admin-management.admin-list.show', Auth::id()) : route('user.dashboard');
     @endphp
     <a href="{{ $route }}">
         <i class="iconsax" data-icon="user-2"></i>

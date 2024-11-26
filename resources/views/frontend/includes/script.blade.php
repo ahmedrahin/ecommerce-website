@@ -202,6 +202,7 @@
         Livewire.on('info', (message) => {
             Toastify({
                 text: message,
+                className: "custom-toast-info",
                 duration: 3000
             }).showToast();
         });
@@ -209,7 +210,7 @@
         Livewire.on('warning', (message) => {
             Toastify({
                 text: message,
-                
+                className: "custom-toast-warning",
                 duration: 3000
             }).showToast();
         });
@@ -217,10 +218,11 @@
         Livewire.on('error', (message) => {
             Toastify({
                 text: message,
-                backgroundColor: "#dc3545", // Red for error
+                className: "custom-toast-error",
                 duration: 3000
             }).showToast();
         });
+
     });
 </script>
 
