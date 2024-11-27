@@ -18,7 +18,7 @@
   <livewire:frontend.wishlist.add-wishlist></livewire>
    
   <section class="pt-0 home-section-3" id="banner-section">
-      <a href="">
+      <a href="{{route('shop')}}">
         <div class="col pe-0">  
           <div class="home-banner p-right"> 
             <picture>

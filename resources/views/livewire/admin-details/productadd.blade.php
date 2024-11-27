@@ -29,12 +29,7 @@
                             <tr>
                                 <td>{{$loop->iteration}}</td>
                                 <td>
-                                    <a target="_blank" class="text-gray-800 text-hover-primary fs-5 fw-bold" href="{{ route('product-management.show', $product->id) }}">
-                                        <img src="{{ asset($product->thumb_image ?? 'uploads/blank-image.svg') }}" 
-                                            alt="{{ $product->name }}" 
-                                            width="50" height="50" 
-                                            class="table-product-image" 
-                                            style="object-fit: cover; margin-right: 10px;">
+                                    <a target="_blank" class="text-gray-800 text-hover-primary fs-5 fw-bold" href="{{ route('product-management.show', $product->id) }}" style="font-size: 13px !important;">
                                         {{ \Illuminate\Support\Str::limit($product->name, 17, '...') }}
                                     </a>                                
                                 </td>

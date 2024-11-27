@@ -1,7 +1,7 @@
 @extends('frontend.layout.app')
     
 @section('page-title')
-    Checkout | {{config('app.name')}}
+    Cart | {{config('app.name')}}
 @endsection
 
 @section('page-css')

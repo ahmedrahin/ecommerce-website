@@ -88,7 +88,13 @@
                 <p><i class="iconsax me-1" data-icon="tag-2"></i>SPECIAL OFFER (-৳0) </p>
                 <h6 class="mb-3 mt-2">Subtotal <span>৳{{ number_format($this->getTotalAmount(), 0) }}</span></h6>
             </div>
-            <a class="btn btn_black w-100 rounded sm" href="{{route('checkout')}}">Check Out</a>
+            @if( config('website_settings.guest_checkout') == 1 && Auth::check() )
+                <a class="btn btn_black w-100 rounded sm" href="{{route('checkout')}}"> Checkout</a>
+            @elseif( config('website_settings.guest_checkout') == 0 )
+                <button class="btn btn_black w-100 rounded sm" onclick="error('Please log in at first to checkout')">Checkout</button>
+            @else 
+                <a class="btn btn_black w-100 rounded sm" href="{{route('checkout')}}"> Checkout</a>
+            @endif
         </div>
     </div>
 </div>

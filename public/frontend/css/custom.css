@@ -505,7 +505,7 @@ footer {
     .addcart span{font-size: 14px;}
     .addcart {width: 185px !important;}
     .product-section-box{margin-top: 0;}
-    #banner-section{margin-top: -20px;}
+    #banner-section{margin-top: -30px;}
     .service ul li .service-block img{height: 30px;}
     .service ul li .service-block{gap: 6px;}
     .topcategory{margin-top: 30px;}
@@ -532,7 +532,7 @@ footer {
     .no-cart a{font-size: 14px;padding: 10px 14px;}
     .no-cart h5{font-size: 16px;}
     .shopping-details .offcanvas-body > ul li h6{font-size: 13px !important;}
-    .shopping-details .offcanvas-body > ul li .iconsax{--Iconsax-Size: 15px;right: 3px;top: 40%;}
+    .shopping-details .offcanvas-body > ul li .iconsax{--Iconsax-Size: 18px;right: 3px;top: 40%;}
     .releted-list .product-box-3 .product-detail h6 {
         font-size: 12px;
     }
@@ -546,6 +546,9 @@ footer {
     .product-detail-box .product-option .quantity-box .quantity button{width: 35px;height: 35px;}
     .product-detail-box .product-option .quantity-box .quantity button i{font-size: 12px;}
     .log-in-box .form-floating input{font-size: 16px !important;}
+    .submited-review h4{font-size: 13px !important;}
+    .comments-box li {width: 100% !important;}
+    .product-list li.no-found {display: block !important;}
 }
 
 /* Mobile search icon */

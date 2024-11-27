@@ -10,7 +10,7 @@
 
 <body class="skeleton_body">
     {{-- cart btn --}}
-    @if( !request()->routeIs('cart') )
+    @if( !request()->routeIs('cart') && !request()->routeIs('checkout') )
         <livewire:frontend.cart.btnshopping />
     @endif
     <!-- menu item -->

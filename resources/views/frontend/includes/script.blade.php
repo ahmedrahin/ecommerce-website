@@ -224,6 +224,14 @@
         });
 
     });
+
+    function error(message){
+        Toastify({
+            text: message,
+            className: "custom-toast-error",
+            duration: 3000
+        }).showToast();
+    }
 </script>
 
  {{-- messages --}}

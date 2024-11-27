@@ -314,12 +314,12 @@
                         </a>
                         <!--end:Menu link-->
                         <!--begin:Menu link-->
-                        {{-- <a class="menu-link {{ request()->routeIs('order-management.order.create*') ? 'active' : '' }}" href="{{route('order-management.order.create')}}">
+                        <a class="menu-link {{ request()->routeIs('order-management.order.create*') ? 'active' : '' }}" href="{{route('order-management.order.create')}}">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
                             <span class="menu-title">Add New Order</span>
-                        </a> --}}
+                        </a>
                         <!--end:Menu link-->
                     </div>
 
@@ -455,6 +455,22 @@
                                 <span class="bullet bullet-dot"></span>
                             </span>
                             <span class="menu-title">Genarel Settings</span>
+                        </a>
+                        <!--end:Menu link-->
+                    </div>
+
+                </div>
+
+                <div class="menu-sub menu-sub-accordion">
+                    <!--begin:Menu item-->
+                    <div class="menu-item">
+                        <!--begin:Menu link-->
+                        <a class="menu-link {{ request()->routeIs('setting.website') ? 'active' : '' }}"
+                            href="{{ route('setting.website') }}">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                            <span class="menu-title">Website Settings</span>
                         </a>
                         <!--end:Menu link-->
                     </div>

@@ -136,5 +136,10 @@ Breadcrumbs::for('coupon', function (BreadcrumbTrail $trail) {
 // Home > Dashboarad > genarel setting
 Breadcrumbs::for('setting', function (BreadcrumbTrail $trail) {
     $trail->parent('dashboard');
-    $trail->push('Genarel Setting', );
+    $trail->push('Genarel Settings', );
+});
+// Home > Dashboarad > genarel setting
+Breadcrumbs::for('webitesetting', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('Website Settings', );
 });

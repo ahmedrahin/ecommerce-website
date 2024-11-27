@@ -9,7 +9,7 @@ use Illuminate\Support\Carbon;
 class CartList extends Component
 {
     public $cart = [];
-    public $quantities = []; // Track each product's quantity
+    public $quantities = [];
 
     protected $listeners = [
         'cartUpdated' => 'refreshCart',

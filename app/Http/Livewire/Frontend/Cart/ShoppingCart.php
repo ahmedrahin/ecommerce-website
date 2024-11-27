@@ -29,7 +29,7 @@ class ShoppingCart extends Component
         $cartUpdated = false;
     
         foreach ($this->cart as $cartKey => $item) {
-            if (!empty($item['added_at']) && $now->diffInMinutes(Carbon::parse($item['added_at'])) > 30) {
+            if (!empty($item['added_at']) && $now->diffInHours(Carbon::parse($item['added_at'])) > config('website_settings.cart_session')) {
                 unset($this->cart[$cartKey]);
                 $cartUpdated = true;
             }

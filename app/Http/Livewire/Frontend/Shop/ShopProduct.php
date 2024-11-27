@@ -13,6 +13,7 @@ class ShopProduct extends Component
 {
     use WithPagination;
     protected $paginationTheme = 'bootstrap'; 
+    public $perPage ;
     public $wishlist = [];
 
     public $selectedCategories = [];
@@ -38,6 +39,7 @@ class ShopProduct extends Component
 
     public function mount(){
         $this->loadWishlist();
+        $this->perPage = config('website_settings.item_per_page');
     }
 
     public function loadWishlist()
@@ -124,7 +126,7 @@ class ShopProduct extends Component
             })
             ->orderBy('is_featured', 'asc')
             ->orderBy('id', 'desc')
-            ->paginate(10); 
+            ->paginate($this->perPage); 
 
         return view('livewire.frontend.shop.shop-product', compact('products'));
     }

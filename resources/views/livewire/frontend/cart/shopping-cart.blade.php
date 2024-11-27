@@ -75,7 +75,15 @@
                 <h6>Total :</h6>
                 <p>৳ {{ number_format($this->getTotalAmount(), 2) }}</p>
             </div>
-            <div class="cart-button"> <a class="btn btn_outline" href="{{route('cart')}}"> View Cart</a><a class="btn btn_black" href="{{route('checkout')}}"> Checkout</a></div>
+            <div class="cart-button"> <a class="btn btn_outline" href="{{route('cart')}}"> View Cart</a>
+                @if( config('website_settings.guest_checkout') == 1 && Auth::check() )
+                    <a class="btn btn_black" href="{{route('checkout')}}"> Checkout</a>
+                @elseif( config('website_settings.guest_checkout') == 0 )
+                    <button class="btn btn_black" onclick="error('Please log in at first to checkout')">Checkout</button>
+                @else 
+                    <a class="btn btn_black" href="{{route('checkout')}}"> Checkout</a>
+                @endif
+            </div>
         </div>
     @endif
       

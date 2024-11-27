@@ -6,6 +6,10 @@ use App\Core\KTBootstrap;
 use Illuminate\Database\Schema\Builder;
 use Illuminate\Support\ServiceProvider;
 use App\Services\ProductFilterService;
+use App\Services\ProductDetailService;
+use App\Models\WebsiteSetting;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,9 +20,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        // Register singletons
         $this->app->singleton(ProductFilterService::class, function ($app) {
             return new ProductFilterService();
         });
+
         $this->app->singleton(ProductDetailService::class, function ($app) {
             return new ProductDetailService();
         });
@@ -34,6 +40,30 @@ class AppServiceProvider extends ServiceProvider
         // Update defaultStringLength
         Builder::defaultStringLength(191);
 
+        // Initialize KTBootstrap
         KTBootstrap::init();
+
+        if (Schema::hasTable('website_settings')) {
+            $settings = DB::table('website_settings')->first();
+        
+            // Website settings configuration
+            if ($settings) {
+                // for product
+                config(['website_settings.product_count_enabled' => $settings->product_count_enabled ?? 1]);
+                config(['website_settings.item_per_page' => $settings->item_per_page ?? null ]);
+                config(['website_settings.show_review' => $settings->show_review ?? 1]);
+                config(['website_settings.allow_guest_reviews' => $settings->allow_guest_review ?? 1]);
+                config(['website_settings.show_wishlist' => $settings->show_wishlist ?? 1]);
+                config(['website_settings.show_expire_date' => $settings->show_expire_date ?? 1]);
+                config(['website_settings.allow_review' => $settings->allow_review ?? 1]);
+
+                // for customer
+                config(['website_settings.guest_checkout' => $settings->guest_checkout ?? 1]);
+                config(['session.lifetime' => $settings->login_session * 60]);
+                config(['website_settings.cart_session' => $settings->guest_checkout ?? 1]);
+                config(['website_settings.login_attemp' => $settings->login_attemp ?? 1]);
+            }
+        }
+        
     }
 }

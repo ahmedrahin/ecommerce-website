@@ -42,7 +42,3 @@ Route::prefix('products')->group(function () {
     Route::get('/get_product_by_id/{id}', [ProductController::class, 'getProductById']);
     Route::get('/categories', [CategoryController::class, 'index']);
 });
-
-Route::prefix('cart')->group(function () {
-    Route::post('/add', [CartController::class, 'addToCart']);
-});

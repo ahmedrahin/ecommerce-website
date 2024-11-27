@@ -17,8 +17,8 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/dashboard';
-    public const USERHOME = '';
+    public const HOME = '/admin/dashboard';
+    public const USERHOME = '/';
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
@@ -28,16 +28,22 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->configureRateLimiting();
-
+    
         $this->routes(function () {
             Route::middleware('api')
                 ->prefix('api')
                 ->group(base_path('routes/api.php'));
-
+    
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
+    
+            // Include admin routes
+            Route::middleware(['web'])
+                ->prefix('admin')
+                ->group(base_path('routes/admin.php'));
         });
     }
+    
 
     /**
      * Configure the rate limiters for the application.

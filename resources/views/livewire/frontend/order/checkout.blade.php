@@ -72,7 +72,9 @@
 
         <div class="col-md-6 col-lg-6">
         <div class="right-sidebar-checkout">
-            <h4>Checkout</h4>
+            <div class="address-title"> 
+                <h4>Shipping Address </h4><a href="{{route('cart')}}">Modify Order</a>
+            </div>
             <div class="cart-listing">
             <ul> 
                 @foreach($cart as $cartKey => $item)

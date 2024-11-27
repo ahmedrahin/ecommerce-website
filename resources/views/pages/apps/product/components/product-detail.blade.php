@@ -97,7 +97,7 @@
         // Event listener for when the category selection changes
         $('#category_id_item').on('change', function() {
             var categoryId = $(this).val();
-            updateSelectOptions(categoryId, '#subcategory_id_item', '/get-subcategories/', function() {
+            updateSelectOptions(categoryId, '#subcategory_id_item', '/admin/get-subcategories/', function() {
                 $('#subcategory_id').trigger('change');
             });
         });
@@ -105,7 +105,7 @@
         // Event listener for when the subcategory selection changes
         $('#subcategory_id_item').on('change', function() {
             var subcategoryId = $(this).val();
-            updateSelectOptions(subcategoryId, '#subsubcategory_id_item', '/get-subsubcategories/');
+            updateSelectOptions(subcategoryId, '#subsubcategory_id_item', '/admin/get-subsubcategories/');
         });
 
         var input = document.querySelector("#kt_tagify_for_product");

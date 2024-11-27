@@ -195,7 +195,7 @@
                 if ($checkbox.is(':checked')) {
                     if (attributeId !== "" && attributeId !== "0") {
                         $.ajax({
-                            url: '/get-attribute-value/' + attributeId,
+                            url: '/admin/get-attribute-value/' + attributeId,
                             type: "GET",
                             dataType: "json",
                             success: function(data) {
@@ -226,7 +226,7 @@
                 if ($checkbox.is(':checked')) {
                     if (attributeId !== "" && attributeId !== "0") {
                         $.ajax({
-                            url: '/get-attribute-value/' + attributeId,
+                            url: '/admin/get-attribute-value/' + attributeId,
                             type: "GET",
                             dataType: "json",
                             success: function(data) {

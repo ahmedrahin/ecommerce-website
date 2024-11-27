@@ -83,7 +83,15 @@
                 </button>
             </div>
         @else
-            <button class="btn reviews-modal" data-bs-toggle="modal" data-bs-target="#Reviews-modal" title="Write your review" tabindex="0">Write a review</button>
+            @if( config('website_settings.allow_guest_reviews') == true )
+              <button class="btn reviews-modal" data-bs-toggle="modal" data-bs-target="#Reviews-modal" title="Write your review" tabindex="0">Write a review</button>
+            @elseif( !Auth::check() )
+              <div class="alert alert-danger mt-3">
+                <a href="{{route('user.login')}}" style="text-decoration: underline;">Log in</a> at first to write a review
+              </div>
+            @else
+              <button class="btn reviews-modal" data-bs-toggle="modal" data-bs-target="#Reviews-modal" title="Write your review" tabindex="0">Write a review</button>
+            @endif
         @endif
         </div>
       </div>
@@ -236,7 +244,7 @@
                       </div>
                     </div>
                     <div class="modal-button-group">
-                      <button class="btn btn-cancel cancel-modal-review" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+                      <button class="btn btn-cancel cancel-modal-review" type="button" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
                       <button class="btn btn-submit" type="submit">
                         <span wire:loading.remove wire:target="submit">Submit</span>
                         <span wire:loading wire:target="submit">

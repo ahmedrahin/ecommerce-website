@@ -49,7 +49,11 @@
                @foreach( $categories as $category ) 
                 <li> 
                   <input type="checkbox" wire:model="selectedCategories" value="{{ $category->id }}" id="cat-{{ $category->id }}" class="custom-checkbox">
-                  <label for="cat-{{ $category->id }}">{{ $category->name }} <span>({{$category->product->count()}})</span></label>
+                  <label for="cat-{{ $category->id }}">{{ $category->name }}
+                    @if( config('website_settings.product_count_enabled') == true )
+                      <span>({{$category->product->count()}})</span>
+                    @endif
+                  </label>
                 </li>
 
                     {{-- Display Subcategories --}}
@@ -58,7 +62,11 @@
                             @foreach($category->subcategories as $subcategory)
                                 <li>
                                     <input class="custom-checkbox" id="subcat-{{$subcategory->id}}" value="{{$subcategory->id}}" type="checkbox" wire:model="selectedCategories">
-                                    <label for="subcat-{{$subcategory->id}}">{{$subcategory->name}} <span>({{$subcategory->products_count}})</span></label>
+                                    <label for="subcat-{{$subcategory->id}}">{{$subcategory->name}}
+                                      @if( config('website_settings.product_count_enabled') == true )
+                                        <span>({{$subcategory->products_count}})</span>
+                                      @endif
+                                    </label>
                                 </li>
                             @endforeach
                         </ul>

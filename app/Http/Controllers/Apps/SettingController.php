@@ -9,6 +9,10 @@ use App\Models\Setting;
 class SettingController extends Controller
 {
     public function manage(){
-        return view('pages.apps.setting.manage');
+        return view('pages.apps.setting.genarel');
+    }
+
+    public function website_setting(){
+        return view('pages.apps.setting.website');
     }
 }

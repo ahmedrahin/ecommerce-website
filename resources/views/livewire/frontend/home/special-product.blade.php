@@ -16,7 +16,7 @@
                                     </button>
                                 @else
                                     <button class="label-2 wishlist-icon" style="border: none;" wire:click="$emit('get_id', {{ $product->id }})">
-                                        <i class="iconsax" data-icon="heart" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Add to Wishlist"></i>
+                                        <i class="fa-regular fa-heart" data-bs-toggle="tooltip" data-bs-title="Add to Wishlist"></i>
                                     </button>
                                 @endif
                             </div>
@@ -118,7 +118,7 @@
                                     </button>
                                 @else
                                     <button class="label-2 wishlist-icon" style="border: none;" wire:click="$emit('get_id', {{ $product->id }})">
-                                        <i class="iconsax" data-icon="heart" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Add to Wishlist"></i>
+                                        <i class="fa-regular fa-heart" data-bs-toggle="tooltip" data-bs-title="Add to Wishlist"></i>
                                     </button>
                                 @endif
                             </div>
@@ -219,7 +219,7 @@
                                         </button>
                                     @else
                                         <button class="label-2 wishlist-icon" style="border: none;" wire:click="$emit('get_id', {{ $product->id }})">
-                                            <i class="iconsax" data-icon="heart" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Add to Wishlist"></i>
+                                            <i class="fa-regular fa-heart" data-bs-toggle="tooltip" data-bs-title="Add to Wishlist"></i>
                                         </button>
                                     @endif
                                 </div>

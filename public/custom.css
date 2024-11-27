@@ -484,3 +484,6 @@ textarea:focus {
     text-align: center;
     width: 200px;
 }
+.nav-line-tabs .nav-item .nav-link{
+    font-size: 16px !important;
+}

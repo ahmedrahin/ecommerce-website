@@ -25,6 +25,7 @@ class Checkout extends Component
     public $selectedShippingCharge = 0 ;
 
     public $cart = [];
+    public $quantities = [];
     public $shippingMethods;
     public $couponCode;
     public $discountAmount = 0;
@@ -42,7 +43,7 @@ class Checkout extends Component
 
     public function mount()
     {
-        $this->checkCart();
+        $this->loadCart();
         $this->loadShippingMethods();
         $this->payment_type = 'cod';
 
@@ -55,6 +56,35 @@ class Checkout extends Component
             $this->shipping_address = Auth::user()->shipping_address;
         }
     }
+
+    public function loadCart()
+    {
+        // Retrieve the cart from the session
+        $sessionCart = session()->get('cart', []);
+    
+        $validCart = []; // Temporary array for valid items
+    
+        foreach ($sessionCart as $cartKey => $item) {
+            $productId = explode('-', $cartKey)[0];
+            $product = Product::find($productId);
+    
+            if ($product && ($product->status == 1 || $product->status == 3) && $product->quantity > 0) {
+                $validCart[$cartKey] = $item;
+                $validCart[$cartKey]['name'] = $product->name;
+                $validCart[$cartKey]['slug'] = $product->slug;
+                $validCart[$cartKey]['offer_price'] = $product->offer_price;
+                $validCart[$cartKey]['price'] = $product->base_price;
+                $validCart[$cartKey]['image_url'] = $product->thumb_image;
+                $validCart[$cartKey]['available_quantity'] = $product->quantity;
+                $validCart[$cartKey]['discount_option'] = $product->discount_option;
+                $validCart[$cartKey]['quantity'] = $item['quantity'] ?? 1; 
+            }
+        }
+    
+        // Assign valid items to the cart
+        $this->cart = $validCart;
+    }
+    
 
     public function applyCoupon()
     {   
@@ -249,23 +279,18 @@ class Checkout extends Component
             }
         }
         
-        session()->forget('cart');
+        
         $this->emit('cartUpdated');
         session()->flash('success', 'Your order has been successfully placed. Thank you!!');
         $this->refreshCache();
         $this->removeCoupon();
+        session()->forget('cart');
         return redirect()->route('success.order', ['order_id' => $orderId]);
-    }
-
-    public function loadCart()
-    {
-        $this->cart = session()->get('cart', []);
     }
 
     public function refreshCart()
     {
         $this->loadCart();
-        $this->checkCart();
     }
 
     public function getTotalAmount()
@@ -281,16 +306,6 @@ class Checkout extends Component
     {
         $discount = $this->appliedCoupon ? ($this->appliedCoupon['discount'] ?? 0) : 0;
         return $this->getTotalAmount() + $this->selectedShippingCharge - $discount;
-    }
-
-    public function checkCart()
-    {
-        $this->loadCart();
-        
-        if (empty($this->cart)) {
-            session()->forget('applied_coupon');
-            return redirect()->route('shop');
-        }
     } 
     
     public function hydrate()

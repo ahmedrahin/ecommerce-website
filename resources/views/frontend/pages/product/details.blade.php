@@ -215,10 +215,11 @@
               <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="Description-tab" data-bs-toggle="tab" data-bs-target="#Description-tab-pane" role="tab" aria-controls="Description-tab-pane" aria-selected="true">Description</button>
               </li>
-              
+              @if( config('website_settings.allow_review') == true )
               <li class="nav-item" role="presentation">
                 <button class="nav-link" id="Reviews-tab" data-bs-toggle="tab" data-bs-target="#Reviews-tab-pane" role="tab" aria-controls="Reviews-tab-pane" aria-selected="false">Reviews</button>
               </li>
+              @endif
             </ul>
             <div class="tab-content product-content" id="ProductContent">
               <div class="tab-pane fade show active" id="Description-tab-pane" role="tabpanel" aria-labelledby="Description-tab" tabindex="0">
@@ -235,9 +236,12 @@
                 </div>
               </div>
 
-              <div class="tab-pane fade" id="Reviews-tab-pane" role="tabpanel" aria-labelledby="Reviews-tab" tabindex="0"> 
-                <livewire:frontend.product.product-review :productId="$product->id" />
-              </div>
+              @if( config('website_settings.allow_review') == true )
+                <div class="tab-pane fade" id="Reviews-tab-pane" role="tabpanel" aria-labelledby="Reviews-tab" tabindex="0"> 
+                  <livewire:frontend.product.product-review :productId="$product->id" />
+                </div>
+              @endif
+              
             </div>
           </div>
         </div>

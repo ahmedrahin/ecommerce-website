@@ -6,18 +6,19 @@
                 <div> 
                     <div class="product-box-3">
                         <div class="img-wrapper">
-                        <div class="label-block">
-                            @if(in_array($product->id, $wishlist))
-                                <button class="label-2 wishlist-exist" style="border: none;" wire:click="$emit('removeFromWishlist', {{ $product->id }})">
-                                    <i class="fa fa-heart " aria-hidden="true" style="color: #ff00008a;"></i>
-                                </button>
-                            @else
-                                <button class="label-2 wishlist-icon" style="border: none;" wire:click="$emit('get_id', {{ $product->id }})">
-                                    <i class="iconsax" data-icon="heart" aria-hidden="true" data-bs-toggle="tooltip" data-bs-title="Add to Wishlist"></i>
-                                </button>
-                            @endif
-                        </div>
-    
+                        @if( config('website_settings.show_wishlist') == true )
+                            <div class="label-block">
+                                @if(in_array($product->id, $wishlist))
+                                    <button class="label-2 wishlist-exist" style="border: none;" wire:click="$emit('removeFromWishlist', {{ $product->id }})">
+                                        <i class="fa fa-heart " aria-hidden="true" style="color: #ff00008a;"></i>
+                                    </button>
+                                @else
+                                    <button class="label-2 wishlist-icon" style="border: none;" wire:click="$emit('get_id', {{ $product->id }})">
+                                        <i class="fa-regular fa-heart" data-bs-toggle="tooltip" data-bs-title="Add to Wishlist"></i>
+                                    </button>
+                                @endif
+                            </div>
+                        @endif
                             {{-- product thumb or back image --}}
                             <div class="product-image {{ !is_null($product->back_image) ? 'has-back-image' : '' }}">
                                 <a href="{{route('product-details', $product->slug)}}">
@@ -29,7 +30,7 @@
                             </div>
     
                             {{-- expire date --}}
-                            @if( !is_null( $product->expire_date ) )
+                            @if( !is_null( $product->expire_date ) && ( config('website_settings.show_wishlist') == true ) )
                                 <div class="countdown">
                                     <ul class="clockdiv1">
                                         <li>
@@ -66,38 +67,38 @@
                         </div>
                         <div class="product-detail">
                             
-                            <div class="rating p-0">
-                                @php
-                                    $reviews = App\Models\Review::where('product_id', $product->id)->get();
-                                    $averageRating = $reviews->avg('rating');
-                                    $averageRating = round($reviews->avg('rating'), 1);
-                                    $fullStars = floor($averageRating);
-                                    $halfStar = ($averageRating - $fullStars) >= 0.5 ? 1 : 0;
-                                    $emptyStars = 5 - $fullStars - $halfStar;
-                                @endphp
-                            
-                                <ul class="">
-                                    <!-- Full stars -->
-                                    @for ($i = 0; $i < $fullStars; $i++)
-                                        <li><i class="fa-solid fa-star"></i></li>
-                                    @endfor
-                            
-                                    <!-- Half star if needed -->
-                                    @if ($halfStar)
-                                        <li><i class="fa-solid fa-star-half-stroke"></i></li>
-                                    @endif
-                            
-                                    <!-- Empty stars -->
-                                    @for ($i = 0; $i < $emptyStars; $i++)
-                                        <li><i class="fa-regular fa-star"></i></li>
-                                    @endfor
-                            
-                                    <!-- Review count -->
-                                    <li><span>({{ $reviews->count() }})</span></li>
-                                </ul>
-                            
-                            </div>
-                            
+                            @if( config('website_settings.show_review') == true )
+                                <div class="rating p-0">
+                                    @php
+                                        $reviews = App\Models\Review::where('product_id', $product->id)->get();
+                                        $averageRating = $reviews->avg('rating');
+                                        $averageRating = round($reviews->avg('rating'), 1);
+                                        $fullStars = floor($averageRating);
+                                        $halfStar = ($averageRating - $fullStars) >= 0.5 ? 1 : 0;
+                                        $emptyStars = 5 - $fullStars - $halfStar;
+                                    @endphp
+                                
+                                    <ul class="">
+                                        <!-- Full stars -->
+                                        @for ($i = 0; $i < $fullStars; $i++)
+                                            <li><i class="fa-solid fa-star"></i></li>
+                                        @endfor
+                                
+                                        <!-- Half star if needed -->
+                                        @if ($halfStar)
+                                            <li><i class="fa-solid fa-star-half-stroke"></i></li>
+                                        @endif
+                                
+                                        <!-- Empty stars -->
+                                        @for ($i = 0; $i < $emptyStars; $i++)
+                                            <li><i class="fa-regular fa-star"></i></li>
+                                        @endfor
+                                
+                                        <!-- Review count -->
+                                        <li><span>({{ $reviews->count() }})</span></li>
+                                    </ul>
+                                </div>
+                            @endif
 
                             <a href="{{route('product-details', $product->slug)}}">
                                 <h6 style="font-weight: 700;">{{ Str::limit($product->name, 22, '...') }}</h6>

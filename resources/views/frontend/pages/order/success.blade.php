@@ -159,6 +159,14 @@
     
 @section('page-script')
   
-
+ {{-- messages --}}
+ @if (session('success'))
+    <script>
+        Toastify({
+                text: "{{ session('success') }}",
+                duration: 3000
+            }).showToast();
+    </script>
+@endif
 
 @endsection

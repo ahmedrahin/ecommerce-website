@@ -7881,18 +7881,18 @@ footer .footer-1 .social-icon > li:hover a i {
     margin-bottom: 30px;
     padding: 20px;
 }
-.address-option .address-title {
+.address-title {
     align-items: center;
     display: flex;
     justify-content: space-between;
     margin-bottom: 8px;
 }
-.address-option .address-title a {
+.address-title a {
     color: rgba(var(--theme-default), 1);
     font-weight: 500;
 }
 @media (max-width: 480px) {
-    .address-option .address-title {
+     .address-title {
         display: block;
     }
 }

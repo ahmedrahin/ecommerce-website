@@ -124,7 +124,7 @@ class OrderController extends Controller
     {
         // Fetch cart data from the session
         $cart = session()->get('cart', []);
-        if (empty($cart)) {
+        if (empty($cart) || config('website_settings.guest_checkout') == 0 ) {
             return redirect()->route('shop');
         }
 
