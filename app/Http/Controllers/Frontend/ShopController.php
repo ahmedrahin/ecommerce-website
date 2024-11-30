@@ -18,7 +18,8 @@ class ShopController extends Controller
     public function productDetails(string $slug)
     {
         if ($slug) {
-            $product = Product::where('slug', $slug)
+            $product = Product::activeProducts()
+                ->where('slug', $slug)
                 ->with([
                     'category:id,name',
                     'brand:id,name',
@@ -30,8 +31,7 @@ class ShopController extends Controller
                 ->first();
 
             // Check if the product exists and is active
-            if (!$product || $product->status == 0 || $product->status == 2) {
-                // Redirect to the shop page with a message
+            if (!$product) {
                 return redirect()->route('shop')->with('error', 'The product is unavailable.');
             }
         }

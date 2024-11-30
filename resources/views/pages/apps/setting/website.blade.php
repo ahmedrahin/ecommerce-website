@@ -61,8 +61,10 @@
                             <li class="nav-item">
                                 <a class="nav-link text-active-primary d-flex align-items-center pb-5"
                                     data-bs-toggle="tab" href="#kt_ecommerce_settings_product_details">
-                                    <i class="ki-duotone ki-home-3 fs-2 me-2">
+                                    <i class="ki-duotone ki-book fs-2 me-2">
                                         <span class="path1"></span>
+                                        <span class="path2"></span>
+                                        <span class="path2"></span>
                                         <span class="path2"></span>
                                     </i>Product Details</a>
                             </li>

@@ -90,7 +90,7 @@
             </div>
             @if( config('website_settings.guest_checkout') == 1 && Auth::check() )
                 <a class="btn btn_black w-100 rounded sm" href="{{route('checkout')}}"> Checkout</a>
-            @elseif( config('website_settings.guest_checkout') == 0 )
+            @elseif( config('website_settings.guest_checkout') == 0 && !Auth::check() )
                 <button class="btn btn_black w-100 rounded sm" onclick="error('Please log in at first to checkout')">Checkout</button>
             @else 
                 <a class="btn btn_black w-100 rounded sm" href="{{route('checkout')}}"> Checkout</a>

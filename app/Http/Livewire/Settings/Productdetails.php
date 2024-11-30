@@ -31,15 +31,16 @@ class Productdetails extends Component
     public function update()
     {
         // Validate inputs
-        $this->validate([
-           
-        ]);
-
+        
 
         WebsiteSetting::updateOrCreate(
             ['id' => 1],
             [
-                
+                'show_order_count' => $this->show_order_count,
+                'show_size_chart' => $this->show_size_chart,
+                'ask_qustion' => $this->ask_qustion,
+                'share' => $this->share,
+                'product_info' => $this->product_info,
             ]
         );
 

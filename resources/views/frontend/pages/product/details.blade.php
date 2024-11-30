@@ -111,17 +111,19 @@
             <div class="product-option"> 
 
               {{-- sell details --}}
-              <div class="sell-details d-flex gap-2">
-                <div class="move-fast-box d-flex align-items-center gap-2">
-                  <i class="fa fa-cart-plus" style="color: #ff6b6b;"></i>
-                  <p>Total Orders: {{$product->orderItems->count()}}</p>
+              @if( config('website_settings.show_order_count') == true )
+                <div class="sell-details d-flex gap-2">
+                  <div class="move-fast-box d-flex align-items-center gap-2">
+                    <i class="fa fa-cart-plus" style="color: #ff6b6b;"></i>
+                    <p>Total Orders: {{$product->orderItems->count()}}</p>
+                  </div>
+    
+                  <div class="move-fast-box d-flex align-items-center gap-2">
+                    <i class="fa fa-heart" style="color: #ff6b6b;"></i>
+                    <p>Active Wishlist: {{$product->wishlist->count()}}</p>
+                  </div>
                 </div>
-  
-                <div class="move-fast-box d-flex align-items-center gap-2">
-                  <i class="fa fa-heart" style="color: #ff6b6b;"></i>
-                  <p>Active Wishlist: {{$product->wishlist->count()}}</p>
-                </div>
-              </div>
+              @endif
 
               <h3>{{$product->name}}</h3>
               <p>
@@ -154,53 +156,60 @@
                 <ul> 
                    {{-- add wishlist --}}
                   <livewire:frontend.wishlist.towishlist :productId="$product->id"></livewire>
-                  <li> 
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#social-box" title="Quick View" tabindex="0">
-                      <i class="fa-solid fa-share-nodes me-2"></i>Share
-                    </a>
-                  </li>
+
+                  @if( config('website_settings.share')  == true )
+                    <li> 
+                      <a href="#" data-bs-toggle="modal" data-bs-target="#social-box" title="share the product" tabindex="0">
+                        <i class="fa-solid fa-share-nodes me-2"></i>Share
+                      </a>
+                    </li>
+                  @endif
                 </ul>
               </div>
 
               {{-- add wishlist --}}
               <livewire:frontend.wishlist.add-wishlist></livewire>
               
-              {{-- others infromation dz-info --}}
-              @include('frontend.pages.product.dz-info')
-
-              {{-- <div class="sale-box"> 
-                <div class="d-flex align-items-center gap-2"><img src="../assets/images/gif/timer.gif" alt="">
-                  <p>Limited Time Left! Hurry, Sale Ending!</p>
-                </div>
-                <div class="countdown">
-                  <ul class="clockdiv1">
-                    <li> 
-                      <div class="timer">
-                        <div class="days"></div>
-                      </div><span class="title">Days</span>
-                    </li>
-                    <li>:</li>
-                    <li> 
-                      <div class="timer">
-                        <div class="hours"></div>
-                      </div><span class="title">Hours</span>
-                    </li>
-                    <li>:</li>
-                    <li> 
-                      <div class="timer">
-                        <div class="minutes"></div>
-                      </div><span class="title">Min</span>
-                    </li>
-                    <li>:</li>
-                    <li> 
-                      <div class="timer">
-                        <div class="seconds"></div>
-                      </div><span class="title">Sec</span>
-                    </li>
-                  </ul>
-                </div>
-              </div> --}}
+              @if( config('website_settings.product_info')  == true )
+                {{-- others infromation dz-info --}}
+                @include('frontend.pages.product.dz-info')
+              @endif
               
+              @if( !is_null($product->expire_date) && config('website_settings.show_expire') == true )
+                <div class="sale-box"> 
+                  <div class="d-flex align-items-center gap-2">
+                    <p>Limited Time Left! Hurry, Sale Ending!</p>
+                  </div>
+                  <div class="countdown">
+                    <ul class="clockdiv1">
+                      <li> 
+                        <div class="timer">
+                          <div class="days"></div>
+                        </div><span class="title">Days</span>
+                      </li>
+                      <li>:</li>
+                      <li> 
+                        <div class="timer">
+                          <div class="hours"></div>
+                        </div><span class="title">Hours</span>
+                      </li>
+                      <li>:</li>
+                      <li> 
+                        <div class="timer">
+                          <div class="minutes"></div>
+                        </div><span class="title">Min</span>
+                      </li>
+                      <li>:</li>
+                      <li> 
+                        <div class="timer">
+                          <div class="seconds"></div>
+                        </div><span class="title">Sec</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              @endif 
+
             </div>
           </div>
         </div>
@@ -303,5 +312,40 @@
         Livewire.emit('updatedRating', value);
     }
   </script>
+
+  {{-- expire date --}}
+  <script>
+    // Set the expiration date from the database
+    const expireDate = new Date('{{ $product->expire_date }}').getTime();
+  
+    // Function to update the timer
+    function updateTimer() {
+      const now = new Date().getTime();
+      const timeLeft = expireDate - now;
+  
+      if (timeLeft < 0) {
+        document.querySelector(".clockdiv1").innerHTML = "<li>Product Expired</li>";
+        return;
+      }
+  
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+  
+      // Update the DOM
+      document.querySelector(".clockdiv1 .days").textContent = days;
+      document.querySelector(".clockdiv1 .hours").textContent = hours;
+      document.querySelector(".clockdiv1 .minutes").textContent = minutes;
+      document.querySelector(".clockdiv1 .seconds").textContent = seconds;
+    }
+  
+    // Call the update function every second
+    setInterval(updateTimer, 1000);
+  
+    // Initial call
+    updateTimer();
+  </script>
+  
 
 @endsection

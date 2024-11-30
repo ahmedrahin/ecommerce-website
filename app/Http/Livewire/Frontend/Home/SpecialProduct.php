@@ -34,29 +34,13 @@ class SpecialProduct extends Component
 
     public function render()
     {
-        $offerProduct = Product::whereIn('status', [1, 3])
-                        ->where(function ($query) {
-                            $query->whereNull('publish_at')
-                                ->orWhere('publish_at', '<=', Carbon::now());
-                        })
-                        ->where(function ($query) {
-                            $query->whereNull('expire_date')
-                                ->orWhere('expire_date', '>', Carbon::now());
-                        })
+        $offerProduct = Product::activeProducts()
                         ->orderBy('id', 'desc')
                         ->where('discount_option', '!=', 1)
                         ->take($this->take)
                         ->get();
         
-        $discountedProducts = Product::whereIn('status', [1, 3])
-                        ->where(function ($query) {
-                            $query->whereNull('publish_at')
-                                ->orWhere('publish_at', '<=', Carbon::now());
-                        })
-                        ->where(function ($query) {
-                            $query->whereNull('expire_date')
-                                ->orWhere('expire_date', '>', Carbon::now());
-                        })
+        $discountedProducts = Product::activeProducts()
                         ->where(function ($query) {
                             $query->where(function ($q) {
                                 // Products with percentage discounts >= 30%
@@ -73,15 +57,7 @@ class SpecialProduct extends Component
                         ->take($this->take) 
                         ->get();
             
-            $freeShipping = Product::whereIn('status', [1, 3])
-                            ->where(function ($query) {
-                                $query->whereNull('publish_at')
-                                    ->orWhere('publish_at', '<=', Carbon::now());
-                            })
-                            ->where(function ($query) {
-                                $query->whereNull('expire_date')
-                                    ->orWhere('expire_date', '>', Carbon::now());
-                            })
+            $freeShipping = Product::activeProducts()
                             ->orderBy('id', 'desc')
                             ->where('free_shipping', '==', 'yes')
                             ->take($this->take)

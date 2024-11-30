@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Carbon\Carbon;
 
 class Product extends Model
 {
@@ -94,5 +95,18 @@ class Product extends Model
         }
         
         return $slug;
+    }
+
+    public function scopeActiveProducts($query)
+    {
+        return $query->whereIn('status', [1, 3])
+                     ->where(function ($query) {
+                         $query->whereNull('publish_at')
+                               ->orWhere('publish_at', '<=', Carbon::now());
+                     })
+                     ->where(function ($query) {
+                         $query->whereNull('expire_date')
+                               ->orWhere('expire_date', '>', Carbon::now());
+                     });
     }
 }

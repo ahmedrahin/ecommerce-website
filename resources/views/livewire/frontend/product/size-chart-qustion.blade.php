@@ -1,7 +1,12 @@
 <div class="buy-box border-buttom">
-    <ul> 
-      <li> <span data-bs-toggle="modal" data-bs-target="#size-chart" title="Quick View" tabindex="0"><i class="iconsax me-2" data-icon="ruler"></i>Size Chart</span></li>
+    <ul>
+      @if( config('website_settings.show_size_chart')  == true )
+        <li> <span data-bs-toggle="modal" data-bs-target="#size-chart" title="Quick View" tabindex="0"><i class="iconsax me-2" data-icon="ruler"></i>Size Chart</span></li>
+      @endif
+      
+      @if( config('website_settings.ask_qustion')  == true )
       <li> <span data-bs-toggle="modal" data-bs-target="#question-box" title="Quick View" tabindex="0"><i class="iconsax me-2" data-icon="question-message"></i>Ask a Question</span></li>
+      @endif
     </ul>
 
 

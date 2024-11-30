@@ -54,14 +54,22 @@ class ProductFilter extends Component
     public function render()
     {
         $categories = Category::where('status', 1)
-            ->with(['subcategories' => function ($query) {
-                $query->orderBy('id', 'asc')
-                    ->where('status', 1)
-                    ->withCount('products');
-            }, 'product'])
+            ->with([
+                'subcategories' => function ($query) {
+                    $query->orderBy('id', 'asc')
+                        ->where('status', 1)
+                        ->withCount(['products' => function ($q) {
+                            $q->activeProducts(); 
+                        }]);
+                },
+                'product' => function ($query) {
+                    $query->activeProducts(); 
+                }
+            ])
             ->orderBy('id', 'asc')
             ->get();
-
+    
         return view('livewire.frontend.shop.product-filter', compact('categories'));
     }
+    
 }

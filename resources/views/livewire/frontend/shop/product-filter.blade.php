@@ -51,7 +51,7 @@
                   <input type="checkbox" wire:model="selectedCategories" value="{{ $category->id }}" id="cat-{{ $category->id }}" class="custom-checkbox">
                   <label for="cat-{{ $category->id }}">{{ $category->name }}
                     @if( config('website_settings.product_count_enabled') == true )
-                      <span>({{$category->product->count()}})</span>
+                      <span>({{ $category->product->count() }})</span>
                     @endif
                   </label>
                 </li>

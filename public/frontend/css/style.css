@@ -274,6 +274,7 @@ select:focus {
     position: relative;
     width: 1rem;
     margin-top: -1px;
+    cursor: pointer;
 }
 .accordion-item label {
     position: relative;

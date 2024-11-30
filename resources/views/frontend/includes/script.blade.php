@@ -5,7 +5,7 @@
  <script src="{{asset('frontend/js/stats.min.js')}}"> </script>
  {{-- <script src="{{asset('frontend/js/cursor.js')}}"> </script> --}}
 
- <script src="{{asset('frontend/js/countdown.js')}}"></script>
+ {{-- <script src="{{asset('frontend/js/countdown.js')}}"></script> --}}
  {{-- <script src="{{asset('frontend/js/newsletter.js')}}"></script> --}}
  <script src="{{asset('frontend/js/skeleton-loader.js')}}"></script>
  <!-- tost js -->
@@ -243,6 +243,7 @@
             }).showToast();
     </script>
 @endif
+  
 
  @yield('page-script')
  @yield('addcart-js')

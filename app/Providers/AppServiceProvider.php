@@ -62,6 +62,14 @@ class AppServiceProvider extends ServiceProvider
                 config(['session.lifetime' => $settings->login_session * 60]);
                 config(['website_settings.cart_session' => $settings->guest_checkout ?? 1]);
                 config(['website_settings.login_attemp' => $settings->login_attemp ?? 1]);
+
+                // order details
+                config(['website_settings.show_order_count' => $settings->show_order_count ?? 1]);
+                config(['website_settings.show_size_chart' => $settings->show_size_chart ?? 1]);
+                config(['website_settings.ask_qustion' => $settings->ask_qustion ?? 1]);
+                config(['website_settings.share' => $settings->share ?? 1]);
+                config(['website_settings.product_info' => $settings->product_info ?? 1]);
+                config(['website_settings.show_expire' => $settings->show_expire ?? 1]);
             }
         }
         
