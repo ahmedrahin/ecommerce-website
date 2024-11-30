@@ -1,11 +1,15 @@
 <x-default-layout>
 
+    @section('custom-css')
+        <link rel="stylesheet" href="{{asset('assets/plugins/custom/datatables/datatables.bundle.css')}}">
+    @endsection
+
     @section('title')
-    Admin List
+        Admin List
     @endsection
 
     @section('breadcrumbs')
-    {{ Breadcrumbs::render('admin-management.admin-list.index') }}
+        {{ Breadcrumbs::render('admin-management.admin-list.index') }}
     @endsection
 
     <div class="card">
@@ -65,6 +69,7 @@
     </div>
 
     @push('scripts')
+    <script src="{{asset('assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
     {{ $dataTable->scripts() }}
     <script>
         document.getElementById('mySearchInput').addEventListener('keyup', function () {

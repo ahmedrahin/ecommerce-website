@@ -41,6 +41,8 @@
     <link rel="stylesheet" href="{{ asset('custom.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
+    {{-- page-css --}}
+    @yield('custom-css')
 
     @livewireStyles
 </head>
@@ -67,10 +69,6 @@
     @endforeach
     <!--end::Vendors Javascript-->
 
-    <!--begin::Custom Javascript(optional)-->
-    @foreach (getCustomJs() as $path)
-        {!! sprintf('<script src="%s"></script>', asset($path)) !!}
-    @endforeach
     <!--end::Custom Javascript-->
     @stack('scripts')
     <!--end::Javascript-->

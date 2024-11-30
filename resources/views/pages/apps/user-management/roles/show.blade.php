@@ -1,4 +1,7 @@
 <x-default-layout>
+    @section('custom-css')
+        <link rel="stylesheet" href="{{asset('assets/plugins/custom/datatables/datatables.bundle.css')}}">
+    @endsection
 
     @section('title')
     Roles - {{$role->name}}
@@ -107,8 +110,8 @@
         <livewire:permission.role-list></livewire:permission.role-list>
     </div>
     @push('scripts')
-    {{ $dataTable->scripts() }}
-    
+        {{ $dataTable->scripts() }}
+        <script src="{{asset('assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
     @endpush
 
 </x-default-layout>

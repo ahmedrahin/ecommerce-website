@@ -386,16 +386,7 @@
                             </span>
                             <span class="menu-title">District</span>
                         </a>
-                        <!--end:Menu link-->
-                        <!--begin:Menu link-->
-                        <a class="menu-link {{ request()->routeIs('shipping.state') ? 'active' : '' }}"
-                            href="{{ route('shipping.state') }}">
-                            <span class="menu-bullet">
-                                <span class="bullet bullet-dot"></span>
-                            </span>
-                            <span class="menu-title">State/Area</span>
-                        </a>
-                        <!--end:Menu link-->
+                       
                     </div>
 
                 </div>

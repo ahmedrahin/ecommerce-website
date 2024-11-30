@@ -4,6 +4,5 @@
     data-kt-drawer-direction="start" data-kt-drawer-toggle="#kt_app_sidebar_mobile_toggle">
     @include(config('settings.KT_THEME_LAYOUT_DIR') . '/partials/sidebar-layout/sidebar/_logo')
     @include(config('settings.KT_THEME_LAYOUT_DIR') . '/partials/sidebar-layout/sidebar/_menu')
-    @include(config('settings.KT_THEME_LAYOUT_DIR') . '/partials/sidebar-layout/sidebar/_footer')
 </div>
 <!--end::Sidebar-->

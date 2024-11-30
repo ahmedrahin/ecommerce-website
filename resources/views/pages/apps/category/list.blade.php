@@ -1,54 +1,60 @@
 <x-default-layout>
 
+    @section('custom-css')
+        <link rel="stylesheet" href="{{asset('assets/plugins/custom/datatables/datatables.bundle.css')}}">
+
+        <style>
+            .subcategorize h4 {
+                margin-bottom: 30px;
+                border-top: 1px solid #f1f1f2;
+                padding-top: 20px;
+            }
+            .subcategorize .no-found{
+                color: #ff0000a6;
+                text-align: center;
+                font-weight: 600;
+                font-style: italic;
+            }
+            .delsubCat {
+                background: #ff0000c7;
+                border: none;
+                width: 23px;
+                height: 23px;
+                border-radius: 50%;
+                line-height: 6px;
+            }
+            .delsubCat i {
+                color: white;
+                font-size: 10px;
+            }
+            .subcategorize li {
+                list-style: none;
+                border-bottom: 1px solid #f1f1f2;
+                padding: 0 20px;
+                padding-bottom: 10px;
+                margin-bottom: 10px;
+                color: black;
+            }
+            .subcategorize ul {
+                padding: 0 50px;
+            }
+            .modal-image {
+                width: 130px;
+                height: 130px;
+                border-radius: 8px;
+                display: block;
+                margin-bottom: 20px;
+            }
+        </style>
+    @endsection
+
     @section('title')Category List @endsection
 
     @section('breadcrumbs')
     {{ Breadcrumbs::render('category') }}
     @endsection
 
-    <style>
-        .subcategorize h4 {
-            margin-bottom: 30px;
-            border-top: 1px solid #f1f1f2;
-            padding-top: 20px;
-        }
-        .subcategorize .no-found{
-            color: #ff0000a6;
-            text-align: center;
-            font-weight: 600;
-            font-style: italic;
-        }
-        .delsubCat {
-            background: #ff0000c7;
-            border: none;
-            width: 23px;
-            height: 23px;
-            border-radius: 50%;
-            line-height: 6px;
-        }
-        .delsubCat i {
-            color: white;
-            font-size: 10px;
-        }
-        .subcategorize li {
-            list-style: none;
-            border-bottom: 1px solid #f1f1f2;
-            padding: 0 20px;
-            padding-bottom: 10px;
-            margin-bottom: 10px;
-            color: black;
-        }
-        .subcategorize ul {
-            padding: 0 50px;
-        }
-        .modal-image {
-            width: 130px;
-            height: 130px;
-            border-radius: 8px;
-            display: block;
-            margin-bottom: 20px;
-        }
-    </style>
+   
 
     <div class="card">
         <!--begin::Card header-->
@@ -90,50 +96,49 @@
         <!--end::Card body-->
     </div>
 
-    
-
 
     <!-- DataTables Buttons JS -->
     @push('scripts')
-    {{ $dataTable->scripts() }}
-    <script>
-        document.getElementById('mySearchInput').addEventListener('keyup', function () {
-            window.LaravelDataTables['category-table'].search(this.value).draw();
-        });
-        document.addEventListener('livewire:load', function () {
-            Livewire.on('success', function () {
-                $('#kt_modal_add_category').modal('hide');
-                window.LaravelDataTables['category-table'].ajax.reload();
+        <script src="{{asset('assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
+        {{ $dataTable->scripts() }}
+        <script>
+            document.getElementById('mySearchInput').addEventListener('keyup', function () {
+                window.LaravelDataTables['category-table'].search(this.value).draw();
             });
-        });
-        
-        $(document).ready(function() {
-            var table = $('#category-table').DataTable();
-
-            $('[data-kt-export]').on('click', function(e) {
-                e.preventDefault();
-
-                var exportType = $(this).data('kt-export');
-
-                switch (exportType) {
-                    case 'copy':
-                        table.button('.buttons-copy').trigger();
-                        break;
-                    case 'excel':
-                        table.button('.buttons-excel').trigger();
-                        break;
-                    case 'csv':
-                        table.button('.buttons-csv').trigger();
-                        break;
-                    case 'pdf':
-                        table.button('.buttons-pdf').trigger();
-                        break;
-                    default:
-                        console.error('Unknown export type:', exportType);
-                }
+            document.addEventListener('livewire:load', function () {
+                Livewire.on('success', function () {
+                    $('#kt_modal_add_category').modal('hide');
+                    window.LaravelDataTables['category-table'].ajax.reload();
+                });
             });
-        });
-    </script>
+            
+            $(document).ready(function() {
+                var table = $('#category-table').DataTable();
+
+                $('[data-kt-export]').on('click', function(e) {
+                    e.preventDefault();
+
+                    var exportType = $(this).data('kt-export');
+
+                    switch (exportType) {
+                        case 'copy':
+                            table.button('.buttons-copy').trigger();
+                            break;
+                        case 'excel':
+                            table.button('.buttons-excel').trigger();
+                            break;
+                        case 'csv':
+                            table.button('.buttons-csv').trigger();
+                            break;
+                        case 'pdf':
+                            table.button('.buttons-pdf').trigger();
+                            break;
+                        default:
+                            console.error('Unknown export type:', exportType);
+                    }
+                });
+            });
+        </script>
     @endpush
 
 </x-default-layout>

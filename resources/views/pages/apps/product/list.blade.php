@@ -1,5 +1,9 @@
 <x-default-layout>
 
+    @section('custom-css')
+        <link rel="stylesheet" href="{{asset('assets/plugins/custom/datatables/datatables.bundle.css')}}">
+    @endsection
+
     @section('title') Product List @endsection
 
     @section('breadcrumbs')
@@ -53,6 +57,7 @@
     <!-- DataTables Buttons JS -->
     
     @push('scripts')
+    <script src="{{asset('assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
     @if(Session::has('success'))
         <script>
             toastr.success("{{ Session::get('success') }}");

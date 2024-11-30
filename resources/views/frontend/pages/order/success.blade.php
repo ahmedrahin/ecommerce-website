@@ -126,7 +126,7 @@
                 </ul>
                 <div class="d-flex align-items-center justify-content-between">
                     <h6>Total (USD)</h6>
-                    <h5>${{ number_format($order->grand_total,2)}}</h5>
+                    <h5>৳{{ number_format($order->grand_total,2)}}</h5>
                 </div>
                 
                 </div>

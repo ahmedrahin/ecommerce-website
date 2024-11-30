@@ -14,11 +14,6 @@ class ShippingController extends Controller
         return $dataTable->render('pages.apps.shipping.district.list');
     }
 
-    // state-area list
-    public function state(StateDataTable $dataTable){
-        return $dataTable->render('pages.apps.shipping.state.list');
-    }
-
     // shipping method
     public function shipping_method(){
         return view('pages.apps.shipping.method.list');

@@ -1,5 +1,9 @@
 <x-default-layout>
 
+    @section('custom-css')
+        <link rel="stylesheet" href="{{asset('assets/plugins/custom/datatables/datatables.bundle.css')}}">
+    @endsection
+    
     @section('title')Brand List @endsection
 
     @section('breadcrumbs')
@@ -48,45 +52,46 @@
 
     <!-- DataTables Buttons JS -->
     @push('scripts')
-    {{ $dataTable->scripts() }}
-    <script>
-        document.getElementById('mySearchInput').addEventListener('keyup', function () {
-            window.LaravelDataTables['brand-table'].search(this.value).draw();
-        });
-        document.addEventListener('livewire:load', function () {
-            Livewire.on('success', function () {
-                $('#kt_modal_add_brand').modal('hide');
-                window.LaravelDataTables['brand-table'].ajax.reload();
+        <script src="{{asset('assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
+        {{ $dataTable->scripts() }}
+        <script>
+            document.getElementById('mySearchInput').addEventListener('keyup', function () {
+                window.LaravelDataTables['brand-table'].search(this.value).draw();
             });
-        });
-        
-        $(document).ready(function() {
-            var table = $('#brand-table').DataTable();
-
-            $('[data-kt-export]').on('click', function(e) {
-                e.preventDefault();
-
-                var exportType = $(this).data('kt-export');
-
-                switch (exportType) {
-                    case 'copy':
-                        table.button('.buttons-copy').trigger();
-                        break;
-                    case 'excel':
-                        table.button('.buttons-excel').trigger();
-                        break;
-                    case 'csv':
-                        table.button('.buttons-csv').trigger();
-                        break;
-                    case 'pdf':
-                        table.button('.buttons-pdf').trigger();
-                        break;
-                    default:
-                        console.error('Unknown export type:', exportType);
-                }
+            document.addEventListener('livewire:load', function () {
+                Livewire.on('success', function () {
+                    $('#kt_modal_add_brand').modal('hide');
+                    window.LaravelDataTables['brand-table'].ajax.reload();
+                });
             });
-        });
-    </script>
+            
+            $(document).ready(function() {
+                var table = $('#brand-table').DataTable();
+
+                $('[data-kt-export]').on('click', function(e) {
+                    e.preventDefault();
+
+                    var exportType = $(this).data('kt-export');
+
+                    switch (exportType) {
+                        case 'copy':
+                            table.button('.buttons-copy').trigger();
+                            break;
+                        case 'excel':
+                            table.button('.buttons-excel').trigger();
+                            break;
+                        case 'csv':
+                            table.button('.buttons-csv').trigger();
+                            break;
+                        case 'pdf':
+                            table.button('.buttons-pdf').trigger();
+                            break;
+                        default:
+                            console.error('Unknown export type:', exportType);
+                    }
+                });
+            });
+        </script>
     @endpush
 
 </x-default-layout>

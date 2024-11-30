@@ -1,4 +1,7 @@
 <x-default-layout>
+    @section('custom-css')
+        <link rel="stylesheet" href="{{asset('assets/plugins/custom/datatables/datatables.bundle.css')}}">
+    @endsection
 
     @section('title') District List @endsection
 
@@ -44,6 +47,7 @@
 
     <!-- DataTables Buttons JS -->
     @push('scripts')
+    <script src="{{asset('assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
     {{ $dataTable->scripts() }}
     <script>
         document.getElementById('mySearchInput').addEventListener('keyup', function () {

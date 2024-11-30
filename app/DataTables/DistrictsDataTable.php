@@ -25,18 +25,7 @@ class DistrictsDataTable extends DataTable
             ->editColumn('name', function (District $district) {
                 return '<span class="text-gray-800 fs-5 fw-bold">' . $district->name . '</span>' ;
             })
-            ->editColumn('state_summrise', function (District $district) {
-                $stateCount = $district->state->count(); 
-                if ($stateCount == 0) {
-                    $count = '<span class="badge badge-light-danger">0</span>';
-                } elseif ($stateCount > 0 && $stateCount <= 5) {
-                    $count = '<span class="badge badge-light-warning">' . $stateCount . '</span>';
-                } else {
-                    $count = '<span class="badge badge-light-primary">' . $stateCount . '</span>';
-                }
-
-                return $count;
-            })
+            
             ->addColumn('active', function (District $district) {
                 return view('pages.apps.shipping.district.columns._active_status', compact('district'));
             })
@@ -103,7 +92,6 @@ class DistrictsDataTable extends DataTable
         return [
             Column::computed('DT_RowIndex')->title('ID')->addClass('text-center')->orderable(false)->searchable(false),
             Column::make('name')->title('Name'),
-            Column::computed('state_summrise')->title('State_summrise')->addClass('text-center'),
             Column::computed('active')
                 ->title('Active')
                 ->addClass('text-center text-nowrap no-export') 

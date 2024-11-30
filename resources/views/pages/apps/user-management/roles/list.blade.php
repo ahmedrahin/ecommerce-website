@@ -1,5 +1,5 @@
 <x-default-layout>
-
+    
     @section('title')
     Roles
     @endsection

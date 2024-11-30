@@ -1,5 +1,9 @@
 <x-default-layout>
 
+    @section('custom-css')
+        <link rel="stylesheet" href="{{asset('assets/plugins/custom/datatables/datatables.bundle.css')}}">
+    @endsection
+
     @section('title') Order Details @endsection
 
     @section('breadcrumbs')
@@ -47,7 +51,7 @@
 
     @push('scripts')
         {{ $dataTable->scripts() }}
-
+        <script src="{{asset('assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
         <script>
              $(document).ready(function() {
                 var table = $('#order-table').DataTable();

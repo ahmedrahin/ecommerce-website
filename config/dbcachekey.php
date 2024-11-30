@@ -9,7 +9,6 @@
         'subsubcategory'    => 'subsubcategories_cache_data_table',
         'productattribute'  => 'attribute_cache_data_table',
         'shipping_district' => 'shipping_district_cache_data_table',
-        'shipping_state'    => 'shipping_state_cache_data_table',
         'product'           => 'products_cache_key_data_table',
         'order'             => 'orders_cache_key_data_table',
         'coupon'             => 'coupons_cache_key_data_table',
