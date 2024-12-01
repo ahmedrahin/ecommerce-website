@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Cache;
 use Auth;
 use Carbon\Carbon;
 use App\Models\Coupon;
+use App\Mail\OrderPlaced;
+use Illuminate\Support\Facades\Mail;
+
 
 class Checkout extends Component
 {   
@@ -279,7 +282,10 @@ class Checkout extends Component
             }
         }
         
-        
+        // mail sent to admin
+        $adminMail = config('app.email');
+        Mail::to($adminMail)->send(new OrderPlaced($order));
+
         $this->emit('cartUpdated');
         session()->flash('success', 'Your order has been successfully placed. Thank you!!');
         $this->refreshCache();

@@ -471,8 +471,8 @@ footer {
     }
     #checkout-form label{font-size: 15px;}
     .right-sidebar-checkout{padding: 15px 8px;margin-top: 30px;}
-    .summary-total > ul li p{font-size: 15px;}
-    .summary-total > ul li span{font-size: 14px;}
+    .summary-total > ul li p{font-size: 13px;}
+    .summary-total > ul li span{font-size: 13px;}
     .cart-listing > ul li p{font-size: 12px;font-weight: 500;}
     #checkout-form button[type="submit"] span{font-size: 16px;}
     .payment-box img{width: 85px;}

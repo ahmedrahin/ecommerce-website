@@ -1,5 +1,15 @@
 <?php
 
+if (!function_exists('numberToWords')) {
+    function numberToWords($number)
+    {
+        $formatter = new NumberFormatter('en', NumberFormatter::SPELLOUT);
+        $words = ucfirst($formatter->format($number));
+
+        return $words . ' TK Only';
+    }
+}
+
 if (!function_exists('theme')) {
     function theme()
     {

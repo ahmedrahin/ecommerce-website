@@ -44,4 +44,15 @@
     </form>
     <!--end::Form-->
 
+    @push('scripts')
+        <script src="{{asset('assets/js/custom/authentication/reset-password/reset-password.js')}}"></script>
+
+        @if (session('info'))
+            <script>
+                toastr.error("{{ session('info') }}");
+            </script>
+        @endif
+    
+    @endpush
+
 </x-auth-layout>

@@ -7894,7 +7894,10 @@ footer .footer-1 .social-icon > li:hover a i {
 }
 @media (max-width: 480px) {
      .address-title {
-        display: block;
+        display: flex;
+    }
+    .address-title a{
+        font-size: 13px;
     }
 }
 .address-option label {
@@ -8041,7 +8044,7 @@ input:focus, textarea:focus{
 }
 .summary-total > ul li p {
     color: rgba(var(--theme-font-color), 1);
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 500;
 }
 .summary-total > ul li span {

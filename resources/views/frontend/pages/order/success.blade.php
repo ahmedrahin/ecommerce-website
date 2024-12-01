@@ -35,72 +35,74 @@
         <div class="custom-container container order-success">
         <div class="row gy-4">
             <div class="col-xl-8"> 
-            <div class="order-items sticky"> 
-                <h4>Order Information </h4>
-            
-                <div class="order-table"> 
-                <div class="table-responsive theme-scrollbar">  
-                    <table class="table">
-                    <thead>
-                        <tr> 
-                        <th>Product </th>
-                        <th>Price </th>
-                        <th>Quantity</th>
-                        <th>Total</th>
-                        </tr>
-                    </thead>
-                    <tbody> 
+                <div class="order-items sticky"> 
+                    <h4>Order Information </h4>
+                
+                    <div class="order-table"> 
+                        <div class="table-responsive theme-scrollbar">  
+                            <table class="table">
+                            <thead>
+                                <tr> 
+                                <th>Product </th>
+                                <th>Price </th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody> 
 
-                        @foreach( $order->orderItems as $item )
-                            <tr> 
-                            <td> 
-                                <div class="cart-box">
-                                    <a href="{{route('product-details',$item->product->slug)}}">
-                                        <img src="{{asset($item->product->thumb_image)}}" >
-                                    </a>
-                                <div>
-                                    <a href="{{route('product-details',$item->product->slug)}}"> 
-                                        <h5>{{$item->product->name}}</h5>
-                                    </a>
+                                @foreach( $order->orderItems as $item )
+                                    <tr> 
+                                    <td> 
+                                        <div class="cart-box">
+                                            <a href="{{route('product-details',$item->product->slug)}}">
+                                                <img src="{{asset($item->product->thumb_image)}}" >
+                                            </a>
+                                        <div>
+                                            <a href="{{route('product-details',$item->product->slug)}}"> 
+                                                <h5>{{$item->product->name}}</h5>
+                                            </a>
 
-                                    {{-- show varitaion --}}
-                                    @if( $item->orderItemVariations->count() > 0 )
-                                        <p class="mb-0">
-                                            @foreach( $item->orderItemVariations as $itemVariant )
-                                                {{ucfirst($itemVariant->attribute_name) . ':' . ucfirst($itemVariant->attribute_value)}}  @if (!$loop->last) - @endif
-                                            @endforeach
-                                        </p>
-                                    @endif
-                                </div>
-                                </div>
-                            </td>
-                            <td>৳{{$item->price}}</td>
-                            <td>{{$item->quantity}}</td>
-                            <td>৳{{$item->price * $item->quantity}}.00</td>
-                            </tr>
-                        @endforeach
+                                            {{-- show varitaion --}}
+                                            @if( $item->orderItemVariations->count() > 0 )
+                                                <p class="mb-0">
+                                                    @foreach( $item->orderItemVariations as $itemVariant )
+                                                        {{ucfirst($itemVariant->attribute_name) . ':' . ucfirst($itemVariant->attribute_value)}}  @if (!$loop->last) - @endif
+                                                    @endforeach
+                                                </p>
+                                            @endif
+                                        </div>
+                                        </div>
+                                    </td>
+                                    <td>৳{{$item->price}}</td>
+                                    <td>{{$item->quantity}}</td>
+                                    <td>৳{{$item->price * $item->quantity}}.00</td>
+                                    </tr>
+                                @endforeach
 
-                        @php
-                            $subtotal = 0;
-                        @endphp
+                                @php
+                                    $subtotal = 0;
+                                @endphp
 
-                        @foreach($order->orderItems as $item)
-                            @php
-                                $subtotal += $item->price * $item->quantity;
-                            @endphp
-                        @endforeach
+                                @foreach($order->orderItems as $item)
+                                    @php
+                                        $subtotal += $item->price * $item->quantity;
+                                    @endphp
+                                @endforeach
 
-                        <tr> 
-                        <td> </td>
-                        <td></td>
-                        <td class="total fw-bold">Total : </td>
-                        <td class="total fw-bold">৳{{ number_format($subtotal, 2) }}</td>
-                        </tr>
-                    </tbody>
-                    </table>
+                                <tr> 
+                                <td> </td>
+                                <td></td>
+                                <td class="total fw-bold">Total : </td>
+                                <td class="total fw-bold">৳{{ number_format($subtotal, 2) }}</td>
+                                </tr>
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    
                 </div>
-                </div>
-            </div>
             </div>
             <div class="col-xl-4">
             <div class="summery-box">
@@ -131,7 +133,7 @@
                 
                 </div>
             </div>
-            <div class="summery-footer"> 
+            <div class="summery-footer" style="margin-bottom: 20px;"> 
                 <div class="sidebar-title">
                 <div class="loader-line"></div>
                 <h4>Shipping Address</h4>
@@ -149,10 +151,12 @@
                 </li>
                 </ul>
             </div>
+            <a class="btn btn_black" style="font-size: 14px; margin-right:5px;" href="{{route('order.invoice.pdf',$order->order_id)}}">Download Invoice</a>
+            <a class="btn btn_black" style="font-size: 14px;" href="{{route('shop')}}">Continue Shopping</a>
             </div>
         </div>
         </div>
-        {{-- <button>Download Invoice</button> --}}
+        
   </section>
  
 @endsection 

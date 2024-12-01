@@ -39,7 +39,8 @@ Route::get('/success-order/{order_id}', function ($order_id) {
     $order = Order::where('order_id', $order_id)->firstOrFail();
     return view('frontend.pages.order.success', compact('order'));
 })->name('success.order');
-
+// order invoice download pdf
+Route::get('/order-invoice/{order_id}', [OrderController::class, 'downloadInvoice'])->name('order.invoice.pdf');
 
 Route::get('/cart', function(){
     return view('frontend.pages.order.cart');

@@ -12,6 +12,7 @@ use App\Models\OrderItems;
 use App\DataTables\OrderDataTable;
 use Illuminate\Support\Facades\Cache;
 use Auth;
+use  PDF;
 
 class OrderController extends Controller
 {
@@ -151,6 +152,18 @@ class OrderController extends Controller
     public function order_invoice(int $id){
         $order = Order::find($id);
         return view('pages.apps.order.order-invoice', compact('order'));
+    }
+
+    public function downloadInvoice(string $order_id)
+    {
+        $order = Order::where('order_id', $order_id)->first();
+
+        // Generate PDF
+        $pdf = PDF::loadView('frontend.pages.order.invoice', compact('order'));
+
+        // Display PDF in the browser
+        return $pdf->stream('order-invoice.pdf');
+
     }
 
      // Refresh the cache
