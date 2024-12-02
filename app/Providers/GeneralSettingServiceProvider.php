@@ -27,8 +27,11 @@ class GeneralSettingServiceProvider extends ServiceProvider
             // Site title, logo, favicon set
             if ($settings) {
                 config(['app.name' => $settings->site_title ?? config('app.name')]);
-                config(['app.logo' => $settings->logo ?? null]);
+                config(['app.logo' => $settings->website_logo ?? null]);
                 config(['app.favicon' => $settings->fav_icon ?? null]);
+                config(['app.website-logo' => $settings->logo ?? null]);
+                config(['app.footer_logo' => $settings->website_footer_logo ?? null]); 
+                config(['app.dark_logo' => $settings->dark_logo ?? null]);
                 config(['app.email' => $settings->email ?? null]);
                 config(['app.phone' => $settings->number1 ?? null]);
                 config(['app.address' => $settings->address ?? null]);
@@ -38,7 +41,7 @@ class GeneralSettingServiceProvider extends ServiceProvider
                 config(['app.whatsapp' => $settings->whatsapp ?? null]);
                 config(['app.youtube' => $settings->youtube ?? null]);
             }
-
+            
             config(['app.error', 'tostar']);
         }
     }

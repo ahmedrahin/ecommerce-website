@@ -1,12 +1,12 @@
 <div class="d-flex justify-content-end" data-kt-product-table-toolbar="base">
     <div>
-        <select name="statusFilter" id="statusFilter">
-            <option value="">Filter by status</option>
+        <select name="statusFilter" id="statusFilter" class="form-select form-select-solid w-200px" data-control="select2" data-allow-clear="true" data-placeholder="Filter by status">
+            <option></option>
             <option value="1">Published</option>
             <option value="0">Inactive</option>
-            <option value="2">Draf</option>
+            <option value="2">Draft</option>
             <option value="3">Scheduled</option>
-        </select>
+        </select>        
     </div>
 
     <button type="button" class="btn btn-light-primary mx-4" data-kt-menu-trigger="click"
@@ -54,3 +54,24 @@
     </div>
     <!--end::Menu-->
 </div>
+{{-- 
+<div class="mb-10">
+    <label class="form-label fw-semibold">Member Type:</label>
+    <div class="d-flex">
+        <label class="form-check form-check-sm form-check-custom form-check-solid me-5">
+            <input class="form-check-input" type="checkbox" value="1" />
+            <span class="form-check-label">Author</span>
+        </label>
+        <label class="form-check form-check-sm form-check-custom form-check-solid">
+            <input class="form-check-input" type="checkbox" value="2" checked="checked" />
+            <span class="form-check-label">Customer</span>
+        </label>
+    </div>
+</div>
+<div class="mb-10">
+    <label class="form-label fw-semibold">Notifications:</label>
+    <div class="form-check form-switch form-switch-sm form-check-custom form-check-solid">
+        <input class="form-check-input" type="checkbox" value="" name="notifications" checked="checked" />
+        <label class="form-check-label">Enabled</label>
+    </div>
+</div> --}}

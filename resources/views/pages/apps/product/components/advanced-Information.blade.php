@@ -172,7 +172,7 @@
                         return;
                     } else {
                         $(type).select2({
-                            minimumResultsForSearch: -1 // Disable search box
+                            minimumResultsForSearch: -1 
                         });
                     }
                 });

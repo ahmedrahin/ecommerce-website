@@ -124,4 +124,10 @@
 
 
     </script>
+
+    @if (session('info'))
+    <script>
+        toastr.error("{{ session('info') }}");
+    </script>
+    @endif
 @endsection

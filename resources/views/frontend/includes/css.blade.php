@@ -1,6 +1,6 @@
 <!-- Favicon icon-->
-<link rel="icon" href="{{asset('frontend/images/favicon.png')}}" type="image/x-icon"/>
-<link rel="shortcut icon" href="{{asset('frontend/images/favicon.png')}}" type="image/x-icon"/>
+<link rel="icon" href="{{asset(config('app.favicon'))}}" type="image/x-icon"/>
+<link rel="shortcut icon" href="{{asset(config('app.favicon'))}}" type="image/x-icon"/>
 <!-- Google Font Outfit-->
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>

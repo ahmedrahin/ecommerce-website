@@ -5,9 +5,9 @@
     <div class="menu-item px-3">
         <div class="menu-content d-flex align-items-center px-3">
             <!--begin::Avatar-->
-            <div class="symbol symbol-50px me-5">
-                @if(Auth::user()->profile_photo_url)
-                <img alt="Logo" src="{{ Auth::user()->profile_photo_url }}" />
+            <div class="symbol symbol-50px me-3">
+                @if(Auth::user()->avatar)
+                    <img alt="Logo" src="{{ asset(Auth::user()->avatar) }}" />
                 @else
                 <div
                     class="symbol-label fs-3 {{ app(\App\Actions\GetThemeType::class)->handle('bg-light-? text-?', Auth::user()->name) }}">

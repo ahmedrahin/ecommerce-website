@@ -126,7 +126,7 @@
                 <td colspan="3" class="text-right">Shipping Cost (+):</td>
                 <td class="text-right">BDT {{ $order->shipping_cost }}</td>
             </tr>
-            @if( !is_null($order->coupon_code) )
+            @if( !is_null($order->cupon_code) )
             <tr>
                 <td colspan="3" class="text-right">Discount (-):</td>
                 <td class="text-right">BDT {{$order->coupon_discount}}</td>

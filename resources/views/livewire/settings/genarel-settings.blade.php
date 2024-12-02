@@ -5,7 +5,7 @@
             <!--begin::Input group-->
             <div class="row mb-6">
                 <div class="col-md-2 col-6">
-                    <label class="col-lg-12 col-form-label fw-semibold fs-6">Site Logo</label>
+                    <label class="col-lg-12 col-form-label fw-semibold fs-6">Dashboard Logo</label>
 
                    <div class="col-lg-12">
                         <div class="image-input image-input-outline {{ $logo || $current_image ? '' : 'image-input-empty' }}"
@@ -62,7 +62,7 @@
 
                 </div>
 
-                <div class="col-md-3 col-6">
+                <div class="col-md-2 col-6">
                     <label class="col-lg-12 col-form-label fw-semibold fs-6">Fav Icon</label>
 
                     <div class="col-lg-12">
@@ -119,11 +119,99 @@
                     </div>
 
                 </div>
+
+                <div class="col-md-2 col-6">
+                    <label class="col-lg-12 col-form-label fw-semibold fs-6">Website Logo</label>
+                    <div class="col-lg-12">
+                        <div class="image-input image-input-outline {{ $website_logo || $current_websiteLogo ? '' : 'image-input-empty' }}" data-kt-image-input="true">
+                            @if ($website_logo)
+                                <img src="{{ $website_logo->temporaryUrl() }}" class="w-125px h-125px" alt="Website Logo">
+                            @elseif ($current_websiteLogo)
+                                <img src="{{ asset($current_websiteLogo) }}" class="w-125px h-125px" alt="Website Logo">
+                            @else
+                                <div class="image-input-wrapper w-125px h-125px"
+                                     style="background-image: url({{ asset('assets/media/svg/files/blank-image.svg') }});"></div>
+                            @endif
+                
+                            <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                   data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change website logo">
+                                {!! getIcon('pencil', 'fs-7') !!}
+                                <input type="file" wire:model.defer="website_logo" name="website_logo" accept=".png, .jpg, .jpeg, .svg" />
+                                <input type="hidden" name="avatar_remove" />
+                            </label>
+                
+                            <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                  data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="Remove website logo"
+                                  wire:click="removeWebsiteLogo">
+                                {!! getIcon('cross', 'fs-2') !!}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-2 col-6">
+                    <label class="col-lg-12 col-form-label fw-semibold fs-6">Footer Logo</label>
+                    <div class="col-lg-12">
+                        <div class="image-input image-input-outline {{ $website_footer_logo || $current_footerLogo ? '' : 'image-input-empty' }}" data-kt-image-input="true">
+                            @if ($website_footer_logo)
+                                <img src="{{ $website_footer_logo->temporaryUrl() }}" class="w-125px h-125px" alt="Footer Logo">
+                            @elseif ($current_footerLogo)
+                                <img src="{{ asset($current_footerLogo) }}" class="w-125px h-125px" alt="Footer Logo">
+                            @else
+                                <div class="image-input-wrapper w-125px h-125px"
+                                     style="background-image: url({{ asset('assets/media/svg/files/blank-image.svg') }});"></div>
+                            @endif
+                
+                            <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                   data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change footer logo">
+                                {!! getIcon('pencil', 'fs-7') !!}
+                                <input type="file" wire:model.defer="website_footer_logo" name="website_footer_logo" accept=".png, .jpg, .jpeg, .svg" />
+                                <input type="hidden" name="avatar_remove" />
+                            </label>
+                
+                            <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                  data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="Remove footer logo"
+                                  wire:click="removeFooterLogo">
+                                {!! getIcon('cross', 'fs-2') !!}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-2 col-6">
+                    <label class="col-lg-12 col-form-label fw-semibold fs-6">Dark Logo</label>
+                    <div class="col-lg-12">
+                        <div class="image-input image-input-outline {{ $dark_logo || $current_darkLogo ? '' : 'image-input-empty' }}" data-kt-image-input="true">
+                            @if ($dark_logo)
+                                <img src="{{ $dark_logo->temporaryUrl() }}" class="w-125px h-125px" alt="Dark Logo">
+                            @elseif ($current_darkLogo)
+                                <img src="{{ asset($current_darkLogo) }}" class="w-125px h-125px" alt="Dark Logo">
+                            @else
+                                <div class="image-input-wrapper w-125px h-125px"
+                                     style="background-image: url({{ asset('assets/media/svg/files/blank-image.svg') }});"></div>
+                            @endif
+                
+                            <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                   data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change dark logo">
+                                {!! getIcon('pencil', 'fs-7') !!}
+                                <input type="file" wire:model.defer="dark_logo" name="dark_logo" accept=".png, .jpg, .jpeg, .svg" />
+                                <input type="hidden" name="avatar_remove" />
+                            </label>
+                
+                            <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                  data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="Remove dark logo"
+                                  wire:click="removeDarkLogo">
+                                {!! getIcon('cross', 'fs-2') !!}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
             <!--end::Input group-->
 
             <!--begin::Input group-->
-            <div class="row mb-6">
+            <div class="row mb-6 pt-6">
                 <!--begin::Label-->
                 <label class="col-lg-4 col-form-label required fw-semibold fs-6">Site Title</label>
                 <!--end::Label-->

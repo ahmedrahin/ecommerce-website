@@ -36,3 +36,7 @@ document.querySelectorAll('.change-status').forEach(function (element){
 Livewire.on('info', (message) => {
     LaravelDataTables['product-table'].ajax.reload();
 });
+
+Livewire.on('success', (message) => {
+    LaravelDataTables['product-table'].ajax.reload();
+});

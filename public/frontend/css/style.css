@@ -8044,7 +8044,7 @@ input:focus, textarea:focus{
 }
 .summary-total > ul li p {
     color: rgba(var(--theme-font-color), 1);
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 500;
 }
 .summary-total > ul li span {
@@ -8653,7 +8653,7 @@ input:focus, textarea:focus{
     border: 1px solid rgba(var(--light-border), 1);
     border-radius: 50%;
     box-shadow: 2px 3px 8px rgba(var(--black), 0.08);
-    height: auto;
+    height: calc(76px + 1.25vw);
     -o-object-fit: cover;
     object-fit: cover;
     padding: 5px;

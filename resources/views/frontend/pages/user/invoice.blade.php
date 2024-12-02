@@ -86,19 +86,19 @@
                         <thead>
                             <tr>
                                 <th
-                                    style="text-transform: uppercase; color: #cca270; font-weight: 700; line-height: 1; font-size: 17px; border-bottom: 2px solid #cca270; padding: 14px 0;">
+                                    style="text-transform: uppercase; color: #cca270; font-weight: 700; line-height: 1; font-size: 13px; border-bottom: 2px solid #cca270; padding: 14px 0;">
                                     no</th>
                                 <th
-                                    style="text-transform: uppercase; color: #cca270; font-weight: 700; line-height: 1; font-size: 17px; border-bottom: 2px solid #cca270; padding: 14px 0;">
+                                    style="text-transform: uppercase; color: #cca270; font-weight: 700; line-height: 1; font-size: 13px; border-bottom: 2px solid #cca270; padding: 14px 0;">
                                     product name </th>
                                 <th
-                                    style="text-transform: uppercase; color: #cca270; font-weight: 700; line-height: 1; font-size: 17px; border-bottom: 2px solid #cca270; padding: 14px 0;">
+                                    style="text-transform: uppercase; color: #cca270; font-weight: 700; line-height: 1; font-size: 13px; border-bottom: 2px solid #cca270; padding: 14px 0;">
                                     price</th>
                                 <th
-                                    style="text-transform: uppercase; color: #cca270; font-weight: 700; line-height: 1; font-size: 17px; border-bottom: 2px solid #cca270; padding: 14px 0;">
+                                    style="text-transform: uppercase; color: #cca270; font-weight: 700; line-height: 1; font-size: 13px; border-bottom: 2px solid #cca270; padding: 14px 0;">
                                     QTY</th>
                                 <th
-                                    style="text-transform: uppercase; color: #cca270; font-weight: 700; line-height: 1; font-size: 17px; border-bottom: 2px solid #cca270; padding: 14px 0;">
+                                    style="text-transform: uppercase; color: #cca270; font-weight: 700; line-height: 1; font-size: 13px; border-bottom: 2px solid #cca270; padding: 14px 0;">
                                     total</th>
                             </tr>
                         </thead>
@@ -107,7 +107,7 @@
                                 <tr>
                                     <td style="text-align: center; font-weight: 600;">{{$id+1}}</td>
                                     <td style="text-align: center;">
-                                        <h5 style="margin: 0; line-height: 1.3; font-size: 17px; text-transform: capitalize;">
+                                        <h5 style="margin: 0; line-height: 1.3; font-size: 13px; text-transform: capitalize;">
                                             <a href="{{route('product-details',$item->product->slug)}}" style="text-decoration: none; color:black;">
                                                 {{ $item->product->name }}
                                             </a>
@@ -145,23 +145,23 @@
                                             $discountPercentage = $subtotal > 0 ? ($discount / $subtotal) * 100 : 0;
                                         @endphp
                                         <td>
-                                            <h5 style="margin: 0%; font-size: 16px; line-height: 1.5; color: #6e6d6d;">Sub Total :</h5>
+                                            <h5 style="margin: 0%; font-size: 14px; line-height: 1.5; color: #6e6d6d;">Sub Total :</h5>
                                             <h5
-                                                style="margin: 0%; font-size: 16px; line-height: 1.5; color: #6e6d6d; text-transform: capitalize;">
+                                                style="margin: 0%; font-size: 14px; line-height: 1.5; color: #6e6d6d; text-transform: capitalize;">
                                                 Shipping cost :</h5>
                                             <h5
-                                                style="margin: 0%; font-size: 16px; line-height: 1.5; color: #6e6d6d; text-transform: capitalize;">
+                                                style="margin: 0%; font-size: 14px; line-height: 1.5; color: #6e6d6d; text-transform: capitalize;">
                                                 discount {{round($discountPercentage)}}% :
                                             </h5>
                                         </td>
                                         <td>
-                                            <h5 style="margin: 0%; font-size: 17px; text-align: start; line-height: 1.5;">
+                                            <h5 style="margin: 0%; font-size: 14px; text-align: start; line-height: 1.5;">
                                                 ৳{{$subtotal}}.00
                                             </h5>
-                                            <h5 style="margin: 0%; font-size: 17px; text-align: start; line-height: 1.5;">
+                                            <h5 style="margin: 0%; font-size: 14px; text-align: start; line-height: 1.5;">
                                                 ৳{{$order->shipping_cost}}
                                             </h5>
-                                            <h5 style="margin: 0%; font-size: 17px; text-align: start; line-height: 1.5;">
+                                            <h5 style="margin: 0%; font-size: 14px; text-align: start; line-height: 1.5;">
                                                 ৳{{$discount}}
                                             </h5>
                                         </td>
@@ -170,12 +170,12 @@
                                         style="display: flex; justify-content: space-between; background-color: #cca270; text-align: end; margin-top: 10px;">
                                         <td>
                                             <h5
-                                                style="margin: 0%; font-size: 18px; line-height: 1; text-transform: capitalize; color: #fff;">
+                                                style="margin: 0%; font-size: 16px; line-height: 1; text-transform: capitalize; color: #fff;">
                                                 grand total:
                                             </h5>
                                         </td>
                                         <td>
-                                            <h5 style="margin: 0%; font-size: 19px; text-align: start; line-height: 1; color: #fff;">
+                                            <h5 style="margin: 0%; font-size: 16px; text-align: start; line-height: 1; color: #fff;">
                                                 ৳{{ number_format($order->grand_total,2)}}
                                             </h5>
                                         </td>

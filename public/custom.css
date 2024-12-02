@@ -15,7 +15,9 @@
 #kt_ecommerce_add_product_discount_fixed {
     margin-top: 25px;
 }
-
+.fs-5{
+    font-size: 1rem !important;
+}
 .table-image {
     border-radius: 50%;
     display: inline;

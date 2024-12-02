@@ -4,7 +4,6 @@
 <meta name="description" content="Katie"/>
 <meta name="keywords" content="Katie"/>
 <meta name="author" content="pixelstrap"/>
-<link rel="icon" href="../assets/images/favicon.png" type="image/x-icon"/>
-<link rel="shortcut icon" href="../assets/images/favicon.png" type="image/x-icon"/>
+
 {{-- page title --}}
 <title>@yield('page-title')</title>

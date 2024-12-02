@@ -11,8 +11,6 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Attribute;
 use App\Models\AttributeValue;
-use App\Models\Subcategory;
-use App\Models\Subsubcategory;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
 use Auth;
@@ -31,8 +29,9 @@ class ProductController extends Controller
      * Display a listing of the resource.
      */
     public function index(ProductsDataTable $dataTable)
-    {
-        return $dataTable->render('pages.apps.product.list');
+    {   
+        $categories = Category::where('status', 1)->get();
+        return $dataTable->render('pages.apps.product.list', compact('categories'));
     }
 
     /**

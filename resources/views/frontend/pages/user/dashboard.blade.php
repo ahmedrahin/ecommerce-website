@@ -57,376 +57,72 @@
             </div>
             </div>
             <div class="col-xl-9 col-lg-8">
-            <div class="tab-content" id="v-pills-tabContent">
-                <div class="tab-pane fade show active" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
-                <div class="dashboard-right-box">
-                    <div class="my-dashboard-tab">
-                    <div class="dashboard-items"> </div>
-                    
-                    <div class="total-box"> 
-                        <div class="row gy-4"> 
-                        <div class="col-xl-4"> 
-                            <div class="totle-contain">
-                           
-                            <div class="totle-detail"> 
-                                <h6>Total Order</h6>
-                                <h4>{{$user->orders->count()}}</h4>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4"> 
-                            <div class="totle-contain">
-                           
-                            <div class="totle-detail"> 
-                                <h6>Total Cost</h6>
-                                <h4>৳{{$user->orders->sum('grand_total')}}</h4>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4"> 
-                            <div class="totle-contain">
-                            
-                            <div class="totle-detail"> 
-                                <h6>Pending Order</h6>
-                                <h4>{{$user->orders->where('delivery_status', 'pending')->count()}}</h4>
-                            </div>
-                            </div>
-                        </div>
-                       
-                        </div>
-                    </div>
-                    <div class="profile-about"> 
-                        <div class="row"> 
-                            <livewire:frontend.user.profile-infromation :user_id="$user->id" />
-                                <div class="sidebar-title">
-                                <div class="loader-line"></div>
-                                <h5>Login Details</h5>
-                                </div>
-                                <ul class="profile-information mb-0"> 
-                                    <li> 
-                                        <h6>Email :</h6>
-                                        <p>{{$user->email}}</p>
-                                    </li>
-                                    <li> 
-                                        <h6>Password :</h6>
-                                        <p>●●●●●●<span data-bs-toggle="modal" data-bs-target="#edit-password" tabindex="0">Edit password</span></p>
-                                    </li>
-                                </ul>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                </div>
-                
-                <div class="tab-pane fade" id="wishlist" role="tabpanel" aria-labelledby="wishlist-tab">
+                <div class="tab-content" id="v-pills-tabContent">
+                    <div class="tab-pane fade show active" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
                     <div class="dashboard-right-box">
-                        <div class="wishlist-box ratio1_3"> 
-                        <div class="sidebar-title">
-                            <div class="loader-line"></div>
-                            <h4>Wishlist</h4>
+                        <div class="my-dashboard-tab">
+                        <div class="dashboard-items"> </div>
+                        
+                        <div class="total-box"> 
+                            <div class="row gy-4"> 
+                            <div class="col-xl-4"> 
+                                <div class="totle-contain">
+                            
+                                <div class="totle-detail"> 
+                                    <h6>Total Order</h6>
+                                    <h4>{{$user->orders->count()}}</h4>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-4"> 
+                                <div class="totle-contain">
+                            
+                                <div class="totle-detail"> 
+                                    <h6>Total Cost</h6>
+                                    <h4>৳{{$user->orders->sum('grand_total')}}</h4>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-4"> 
+                                <div class="totle-contain">
+                                
+                                <div class="totle-detail"> 
+                                    <h6>Pending Order</h6>
+                                    <h4>{{$user->orders->where('delivery_status', 'pending')->count()}}</h4>
+                                </div>
+                                </div>
+                            </div>
+                        
+                            </div>
                         </div>
-                        <div class="row-cols-md-3 row-cols-2 grid-section view-option row gy-4 g-xl-4">
-                            <div class="col"> 
-                            <div class="product-box-3 product-wishlist">
-                                <div class="img-wrapper">
-                                <div class="label-block"><a class="label-2 wishlist-icon delete-button" href="javascript:void(0)" title="Add to Wishlist" tabindex="0"><i class="iconsax" data-icon="trash" aria-hidden="true"></i></a></div>
-                                <div class="product-image"><a class="pro-first" href="#"> <img class="bg-img" src="../assets/images/product/product-3/1.jpg" alt="product"></a><a class="pro-sec" href="#"> <img class="bg-img" src="../assets/images/product/product-3/20.jpg" alt="product"></a></div>
-                                <div class="cart-info-icon"> <a href="#" data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart" tabindex="0"><i class="iconsax" data-icon="basket-2" aria-hidden="true"> </i></a><a href="compare.html" title="Compare" tabindex="0"><i class="iconsax" data-icon="arrow-up-down" aria-hidden="true"></i></a><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="Quick View" tabindex="0"><i class="iconsax" data-icon="eye" aria-hidden="true"></i></a></div>
-                                <div class="countdown">
-                                    <ul class="clockdiv1">
-                                    <li> 
-                                        <div class="timer">
-                                        <div class="days"></div>
-                                        </div><span class="title">Days</span>
-                                    </li>
-                                    <li class="dot"> <span>:</span></li>
-                                    <li> 
-                                        <div class="timer">
-                                        <div class="hours"></div>
-                                        </div><span class="title">Hours</span>
-                                    </li>
-                                    <li class="dot"> <span>:</span></li>
-                                    <li> 
-                                        <div class="timer">
-                                        <div class="minutes"></div>
-                                        </div><span class="title">Min</span>
-                                    </li>
-                                    <li class="dot"> <span>:</span></li>
-                                    <li> 
-                                        <div class="timer">
-                                        <div class="seconds"></div>
-                                        </div><span class="title">Sec</span>
-                                    </li>
+                        <div class="profile-about"> 
+                            <div class="row"> 
+                                <livewire:frontend.user.profile-infromation :user_id="$user->id" />
+                                    <div class="sidebar-title">
+                                    <div class="loader-line"></div>
+                                    <h5>Login Details</h5>
+                                    </div>
+                                    <ul class="profile-information mb-0"> 
+                                        <li> 
+                                            <h6>Email :</h6>
+                                            <p>{{$user->email}}</p>
+                                        </li>
+                                        <li> 
+                                            <h6>Password :</h6>
+                                            <p>●●●●●●<span data-bs-toggle="modal" data-bs-target="#edit-password" tabindex="0">Change password</span></p>
+                                        </li>
                                     </ul>
-                                </div>
-                                </div>
-                                <div class="product-detail">
-                                <ul class="rating">      
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star-half-stroke"></i></li>
-                                    <li><i class="fa-regular fa-star"></i></li>
-                                    <li>4.3</li>
-                                </ul><a href="#"> 
-                                    <h6>Greciilooks Women's Stylish Top</h6></a>
-                                <p>$100.00  
-                                    <del>$140.00</del><span>-20%</span>
-                                </p>
-                                </div>
-                            </div>
-                            </div>
-                            <div class="col"> 
-                            <div class="product-box-3 product-wishlist">
-                                <div class="img-wrapper">
-                                <div class="label-block"><a class="label-2 wishlist-icon delete-button" href="javascript:void(0)" title="Add to Wishlist" tabindex="0"><i class="iconsax" data-icon="trash" aria-hidden="true"></i></a></div>
-                                <div class="product-image"><a class="pro-first" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/2.jpg" alt="product"></a><a class="pro-sec" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/19.jpg" alt="product"></a></div>
-                                <div class="cart-info-icon"> <a href="#" data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart" tabindex="0"><i class="iconsax" data-icon="basket-2" aria-hidden="true"> </i></a><a href="compare.html" title="Compare" tabindex="0"><i class="iconsax" data-icon="arrow-up-down" aria-hidden="true"></i></a><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="Quick View" tabindex="0"><i class="iconsax" data-icon="eye" aria-hidden="true"></i></a></div>
-                                </div>
-                                <div class="product-detail">
-                                <ul class="rating">      
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-regular fa-star"></i></li>
-                                    <li>4.3</li>
-                                </ul><a href="product.html"> 
-                                    <h6>Wide Linen-Blend Trousers</h6></a>
-                                <p>$100.00  
-                                    <del>$18.00 </del>
-                                </p>
-                                </div>
-                            </div>
-                            </div>
-                            <div class="col"> 
-                            <div class="product-box-3 product-wishlist">
-                                <div class="img-wrapper">
-                                <div class="label-block"><a class="label-2 wishlist-icon delete-button" href="javascript:void(0)" title="Add to Wishlist" tabindex="0"><i class="iconsax" data-icon="trash" aria-hidden="true"></i></a></div>
-                                <div class="product-image"><a class="pro-first" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/3.jpg" alt="product"></a><a class="pro-sec" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/18.jpg" alt="product"></a></div>
-                                <div class="cart-info-icon"> <a href="#" data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart" tabindex="0"><i class="iconsax" data-icon="basket-2" aria-hidden="true"> </i></a><a href="compare.html" title="Compare" tabindex="0"><i class="iconsax" data-icon="arrow-up-down" aria-hidden="true"></i></a><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="Quick View" tabindex="0"><i class="iconsax" data-icon="eye" aria-hidden="true"></i></a></div>
-                                </div>
-                                <div class="product-detail">
-                                <ul class="rating">      
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li>4.3</li>
-                                </ul><a href="product.html"> 
-                                    <h6>Long Sleeve Rounded T-Shirt</h6></a>
-                                <p>$120.30  
-                                    <del>$140.00</del><span>-20%</span>
-                                </p>
-                                </div>
-                            </div>
-                            </div>
-                            <div class="col"> 
-                            <div class="product-box-3 product-wishlist">
-                                <div class="img-wrapper">
-                                <div class="label-block"><a class="label-2 wishlist-icon delete-button" href="javascript:void(0)" title="Add to Wishlist" tabindex="0"><i class="iconsax" data-icon="trash" aria-hidden="true"></i></a></div>
-                                <div class="product-image"><a class="pro-first" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/4.jpg" alt="product"></a><a class="pro-sec" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/17.jpg" alt="product"></a></div>
-                                <div class="cart-info-icon"> <a href="#" data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart" tabindex="0"><i class="iconsax" data-icon="basket-2" aria-hidden="true"> </i></a><a href="compare.html" title="Compare" tabindex="0"><i class="iconsax" data-icon="arrow-up-down" aria-hidden="true"></i></a><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="Quick View" tabindex="0"><i class="iconsax" data-icon="eye" aria-hidden="true"></i></a></div>
-                                <div class="countdown">
-                                    <ul class="clockdiv2">
-                                    <li> 
-                                        <div class="timer">
-                                        <div class="days"></div>
-                                        </div><span class="title">Days</span>
-                                    </li>
-                                    <li class="dot"> <span>:</span></li>
-                                    <li> 
-                                        <div class="timer">
-                                        <div class="hours"></div>
-                                        </div><span class="title">Hours</span>
-                                    </li>
-                                    <li class="dot"> <span>:</span></li>
-                                    <li> 
-                                        <div class="timer">
-                                        <div class="minutes"></div>
-                                        </div><span class="title">Min</span>
-                                    </li>
-                                    <li class="dot"> <span>:</span></li>
-                                    <li> 
-                                        <div class="timer">
-                                        <div class="seconds"></div>
-                                        </div><span class="title">Sec</span>
-                                    </li>
-                                    </ul>
-                                </div>
-                                </div>
-                                <div class="product-detail">
-                                <ul class="rating">      
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star-half-stroke"></i></li>
-                                    <li>4.3</li>
-                                </ul><a href="product.html"> 
-                                    <h6>Blue lined White T-Shirt</h6></a>
-                                <p>$190.00  
-                                    <del>$210.00</del>
-                                </p>
-                                </div>
-                            </div>
-                            </div>
-                            <div class="col"> 
-                            <div class="product-box-3 product-wishlist">
-                                <div class="img-wrapper">
-                                <div class="label-block"><a class="label-2 wishlist-icon delete-button" href="javascript:void(0)" title="Add to Wishlist" tabindex="0"><i class="iconsax" data-icon="trash" aria-hidden="true"></i></a></div>
-                                <div class="product-image"><a class="pro-first" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/9.jpg" alt="product"></a><a class="pro-sec" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/16.jpg" alt="product"></a></div>
-                                <div class="cart-info-icon"> <a href="#" data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart" tabindex="0"><i class="iconsax" data-icon="basket-2" aria-hidden="true"> </i></a><a href="compare.html" title="Compare" tabindex="0"><i class="iconsax" data-icon="arrow-up-down" aria-hidden="true"></i></a><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="Quick View" tabindex="0"><i class="iconsax" data-icon="eye" aria-hidden="true"></i></a></div>
-                                <div class="countdown">
-                                    <ul class="clockdiv3">
-                                    <li> 
-                                        <div class="timer">
-                                        <div class="days"></div>
-                                        </div><span class="title">Days</span>
-                                    </li>
-                                    <li class="dot"> <span>:</span></li>
-                                    <li> 
-                                        <div class="timer">
-                                        <div class="hours"></div>
-                                        </div><span class="title">Hours</span>
-                                    </li>
-                                    <li class="dot"> <span>:</span></li>
-                                    <li> 
-                                        <div class="timer">
-                                        <div class="minutes"></div>
-                                        </div><span class="title">Min</span>
-                                    </li>
-                                    <li class="dot"> <span>:</span></li>
-                                    <li> 
-                                        <div class="timer">
-                                        <div class="seconds"></div>
-                                        </div><span class="title">Sec</span>
-                                    </li>
-                                    </ul>
-                                </div>
-                                </div>
-                                <div class="product-detail">
-                                <ul class="rating">      
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star-half-stroke"></i></li>
-                                    <li><i class="fa-regular fa-star"></i></li>
-                                    <li>4.3</li>
-                                </ul><a href="product.html"> 
-                                    <h6>Greciilooks Women's Stylish Top</h6></a>
-                                <p>$100.00  
-                                    <del>$140.00</del><span>-20%</span>
-                                </p>
-                                </div>
-                            </div>
-                            </div>
-                            <div class="col"> 
-                            <div class="product-box-3 product-wishlist">
-                                <div class="img-wrapper">
-                                <div class="label-block"><a class="label-2 wishlist-icon delete-button" href="javascript:void(0)" title="Add to Wishlist" tabindex="0"><i class="iconsax" data-icon="trash" aria-hidden="true"></i></a></div>
-                                <div class="product-image"><a class="pro-first" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/10.jpg" alt="product"></a><a class="pro-sec" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/15.jpg" alt="product"></a></div>
-                                <div class="cart-info-icon"> <a href="#" data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart" tabindex="0"><i class="iconsax" data-icon="basket-2" aria-hidden="true"> </i></a><a href="compare.html" title="Compare" tabindex="0"><i class="iconsax" data-icon="arrow-up-down" aria-hidden="true"></i></a><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="Quick View" tabindex="0"><i class="iconsax" data-icon="eye" aria-hidden="true"></i></a></div>
-                                </div>
-                                <div class="product-detail">
-                                <ul class="rating">      
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-regular fa-star"></i></li>
-                                    <li>4.3</li>
-                                </ul><a href="product.html"> 
-                                    <h6>Wide Linen-Blend Trousers</h6></a>
-                                <p>$100.00  
-                                    <del>$18.00 </del>
-                                </p>
-                                </div>
-                            </div>
-                            </div>
-                            <div class="col"> 
-                            <div class="product-box-3 product-wishlist">
-                                <div class="img-wrapper">
-                                <div class="label-block"><a class="label-2 wishlist-icon delete-button" href="javascript:void(0)" title="Add to Wishlist" tabindex="0"><i class="iconsax" data-icon="trash" aria-hidden="true"></i></a></div>
-                                <div class="product-image"><a class="pro-first" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/11.jpg" alt="product"></a><a class="pro-sec" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/14.jpg" alt="product"></a></div>
-                                <div class="cart-info-icon"> <a href="#" data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart" tabindex="0"><i class="iconsax" data-icon="basket-2" aria-hidden="true"> </i></a><a href="compare.html" title="Compare" tabindex="0"><i class="iconsax" data-icon="arrow-up-down" aria-hidden="true"></i></a><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="Quick View" tabindex="0"><i class="iconsax" data-icon="eye" aria-hidden="true"></i></a></div>
-                                </div>
-                                <div class="product-detail">
-                                <ul class="rating">      
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li>4.3</li>
-                                </ul><a href="product.html"> 
-                                    <h6>Long Sleeve Rounded T-Shirt</h6></a>
-                                <p>$120.30  
-                                    <del>$140.00</del><span>-20% </span>
-                                </p>
-                                </div>
-                            </div>
-                            </div>
-                            <div class="col"> 
-                            <div class="product-box-3 product-wishlist">
-                                <div class="img-wrapper">
-                                <div class="label-block"><a class="label-2 wishlist-icon delete-button" href="javascript:void(0)" title="Add to Wishlist" tabindex="0"><i class="iconsax" data-icon="trash" aria-hidden="true"></i></a></div>
-                                <div class="product-image"><a class="pro-first" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/12.jpg" alt="product"></a><a class="pro-sec" href="product.html"> <img class="bg-img" src="../assets/images/product/product-3/13.jpg" alt="product"></a></div>
-                                <div class="cart-info-icon"> <a href="#" data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart" tabindex="0"><i class="iconsax" data-icon="basket-2" aria-hidden="true"> </i></a><a href="compare.html" title="Compare" tabindex="0"><i class="iconsax" data-icon="arrow-up-down" aria-hidden="true"></i></a><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="Quick View" tabindex="0"><i class="iconsax" data-icon="eye" aria-hidden="true"></i></a></div>
-                                <div class="countdown">
-                                    <ul class="clockdiv4">
-                                    <li> 
-                                        <div class="timer">
-                                        <div class="days"></div>
-                                        </div><span class="title">Days</span>
-                                    </li>
-                                    <li class="dot"> <span>:</span></li>
-                                    <li> 
-                                        <div class="timer">
-                                        <div class="hours"></div>
-                                        </div><span class="title">Hours</span>
-                                    </li>
-                                    <li class="dot"> <span>:</span></li>
-                                    <li> 
-                                        <div class="timer">
-                                        <div class="minutes"></div>
-                                        </div><span class="title">Min</span>
-                                    </li>
-                                    <li class="dot"> <span>:</span></li>
-                                    <li> 
-                                        <div class="timer">
-                                        <div class="seconds"></div>
-                                        </div><span class="title">Sec</span>
-                                    </li>
-                                    </ul>
-                                </div>
-                                </div>
-                                <div class="product-detail">
-                                <ul class="rating">      
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star-half-stroke"></i></li>
-                                    <li>4.3</li>
-                                </ul><a href="product.html"> 
-                                    <h6>Blue lined White T-Shirt</h6></a>
-                                <p>$190.00  
-                                    <del>$210.00</del>
-                                </p>
-                                </div>
-                            </div>
                             </div>
                         </div>
                         </div>
                     </div>
+                    </div>
+                    
+                    <div class="tab-pane fade" id="order" role="tabpanel" aria-labelledby="order-tab">
+                        @include('frontend.pages.user.order-list')
+                    </div>
+                    
                 </div>
-                <div class="tab-pane fade" id="order" role="tabpanel" aria-labelledby="order-tab">
-                    @include('frontend.pages.user.order-list')
-                </div>
-                
-            </div>
             </div>
         </div>
         </div>
@@ -439,7 +135,7 @@
     
 @section('page-script')
    <script>
-    document.addEventListener('livewire:load', function () {
+        document.addEventListener('livewire:load', function () {
             Livewire.on('success', () => {
             setTimeout(() => {
                 const modalElement = document.getElementById('edit-box');
@@ -473,6 +169,7 @@
         });
         
    </script>
+
 @endsection
 
     

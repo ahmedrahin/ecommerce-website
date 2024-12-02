@@ -184,48 +184,49 @@ class AddAdminModal extends Component
     public function updateStatus($id, $status)
     {
         $user = User::findOrFail($id);
-        if( $user->id == 1 ){
-            $this->emit('warning', 'You cannot disable to this account.');
+    
+        // Prevent disabling the super admin
+        if ($user->id == 1) {
+            $this->emit('warning', 'You cannot disable this account.');
             return;
         }
-        elseif(auth()->id() == $user->id){
+    
+        // Prevent the currently authenticated user from disabling their own account without logging out
+        if (auth()->id() == $user->id && $status == 0) {
             $user->update(['status' => $status]);
-            if ($user->status == 0) {
-                // Log the user out
-                Auth::logout();
-        
-                // Regenerate the session to prevent session fixation
-                request()->session()->invalidate();
-                request()->session()->regenerateToken();
-                
-                DB::table('sessions')
+    
+            // Log the user out
+            Auth::logout();
+            request()->session()->invalidate();
+            request()->session()->regenerateToken();
+    
+            // Delete the user's session
+            DB::table('sessions')
                 ->where('user_id', $user->id)
                 ->delete();
-        
-                // Flash a session message and redirect to login page
-                return redirect()->route('login')->with('info', 'Your account has been disabled and you have been logged out.');
-            }
+    
+            // Redirect to login
+            return redirect()->route('login')->with('info', 'Your account has been disabled and you have been logged out.');
         }
-        else {
-            $user->update(['status' => $status]);
-            if ($user->status == 0) {
-                DB::table('sessions')
+    
+        // Disable or enable another user's account
+        $user->update(['status' => $status]);
+    
+        if ($status == 0) {
+            // Delete the user's session
+            DB::table('sessions')
                 ->where('user_id', $user->id)
                 ->delete();
-        
-                // Flash a session message and redirect to login page
-                if( $user->isAdmin == 1 ){
-                    return redirect()->route('login')->with('info', 'Your account has been disabled and you have been logged out.');
-                }
-            }
+    
+            // Emit a message for admin
+            $message = "{$user->name}'s account has been disabled.";
+            $this->emit('info', $message);
+        } else {
+            $message = "{$user->name}'s account has been enabled.";
+            $this->emit('success', $message);
         }
-
-        $message = $status == 0 ? "{$user->name} account is Disable" : "{$user->name} account is Enable";
-        $type = $status == 0 ? 'info' : 'success';
-
-        // Emit success message
-        $this->emit($type, $message);
     }
+    
 
     public function removeImage()
     {

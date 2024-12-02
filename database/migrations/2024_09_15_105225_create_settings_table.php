@@ -15,6 +15,10 @@ return new class extends Migration
             $table->id();
             $table->text('fav_icon')->nullable();
             $table->text('logo')->nullable();
+            $table->text('website_logo')->nullable();
+            $table->text('website_footer_logo')->nullable();
+            $table->text('dark_logo')->nullable();
+            $table->text('footer_logo')->nullable();
             $table->text('site_title')->nullable();
             $table->string('number1')->nullable();
             $table->string('number2')->nullable();

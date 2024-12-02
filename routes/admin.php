@@ -45,7 +45,6 @@ Route::get('/c-clean', function (){
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
 
-  
    
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
@@ -123,4 +122,4 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
 });
 
 Route::get('/auth/redirect/{provider}', [SocialiteController::class, 'redirect']);
-require __DIR__ . '/auth.php';
+

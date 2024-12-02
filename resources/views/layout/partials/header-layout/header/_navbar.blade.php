@@ -56,8 +56,8 @@
         <div class="cursor-pointer symbol symbol-30px symbol-md-40px"
             data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent"
             data-kt-menu-placement="bottom-end">
-            @if(Auth::user()->profile_photo_url)
-            <img src="{{ \Auth::user()->profile_photo_url }}" alt="user" />
+            @if(Auth::user()->avatar)
+                <img alt="Logo" src="{{ asset(Auth::user()->avatar) }}" />
             @else
             <div
                 class="symbol-label fs-3 {{ app(\App\Actions\GetThemeType::class)->handle('bg-light-? text-?', Auth::user()->name) }}">
