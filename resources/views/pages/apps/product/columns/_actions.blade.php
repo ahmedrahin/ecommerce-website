@@ -26,7 +26,7 @@
     </div>
     <!--end::Menu item-->
     <!--begin::Menu item-->
-    <div class="menu-item px-3">
+    {{-- <div class="menu-item px-3">
         @can('delete product', $product)
             <a href="#" class="menu-link px-3" data-kt-product-id="{{ $product->id }}" data-kt-action="delete_row">
                 Delete
@@ -36,7 +36,7 @@
                 Delete
             </a>
         @endcan
-    </div>
+    </div> --}}
     <!--end::Menu item-->
 </div>
 <!--end::Menu-->

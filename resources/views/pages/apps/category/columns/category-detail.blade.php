@@ -18,8 +18,8 @@
 
             if (!empty($description)) {
                 $words = explode(' ', $description);
-                $limitedDescription = count($words) > 80 
-                    ? implode(' ', array_slice($words, 0, 80)) . '...' 
+                $limitedDescription = count($words) > 20 
+                    ? implode(' ', array_slice($words, 0, 20)) . '...' 
                     : $description;
             } else {
                 $limitedDescription = '';

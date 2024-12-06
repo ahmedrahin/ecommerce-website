@@ -24,16 +24,7 @@ class ProductsDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->addIndexColumn()
             ->editColumn('name', function (Product $product) {
-                $url = route('product-management.show', $product->id);
-                $imagePath = $product->thumb_image ? $product->thumb_image : 'uploads/blank-image.svg'; 
-                $imageUrl = asset($imagePath);
-                $truncatedName = Str::limit($product->name, 20, '...');
-
-                $pName = '<a target="_blank" class="text-gray-800 text-hover-primary fs-5 fw-bold" href="' . $url . '">';
-                $pName .= '<img src="' . $imageUrl . '" alt="' . $product->name . '" width="50" height="50" class="table-product-image" style="object-fit: cover; margin-right: 10px;">';
-                $pName .= $truncatedName . '</a>';
-
-                return $pName;
+                return view('pages.apps.product.columns.name', compact('product'));
             })
             ->editColumn('base_price', function (Product $product) {
                 if ($product->discount_option == 1) {
@@ -45,6 +36,9 @@ class ProductsDataTable extends DataTable
             ->editColumn('offer_price', function (Product $product) {
                 return $product->offer_price;
             })
+            // ->addColumn('expire_date', function (Product $product) {
+            //     return $product->expire_date;
+            // })
             ->editColumn('sku_code', function (Product $product) {
                 return $product->sku_code;
             })
@@ -92,10 +86,10 @@ class ProductsDataTable extends DataTable
             ->filterColumn('category_id', function ($query, $keyword) {
                 $keywords = explode('|', $keyword);
                 $query->whereHas('category', function ($q) use ($keywords, $keyword) {
-                    $q->whereIn('id', $keywords)
-                      ->orWhere('name', 'like', "%$keyword%");
+                    $q->whereIn('id', $keywords);
                 });
             })  
+            
             ->filterColumn('rating', function ($query, $keyword) {
                 $keywords = explode('|', $keyword);
                 $query->where(function ($q) use ($keywords) {
@@ -103,19 +97,22 @@ class ProductsDataTable extends DataTable
                         $subquery->select('product_id')
                                  ->from('reviews')
                                  ->groupBy('product_id')
-                                 ->havingRaw('AVG(rating) IN (' . implode(',', $keywords) . ')');
+                                 ->havingRaw('ROUND(AVG(rating)) IN (' . implode(',', array_map('intval', $keywords)) . ')');
                     });
+            
                     if (in_array('0', $keywords)) {
-                        $q->orWhereDoesntHave('reviews');
+                        $q->orWhereDoesntHave('reviews'); // Products with no reviews
                     }
                 });
             })
+            
                       
             ->filterColumn('status', function ($query, $keyword) {
                 if (is_numeric($keyword)) {
                     $query->where('status', $keyword);
                 }
             })
+
             ->filterColumn('selling', function ($query, $keyword) {
                 switch ($keyword) {
                     case 'best':
@@ -182,7 +179,11 @@ class ProductsDataTable extends DataTable
             })
             ->filterColumn('created_at', function ($query, $keyword) {
                 $query->whereDate('created_at', '=', $keyword);
-            })            
+            })  
+
+            // ->filterColumn('expire_date', function ($query) {
+            //     $query->whereDate('expire_date', '<', now());
+            // })  
             
             ->addColumn('actions', function (Product $product) {
                 return view('pages.apps.product.columns._actions', compact('product'));
@@ -250,14 +251,15 @@ class ProductsDataTable extends DataTable
             Column::computed('DT_RowIndex')->title('ID')->addClass('text-center'),
             Column::make('name')->title('Name'),
             Column::make('base_price')->title('Price')->addClass('text-center'),
-            Column::make('offer_price')->visible(false),
+            Column::make('offer_price')->visible(false)->exportable(false)->printable(false),
             Column::make('sku_code')->title('Sku_code')->addClass('text-center'),
             Column::make('quantity')->title('Qty')->addClass('text-center'),
             Column::make('category_id')->title('Category')->addClass('text-center'),
             Column::make('rating')->title('Rating')->addClass('text-center'),
             Column::make('selling')->title('Selling')->addClass('text-center'),
             Column::make('status')->title('Status')->addClass('text-center text-nowrap no-export')->exportable(false)->printable(false),
-            Column::make('created_at')->visible(false),
+            Column::make('created_at')->visible(false)->exportable(false)->printable(false),
+            // Column::make('expire_date')->visible(false)->exportable(false)->printable(false),
             Column::computed('actions')->title('Actions')->addClass('text-end text-nowrap no-export')->exportable(false)->printable(false),
         ];
     }

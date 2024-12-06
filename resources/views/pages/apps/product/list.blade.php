@@ -13,8 +13,8 @@
                 margin-top: -5px !important;
             }
             .product-datatable .table-product-image{
-                width: 42px;
-                height: 42px;
+                width: 44px;
+                height: 44px;
             }
             .product-datatable .fs-5{
                 font-size: 12px !important
@@ -32,6 +32,16 @@
                 height: 2.05rem;
                 width: 3.05rem;
             }
+            .menu-sub-dropdown .form-check-custom .form-check-label {
+                margin-left: 4px;
+            }
+            .menu-sub-dropdown .form-check.form-check-sm .form-check-input {
+                height: 16px;
+                width: 16px;
+            }
+            .menu-sub-dropdown .form-check-label{
+                font-size: 13px;
+            }
         </style>
     @endsection
 
@@ -41,7 +51,17 @@
        <div class="w-100 d-flex justify-content-between">
             {{ Breadcrumbs::render('product') }}
 
+            
+
             <div class="d-flex align-items-center gap-2 gap-lg-3">
+                <div id="active-filters">
+                    
+                </div>
+                
+                <button  class="btn btn-sm btn-danger reset-filter-btn me-1" id="resetFilter" onclick="triggerReset()" style="display: none;">
+                    Reset Filters
+                </button>
+               
                 <div class="m-0">
                     <!--begin::Menu toggle-->
                     <a href="#" class="btn btn-sm btn-flex btn-secondary fw-bold" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
@@ -49,12 +69,13 @@
                         <span class="path1"></span>
                         <span class="path2"></span>
                     </i>Filter</a>
-
+                    
                     <div class="menu menu-sub menu-sub-dropdown w-250px w-md-500px" data-kt-menu="true" id="kt_menu_64b776123225e">
                         <div class="px-7 py-5">
                             <div class="fs-5 text-dark fw-bold">Filter Products</div>
                         </div>
                         <div class="separator border-gray-200"></div>
+
                         <div class="px-7 py-5">
                             <div class="row">
                                 <div class="col-md-6">
@@ -102,6 +123,22 @@
                                 </div>
 
                                 <div class="col-md-6">
+                                    {{-- <div class="mb-5">
+                                        <label class="form-label fw-semibold">Product Stock:</label>
+                                        <div class="d-flex">
+
+                                            <select class="form-select form-select-solid" multiple="multiple" data-kt-select2="true" data-close-on-select="false" data-placeholder="Select quantity" data-dropdown-parent="#kt_menu_64b776123225e" data-allow-clear="true" id="rating-select">
+                                                <option></option>
+                                                <option value="outof">Out of stock</option>
+                                                <option value="low">Low stock</option>
+                                                <option value="low"></option>
+                                                <option value="low">Low stock</option>
+                                                <option value="low">Low stock</option>
+                                            </select>
+
+                                        </div>
+                                    </div> --}}
+
                                     <div class="mb-5">
                                         <label class="form-label fw-semibold">Offer Products:</label>
                                         <div>
@@ -123,13 +160,13 @@
                                 </div>
                             </div>
                             
-
                             <div class="d-flex justify-content-end">
                                 <button type="reset" class="btn btn-sm btn-light btn-active-light-primary me-2" data-kt-menu-dismiss="true">Reset</button>
                                 <button type="submit" class="btn btn-sm btn-primary" data-kt-menu-dismiss="true" id="apply">Apply</button>
                             </div>
 
                         </div>
+
                     </div>
 
                 </div>
@@ -240,120 +277,8 @@
         </script> 
         
         {{-- product filter --}}
-        <script>
-            $(document).ready(function () {
-                $('#created_at_filter').flatpickr({
-                    altInput: true,
-                    altFormat: "d F, Y",
-                    dateFormat: "Y-m-d"
-                });
+        @include('pages.apps.product.columns.filter')
 
-                $('#rating-select').select2({
-                    
-                    escapeMarkup: function (markup) {
-                        return markup;
-                    },
-                    templateResult: function(data) {
-                        if (data.id == '0') {
-                            return data.text; 
-                        }
-                        
-                        var rating = parseInt(data.id);
-                        var stars = '';
-                        for (var i = 0; i < 5; i++) {
-                            if (i < rating) {
-                                stars += '<i class="ki-duotone ki-star fs-6 " style="color:#ffad0f;"></i>'; 
-                            } else {
-                                stars += '<i class="ki-duotone ki-star fs-6" style="opacity: 0.3;"></i>';
-                            }
-                        }
-
-                        return $(stars); 
-                    },
-                    templateSelection: function(data) {
-
-                        if (data.id == '0') {
-                            return data.text; 
-                        }
-                        
-                        var rating = parseInt(data.id);
-                        var stars = '';
-                        for (var i = 0; i < 5; i++) {
-                            if (i < rating) {
-                                stars += '<i class="ki-duotone ki-star fs-6" style="color:#ffad0f;"></i>'; 
-                            } else {
-                                stars += '<i class="ki-duotone ki-star fs-6" style="opacity: 0.3;"></i>'; 
-                            }
-                        }
-
-                        return $(stars);
-                    }
-                });
-
-                $('#selling-select').select2({
-                    minimumResultsForSearch: -1 
-                });
-                $('#offer-select').select2({
-                    minimumResultsForSearch: -1 
-                });
-
-                $('#apply').on('click', function () {
-                    // crated_at
-                    const selectedDate = $("#created_at_filter").val(); 
-                    window.LaravelDataTables['product-table']
-                        .column('created_at:name') 
-                        .search(selectedDate) 
-                        .draw();
-
-                    // offer filter
-                    var selectedSelling = $('#offer-select').val(); 
-                        window.LaravelDataTables['product-table']
-                            .column('base_price:name')
-                            .search(selectedSelling)
-                            .draw();
-
-                    // salling filter
-                    var selectedSelling = $('#selling-select').val(); 
-                        window.LaravelDataTables['product-table']
-                            .column('selling:name')
-                            .search(selectedSelling)
-                            .draw();
-
-                    // Rating filter
-                    var selectedRatings = $('#rating-select').val(); 
-                    window.LaravelDataTables['product-table']
-                        .column('rating:name') 
-                        .search(selectedRatings ? selectedRatings.join('|') : '', true, false) 
-                        .draw();
-
-                    // Category filter
-                    var selectedCategories = $('#category-select').val(); 
-                    window.LaravelDataTables['product-table']
-                        .column('category_id:name') 
-                        .search(selectedCategories ? selectedCategories.join('|') : '', true, false)
-                        .draw();
-                });
-
-                $('button[type="reset"]').on('click', function () {
-                    $('#category-select').val(null).trigger('change'); 
-                    $('#rating-select').val(null).trigger('change'); 
-                    $('#selling-select').val(null).trigger('change'); 
-                    $('#offer-select').val(null).trigger('change'); 
-                    $('#created_at_filter').val(''); 
-                    const flatpickrInstance = $('#created_at_filter').flatpickr();
-                    flatpickrInstance.clear();
-                    window.LaravelDataTables['product-table']
-                        .search('')
-                        .columns().search('')
-                        .draw();
-                });
-
-            });
-
-        </script>
-
-
-        
     @endpush
 
 </x-default-layout>

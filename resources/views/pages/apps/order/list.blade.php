@@ -2,6 +2,9 @@
 
     @section('custom-css')
         <link rel="stylesheet" href="{{asset('assets/plugins/custom/datatables/datatables.bundle.css')}}">
+        <style>
+            .table:not(.table-bordered) tr, .table:not(.table-bordered) th, .table:not(.table-bordered) td{font-size: 13px !important;}
+        </style>
     @endsection
 
     @section('title') Order Details @endsection

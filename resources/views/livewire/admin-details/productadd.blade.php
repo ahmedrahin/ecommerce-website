@@ -60,7 +60,7 @@
                                     {{$product->orderItems->count()}}
                                 </td>
                                 
-                                <td class="  text-end text-nowrap">
+                                <td class="text-center  text-end text-nowrap">
                                     
                                     <a href="{{route('product-management.show', $product->id)}}" class="btn btn-icon btn-active-light-primary w-30px h-30px" style="margin-right: -10px !important;" target="_blank">
                                         <i class="ki-duotone ki-eye fs-3">
@@ -70,7 +70,7 @@
                                         </i>
                                     </a>
                                     
-                                    @can('delete product')
+                                    {{-- @can('delete product')
                                     <button class="btn btn-icon btn-active-light-primary w-30px h-30px" data-kt-action="delete_product" data-product-id="{{$product->id}}">
                                         <i class="ki-duotone ki-trash fs-3">
                                             <span class="path1"></span>
@@ -90,7 +90,7 @@
                                                 <span class="path5"></span>
                                             </i>
                                         </button>
-                                    @endif
+                                    @endif --}}
 
                                 </td>
                             </tr>

@@ -31,10 +31,10 @@ class HighlightedProduct extends Component
         ->get();
     
     $productsWithHighReviews = Product::activeProducts()
-        ->with('review')
-        ->withAvg('review', 'rating')
-        ->having('review_avg_rating', '>=', 4)
-        ->orderBy('review_avg_rating', 'desc')
+        ->with('reviews')
+        ->withAvg('reviews', 'rating')
+        ->having('reviews_avg_rating', '>=', 4)
+        ->orderBy('reviews_avg_rating', 'desc')
         ->take(10)
         ->get();
     

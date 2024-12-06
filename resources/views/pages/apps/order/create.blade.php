@@ -202,7 +202,7 @@
                 <!--end::Order details-->
                 <div class="d-flex justify-content-end">
                     <!--begin::Button-->
-                    <a href="../../demo1/dist/apps/ecommerce/catalog/products.html" id="kt_ecommerce_edit_order_cancel" class="btn btn-light me-5">Cancel</a>
+                    <a href="" id="kt_ecommerce_edit_order_cancel" class="btn btn-light me-5">Cancel</a>
                     <!--end::Button-->
 
                     <button type="submit" id="add_order" class="btn btn-primary" style="width: 200px;">

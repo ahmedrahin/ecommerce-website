@@ -64,17 +64,16 @@ class OrderDataTable extends DataTable
             })
             ->editColumn('order_date', function (Order $order) {
                 $formattedDate = Carbon::parse($order->order_date)->format('d M Y') . '<br>';
-                $futureTime = Carbon::parse($order->order_date)->addHours(5);
-                $timeUntilFuture = $futureTime->diffForHumans();
+                $time = Carbon::parse($order->order_date)->diffForHumans();
                 $statusClass = 'text-primary';
 
-                if ($order->status === 'completed') {
+                if ($order->delivery_status === 'completed') {
                     $statusClass = 'text-success'; 
                 } elseif ($order->status !== 'completed' && Carbon::parse($order->order_date)->diffInDays(Carbon::now()) <= 1) {
                     $statusClass = 'text-danger';
                 }
 
-                return $formattedDate . ' <span class="' . $statusClass . '" style="font-weight: 700; font-size: 10px; padding: 0;">' . $timeUntilFuture . '</span>';
+                return $formattedDate . ' <span class="' . $statusClass . '" style="font-weight: 700; font-size: 10px; padding: 0;">' . $time . '</span>';
             })
             ->addColumn('viewed', function (Order $order) {
                 if ($order->viewed != 0) {

@@ -3,8 +3,7 @@
     @section('title') Order Details @endsection
 
     @section('breadcrumbs')
-    {{ Breadcrumbs::render('order') }}
-
+        {{ Breadcrumbs::render('order') }}
     @endsection
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
@@ -55,6 +54,7 @@
         .download-btn a {
             padding: 6px 10px !important;
         }
+        .table:not(.table-bordered) tr, .table:not(.table-bordered) th, .table:not(.table-bordered) td{font-size: 13px !important;}
     </style>
 
     
@@ -66,11 +66,10 @@
                     <li class="nav-item">
                         <a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab" href="#kt_ecommerce_sales_order_summary">Order Summary</a>
                     </li>
-                    <!--end:::Tab item-->
-                    <!--begin:::Tab item-->
-                    <li class="nav-item">
+
+                    {{-- <li class="nav-item">
                         <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#kt_ecommerce_sales_order_history">Order History</a>
-                    </li>
+                    </li> --}}
                     <!--end:::Tab item-->
                 </ul>
                 <!--end:::Tabs-->
@@ -80,7 +79,7 @@
                 </a>
                 <!--end::Button-->
                 <!--begin::Button-->
-                <a href="{{route('order-management.order.edit', $order->id)}}" class="btn btn-success btn-sm me-lg-n7">Edit Order</a>
+                {{-- <a href="{{route('order-management.order.edit', $order->id)}}" class="btn btn-success btn-sm me-lg-n7">Edit Order</a> --}}
                 <!--end::Button-->
                 <!--begin::Button-->
                 <a href="{{route('order-management.order.create')}}" class="btn btn-primary btn-sm">Add New Order</a>
@@ -133,7 +132,7 @@
                                                             ? 'assets/media/payment-methods/cod.png' 
                                                             : 'assets/media/payment-methods/visa.svg';
                                                     @endphp
-                                                    <img src="{{asset($paymentImg)}}" class="w-40px ms-2" />
+                                                    <img src="{{asset($paymentImg)}}" class="w-30px ms-1" />
                                                 </td>
                                             </tr>
                                             <tr>
@@ -198,7 +197,7 @@
                                                     </td>
                                                 </tr>
                                             @endif
-                                            <tr>
+                                            {{-- <tr>
                                                 <td class="text-muted">
                                                     <div class="d-flex align-items-center">
                                                     <i class="ki-duotone ki-watch fs-2 me-2">
@@ -207,7 +206,7 @@
                                                     </i>Issue Date</div>
                                                 </td>
                                                 <td class="fw-bold text-end">12-09-24</td>
-                                            </tr>
+                                            </tr> --}}
                                             
                                             
                                         </tbody>
@@ -347,7 +346,7 @@
                                                     </span></div>
                                                 </td>
                                                 <td class="fw-bold text-end">
-                                                    <a href="{{route('order-management.invoice',$order->id)}}" class="text-gray-600 text-hover-primary">#INV-{{$order->id}}</a>
+                                                    <a href="{{route('order-management.invoice',$order->id)}}" class="text-gray-600 text-hover-primary">{{$order->order_id}}</a>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -374,7 +373,7 @@
                                             </tr>
         
                                             <div class="download-btn">
-                                                <a href="{{route('order-management.invoice',$order->id)}}" target="_blank" class="btn btn-success btn-sm me-lg-n7"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                                <a href="{{route('order-management.invoice',$order->id)}}" target="_blank" class="btn btn-success btn-sm me-lg-n7"><i class="fa fa-eye me-2" aria-hidden="true"></i>Invoice</a>
                                                 {{-- <a href="" class="btn btn-danger btn-sm"><i class="fa fa-cloud-download" aria-hidden="true"></i></a> --}}
                                             </div>
                                         </tbody>
@@ -391,28 +390,24 @@
                     <div class="d-flex flex-column gap-7 gap-lg-10">
                         <div class="d-flex flex-column flex-xl-row gap-7 gap-lg-10">
                             <!--begin::Payment address-->
-                            <div class="card card-flush py-4 flex-row-fluid position-relative">
+                            <div class="card card-flush py-4 flex-row-fluid position-relative w-50 pb-0">
                                 <!--begin::Background-->
-                                <div class="position-absolute top-0 end-0 bottom-0 opacity-10 d-flex align-items-center me-5">
+                                {{-- <div class="position-absolute top-0 end-0 bottom-0 opacity-10 d-flex align-items-center me-5">
                                     <i class="ki-solid ki-two-credit-cart" style="font-size: 14em"></i>
-                                </div>
+                                </div> --}}
                                 <!--end::Background-->
                                 <!--begin::Card header-->
-                                <div class="card-header">
+                                {{-- <div class="card-header">
                                     <div class="card-title">
-                                        <h2>Billing Address</h2>
+                                        <h2>Delivery Status</h2>
                                     </div>
-                                </div>
-                                <!--end::Card header-->
-                                <!--begin::Card body-->
-                                <div class="card-body pt-0">
-
-                                </div>
-                                <!--end::Card body-->
+                                </div> --}}
+                                
+                                <livewire:order.order-action :order_id="$order->id" />
+                                
                             </div>
-                            <!--end::Payment address-->
-                            <!--begin::Shipping address-->
-                            <div class="card card-flush py-4 flex-row-fluid position-relative">
+       
+                            <div class="card card-flush py-4 flex-row-fluid position-relative w-50 pb-0">
                                 <!--begin::Background-->
                                 <div class="position-absolute top-0 end-0 bottom-0 opacity-10 d-flex align-items-center me-5">
                                     <i class="ki-solid ki-delivery" style="font-size: 13em"></i>
@@ -553,11 +548,14 @@
 
     @push('scripts')
         <script>
-            $(document).ready(function(){
-                $('.d-flex.align-items-center.gap-2.gap-lg-3').html(`
-                    <span class="delivery-time"><span class="text-muted">Delivery Time - </span>01:11:50 days</span>
-                `);
-            })
+            // $(document).ready(function(){
+            //     $('.d-flex.align-items-center.gap-2.gap-lg-3').html(`
+            //         <span class="delivery-time"><span class="text-muted">Delivery Time - </span>01:11:50 days</span>
+            //     `);
+            // })
+
+
+            
         </script>
     @endpush
 </x-default-layout>

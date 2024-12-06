@@ -8,7 +8,7 @@
     data-kt-menu="true">
     <!--begin::Menu item-->
     <div class="menu-item px-3">
-        @can('update order')
+        {{-- @can('update order')
             <a href="{{ route('order-management.order.edit', $order->id) }}" class="menu-link px-3">
                 Edit
             </a>
@@ -16,7 +16,7 @@
             <a href="javascript:;" class="menu-link px-3" onclick="errorAccess('You do not have permission to edit this order.')">
                 Edit
             </a>
-        @endcan
+        @endcan --}}
     
     </div>
     <div class="menu-item px-3">
