@@ -1,6 +1,6 @@
 <!--begin:: Avatar -->
 <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-    <a href="{{ route('admin-management.admin-list.show', $user->id) }}">
+    <a href="{{ route('user-management.users.show', $user->id) }}" target="_blank">
         @php
             $imagePath = $user->avatar ? $user->avatar : 'uploads/blank-image.svg'; 
             $imageUrl = asset($imagePath);
@@ -20,7 +20,7 @@
 <!--end::Avatar-->
 <!--begin::User details-->
 <div class="d-flex flex-column">
-    <a href="{{ route('admin-management.admin-list.show', $user->id) }}" class="text-gray-800 text-hover-primary mb-1">
+    <a href="{{ route('user-management.users.show', $user->id) }}" class="text-gray-800 text-hover-primary" target="_blank">
         {{ $user->name }}
     </a>
     <span>{{ $user->email }}</span>

@@ -21,7 +21,7 @@ class UserDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->rawColumns(['user', 'last_login_at'])
             ->editColumn('user', function (User $user) {
-                return view('pages.apps.user-management.admin.columns._user', compact('user'));
+                return view('pages.apps.user-management.user.columns._user', compact('user'));
             })
                        
             ->editColumn('id', function (User $user) {

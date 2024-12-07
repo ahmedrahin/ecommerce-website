@@ -286,26 +286,26 @@ var KTApp = function () {
             $(element).select2(options);
 
             // Handle Select2's KTMenu parent case
-            // if (element.hasAttribute('data-dropdown-parent') && element.hasAttribute('multiple')) {
-            //     var parentEl = document.querySelector(element.getAttribute('data-dropdown-parent'));
+            if (element.hasAttribute('data-dropdown-parent') && element.hasAttribute('multiple')) {
+                var parentEl = document.querySelector(element.getAttribute('data-dropdown-parent'));
 
-            //     if (parentEl && parentEl.hasAttribute("data-kt-menu")) {
-            //         var menu = new KTMenu(parentEl);
+                if (parentEl && parentEl.hasAttribute("data-kt-menu")) {
+                    var menu = new KTMenu(parentEl);
 
-            //         if (menu) {
-            //             $(element).on('select2:unselect', function (e) {
-            //                 element.setAttribute("data-multiple-unselect", "1");
-            //             });
+                    if (menu) {
+                        $(element).on('select2:unselect', function (e) {
+                            element.setAttribute("data-multiple-unselect", "1");
+                        });
 
-            //             menu.on("kt.menu.dropdown.hide", function(item) {
-            //                 if (element.getAttribute("data-multiple-unselect") === "1") {
-            //                     element.removeAttribute("data-multiple-unselect");
-            //                     return false;
-            //                 }
-            //             });
-            //         }                    
-            //     }                
-            // }
+                        menu.on("kt.menu.dropdown.hide", function(item) {
+                            if (element.getAttribute("data-multiple-unselect") === "1") {
+                                element.removeAttribute("data-multiple-unselect");
+                                return false;
+                            }
+                        });
+                    }                    
+                }                
+            }
 
             element.setAttribute("data-kt-initialized", "1");
         });

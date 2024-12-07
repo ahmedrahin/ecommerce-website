@@ -202,7 +202,7 @@ class Checkout extends Component
         $rules = [
             'name'  => 'required',
             'email' => 'nullable|email',
-            'phone' => 'required',
+            'phone' => 'required|numeric|digits:11',
             'shipping_address' => 'required',
             'district_id' => 'required'
         ];

@@ -44,7 +44,7 @@ class OrderController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'nullable|email',
-            'phone' => 'required|numeric|min:11',
+            'phone' => 'required|numeric|digits:11',
             'payment_type' => 'required',
             'shipping_method' => 'required',
             'order_date' => 'required',
@@ -58,7 +58,7 @@ class OrderController extends Controller
             'payment_type.required' => 'Please select a payment method type',
             'district_id.required' => 'Please select a city',
         ]);
-    
+        $orderId = 'F' . now()->format('Ymd') . '-' . strtoupper(uniqid());
         // Check if there are selected products in session
         $selectedProducts = session()->get('selectedProducts', []);
         $quantities = session()->get('quantities', []);
@@ -72,6 +72,7 @@ class OrderController extends Controller
     
         // Create the order
         $order = Order::create([
+            'order_id'  => $orderId,
             'user_id' => Auth::id() ?? null,
             'user_type' => 'author',
             'name' => $request->name,

@@ -3,7 +3,7 @@
     <select wire:model="delivery_status" id="status"
         class="form-select form-select-solid " data-control="select2" >
        <option value="pending">Pending</option>
-       <option value="shipped">Shipped</option>
+       <option value="processing">Processing</option>
        <option value="delivered">Delivered</option>
        <option value="canceled">Canceled</option>
        <option value="completed">Completed</option>

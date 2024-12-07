@@ -1,12 +1,13 @@
 <div class="d-flex justify-content-end" data-kt-product-table-toolbar="base">
     <div>
-        <select name="statusFilter" id="statusFilter">
-            <option value="">Filter by status</option>
-            <option value="1">Published</option>
-            <option value="0">Inactive</option>
-            <option value="2">Draf</option>
-            <option value="3">Scheduled</option>
-        </select>
+        <select name="statusFilter" id="statusFilter" class="form-select form-select-solid w-200px" data-control="select2" data-allow-clear="true" data-placeholder="Filter by status">
+            <option></option>
+            <option value="pending">Pending</option>
+            <option value="processing">Processing</option>
+            <option value="delivered">Delivered</option>
+            <option value="canceled">Canceled</option>
+            <option value="completed">Completed</option>
+        </select>  
     </div>
 
     <button type="button" class="btn btn-light-primary mx-4" data-kt-menu-trigger="click"

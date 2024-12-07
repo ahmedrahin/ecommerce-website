@@ -51,8 +51,6 @@
        <div class="w-100 d-flex justify-content-between">
             {{ Breadcrumbs::render('product') }}
 
-            
-
             <div class="d-flex align-items-center gap-2 gap-lg-3">
                 <div id="active-filters">
                     

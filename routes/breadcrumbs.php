@@ -103,6 +103,10 @@ Breadcrumbs::for('shipping', function (BreadcrumbTrail $trail) {
     $trail->push('District List', route('shipping.district'));
 });
 // Home > Dashboarad > order
+Breadcrumbs::for('orderlist', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('Order List', );
+});
 Breadcrumbs::for('order', function (BreadcrumbTrail $trail) {
     $trail->parent('dashboard');
     $trail->push('Order Details', );

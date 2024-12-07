@@ -36,6 +36,29 @@ class OrderDataTable extends DataTable
             ->editColumn('id', function (Order $order) {
                 return '<span class="badge badge-light-primary">#' . $order->id . '</span>' ;
             })
+            ->editColumn('user_type', function (Order $order) {
+                $user_type = $order->user_type;
+                $statusClass = $user_type == 'author' ? 'text-warning' : '';
+                
+                if (($user_type == 'author') && $order->user->isAdmin == 1) {
+                    $isUser = route('admin-management.admin-list.show', $order->user_id);
+                } elseif ($user_type == 'customer' && $order->user_id && $order->user->isAdmin == 2) {
+                    $isUser = route('user-management.users.show', $order->user_id);
+                } else {
+                    $isUser = null;
+                }
+                
+                if ($isUser) {
+                    return '<a href="' . $isUser . '" target="_blank"> 
+                        <span class="' . $statusClass . '" style="font-weight: 700; font-size: 10px; padding: 0;">' 
+                        . $user_type . '</span>
+                    </a>';
+                } else {
+                    return '<span class="' . $statusClass . '" style="font-weight: 700; font-size: 10px; padding: 0;">' 
+                        . $user_type . '</span>';
+                }
+            })
+            
             ->editColumn('delivery_status', function (Order $order) {
                 $status = $order->delivery_status;
                 $badgeClass = '';
@@ -62,6 +85,9 @@ class OrderDataTable extends DataTable
             ->editColumn('grand_total', function (Order $order) {
                 return number_format($order->grand_total, 2).'৳';
             })
+            ->editColumn('qty', function (Order $order) {
+                return $order->orderItems->count();
+            })
             ->editColumn('order_date', function (Order $order) {
                 $formattedDate = Carbon::parse($order->order_date)->format('d M Y') . '<br>';
                 $time = Carbon::parse($order->order_date)->diffForHumans();
@@ -69,7 +95,7 @@ class OrderDataTable extends DataTable
 
                 if ($order->delivery_status === 'completed') {
                     $statusClass = 'text-success'; 
-                } elseif ($order->status !== 'completed' && Carbon::parse($order->order_date)->diffInDays(Carbon::now()) <= 1) {
+                } elseif ($order->delivery_status !== 'completed' && Carbon::parse($order->order_date)->diffInDays(Carbon::now()) > 3) {
                     $statusClass = 'text-danger';
                 }
 
@@ -92,13 +118,30 @@ class OrderDataTable extends DataTable
                 
                 return $data;
             })
-            
             ->addColumn('actions', function (Order $order) {
                 return view('pages.apps.order.columns._actions', compact('order'));
             })
+
+            ->filterColumn('delivery_status', function ($query, $keyword) {
+                if ($keyword) {
+                    $query->where('delivery_status', $keyword);
+                }
+            })
+
+            ->filterColumn('order_date', function ($query, $keyword) {
+                $dates = explode(' - ', $keyword);
+            
+                if (count($dates) === 2) {
+                    $start = Carbon::createFromFormat('Y-m-d', trim($dates[0]))->startOfDay();
+                    $end = Carbon::createFromFormat('Y-m-d', trim($dates[1]))->endOfDay();
+                    $query->whereBetween('order_date', [$start, $end]);
+                }
+            })
+                    
+
             ->orderColumn('id', 'id $1')
             ->setRowId('id')
-            ->rawColumns(['name', 'id', 'delivery_status','order_date','viewed', 'actions']);
+            ->rawColumns(['name', 'id', 'delivery_status','order_date','viewed', 'actions', 'user_type', 'qty']);
     }
 
     /**
@@ -159,8 +202,10 @@ class OrderDataTable extends DataTable
             Column::computed('DT_RowIndex')->title('Sl.')->addClass('text-center'),
             Column::make('name')->title('Customer'),
             Column::make('id')->title('Order Id'),
+            Column::make('user_type')->title('User Type')->addClass('text-center'),
             Column::make('delivery_status')->title('Status')->addClass('text-center'),
             Column::make('grand_total')->title('Total')->addClass('text-center'),
+            Column::computed('qty')->title('Total Qty')->addClass('text-center'),
             Column::make('order_date')->title('Order Date')->addClass('text-center'),
             Column::make('viewed')->title('Viewed')->addClass('text-center'),
             Column::computed('actions')
@@ -176,6 +221,6 @@ class OrderDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'Product_' . date('YmdHis');
+        return 'Order_' . date('YmdHis');
     }
 }

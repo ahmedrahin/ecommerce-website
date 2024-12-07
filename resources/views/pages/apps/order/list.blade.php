@@ -4,13 +4,80 @@
         <link rel="stylesheet" href="{{asset('assets/plugins/custom/datatables/datatables.bundle.css')}}">
         <style>
             .table:not(.table-bordered) tr, .table:not(.table-bordered) th, .table:not(.table-bordered) td{font-size: 13px !important;}
+            .page-title.d-flex{
+                width: 100%;
+            }
         </style>
     @endsection
 
-    @section('title') Order Details @endsection
+    @section('title') Order List @endsection
 
     @section('breadcrumbs')
-        {{ Breadcrumbs::render('order') }}
+        <div class="w-100 d-flex justify-content-between">
+            {{ Breadcrumbs::render('orderlist') }}
+
+            <div class="d-flex align-items-center gap-2 gap-lg-3">
+                <div id="active-filters">
+                    
+                </div>
+                
+                <button  class="btn btn-sm btn-danger reset-filter-btn me-1" id="resetFilter" onclick="triggerReset()" style="display: none;">
+                    Reset Filters
+                </button>
+            
+                <div class="m-0">
+                    <!--begin::Menu toggle-->
+                    <a href="#" class="btn btn-sm btn-flex btn-secondary fw-bold" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                    <i class="ki-duotone ki-filter fs-6 text-muted me-1">
+                        <span class="path1"></span>
+                        <span class="path2"></span>
+                    </i>Filter</a>
+                    
+                    <div class="menu menu-sub menu-sub-dropdown w-250px w-md-500px" data-kt-menu="true" id="kt_menu_64b776123225e">
+                        <div class="px-7 py-5">
+                            <div class="fs-5 text-dark fw-bold">Filter Orders</div>
+                        </div>
+                        <div class="separator border-gray-200"></div>
+
+                        <div class="px-7 py-5">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-5">
+                                        <label class="form-label fw-semibold">Order Date:</label>
+                                        <div class="mb-0">
+                                            <input class="form-control form-control-solid" placeholder="Pick date rage" id="kt_daterangepicker_4" data-dropdown-parent="#kt_menu_64b776123225e"/>
+                                        </div>
+                                    </div>
+
+                                    {{-- <div class="mb-5">
+                                        <label class="form-label fw-semibold">:</label>
+                                        <div>
+                                            <select class="form-select form-select-solid" multiple="multiple" data-kt-select2="true" data-close-on-select="false" data-placeholder="Select category" data-dropdown-parent="#kt_menu_64b776123225e" data-allow-clear="true" id="category-select">
+                                                <option></option>
+                                                
+                                            </select>
+                                        </div>
+                                    </div> --}}
+        
+                                </div>
+
+                                <div class="col-md-6">
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex justify-content-end">
+                                <button type="reset" class="btn btn-sm btn-light btn-active-light-primary me-2" data-kt-menu-dismiss="true">Reset</button>
+                                <button type="submit" class="btn btn-sm btn-primary" data-kt-menu-dismiss="true" id="apply">Apply</button>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+    </div>
     @endsection
     
     <div class="card">
@@ -22,7 +89,7 @@
                 <div class="d-flex align-items-center position-relative my-1">
                     {!! getIcon('magnifier', 'fs-3 position-absolute ms-5') !!}
                     <input type="text" 
-                        class="form-control form-control-solid w-250px ps-13" placeholder="Search product"
+                        class="form-control form-control-solid w-250px ps-13" placeholder="Search order"
                         id="mySearchInput" />
                 </div>
                 <!--end::Search-->
@@ -57,6 +124,18 @@
         <script src="{{asset('assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
         <script>
              $(document).ready(function() {
+                $('#statusFilter').select2({
+                    minimumResultsForSearch: -1 
+                });
+
+                $('#statusFilter').on('change', function () {
+                    var selectedStatus = $(this).val();
+                    window.LaravelDataTables['order-table']
+                        .column(4) 
+                        .search(selectedStatus)
+                        .draw();
+                });
+        
                 var table = $('#order-table').DataTable();
                 
                 // Event listener for the search input field
@@ -100,5 +179,8 @@
         
             });
         </script>
+
+        {{-- product filter --}}
+        @include('pages.apps.order.columns.filter')
     @endpush
 </x-default-layout>
