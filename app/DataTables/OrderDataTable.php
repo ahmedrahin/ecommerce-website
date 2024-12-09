@@ -138,6 +138,17 @@ class OrderDataTable extends DataTable
                 }
             })
                     
+            ->filterColumn('viewed', function ($query, $keyword) {
+                if ($keyword !== '') {
+                    $query->where('viewed', $keyword); 
+                }
+            })
+
+            ->filterColumn('user_type', function ($query, $keyword) {
+                if ($keyword !== '') {
+                    $query->where('user_type', $keyword); 
+                }
+            })
 
             ->orderColumn('id', 'id $1')
             ->setRowId('id')

@@ -44,8 +44,25 @@
                                 <div class="col-md-6">
                                     <div class="mb-5">
                                         <label class="form-label fw-semibold">Order Date:</label>
+                                        <div class="mb-0" style="position: relative;">
+                                            <input class="form-control form-control-solid" placeholder="Pick date rage" id="kt_daterangepicker_4" data-dropdown-parent="#kt_menu_64b776123225e" autocomplete="off"/>
+                                            <span class="ki-duotone ki-cross fs-1" style="position: absolute;top: 9px;right: 2px;cursor: pointer;" onclick="dateRemove()"><span class="path1"></span><span class="path2"></span></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-5">
+                                        <label class="form-label fw-semibold">User Type:</label>
                                         <div class="mb-0">
-                                            <input class="form-control form-control-solid" placeholder="Pick date rage" id="kt_daterangepicker_4" data-dropdown-parent="#kt_menu_64b776123225e"/>
+                                            <div class="d-flex mt-3">
+                                                <div class="form-check form-check-custom form-check-solid me-5">
+                                                    <input class="form-check-input" type="radio" name="type-status" value="author" id="author">
+                                                    <label class="form-check-label" for="author">Author</label>
+                                                </div>
+                                                <div class="form-check form-check-custom form-check-solid">
+                                                    <input class="form-check-input" type="radio" name="type-status" value="customer" id="customer">
+                                                    <label class="form-check-label" for="customer">Customer</label>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -62,6 +79,21 @@
                                 </div>
 
                                 <div class="col-md-6">
+                                    <div class="mb-5">
+                                        <label class="form-label fw-semibold">Viewed Order:</label>
+                                        <div class="mb-0">
+                                            <div class="d-flex mt-3">
+                                                <div class="form-check form-check-custom form-check-solid me-5">
+                                                    <input class="form-check-input" type="radio" name="viewed-status" value="1" id="seen">
+                                                    <label class="form-check-label" for="seen">Seen</label>
+                                                </div>
+                                                <div class="form-check form-check-custom form-check-solid">
+                                                    <input class="form-check-input" type="radio" name="viewed-status" value="0" id="unseen">
+                                                    <label class="form-check-label" for="unseen">Unseen</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     
                                 </div>
                             </div>

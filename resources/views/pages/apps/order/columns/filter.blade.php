@@ -8,8 +8,11 @@
         }, 20000);
     });
 
-
+    function dateRemove(){
+            $('#kt_daterangepicker_4').val('');
+        }
     $(document).ready(function () {
+        var table = window.LaravelDataTables['order-table'];
         // Initialize Date Range Picker
         $("#kt_daterangepicker_4").daterangepicker({
             autoApply: false,
@@ -32,22 +35,43 @@
         });
 
         $('#kt_daterangepicker_4').val('');
+        $('.ki-cross').hide();
+        $('#kt_daterangepicker_4').on('change keyup', function () {
+            if ($(this).val()) {
+                $('.ki-cross').show();
+            } else {
+                $('.ki-cross').hide();
+            }
+        });
+        
 
         // Apply Filter
         $('#apply').on('click', function () {
             var selectedRange = $('#kt_daterangepicker_4').val();
+            var viewedStatus = $('input[name="viewed-status"]:checked').val();
+            var typeStatus = $('input[name="type-status"]:checked').val();
 
             if (selectedRange) {
-                window.LaravelDataTables['order-table']
-                    .column(7) // Adjust column index for 'order_date'
+                table.column(7)
                     .search(selectedRange)
                     .draw();
             }
+
+            table.column(8) 
+                .search(viewedStatus || "")
+                .draw();
+
+            table.column(3) 
+            .search(typeStatus || "")
+            .draw();
         });
 
         // Reset Filter
         $('button[type="reset"]').on('click', function () {
             $('#kt_daterangepicker_4').val(''); 
+            $('.ki-cross').hide();
+            $('input[name="viewed-status"]').prop('checked', false);
+            $('input[name="type-status"]').prop('checked', false);
             window.LaravelDataTables['order-table']
                 .search('')
                 .columns().search('')
